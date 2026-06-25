@@ -1,0 +1,8 @@
+f=open('C:/Users/alienware/Documents/petvitals/src/components/landing/features.tsx''rb')
+d=f.read()
+f.close()
+d=d.replace(b'\\xe2\\x80\\x99',b"'")
+f=open('C:/Users/alienware/Documents/petvitals/src/components/landing/features.tsx''wb')
+f.write(d)
+f.close()
+print('done')

@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  petvitals:
+    build: .
+    container_name: petvitals
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.production
+    volumes:
+      - petvitals_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  petvitals_data:
