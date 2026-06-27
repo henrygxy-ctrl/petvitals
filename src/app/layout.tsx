@@ -112,6 +112,13 @@ export default function RootLayout({
         <link rel="alternate" hrefLang="en-US" href={SITE_BASE_URL} />
         <link rel="alternate" hrefLang="x-default" href={SITE_BASE_URL} />
         <link rel="manifest" href="/manifest.json" />
+
+        {/* Impact.com affiliate tracking */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})('https://utt.impactcdn.com/P-A7440910-bb49-4579-9324-4620bd64fb791.js','script','impactStat',document,window);impactStat('transformLinks');impactStat('trackImpression');`,
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col">
         {/* AdSense stays on main thread — Partytown breaks ad serving */}
