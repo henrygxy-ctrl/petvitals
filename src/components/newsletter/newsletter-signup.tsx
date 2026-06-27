@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { Mail, Loader2, CheckCircle } from "lucide-react";
+import Link from "next/link";
 import { Input } from "@/components/ui/input";
 
 export function NewsletterSignup() {

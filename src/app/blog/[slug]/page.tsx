@@ -11,6 +11,8 @@ import { ReadNext } from "@/components/blog/read-next";
 import { RelatedArticles } from "@/components/blog/related-articles";
 import { ArticleJsonLd } from "@/components/blog/article-json-ld";
 import { AdUnit, InArticleAd } from "@/components/ads/AdUnit";
+import { ProductRecommendationCard } from "@/components/affiliate/product-rec-card";
+import { PRODUCT_RECS } from "@/lib/affiliate";
 import { JsonLdBreadcrumb } from "@/components/seo/json-ld";
 import { Calendar, Clock, Tag, User } from "lucide-react";
 
@@ -152,7 +154,12 @@ export default async function BlogArticlePage({ params }: Props) {
               <Content />
             </div>
 
-            <InArticleAd />
+                        <InArticleAd />
+
+            {/* Affiliate product recommendations */}
+            {PRODUCT_RECS[post.slug] && (
+              <ProductRecommendationCard products={PRODUCT_RECS[post.slug]} />
+            )}
 
             {post.sources.length > 0 && (
               <SourceCitation sources={post.sources} />

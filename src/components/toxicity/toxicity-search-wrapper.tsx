@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { AdUnit } from "@/components/ads/AdUnit";
+import { InsuranceCtaBanner } from "@/components/affiliate/insurance-cta";
 
 const ToxicitySearch = dynamic(
   () => import("@/components/toxicity/toxicity-search").then((mod) => ({ default: mod.ToxicitySearch })),
@@ -20,6 +21,7 @@ export function ToxicitySearchWrapper() {
     <>
       <ToxicitySearch variant="full" />
       <AdUnit />
+      <InsuranceCtaBanner />
     </>
   );
 }

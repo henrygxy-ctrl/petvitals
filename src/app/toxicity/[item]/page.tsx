@@ -5,6 +5,8 @@ import { toxicityDatabase, getToxicityById, type ToxicityItem } from "@/data/tox
 import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
 import { ArrowLeft, ExternalLink, Shield, AlertTriangle, Info, CheckCircle, Dog, Cat, BookOpen } from "lucide-react";
 import { JsonLdBreadcrumb, JsonLdFAQ } from "@/components/seo/json-ld";
+import { AdUnit } from "@/components/ads/AdUnit";
+import { InsuranceCtaBanner } from "@/components/affiliate/insurance-cta";
 
 const riskLabels: Record<string, string> = {
   safe: "Safe",
@@ -187,6 +189,11 @@ export default async function ToxicityItemPage({
               </div>
             </div>
 
+            {/* Ad placement */}
+            <div className="mt-6">
+              <AdUnit format="rectangle" />
+            </div>
+
             {/* Details grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
               {/* Symptoms */}
@@ -229,6 +236,11 @@ export default async function ToxicityItemPage({
                 </div>
               )}
             </div>
+
+            {/* Insurance CTA — relevant for toxic/danger items */}
+            {(item.riskLevel === "toxic" || item.riskLevel === "danger") && (
+              <InsuranceCtaBanner />
+            )}
 
             {/* Tags */}
             <div className="mt-6 flex flex-wrap gap-1.5">

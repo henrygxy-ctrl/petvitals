@@ -1,7 +1,9 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { AdUnit } from "@/components/ads/AdUnit";
 import { JsonLdBreadcrumb } from "@/components/seo/json-ld";
 import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
+import { InsuranceComparison } from "@/components/affiliate/insurance-comparison";
+import { INSURANCE_PARTNERS } from "@/lib/affiliate";
 import Link from "next/link"
 
 export const metadata: Metadata = {
@@ -115,6 +117,10 @@ export default function AccidentIllnessPage() {
             </p>
           </div>
         </div>
+                <div className="max-w-3xl mx-auto px-4 mt-8">
+          <InsuranceComparison partners={INSURANCE_PARTNERS} />
+        </div>
+
         <AdUnit className="max-w-3xl mx-auto px-4" />
       </main>
       <footer className="border-t py-6 text-center text-xs text-muted-foreground">

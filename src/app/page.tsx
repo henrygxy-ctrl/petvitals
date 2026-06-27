@@ -79,7 +79,7 @@ export default function Home() {
           <div className="max-w-5xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-12">
               <h2 className="text-2xl sm:text-3xl font-bold mb-4">Understanding Pet Insurance</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">A straightforward guide to the types of pet insurance available. We don&apos;t sell insurance ? we just want you to know your options before the unexpected happens.</p>
+              <p className="text-muted-foreground max-w-2xl mx-auto">A straightforward guide to pet insurance types. We compare top providers so you can shop with confidence — and some links may earn us a commission at no cost to you.</p>
             </div>
             <div className="grid sm:grid-cols-2 gap-6">
               {insuranceTypes.map((plan, i) => (
