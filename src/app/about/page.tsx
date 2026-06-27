@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
 import { BookOpen, FlaskConical, Mail, ShieldCheck, Users, LineChart, UtensilsCrossed, Search } from "lucide-react";
-import { JsonLdOrganization } from "@/components/seo/json-ld";
+import { JsonLdOrganization, JsonLdBreadcrumb } from "@/components/seo/json-ld";
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -17,10 +17,16 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbs = [
+  { name: "Home", url: SITE_BASE_URL },
+  { name: "About Us", url: `${SITE_BASE_URL}/about` },
+];
+
 export default function AboutPage() {
   return (
     <>
       <JsonLdOrganization />
+      <JsonLdBreadcrumb items={breadcrumbs} />
       <div className="min-h-screen flex flex-col">
       <header className="border-b">
         <div className="max-w-4xl mx-auto px-4 h-14 flex items-center gap-2">

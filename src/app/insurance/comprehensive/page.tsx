@@ -1,19 +1,41 @@
 ﻿import type { Metadata } from "next";
 import { AdUnit } from "@/components/ads/AdUnit";
-import Link from 'next/link'
+import { JsonLdBreadcrumb } from "@/components/seo/json-ld";
+import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Comprehensive & Wellness Pet Insurance Guide — PetVitals",
   description: "Full-coverage pet insurance with wellness add-ons. Covers accidents, illnesses, routine checkups, vaccinations, dental cleaning, and more. Learn about costs and coverage.",
+  alternates: { canonical: `${SITE_BASE_URL}/insurance/comprehensive` },
+  openGraph: {
+    title: "Comprehensive & Wellness Pet Insurance Guide",
+    description: "Full-coverage pet insurance with wellness add-ons. Covers accidents, illnesses, routine checkups, vaccinations, dental cleaning, and more. Learn about costs and coverage.",
+    url: `${SITE_BASE_URL}/insurance/comprehensive`,
+    siteName: SITE_NAME,
+    type: "website",
+    images: [{ url: `${SITE_BASE_URL}/og-image.png`, width: 1200, height: 630, alt: "PetVitals Comprehensive & Wellness Pet Insurance Guide" }],
+  },
 };
+
+const breadcrumbs = [
+  { name: "Home", url: SITE_BASE_URL },
+  { name: "Pet Insurance", url: `${SITE_BASE_URL}/insurance` },
+  { name: "Comprehensive / Wellness", url: `${SITE_BASE_URL}/insurance/comprehensive` },
+];
 
 export default function ComprehensivePage() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <>
+      <JsonLdBreadcrumb items={breadcrumbs} />
+      <div className="min-h-screen flex flex-col">
       <header className="border-b">
         <div className="max-w-3xl mx-auto px-4 h-14 flex items-center gap-2">
-          <Link href="/" className="text-sm text-muted-foreground hover:text-foreground">&larr; Back to Home</Link>
-          <span className="font-bold tracking-tight ml-2">PetVitals</span>
+          <Link href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Home</Link>
+          <span className="text-muted-foreground">/</span>
+          <Link href="/insurance" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Insurance</Link>
+          <span className="text-muted-foreground">/</span>
+          <span className="text-sm text-foreground/70">Comprehensive / Wellness</span>
         </div>
       </header>
       <main className="flex-1 max-w-3xl mx-auto px-4 py-12 w-full">
@@ -99,6 +121,7 @@ export default function ComprehensivePage() {
         <div className="max-w-3xl mx-auto px-4">&copy; 2026 PetVitals. All rights reserved.</div>
       </footer>
     </div>
+    </>
   );
 }
 

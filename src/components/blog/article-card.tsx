@@ -1,6 +1,7 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Calendar, Clock } from "lucide-react";
 import { slugify } from "@/lib/utils";
@@ -12,6 +13,7 @@ interface ArticleCardProps {
 }
 
 export function ArticleCard({ post, variant = "default" }: ArticleCardProps) {
+  const router = useRouter();
   const catLink = `/blog/category/${slugify(post.category)}`;
 
   if (variant === "compact") {
@@ -41,9 +43,15 @@ export function ArticleCard({ post, variant = "default" }: ArticleCardProps) {
         className="flex gap-4 p-4 rounded-lg border hover:border-primary/30 transition-colors group"
       >
         <div className="flex-1 min-w-0">
-          <Link href={catLink} className="text-xs font-medium text-emerald-600 dark:text-emerald-400 uppercase tracking-wide hover:underline">
+          <span
+            onClick={(e) => { e.stopPropagation(); router.push(catLink); }}
+            onKeyDown={(e) => { if (e.key === "Enter") { e.stopPropagation(); router.push(catLink); } }}
+            className="text-xs font-medium text-emerald-600 dark:text-emerald-400 uppercase tracking-wide hover:underline cursor-pointer"
+            role="link"
+            tabIndex={0}
+          >
             {post.category}
-          </Link>
+          </span>
           <h3 className="font-semibold mt-1 group-hover:text-primary transition-colors line-clamp-2">
             {post.title}
           </h3>
@@ -81,9 +89,15 @@ export function ArticleCard({ post, variant = "default" }: ArticleCardProps) {
         </div>
       )}
       <div className="p-5">
-        <Link href={catLink} className="text-xs font-medium text-emerald-600 dark:text-emerald-400 uppercase tracking-wide hover:underline">
+        <span
+          onClick={(e) => { e.stopPropagation(); router.push(catLink); }}
+          onKeyDown={(e) => { if (e.key === "Enter") { e.stopPropagation(); router.push(catLink); } }}
+          className="text-xs font-medium text-emerald-600 dark:text-emerald-400 uppercase tracking-wide hover:underline cursor-pointer"
+          role="link"
+          tabIndex={0}
+        >
           {post.category}
-        </Link>
+        </span>
         <h3 className="font-semibold mt-1.5 group-hover:text-primary transition-colors line-clamp-2">
           {post.title}
         </h3>

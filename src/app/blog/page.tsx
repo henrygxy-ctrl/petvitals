@@ -3,6 +3,7 @@ import { Rss } from "lucide-react";
 import type { Metadata } from "next";
 import { getAllPosts, getAllCategories } from "@/lib/blog";
 import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
+import { NewsletterSignup } from "@/components/newsletter/newsletter-signup";
 import { AdUnit } from "@/components/ads/AdUnit";
 import { BlogListClient } from "@/components/blog/blog-list-client";
 
@@ -56,7 +57,13 @@ export default function BlogPage() {
         </div>
       </main>
 
-      <footer className="border-t py-6 text-center text-xs text-muted-foreground">
+                <section className="py-12 border-t">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6">
+              <NewsletterSignup />
+            </div>
+          </section>
+
+        <footer className="border-t py-6 text-center text-xs text-muted-foreground">
         &copy; {new Date().getFullYear()} {SITE_NAME}. Always consult your veterinarian.
       </footer>
     </div>

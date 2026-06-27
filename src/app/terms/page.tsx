@@ -1,9 +1,18 @@
 import type { Metadata } from "next";
-import Link from 'next/link'
+import { SITE_BASE_URL, SITE_NAME } from "@/lib/constants";
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Terms of Service — PetVitals",
   description: "PetVitals terms of service. Read the terms and conditions for using our pet health tools.",
+  alternates: { canonical: `${SITE_BASE_URL}/terms` },
+  openGraph: {
+    title: "Terms of Service | PetVitals",
+    description: "Read the terms and conditions for using PetVitals pet health tools.",
+    url: `${SITE_BASE_URL}/terms`,
+    siteName: SITE_NAME,
+    type: "website",
+  },
   robots: { index: false, follow: true },
 };
 

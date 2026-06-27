@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
+import { JsonLdBreadcrumb } from "@/components/seo/json-ld";
 import { Car, Stethoscope, Syringe, Clock, ArrowLeft, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -53,9 +54,16 @@ const plans = [
   },
 ];
 
+const breadcrumbs = [
+  { name: "Home", url: SITE_BASE_URL },
+  { name: "Pet Insurance", url: `${SITE_BASE_URL}/insurance` },
+];
+
 export default function InsurancePage() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <>
+      <JsonLdBreadcrumb items={breadcrumbs} />
+      <div className="min-h-screen flex flex-col">
       <header className="border-b">
         <div className="max-w-4xl mx-auto px-4 h-14 flex items-center gap-2">
           <Link
@@ -202,5 +210,6 @@ export default function InsurancePage() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

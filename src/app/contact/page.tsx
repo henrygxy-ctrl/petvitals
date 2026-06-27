@@ -1,9 +1,19 @@
 import type { Metadata } from "next";
-import Link from 'next/link'
+import { SITE_BASE_URL, SITE_NAME } from "@/lib/constants";
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Contact Us — PetVitals",
-  description: "Get in touch with the PetVitals team. We'd love to hear your feedback, suggestions, or questions about our free pet health tools.",
+  description: "Get in touch with the PetVitals team. We would love to hear your feedback, suggestions, or questions about our free pet health tools.",
+  alternates: { canonical: `${SITE_BASE_URL}/contact` },
+  openGraph: {
+    title: "Contact PetVitals",
+    description: "Get in touch with the PetVitals team. Feedback, suggestions, and questions welcome.",
+    url: `${SITE_BASE_URL}/contact`,
+    siteName: SITE_NAME,
+    type: "website",
+    images: [{ url: `${SITE_BASE_URL}/og-image.png`, width: 1200, height: 630, alt: "Contact PetVitals" }],
+  },
   robots: { index: true, follow: true },
 };
 

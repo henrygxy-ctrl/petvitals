@@ -6,6 +6,7 @@ import { slugify } from "@/lib/utils";
 import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
 import { SourceCitation } from "@/components/blog/source-citation";
 import { TableOfContents } from "@/components/blog/table-of-contents";
+import { NewsletterSignup } from "@/components/newsletter/newsletter-signup";
 import { ReadNext } from "@/components/blog/read-next";
 import { RelatedArticles } from "@/components/blog/related-articles";
 import { ArticleJsonLd } from "@/components/blog/article-json-ld";
@@ -184,6 +185,12 @@ export default async function BlogArticlePage({ params }: Props) {
             )}
           </article>
         </main>
+
+                <section className="py-12 border-t">
+          <div className="max-w-3xl mx-auto px-4">
+            <NewsletterSignup />
+          </div>
+        </section>
 
         <footer className="border-t py-6 text-center text-xs text-muted-foreground">
           &copy; {new Date().getFullYear()} {SITE_NAME}. Always consult your veterinarian.

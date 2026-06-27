@@ -1,12 +1,14 @@
-﻿import type { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 import { SITE_BASE_URL } from "@/lib/constants";
 import { getAllPosts, getAllCategories } from "@/lib/blog";
+import { toxicityDatabase } from "@/data/toxicity";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: SITE_BASE_URL, lastModified: new Date(), changeFrequency: "weekly", priority: 1.0 },
     { url: `${SITE_BASE_URL}/toxicity`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_BASE_URL}/feeding-calculator`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.85 },
+    { url: `${SITE_BASE_URL}/weight-tracking`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 },
     { url: `${SITE_BASE_URL}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE_BASE_URL}/insurance`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.75 },
     { url: `${SITE_BASE_URL}/contact`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
@@ -43,5 +45,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...insurancePages, ...blogPages, ...categoryPages];
+    const toxicityPages: MetadataRoute.Sitemap = toxicityDatabase.map((item) => ({
+    url: `${SITE_BASE_URL}/toxicity/${item.id}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.65,
+  }));
+
+  return [...staticPages, ...toxicityPages, ...insurancePages, ...blogPages, ...categoryPages];
 }

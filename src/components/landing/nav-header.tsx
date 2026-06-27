@@ -23,7 +23,7 @@ export function NavHeader() {
         <div className="flex items-center gap-1">
           <Link href="/toxicity" className="text-sm text-muted-foreground hover:text-foreground transition-colors px-2.5 py-1.5">Toxicity Checker</Link>
           <Link href="/feeding-calculator" className="text-sm text-muted-foreground hover:text-foreground transition-colors px-2.5 py-1.5">Feeding Calc</Link>
-          <Link href="/sign-in?redirect=/dashboard" className="text-sm text-muted-foreground hover:text-foreground transition-colors px-2.5 py-1.5">Weight Tracking</Link>
+          <Link href="/weight-tracking" className="text-sm text-muted-foreground hover:text-foreground transition-colors px-2.5 py-1.5">Weight Tracking</Link>
 
           {/* Blog dropdown */}
           <div className="relative" tabIndex={0} onMouseEnter={() => setBlogOpen(true)} onMouseLeave={() => setBlogOpen(false)} onFocus={() => setBlogOpen(true)} onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setBlogOpen(false) }}>

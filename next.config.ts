@@ -11,15 +11,6 @@ const withMDX = createMDX({
 });
 
 const nextConfig: NextConfig = {
-  async redirects() {
-    return [
-      {
-        source: '/toxicity/:item',
-        destination: '/toxicity',
-        permanent: true,
-      },
-    ];
-  },
   experimental: {
     nextScriptWorkers: true,
   },

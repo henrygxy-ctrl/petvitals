@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getPostsByCategory, getAllCategories } from "@/lib/blog";
 import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
+import { JsonLdBreadcrumb } from "@/components/seo/json-ld";
 import { ArticleCard } from "@/components/blog/article-card";
 
 interface Props {
@@ -44,8 +45,16 @@ export default async function CategoryPage({ params }: Props) {
   const cat = categories.find((c) => c.slug === category);
   const displayName = cat?.name || category;
 
+  const breadcrumbs = [
+    { name: "Home", url: SITE_BASE_URL },
+    { name: "Blog", url: `${SITE_BASE_URL}/blog` },
+    { name: displayName, url: `${SITE_BASE_URL}/blog/category/${category}` },
+  ];
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <>
+      <JsonLdBreadcrumb items={breadcrumbs} />
+      <div className="min-h-screen flex flex-col">
       <header className="border-b">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center gap-2">
           <Link
@@ -85,5 +94,6 @@ export default async function CategoryPage({ params }: Props) {
         &copy; {new Date().getFullYear()} {SITE_NAME}. Always consult your veterinarian.
       </footer>
     </div>
+    </>
   );
 }

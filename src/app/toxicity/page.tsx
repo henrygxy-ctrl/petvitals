@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
 import { ToxicitySearchWrapper } from "@/components/toxicity/toxicity-search-wrapper";
-import { JsonLdFAQ } from "@/components/seo/json-ld";
+import { JsonLdFAQ, JsonLdBreadcrumb } from "@/components/seo/json-ld";
 import { ArrowLeft, BookOpen, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -53,10 +53,16 @@ const faqQuestions = [
   },
 ];
 
+const breadcrumbs = [
+  { name: "Home", url: SITE_BASE_URL },
+  { name: "Toxicity Checker", url: `${SITE_BASE_URL}/toxicity` },
+];
+
 export default function ToxicityPage() {
   return (
     <>
       <JsonLdFAQ questions={faqQuestions} />
+      <JsonLdBreadcrumb items={breadcrumbs} />
       <div className="min-h-screen flex flex-col">
         <header className="border-b">
           <div className="max-w-4xl mx-auto px-4 h-14 flex items-center gap-2">

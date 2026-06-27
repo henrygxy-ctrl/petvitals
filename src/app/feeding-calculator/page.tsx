@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
 import { FeedingCalculatorForm } from "@/components/feeding/feeding-calculator-form";
-import { JsonLdFAQ } from "@/components/seo/json-ld";
+import { JsonLdFAQ, JsonLdBreadcrumb } from "@/components/seo/json-ld";
 import { ArrowLeft, Search } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -44,10 +44,16 @@ const faqQuestions = [
   },
 ];
 
+const breadcrumbs = [
+  { name: "Home", url: SITE_BASE_URL },
+  { name: "Feeding Calculator", url: `${SITE_BASE_URL}/feeding-calculator` },
+];
+
 export default function FeedingCalculatorPage() {
   return (
     <>
       <JsonLdFAQ questions={faqQuestions} />
+      <JsonLdBreadcrumb items={breadcrumbs} />
       <div className="min-h-screen flex flex-col">
         <header className="border-b">
           <div className="max-w-4xl mx-auto px-4 h-14 flex items-center gap-2">

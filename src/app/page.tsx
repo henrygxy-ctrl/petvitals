@@ -140,7 +140,7 @@ export default function Home() {
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li><Link href="/toxicity" className="hover:text-foreground transition-colors">Toxicity Checker</Link></li>
                   <li><Link href="/feeding-calculator" className="hover:text-foreground transition-colors">Feeding Calculator</Link></li>
-                  <li><Link href="/sign-in?redirect=/dashboard" className="hover:text-foreground transition-colors">Weight Tracking</Link></li>
+                  <li><Link href="/weight-tracking" className="hover:text-foreground transition-colors">Weight Tracking</Link></li>
                   <li><Link href="/blog" className="hover:text-foreground transition-colors">Blog</Link></li>
                 </ul>
               </div>

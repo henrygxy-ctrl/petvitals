@@ -1,9 +1,10 @@
-﻿"use client";
+"use client";
 
-import { AlertTriangle, CheckCircle, Info, ShieldAlert, ChevronDown, ChevronUp } from "lucide-react";
+import { AlertTriangle, CheckCircle, Info, ShieldAlert, ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { useState } from "react";
+import Link from "next/link";
 import type { ToxicityItem, ToxicityLevel } from "@/data/toxicity";
 import { useTranslation } from "@/i18n/context";
 
@@ -108,6 +109,16 @@ export function ToxicityResultCard({ item }: Props) {
                 ))}
               </div>
             )}
+            {/* View full details link */}
+            <div className="pt-2 mt-2 border-t border-border/50">
+              <Link
+                href={`/toxicity/${item.id}`}
+                className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline"
+              >
+                View full details
+                <ExternalLink className="h-3 w-3" />
+              </Link>
+            </div>
           </div>
         </div>
       )}
