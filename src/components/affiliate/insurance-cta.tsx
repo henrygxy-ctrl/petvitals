@@ -2,6 +2,10 @@ import { Shield, ArrowRight } from "lucide-react";
 import { INSURANCE_PARTNERS } from "@/lib/affiliate";
 
 export function InsuranceCtaBanner() {
+  const emergencyPartner =
+    INSURANCE_PARTNERS.find((partner) => partner.name === "Healthy Paws") ||
+    INSURANCE_PARTNERS[0];
+
   return (
     <div className="my-6 p-4 rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-950/10">
       <div className="flex items-start gap-3">
@@ -14,7 +18,7 @@ export function InsuranceCtaBanner() {
             Pet insurance can cover toxin ingestion emergencies. Plans start at $10/month.
           </p>
           <a
-            href="https://www.healthypawspetinsurance.com/"
+            href={emergencyPartner.url}
             target="_blank"
             rel="noopener sponsored"
             className="inline-flex items-center gap-1 text-xs font-medium text-amber-700 dark:text-amber-400 hover:underline"

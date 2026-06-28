@@ -2,6 +2,10 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
 import { FeedingCalculatorForm } from "@/components/feeding/feeding-calculator-form";
+import { AdUnit } from "@/components/ads/AdUnit";
+import { ProductRecommendationCard } from "@/components/affiliate/product-rec-card";
+import { InsuranceCtaBanner } from "@/components/affiliate/insurance-cta";
+import { PRODUCT_RECS } from "@/lib/affiliate";
 import { JsonLdFAQ, JsonLdBreadcrumb } from "@/components/seo/json-ld";
 import { ArrowLeft, Search } from "lucide-react";
 
@@ -50,6 +54,8 @@ const breadcrumbs = [
 ];
 
 export default function FeedingCalculatorPage() {
+  const feedingProducts = PRODUCT_RECS["calculate-dog-calorie-needs"] || [];
+
   return (
     <>
       <JsonLdFAQ questions={faqQuestions} />
@@ -77,6 +83,16 @@ export default function FeedingCalculatorPage() {
             </div>
 
             <FeedingCalculatorForm />
+
+            {feedingProducts.length > 0 && (
+              <ProductRecommendationCard products={feedingProducts} />
+            )}
+
+            <InsuranceCtaBanner />
+
+            <div className="mt-8">
+              <AdUnit format="rectangle" showLabel />
+            </div>
 
             {/* Cross-tool link */}
             <div className="mt-12 p-6 rounded-xl border bg-card">

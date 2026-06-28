@@ -10,7 +10,7 @@ import { NewsletterSignup } from "@/components/newsletter/newsletter-signup";
 import { ReadNext } from "@/components/blog/read-next";
 import { RelatedArticles } from "@/components/blog/related-articles";
 import { ArticleJsonLd } from "@/components/blog/article-json-ld";
-import { AdUnit, InArticleAd } from "@/components/ads/AdUnit";
+import { InArticleAd } from "@/components/ads/AdUnit";
 import { ProductRecommendationCard } from "@/components/affiliate/product-rec-card";
 import { PRODUCT_RECS } from "@/lib/affiliate";
 import { JsonLdBreadcrumb } from "@/components/seo/json-ld";
@@ -61,6 +61,7 @@ export default async function BlogArticlePage({ params }: Props) {
   if (!post) notFound();
 
   const related = getRelatedPosts(slug);
+  const productRecs = PRODUCT_RECS[post.slug] || [];
 
   let Content: React.ComponentType;
   try {
@@ -150,6 +151,10 @@ export default async function BlogArticlePage({ params }: Props) {
 
             <TableOfContents />
 
+            {productRecs.length > 0 && (
+              <ProductRecommendationCard products={productRecs} />
+            )}
+
             <div className="prose-custom">
               <Content />
             </div>
@@ -157,8 +162,8 @@ export default async function BlogArticlePage({ params }: Props) {
                         <InArticleAd />
 
             {/* Affiliate product recommendations */}
-            {PRODUCT_RECS[post.slug] && (
-              <ProductRecommendationCard products={PRODUCT_RECS[post.slug]} />
+            {productRecs.length > 0 && (
+              <ProductRecommendationCard products={productRecs} />
             )}
 
             {post.sources.length > 0 && (

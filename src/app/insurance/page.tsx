@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
 import { JsonLdBreadcrumb, JsonLdFAQ } from "@/components/seo/json-ld";
+import { InsuranceComparison } from "@/components/affiliate/insurance-comparison";
+import { INSURANCE_PARTNERS } from "@/lib/affiliate";
 import { Car, Stethoscope, Syringe, Clock, ArrowLeft, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -109,6 +111,21 @@ export default function InsurancePage() {
             A straightforward guide to the types of pet insurance available. We don&apos;t sell insurance
             — we just want you to know your options before the unexpected happens.
           </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <a
+              href="#providers"
+              className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
+            >
+              Compare provider prices
+              <ArrowRight className="h-4 w-4" />
+            </a>
+            <Link
+              href="/blog/pet-insurance-worth-it"
+              className="inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium hover:bg-muted transition-colors"
+            >
+              Is insurance worth it?
+            </Link>
+          </div>
         </div>
 
         {/* Plan Cards */}
@@ -154,6 +171,10 @@ export default function InsurancePage() {
             </Link>
           ))}
         </div>
+
+        <section id="providers" className="mb-12 scroll-mt-20">
+          <InsuranceComparison partners={INSURANCE_PARTNERS} />
+        </section>
 
         {/* How to Choose */}
         <section className="prose prose-sm max-w-none text-foreground/80 mb-12">

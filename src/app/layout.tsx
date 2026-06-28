@@ -108,6 +108,36 @@ export default function RootLayout({
             `,
           }}
         />
+        <Script
+          id="affiliate-click-tracking"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              document.addEventListener('click', function(event) {
+                var target = event.target;
+                if (!target || !target.closest) return;
+                var link = target.closest('a[rel~="sponsored"]');
+                if (!link) return;
+
+                var payload = {
+                  event_category: 'affiliate',
+                  event_label: link.href,
+                  affiliate_url: link.href,
+                  link_text: (link.textContent || '').trim().slice(0, 80),
+                  page_path: window.location.pathname
+                };
+
+                if (typeof window.gtag === 'function') {
+                  window.gtag('event', 'affiliate_click', payload);
+                } else {
+                  window.dataLayer = window.dataLayer || [];
+                  payload.event = 'affiliate_click';
+                  window.dataLayer.push(payload);
+                }
+              }, true);
+            `,
+          }}
+        />
         {/* hreflang tags for US market */}
         <link rel="alternate" hrefLang="en-US" href={SITE_BASE_URL} />
         <link rel="alternate" hrefLang="x-default" href={SITE_BASE_URL} />
