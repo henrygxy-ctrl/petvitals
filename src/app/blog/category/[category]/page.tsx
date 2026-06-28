@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: cat
-      ? `${cat.name} ? Pet Health Articles | ${SITE_NAME}`
-      : `Category ? ${SITE_NAME}`,
+      ? `${cat.name} | Pet Health Articles | ${SITE_NAME}`
+      : `Category | ${SITE_NAME}`,
     description: cat
       ? `Browse our ${cat.name.toLowerCase()} articles. Evidence-based pet health guides for dog and cat owners.`
       : "Browse pet health articles by category.",

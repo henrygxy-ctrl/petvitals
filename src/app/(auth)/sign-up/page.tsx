@@ -15,6 +15,7 @@ export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -22,6 +23,11 @@ export default function SignUp() {
     e.preventDefault();
     setLoading(true);
     setError("");
+    if (password !== passwordConfirm) {
+      setError("Passwords do not match");
+      setLoading(false);
+      return;
+    }
 
     const res = await fetch("/api/auth/register", {
       method: "POST",
@@ -36,7 +42,12 @@ export default function SignUp() {
       return;
     }
 
-    await signIn("credentials", { email, password, redirect: false });
+    const result = await signIn("credentials", { email, password, redirect: false });
+    if (result?.error) {
+      setError("Failed to sign in after registration. Please try signing in manually.");
+      setLoading(false);
+      return;
+    }
     router.push("/dashboard");
     router.refresh();
   };
@@ -71,6 +82,10 @@ export default function SignUp() {
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
               <Input id="password" type="password" minLength={6} value={password} onChange={(e) => setPassword(e.target.value)} required />
+            <div className="space-y-2">
+              <Label htmlFor="password_confirm">Confirm Password</Label>
+              <Input id="password_confirm" type="password" value={passwordConfirm} onChange={(e) => setPasswordConfirm(e.target.value)} required />
+            </div>
             </div>
           </CardContent>
           <CardFooter className="flex flex-col gap-3">

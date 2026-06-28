@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { ArrowLeft, UtensilsCrossed, Download, Share2, Check } from "lucide-react";
+import { toast } from "sonner";
 import { AdUnit } from "@/components/ads/AdUnit";
 
 interface WeightLog {
@@ -54,7 +55,7 @@ function shareWithVet(pet: any, logs: WeightLog[]) {
   ].filter(Boolean).join("\n");
 
   navigator.clipboard.writeText(summary).then(() => {
-    alert("Report copied to clipboard! Paste and share with your vet.");
+    toast.success("Report copied to clipboard! Paste and share with your vet.");
   }).catch(() => {
     const ta = document.createElement("textarea");
     ta.value = summary;
@@ -62,7 +63,7 @@ function shareWithVet(pet: any, logs: WeightLog[]) {
     ta.select();
     document.execCommand("copy");
     document.body.removeChild(ta);
-    alert("Report copied to clipboard! Paste and share with your vet.");
+    toast.success("Report copied to clipboard! Paste and share with your vet.");
   });
 }
 

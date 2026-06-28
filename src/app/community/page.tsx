@@ -50,6 +50,16 @@ function MiniWeightChart({ trend }: { trend: { weight: number; date: string }[] 
 }
 
 export default function CommunityPage() {
+  useEffect(() => {
+    document.title = "Pet Community — See Real Pet Weight Data | PetVitals";
+    const meta = document.querySelector('meta[name="description"]');
+    if (!meta) {
+      const m = document.createElement('meta');
+      m.name = 'description';
+      m.content = 'Browse real pet weight data shared by the PetVitals community. See weight trends, BCS scores, and activity levels for dogs and cats.';
+      document.head.appendChild(m);
+    }
+  }, []);
   const [pets, setPets] = useState<CommunityPet[]>([]);
   const [loading, setLoading] = useState(true);
 

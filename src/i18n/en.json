@@ -1,1 +1,59 @@
-{"nav":{"dashboard":"Dashboard","signOut":"Sign Out","signIn":"Sign In","signUp":"Sign Up"},"hero":{"title":"Know What's Safe for Your Pet","subtitle":"Instant answers on foods, plants, and substances","cta":"Search Now","pricing":"See Plans"},"toxicity":{"searchPlaceholder":"Search any food, plant, or substance...","all":"All","dogs":"Dogs","cats":"Cats","popular":"Popular:","noResults":"No results found for","tryDifferent":"Try a different search term","browseBy":"Browse by category","result":"result","results":"results"},"risk":{"safe":"Safe","caution":"Caution","toxic":"Toxic","danger":"Danger"},"result":{"safeAmount":"Safe amount","symptoms":"Symptoms","action":"What to do","benefits":"Benefits"},"auth":{"email":"Email","password":"Password","name":"Name","signInTitle":"Welcome back","signUpTitle":"Create account"},"dashboard":{"title":"My Pets","noPets":"No pets yet","addPet":"Add Pet","feed":"Feed","weight":"Weight","check":"Check","loading":"Loading..."},"common":{"loading":"Loading...","back":"Back"}}
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "signOut": "Sign Out",
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
+  },
+  "hero": {
+    "title": "Know What's Safe for Your Pet",
+    "subtitle": "Instant answers on foods, plants, and substances",
+    "cta": "Search Now"
+  },
+  "toxicity": {
+    "searchPlaceholder": "Search any food, plant, or substance...",
+    "all": "All",
+    "dogs": "Dogs",
+    "cats": "Cats",
+    "popular": "Popular:",
+    "noResults": "No results found for",
+    "tryDifferent": "Try a different search term",
+    "browseBy": "Browse by category",
+    "result": "result",
+    "results": "results"
+  },
+  "risk": {
+    "safe": "Safe",
+    "caution": "Caution",
+    "toxic": "Toxic",
+    "danger": "Danger"
+  },
+  "result": {
+    "safeAmount": "Safe amount",
+    "symptoms": "Symptoms",
+    "action": "What to do",
+    "benefits": "Benefits"
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "signInTitle": "Welcome back",
+    "signUpTitle": "Create account"
+  },
+  "dashboard": {
+    "title": "My Pets",
+    "noPets": "No pets yet",
+    "addPet": "Add Pet",
+    "feed": "Feed",
+    "weight": "Weight",
+    "check": "Check",
+    "loading": "Loading...",
+    "noPetsDesc": "Add your first pet to start tracking weight, feeding, and health.",
+    "addFirstPet": "Add Your First Pet"
+  },
+  "common": {
+    "loading": "Loading...",
+    "back": "Back"
+  }
+}

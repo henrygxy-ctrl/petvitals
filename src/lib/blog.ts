@@ -36,7 +36,15 @@ export interface BlogPost extends BlogPostMeta {
   content: string;
 }
 
+let _postsCache: BlogPost[] | null = null;
+let _postsCacheTime = 0;
+const POSTS_CACHE_TTL = 60_000;
+
 export function getAllPosts(): BlogPost[] {
+  const now = Date.now();
+  if (_postsCache && now - _postsCacheTime < POSTS_CACHE_TTL) {
+    return _postsCache;
+  }
   if (!fs.existsSync(contentDir)) return [];
 
   const files = fs.readdirSync(contentDir).filter((f) => f.endsWith(".mdx"));
@@ -63,9 +71,11 @@ export function getAllPosts(): BlogPost[] {
     };
   });
 
-  return posts.sort(
+  _postsCache = posts.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
+  _postsCacheTime = Date.now();
+  return _postsCache;
 }
 
 export function getPostBySlug(slug: string): BlogPost | undefined {

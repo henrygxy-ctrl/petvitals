@@ -42,7 +42,9 @@ export async function GET() {
         })),
       }));
 
-    return NextResponse.json({ community });
+    return NextResponse.json({ community }, {
+    headers: { "Cache-Control": "public, max-age=60, s-maxage=60" },
+  });
   } catch (error) {
     console.error("Community API error:", error);
     return NextResponse.json({ error: "Failed" }, { status: 500 });

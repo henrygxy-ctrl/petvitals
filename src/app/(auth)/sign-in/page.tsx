@@ -66,6 +66,9 @@ export default function SignIn() {
             </div>
           </CardContent>
           <CardFooter className="flex flex-col gap-3">
+            <div className="flex justify-end -mt-2">
+              <a href="/contact" className="text-xs text-muted-foreground hover:text-primary transition-colors">Forgot password?</a>
+            </div>
             <Button type="submit" className="w-full" disabled={loading}>
               {loading ? "Signing in..." : "Sign In"}
             </Button>

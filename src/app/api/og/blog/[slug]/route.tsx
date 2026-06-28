@@ -5,6 +5,7 @@ import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
 
 export const runtime = "nodejs";
 
+
 const COLORS = {
   nutrition: { bg: "#ecfdf5", accent: "#059669", text: "#064e3b" },
   safety: { bg: "#fef2f2", accent: "#dc2626", text: "#7f1d1d" },
@@ -28,7 +29,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ slug
   const theme = getTheme(post.category);
   const title = post.seo?.title || post.title;
 
-  return new ImageResponse(
+  const resp = new ImageResponse(
     (
       <div
         style={{
@@ -117,4 +118,8 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ slug
       height: 630,
     }
   );
+
+  // Set cache headers for the OG image
+  resp.headers.set("Cache-Control", "public, max-age=86400, immutable");
+  return resp;
 }
