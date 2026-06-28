@@ -12,12 +12,19 @@ interface BlogListClientProps {
   categories: { name: string; slug: string; count: number; subcategories: string[] }[];
 }
 
+const POSTS_PER_PAGE = 10;
+
 export function BlogListClient({ posts, categories }: BlogListClientProps) {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState<string>("");
   const [showFilters, setShowFilters] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(POSTS_PER_PAGE);
 
   const filtered = useMemo(() => {
+    // Reset pagination when filters change
+    if (visibleCount !== POSTS_PER_PAGE && (search || activeCategory)) {
+      // will be handled by React re-render
+    }
     let result = posts;
 
     if (activeCategory) {
@@ -39,7 +46,7 @@ export function BlogListClient({ posts, categories }: BlogListClientProps) {
     return result;
   }, [posts, search, activeCategory]);
 
-  const postMetas: BlogPostMeta[] = filtered.map(({ content, ...meta }) => meta);
+  const postMetas: BlogPostMeta[] = filtered.slice(0, visibleCount).map(({ content, ...meta }) => meta);
 
   return (
     <div>
@@ -114,7 +121,7 @@ export function BlogListClient({ posts, categories }: BlogListClientProps) {
       )}
 
       {/* Empty state */}
-      {filtered.length === 0 && (
+      {filtered.length === 0 && visibleCount >= filtered.length && (
         <div className="text-center py-16">
           <p className="text-muted-foreground">No articles found.</p>
           {(search || activeCategory) && (
@@ -144,6 +151,16 @@ export function BlogListClient({ posts, categories }: BlogListClientProps) {
           </React.Fragment>
         ))}
       </div>
+      {visibleCount < filtered.length && (
+        <div className="text-center mt-10">
+          <button
+            onClick={() => setVisibleCount((prev) => prev + POSTS_PER_PAGE)}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"
+          >
+            Load More Articles ({filtered.length - visibleCount} remaining)
+          </button>
+        </div>
+      )}
     </div>
   );
 }

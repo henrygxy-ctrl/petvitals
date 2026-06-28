@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PetVitals — Free Pet Health & Safety Tools
 
-## Getting Started
+**getpetvitals.com** — Instant pet toxicity checker, feeding calculator, weight tracker, and evidence-based pet health guides.
 
-First, run the development server:
+## Tech Stack
+
+- **Framework:** Next.js 16 (Turbopack) + TypeScript
+- **Styling:** Tailwind CSS 4 + shadcn/ui
+- **Database:** SQLite via Prisma ORM
+- **Auth:** NextAuth v5 with credentials
+- **Analytics:** Google Analytics via Partytown worker
+- **Monetization:** AdSense + Affiliate (Impact.com, Amazon, Chewy, insurance partners)
+- **Deployment:** Vercel (GitHub auto-deploy)
+
+## Quick Start
 
 ```bash
+# Install dependencies
+npm install
+
+# Generate Prisma client
+npx prisma generate
+
+# Push database schema
+npx prisma db push
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+├── app/          # Next.js App Router pages
+│   ├── blog/     # Blog (25+ articles)
+│   ├── toxicity/ # Toxicity checker (439 items)
+│   ├── insurance/ # Insurance comparison guides
+│   └── ...
+├── components/   # Reusable UI components
+│   ├── affiliate/ # Affiliate link/recommendation components
+│   ├── blog/      # Blog article cards, lists
+│   ├── landing/   # Homepage sections
+│   └── seo/       # JSON-LD structured data
+├── content/      # MDX blog articles
+├── data/         # Toxicity database
+└── lib/          # Utilities, constants, blog helpers
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment Variables
 
-## Learn More
+Copy `.env.example` to `.env` and fill in:
 
-To learn more about Next.js, take a look at the following resources:
+- `DATABASE_URL` — SQLite database path
+- `AUTH_SECRET` — NextAuth secret
+- `NEXT_PUBLIC_AFFILIATE_*` — Affiliate program URLs (empty = fallback to direct links)
+- Google AdSense / Analytics IDs (pre-configured)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Key Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Toxicity Checker** — 439 substances + plants, searchable with severity badges
+- **Feeding Calculator** — RER/MER-based calorie calculations for dogs and cats
+- **Weight Tracking** — Log and visualize pet weight over time
+- **Pet Insurance Guide** — Compare accident-only, accident & illness, comprehensive, and lifetime plans
+- **Blog** — 25+ evidence-based pet health articles with product recommendations
+- **Newsletter** — Email subscription with Prisma backend
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Push to `main` on GitHub → Vercel auto-deploys to https://getpetvitals.com
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+git push origin main
+```
+
+## License
+
+Private project — all rights reserved.

@@ -1,7 +1,7 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
-import { JsonLdBreadcrumb } from "@/components/seo/json-ld";
+import { JsonLdBreadcrumb, JsonLdFAQ } from "@/components/seo/json-ld";
 import { Car, Stethoscope, Syringe, Clock, ArrowLeft, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -59,9 +59,29 @@ const breadcrumbs = [
   { name: "Pet Insurance", url: `${SITE_BASE_URL}/insurance` },
 ];
 
+const faqQuestions = [
+  {
+    question: "What type of pet insurance should I get?",
+    answer: "It depends on your pet's age, breed, and health. Accident-only plans are cheapest and suit young healthy pets. Accident & illness is the most popular choice. Comprehensive plans add wellness coverage for routine care. Lifetime plans cover chronic conditions long-term."
+  },
+  {
+    question: "How much does pet insurance cost?",
+    answer: "Pet insurance typically ranges from $10 to $100 per month depending on coverage level, deductible, reimbursement rate, and your pet's species, breed, age, and location. Accident-only plans start around $10/mo, while comprehensive plans can be $40-$80/mo."
+  },
+  {
+    question: "Does pet insurance cover pre-existing conditions?",
+    answer: "No, most pet insurance providers do not cover pre-existing conditions — anything diagnosed or showing symptoms before the policy starts. That's why it's best to enroll your pet when they're young and healthy."
+  },
+  {
+    question: "Can I use any veterinarian with pet insurance?",
+    answer: "Most pet insurance plans are reimbursement-based and let you visit any licensed veterinarian in the US or Canada. Some providers offer direct vet payment options, but network restrictions are rare."
+  },
+];
+
 export default function InsurancePage() {
   return (
     <>
+      <JsonLdFAQ questions={faqQuestions} />
       <JsonLdBreadcrumb items={breadcrumbs} />
       <div className="min-h-screen flex flex-col">
       <header className="border-b">

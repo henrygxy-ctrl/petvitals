@@ -16,7 +16,9 @@ const nextConfig: NextConfig = {
   },
   images: {
     remotePatterns: [
-      { protocol: 'https' as const, hostname: '**' },
+      { protocol: 'https' as const, hostname: 'getpetvitals.com' },
+      { protocol: 'https' as const, hostname: 'www.getpetvitals.com' },
+      { protocol: 'https' as const, hostname: 'petvitals.vercel.app' },
     ],
   },
   output: "standalone",
