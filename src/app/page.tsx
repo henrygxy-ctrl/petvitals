@@ -21,6 +21,12 @@ const insuranceTypes = [
   { icon: Clock, title: "Lifetime / Chronic Conditions", href: "/insurance/lifetime", price: "Long-term protection", covers: ["Ongoing conditions", "Hereditary issues", "Hip dysplasia", "Diabetes management", "Annual coverage renewal"], desc: "Covers chronic conditions that require ongoing treatment year after year, without caps per condition." },
 ];
 
+const insuranceCostGuides = [
+  { title: "Pet Insurance Cost", href: "/insurance/pet-insurance-cost", desc: "Monthly premiums, deductibles, and quote comparison tips." },
+  { title: "Emergency Vet Cost", href: "/insurance/emergency-vet-cost", desc: "What urgent visits can cost and how insurance changes risk." },
+  { title: "Best Pet Insurance for Dogs", href: "/insurance/best-pet-insurance-for-dogs", desc: "Choose coverage by age, breed risk, and budget." },
+];
+
 export default function Home() {
   return (
     <>
@@ -95,6 +101,14 @@ export default function Home() {
                       {plan.covers.map((item) => (<li key={item} className="text-xs text-muted-foreground flex items-center gap-1.5"><span className="w-1 h-1 rounded-full bg-emerald-500 shrink-0" />{item}</li>))}
                     </ul>
                   </div>
+                </Link>
+              ))}
+            </div>
+            <div className="mt-8 grid sm:grid-cols-3 gap-3">
+              {insuranceCostGuides.map((guide) => (
+                <Link key={guide.href} href={guide.href} className="p-4 rounded-xl border bg-card block hover:border-primary/30 transition-colors">
+                  <h3 className="text-sm font-semibold">{guide.title}</h3>
+                  <p className="mt-1 text-xs text-muted-foreground">{guide.desc}</p>
                 </Link>
               ))}
             </div>

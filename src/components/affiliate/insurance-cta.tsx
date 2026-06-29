@@ -1,4 +1,5 @@
 import { Shield, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { INSURANCE_PARTNERS } from "@/lib/affiliate";
 
 export function InsuranceCtaBanner() {
@@ -17,17 +18,25 @@ export function InsuranceCtaBanner() {
           <p className="text-xs text-muted-foreground mb-2">
             Pet insurance can cover toxin ingestion emergencies. Plans start at $10/month.
           </p>
-          <a
-            href={emergencyPartner.url}
-            target="_blank"
-            rel="noopener sponsored"
-            className="inline-flex items-center gap-1 text-xs font-medium text-amber-700 dark:text-amber-400 hover:underline"
-          >
-            Compare plans <ArrowRight className="h-3 w-3" />
-          </a>
-          <span className="text-[9px] text-muted-foreground/60 ml-2">
-            We may earn a commission
-          </span>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <Link
+              href="/insurance/emergency-vet-cost"
+              className="inline-flex items-center gap-1 text-xs font-medium text-amber-700 dark:text-amber-400 hover:underline"
+            >
+              See emergency cost guide <ArrowRight className="h-3 w-3" />
+            </Link>
+            <a
+              href={emergencyPartner.url}
+              target="_blank"
+              rel="noopener sponsored"
+              className="inline-flex items-center gap-1 text-xs font-medium text-amber-700 dark:text-amber-400 hover:underline"
+            >
+              Compare plans <ArrowRight className="h-3 w-3" />
+            </a>
+            <span className="text-[9px] text-muted-foreground/60">
+              We may earn a commission
+            </span>
+          </div>
         </div>
       </div>
     </div>
