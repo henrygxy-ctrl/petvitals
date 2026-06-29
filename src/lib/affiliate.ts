@@ -13,7 +13,8 @@
 //
 //   Product Links:
 //     NEXT_PUBLIC_AFFILIATE_AMAZON_TAG      — Amazon Associates tag (e.g., "petvitals-20")
-//     NEXT_PUBLIC_AFFILIATE_CHEWY_TAG       — Chewy affiliate ID
+//     NEXT_PUBLIC_AFFILIATE_CHEWY_URL       — Chewy/Impact tracking URL
+//     NEXT_PUBLIC_AFFILIATE_CHEWY_TAG       — Legacy Chewy affiliate ID fallback
 //
 // REGISTRATION GUIDE:
 // ----------------------------------------------------------
@@ -60,6 +61,9 @@ const amazonUrl = (asin: string): string => {
 };
 
 const chewyUrl = (path: string): string => {
+  const trackingUrl = env("NEXT_PUBLIC_AFFILIATE_CHEWY_URL", "");
+  if (trackingUrl) return trackingUrl.replaceAll("{path}", encodeURIComponent(path));
+
   const tag = env("NEXT_PUBLIC_AFFILIATE_CHEWY_TAG", "");
   if (tag) return `https://www.chewy.com/${path}?utm_source=affiliate&utm_medium=${tag}`;
   return `https://www.chewy.com/${path}`;

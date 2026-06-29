@@ -22,6 +22,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "accident-illness",
     "comprehensive",
     "lifetime",
+    "pet-insurance-cost",
+    "emergency-vet-cost",
+    "best-pet-insurance-for-dogs",
   ].map((slug) => ({
     url: `${SITE_BASE_URL}/insurance/${slug}`,
     lastModified: new Date(),

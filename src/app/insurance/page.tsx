@@ -56,6 +56,24 @@ const plans = [
   },
 ];
 
+const commercialGuides = [
+  {
+    title: "Pet Insurance Cost",
+    href: "/insurance/pet-insurance-cost",
+    desc: "Monthly cost ranges, quote factors, and ways to lower premiums without buying too little coverage.",
+  },
+  {
+    title: "Emergency Vet Cost",
+    href: "/insurance/emergency-vet-cost",
+    desc: "What urgent visits can cost and how insurance changes the risk of large emergency bills.",
+  },
+  {
+    title: "Best Pet Insurance for Dogs",
+    href: "/insurance/best-pet-insurance-for-dogs",
+    desc: "Compare dog plans by age, breed risk, deductible, reimbursement, and emergency protection.",
+  },
+];
+
 const breadcrumbs = [
   { name: "Home", url: SITE_BASE_URL },
   { name: "Pet Insurance", url: `${SITE_BASE_URL}/insurance` },
@@ -171,6 +189,33 @@ export default function InsurancePage() {
             </Link>
           ))}
         </div>
+
+        <section className="mb-12">
+          <div className="mb-4">
+            <h2 className="text-xl font-bold">Insurance Cost Guides</h2>
+            <p className="text-sm text-muted-foreground mt-1">
+              Commercial-intent guides for comparing monthly premiums, emergency risk, and dog-specific coverage.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {commercialGuides.map((guide) => (
+              <Link
+                key={guide.href}
+                href={guide.href}
+                className="rounded-xl border bg-card p-5 hover:border-primary/40 transition-colors group"
+              >
+                <h3 className="text-sm font-semibold group-hover:text-primary transition-colors">
+                  {guide.title}
+                </h3>
+                <p className="mt-2 text-xs text-muted-foreground">{guide.desc}</p>
+                <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-primary">
+                  Read guide
+                  <ArrowRight className="h-3 w-3" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
 
         <section id="providers" className="mb-12 scroll-mt-20">
           <InsuranceComparison partners={INSURANCE_PARTNERS} />
