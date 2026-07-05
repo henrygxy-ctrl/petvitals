@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE_BASE_URL } from "@/lib/constants";
 import { getAllPosts, getAllCategories } from "@/lib/blog";
 import { toxicityDatabase } from "@/data/toxicity";
+import { getToxicityCategoryEntries } from "@/lib/toxicity-category-metadata";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
@@ -48,12 +49,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-    const toxicityPages: MetadataRoute.Sitemap = toxicityDatabase.map((item) => ({
+  const toxicityCategoryPages: MetadataRoute.Sitemap = getToxicityCategoryEntries().map((cat) => ({
+    url: `${SITE_BASE_URL}/toxicity/category/${cat.id}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.72,
+  }));
+
+  const toxicityPages: MetadataRoute.Sitemap = toxicityDatabase.map((item) => ({
     url: `${SITE_BASE_URL}/toxicity/${item.id}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.65,
   }));
 
-  return [...staticPages, ...toxicityPages, ...insurancePages, ...blogPages, ...categoryPages];
+  return [...staticPages, ...toxicityCategoryPages, ...toxicityPages, ...insurancePages, ...blogPages, ...categoryPages];
 }

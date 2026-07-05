@@ -4,6 +4,7 @@ import { ToxicitySearchWrapper } from "@/components/toxicity/toxicity-search-wra
 import { JsonLdFAQ, JsonLdBreadcrumb } from "@/components/seo/json-ld";
 import { ArrowLeft, BookOpen, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { getToxicityCategoryEntries } from "@/lib/toxicity-category-metadata";
 
 export const metadata: Metadata = {
   title: `Is This Food Safe for My Dog & Cat? Free Toxicity Checker | ${SITE_NAME}`,
@@ -59,6 +60,8 @@ const breadcrumbs = [
 ];
 
 export default function ToxicityPage() {
+  const categoryEntries = getToxicityCategoryEntries();
+
   return (
     <>
       <JsonLdFAQ questions={faqQuestions} />
@@ -87,6 +90,29 @@ export default function ToxicityPage() {
             </div>
 
             <ToxicitySearchWrapper />
+
+            {/* Browse by Category */}
+            <div className="mt-8">
+              <h2 className="text-sm font-semibold text-muted-foreground mb-3 uppercase tracking-wide">
+                Browse by Category
+              </h2>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {categoryEntries.map((category) => (
+                  <Link
+                    key={category.id}
+                    href={`/toxicity/category/${category.id}`}
+                    className="rounded-xl border bg-card p-4 hover:border-primary/40 transition-colors group"
+                  >
+                    <h3 className="text-sm font-semibold group-hover:text-primary transition-colors">
+                      {category.label}
+                    </h3>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      {category.description}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
 
             {/* Popular Searches */}
             <div className="mt-8">

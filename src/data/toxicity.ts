@@ -5952,6 +5952,7 @@ export const toxicityCategories = [
   { id: "vegetables", label: "Vegetables", emoji: "\ud83e\udd55" },
   { id: "human-food", label: "Human Food", emoji: "\ud83c\udf7d\ufe0f" },
   { id: "plants", label: "Plants", emoji: "\ud83c\udf3f" },
+  { id: "household", label: "Household", emoji: "\ud83e\uddfc" },
   { id: "nuts-seeds", label: "Nuts & Seeds", emoji: "\ud83e\udd5c" },
   { id: "beverages", label: "Beverages", emoji: "\u2615" },
   { id: "seasonings", label: "Seasonings", emoji: "\ud83e\uddc2" },
