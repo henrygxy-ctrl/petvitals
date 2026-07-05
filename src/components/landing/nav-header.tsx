@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button";
 import { ChevronDown, BookMarked } from "lucide-react";
 
 const blogCategories = [
+  { name: "Pet Healthcare", href: "/blog/category/pet-healthcare" },
   { name: "Nutrition & Safety", href: "/blog/category/nutrition-and-safety" },
   { name: "Weight & Wellness", href: "/blog/category/weight-and-wellness" },
+  { name: "Pet Care Basics", href: "/blog/category/pet-care-basics" },
   { name: "All Articles", href: "/blog" },
 ];
 

@@ -3,16 +3,30 @@ import type { BlogSource } from "@/lib/blog";
 
 const typeIcons: Record<BlogSource["type"], typeof ExternalLink> = {
   guideline: BookOpen,
+  guide: BookOpen,
   research: FlaskConical,
   database: Database,
   article: FileText,
+  report: FileText,
+  review: BookOpen,
+  government: Database,
+  academic: FlaskConical,
+  regulation: Database,
+  certification: BookOpen,
 };
 
 const typeLabels: Record<BlogSource["type"], string> = {
   guideline: "Clinical Guideline",
+  guide: "Guide",
   research: "Research",
   database: "Database",
   article: "Article",
+  report: "Report",
+  review: "Review",
+  government: "Government Source",
+  academic: "Academic Source",
+  regulation: "Regulation",
+  certification: "Certification",
 };
 
 export function SourceCitation({ sources }: { sources: BlogSource[] }) {
@@ -21,7 +35,7 @@ export function SourceCitation({ sources }: { sources: BlogSource[] }) {
       <h2 className="text-lg font-semibold mb-4">Clinical References</h2>
       <p className="text-sm text-muted-foreground mb-4">
         This article is based on the following publicly available sources. Content
-        is written in our own words ? we do not copy or translate original text.
+        is written in our own words - we do not copy or translate original text.
       </p>
       <ul className="space-y-2">
         {sources.map((source, i) => {

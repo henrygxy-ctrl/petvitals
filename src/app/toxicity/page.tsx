@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 const faqQuestions = [
   {
-    question: "Is grapes safe for dogs?",
+    question: "Are grapes safe for dogs?",
     answer:
       "No. Grapes and raisins are highly toxic to dogs and can cause acute kidney failure even in small amounts. If your dog eats grapes, contact your veterinarian or pet poison helpline immediately. Symptoms include vomiting, diarrhea, lethargy, and decreased urination.",
   },
@@ -39,17 +39,17 @@ const faqQuestions = [
   {
     question: "Can dogs eat onions?",
     answer:
-      "No. Onions, garlic, leeks, and chives contain N-propyl disulfide, which damages red blood cells and causes hemolytic anemia in dogs. All forms are toxic ? raw, cooked, dehydrated, and powdered. Even small repeated exposures accumulate over time.",
+      "No. Onions, garlic, leeks, and chives contain N-propyl disulfide, which damages red blood cells and causes hemolytic anemia in dogs. All forms are toxic: raw, cooked, dehydrated, and powdered. Even small repeated exposures accumulate over time.",
   },
   {
     question: "What common houseplants are toxic to cats?",
     answer:
-      "True lilies (Lilium and Hemerocallis species) are the most dangerous ? even small amounts of pollen can cause fatal kidney failure in cats. Other toxic houseplants include pothos, philodendron, dieffenbachia, snake plant, sago palm, aloe vera, English ivy, peace lily, and jade plant. See our full plant toxicity guide for details.",
+      "True lilies (Lilium and Hemerocallis species) are the most dangerous. Even small amounts of pollen can cause fatal kidney failure in cats. Other toxic houseplants include pothos, philodendron, dieffenbachia, snake plant, sago palm, aloe vera, English ivy, peace lily, and jade plant. See our full plant toxicity guide for details.",
   },
   {
     question: "Is this toxicity checker free?",
     answer:
-      "Yes ? completely free, no sign-up required. Our database covers over 500 foods, plants, medications, and household items with detailed safety information, symptoms, emergency steps, and clinical source references.",
+      "Yes - completely free, no sign-up required. Our database covers over 500 foods, plants, medications, and household items with detailed safety information, symptoms, emergency steps, and clinical source references.",
   },
 ];
 
@@ -82,7 +82,7 @@ export default function ToxicityPage() {
               </h1>
               <p className="mt-3 text-muted-foreground text-base sm:text-lg max-w-xl mx-auto">
                 Search 500+ foods, plants, and household items to find out 
-                what&rsquo;s safe for your dog or cat ? instantly.
+                what&rsquo;s safe for your dog or cat - instantly.
               </p>
             </div>
 
@@ -95,16 +95,16 @@ export default function ToxicityPage() {
               </h2>
               <div className="flex flex-wrap gap-2">
                 {[
-                  { label: "grapes", href: "/blog/can-dogs-eat-grapes" },
-                  { label: "chocolate", href: "/blog/dog-chocolate-toxicity" },
-                  { label: "avocado", href: "/blog/can-dogs-eat-avocado" },
-                  { label: "onions", href: "/blog/can-dogs-eat-onions" },
-                  { label: "garlic", href: "/blog/can-dogs-eat-onions" },
-                  { label: "lilies", href: "/blog/lily-toxicity-cats" },
-                  { label: "xylitol", href: "/blog/category/nutrition-and-safety" },
-                  { label: "macadamia nuts", href: "/blog/category/nutrition-and-safety" },
-                  { label: "coffee", href: "/blog/category/nutrition-and-safety" },
-                  { label: "alcohol", href: "/blog/category/nutrition-and-safety" },
+                  { label: "grapes", href: "/toxicity/grapes" },
+                  { label: "chocolate", href: "/toxicity/chocolate" },
+                  { label: "avocado", href: "/toxicity/avocado" },
+                  { label: "onions", href: "/toxicity/onions" },
+                  { label: "garlic", href: "/toxicity/garlic" },
+                  { label: "lilies", href: "/toxicity/lilies" },
+                  { label: "xylitol", href: "/toxicity/xylitol" },
+                  { label: "macadamia nuts", href: "/toxicity/macadamia-nuts" },
+                  { label: "coffee", href: "/toxicity/coffee" },
+                  { label: "alcohol", href: "/toxicity/alcohol" },
                 ].map((item) => (
                   <Link
                     key={item.label}
@@ -167,7 +167,7 @@ export default function ToxicityPage() {
                   >
                     <summary className="px-5 py-4 cursor-pointer text-sm font-medium list-none flex items-center justify-between">
                       {faq.question}
-                      <span className="text-muted-foreground group-open:rotate-180 transition-transform">?</span>
+                      <span className="text-muted-foreground group-open:rotate-180 transition-transform">&darr;</span>
                     </summary>
                     <div className="px-5 pb-4 text-sm text-muted-foreground leading-relaxed">
                       {faq.answer}

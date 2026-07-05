@@ -10,7 +10,7 @@ import { BlogListClient } from "@/components/blog/blog-list-client";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: `Blog ? Pet Health & Safety Guides | ${SITE_NAME}`,
+  title: `Blog - Pet Health & Safety Guides | ${SITE_NAME}`,
   description:
     "Expert pet health articles on nutrition, toxicity, weight management, and safety. Evidence-based guides for dog and cat owners.",
   alternates: { canonical: `${SITE_BASE_URL}/blog` },

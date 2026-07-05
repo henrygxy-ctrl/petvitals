@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_BASE_URL),
   title: {
     default: `${SITE_NAME} — Know What's Safe for Your Pet | Free Pet Health Tools`,
-    template: `%s | ${SITE_NAME}`,
+    template: "%s",
   },
   description: SITE_DESCRIPTION,
   keywords: [

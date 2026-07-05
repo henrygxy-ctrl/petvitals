@@ -146,7 +146,7 @@ export default function Home() {
             <div className="grid sm:grid-cols-4 gap-8">
               <div className="sm:col-span-2">
                 <h3 className="font-bold text-lg mb-2">PetVitals</h3>
-                <p className="text-sm text-muted-foreground mb-3">Free pet health tools for the modern pet parent. Toxicity checker, feeding calculator, and weight tracking ? all in one place.</p>
+                <p className="text-sm text-muted-foreground mb-3">Free pet health tools for the modern pet parent. Toxicity checker, feeding calculator, and weight tracking - all in one place.</p>
                 <p className="text-xs text-muted-foreground"><strong>Contact:</strong> <a href="mailto:henrygxy@gmail.com" className="hover:text-foreground transition-colors">henrygxy@gmail.com</a></p>
               </div>
               <div>

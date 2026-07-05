@@ -9,7 +9,18 @@ const contentDir = path.join(process.cwd(), "src", "content", "blog");
 export interface BlogSource {
   name: string;
   url: string;
-  type: "guideline" | "research" | "database" | "article";
+  type:
+    | "guideline"
+    | "guide"
+    | "research"
+    | "database"
+    | "article"
+    | "report"
+    | "review"
+    | "government"
+    | "academic"
+    | "regulation"
+    | "certification";
 }
 
 export interface BlogPostMeta {

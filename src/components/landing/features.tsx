@@ -2,9 +2,9 @@
 import Link from "next/link";
 
 const features = [
-  { icon: "\u{1f50d}", title: "Toxicity Checker", desc: "Search 200+ foods, plants, and substances to see what's safe for your pet.", href: "/toxicity" },
-  { icon: "\u{1f3ca}", title: "Feeding Calculator", desc: "Science-based RER and MER calculations tailored to your pet's breed, age, and activity.", href: "/sign-in?redirect=/dashboard" },
-  { icon: "\u{1f4ca}", title: "Weight Tracking", desc: "Track weight trends with BCS scoring. Export data and share with your vet.", href: "/sign-in?redirect=/dashboard" },
+  { icon: "\u{1f50d}", title: "Toxicity Checker", desc: "Search 500+ foods, plants, and substances to see what's safe for your pet.", href: "/toxicity" },
+  { icon: "\u{1f3ca}", title: "Feeding Calculator", desc: "Free RER and MER calculations tailored to your pet's weight, age, and activity.", href: "/feeding-calculator" },
+  { icon: "\u{1f4ca}", title: "Weight Tracking", desc: "Plan weight trends with BCS scoring and shareable vet-friendly records.", href: "/weight-tracking" },
   { icon: "\u{1f6e1}\ufe0f", title: "Vet-Approved Data", desc: "All information sourced from veterinary toxicology references and peer-reviewed studies.", href: "/toxicity" },
 ];
 
