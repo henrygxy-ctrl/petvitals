@@ -12,6 +12,7 @@ const withMDX = createMDX({
 
 const nextConfig: NextConfig = {
   experimental: {
+    cpus: 2,
     nextScriptWorkers: true,
   },
   images: {

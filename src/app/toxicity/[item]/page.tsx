@@ -60,6 +60,40 @@ function lookupItem(slug: string): ToxicityItem | undefined {
   );
 }
 
+function safetyAnswer(item: ToxicityItem, pet: "dogs" | "cats") {
+  const isSafe = pet === "dogs" ? item.safeForDog : item.safeForCat;
+  const petLabel = pet === "dogs" ? "dogs" : "cats";
+
+  if (isSafe) {
+    return item.safeAmount
+      ? `${item.name} is generally considered safe for ${petLabel} when offered appropriately. ${item.safeAmount}`
+      : `${item.name} is generally considered safe for ${petLabel}, but portions and preparation still matter.`;
+  }
+
+  return `${item.name} is not considered safe for ${petLabel}. ${item.description}`;
+}
+
+function buildToxicityFaq(item: ToxicityItem) {
+  return [
+    {
+      question: `Is ${item.name} safe for dogs?`,
+      answer: safetyAnswer(item, "dogs"),
+    },
+    {
+      question: `Is ${item.name} safe for cats?`,
+      answer: safetyAnswer(item, "cats"),
+    },
+    {
+      question: `What symptoms can ${item.name} cause in pets?`,
+      answer: item.symptoms || `Pet reactions to ${item.name} can vary. Contact your veterinarian if your pet shows unusual symptoms after exposure.`,
+    },
+    {
+      question: `What should I do if my pet ate ${item.name}?`,
+      answer: item.action || "Contact your veterinarian for guidance, especially if your pet ate a large amount or has symptoms.",
+    },
+  ];
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -107,6 +141,7 @@ export default async function ToxicityItemPage({
   }
 
   const style = riskStyles[item.riskLevel];
+  const faqQuestions = buildToxicityFaq(item);
 
   const relatedItems = toxicityDatabase
     .filter(
@@ -118,6 +153,7 @@ export default async function ToxicityItemPage({
 
   return (
     <>
+      <JsonLdFAQ questions={faqQuestions} />
       <JsonLdBreadcrumb
         items={[
           { name: "Home", url: SITE_BASE_URL },
@@ -281,6 +317,22 @@ export default async function ToxicityItemPage({
                 </ul>
               </div>
             )}
+
+            <section className="mt-10">
+              <h2 className="font-bold text-lg mb-4">Quick Answers</h2>
+              <div className="space-y-3">
+                {faqQuestions.map((faq) => (
+                  <details key={faq.question} className="rounded-lg border bg-card">
+                    <summary className="px-5 py-4 cursor-pointer text-sm font-medium list-none">
+                      {faq.question}
+                    </summary>
+                    <div className="px-5 pb-4 text-sm text-muted-foreground leading-relaxed">
+                      {faq.answer}
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </section>
 
             {/* Related items */}
             {relatedItems.length > 0 && (
