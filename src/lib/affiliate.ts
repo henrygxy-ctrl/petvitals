@@ -30,10 +30,13 @@
 const env = (key: string, fallback: string = "") =>
   typeof process !== "undefined" && (process.env as any)?.[key] ? (process.env as any)[key] : fallback;
 
+const hasEnv = (key: string): boolean => Boolean(env(key, "").trim());
+
 export interface InsurancePartner {
   name: string;
   tagline: string;
   url: string;
+  isAffiliate: boolean;
   rating: number;
   highlights: string[];
   bestFor: string;
@@ -76,6 +79,7 @@ export const INSURANCE_PARTNERS: InsurancePartner[] = [
     name: "Lemonade",
     tagline: "Fast claims, AI-powered, starting at $10/mo",
     url: insuranceUrl("NEXT_PUBLIC_AFFILIATE_LEMONADE_URL", "https://www.lemonade.com/pet"),
+    isAffiliate: hasEnv("NEXT_PUBLIC_AFFILIATE_LEMONADE_URL"),
     rating: 4.5,
     highlights: ["Claims paid in seconds", "Preventive care add-on", "Giveback program"],
     bestFor: "Tech-savvy pet parents who want fast digital claims",
@@ -84,6 +88,7 @@ export const INSURANCE_PARTNERS: InsurancePartner[] = [
     name: "Healthy Paws",
     tagline: "No annual or lifetime payout caps",
     url: insuranceUrl("NEXT_PUBLIC_AFFILIATE_HEALTHYPAWS_URL", "https://www.healthypawspetinsurance.com/"),
+    isAffiliate: hasEnv("NEXT_PUBLIC_AFFILIATE_HEALTHYPAWS_URL"),
     rating: 4.5,
     highlights: ["Unlimited annual payouts", "Covers hereditary conditions", "Most vet-reviewed"],
     bestFor: "Pets prone to hereditary or chronic conditions",
@@ -92,6 +97,7 @@ export const INSURANCE_PARTNERS: InsurancePartner[] = [
     name: "Embrace",
     tagline: "Wellness rewards + diminishing deductible",
     url: insuranceUrl("NEXT_PUBLIC_AFFILIATE_EMBRACE_URL", "https://www.embracepetinsurance.com/"),
+    isAffiliate: hasEnv("NEXT_PUBLIC_AFFILIATE_EMBRACE_URL"),
     rating: 4,
     highlights: ["Wellness Rewards program", "Diminishing deductible", "Covers exam fees"],
     bestFor: "Comprehensive coverage with preventive care",
@@ -100,6 +106,7 @@ export const INSURANCE_PARTNERS: InsurancePartner[] = [
     name: "Spot",
     tagline: "Customizable deductibles & reimbursement",
     url: insuranceUrl("NEXT_PUBLIC_AFFILIATE_SPOT_URL", "https://spotpetinsurance.com/"),
+    isAffiliate: hasEnv("NEXT_PUBLIC_AFFILIATE_SPOT_URL"),
     rating: 4,
     highlights: ["$100-$1,000 deductible range", "70%-90% reimbursement", "No upper age limit"],
     bestFor: "Budget flexibility and senior pets",
@@ -108,6 +115,7 @@ export const INSURANCE_PARTNERS: InsurancePartner[] = [
     name: "Trupanion",
     tagline: "Pays vets directly, 90% coverage",
     url: insuranceUrl("NEXT_PUBLIC_AFFILIATE_TRUPANION_URL", "https://trupanion.com/"),
+    isAffiliate: hasEnv("NEXT_PUBLIC_AFFILIATE_TRUPANION_URL"),
     rating: 4,
     highlights: ["Direct vet payment", "No payout limits", "Per-condition deductible"],
     bestFor: "Pet parents who can't float large upfront vet bills",
@@ -406,3 +414,13 @@ export const PRODUCT_RECS: Record<string, ProductRecommendation[]> = {
     },
   ],
 };
+
+export function getProductRecommendations(slug: string): ProductRecommendation[] {
+  return (PRODUCT_RECS[slug] || []).filter((product) => {
+    if (product.platform === "amazon") return hasEnv("NEXT_PUBLIC_AFFILIATE_AMAZON_TAG");
+    if (product.platform === "chewy") {
+      return hasEnv("NEXT_PUBLIC_AFFILIATE_CHEWY_URL") || hasEnv("NEXT_PUBLIC_AFFILIATE_CHEWY_TAG");
+    }
+    return INSURANCE_PARTNERS.some((partner) => partner.isAffiliate);
+  });
+}

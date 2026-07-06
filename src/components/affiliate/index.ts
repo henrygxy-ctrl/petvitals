@@ -1,3 +1,3 @@
 export { InsuranceComparison } from "./insurance-comparison";
 export { ProductRecommendationCard } from "./product-rec-card";
-export { INSURANCE_PARTNERS, PRODUCT_RECS } from "@/lib/affiliate";
+export { INSURANCE_PARTNERS, PRODUCT_RECS, getProductRecommendations } from "@/lib/affiliate";

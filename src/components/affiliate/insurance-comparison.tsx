@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { Shield, Star, ArrowRight } from "lucide-react";
 import type { InsurancePartner } from "@/lib/affiliate";
 
@@ -11,6 +10,7 @@ interface InsuranceComparisonProps {
 
 export function InsuranceComparison({ partners, className = "" }: InsuranceComparisonProps) {
   if (partners.length === 0) return null;
+  const hasAffiliateLinks = partners.some((partner) => partner.isAffiliate);
 
   return (
     <div className={`${className}`}>
@@ -18,17 +18,19 @@ export function InsuranceComparison({ partners, className = "" }: InsuranceCompa
         <Shield className="h-5 w-5 text-primary" />
         <h2 className="text-lg font-bold">Top Pet Insurance Providers</h2>
       </div>
-      <p className="text-xs text-muted-foreground mb-4">
-        We may earn a commission if you purchase through these links, at no extra cost to you.
-        These are providers we&apos;ve researched — not paid placements.
-      </p>
+      {hasAffiliateLinks && (
+        <p className="text-xs text-muted-foreground mb-4">
+          We may earn a commission if you purchase through these links, at no extra cost to you.
+          These are providers we&apos;ve researched - not paid placements.
+        </p>
+      )}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {partners.map((p) => (
           <a
             key={p.name}
             href={p.url}
             target="_blank"
-            rel="noopener sponsored"
+            rel={p.isAffiliate ? "noopener sponsored" : "noopener"}
             className="p-5 rounded-xl border bg-card hover:border-primary/40 hover:shadow-sm transition-all group"
           >
             <div className="flex items-center justify-between mb-3">

@@ -28,14 +28,16 @@ export function InsuranceCtaBanner() {
             <a
               href={emergencyPartner.url}
               target="_blank"
-              rel="noopener sponsored"
+              rel={emergencyPartner.isAffiliate ? "noopener sponsored" : "noopener"}
               className="inline-flex items-center gap-1 text-xs font-medium text-amber-700 dark:text-amber-400 hover:underline"
             >
               Compare plans <ArrowRight className="h-3 w-3" />
             </a>
-            <span className="text-[9px] text-muted-foreground/60">
-              We may earn a commission
-            </span>
+            {emergencyPartner.isAffiliate && (
+              <span className="text-[9px] text-muted-foreground/60">
+                We may earn a commission
+              </span>
+            )}
           </div>
         </div>
       </div>

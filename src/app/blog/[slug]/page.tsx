@@ -12,7 +12,7 @@ import { RelatedArticles } from "@/components/blog/related-articles";
 import { ArticleJsonLd } from "@/components/blog/article-json-ld";
 import { InArticleAd } from "@/components/ads/AdUnit";
 import { ProductRecommendationCard } from "@/components/affiliate/product-rec-card";
-import { PRODUCT_RECS } from "@/lib/affiliate";
+import { getProductRecommendations } from "@/lib/affiliate";
 import { JsonLdBreadcrumb } from "@/components/seo/json-ld";
 import { Calendar, Clock, Tag, User } from "lucide-react";
 
@@ -61,7 +61,7 @@ export default async function BlogArticlePage({ params }: Props) {
   if (!post) notFound();
 
   const related = getRelatedPosts(slug);
-  const productRecs = PRODUCT_RECS[post.slug] || [];
+  const productRecs = getProductRecommendations(post.slug);
 
   let Content: React.ComponentType;
   try {

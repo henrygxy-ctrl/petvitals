@@ -5,7 +5,7 @@ import { FeedingCalculatorForm } from "@/components/feeding/feeding-calculator-f
 import { AdUnit } from "@/components/ads/AdUnit";
 import { ProductRecommendationCard } from "@/components/affiliate/product-rec-card";
 import { InsuranceCtaBanner } from "@/components/affiliate/insurance-cta";
-import { PRODUCT_RECS } from "@/lib/affiliate";
+import { getProductRecommendations } from "@/lib/affiliate";
 import { JsonLdFAQ, JsonLdBreadcrumb } from "@/components/seo/json-ld";
 import { ArrowLeft, Search } from "lucide-react";
 
@@ -54,7 +54,7 @@ const breadcrumbs = [
 ];
 
 export default function FeedingCalculatorPage() {
-  const feedingProducts = PRODUCT_RECS["calculate-dog-calorie-needs"] || [];
+  const feedingProducts = getProductRecommendations("calculate-dog-calorie-needs");
 
   return (
     <>
