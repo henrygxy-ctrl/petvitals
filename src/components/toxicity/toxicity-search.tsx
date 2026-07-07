@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useState, useRef, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { Search, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -21,6 +22,8 @@ const riskColors: Record<string, string> = {
 
 export function ToxicitySearch({ variant = "hero" }: ToxicitySearchProps) {
   const { t } = useTranslation();
+  const searchParams = useSearchParams();
+  const urlQuery = searchParams.get("q")?.trim() || "";
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<ToxicityItem[]>([]);
   const [suggestions, setSuggestions] = useState<ToxicityItem[]>([]);
@@ -68,6 +71,17 @@ export function ToxicitySearch({ variant = "hero" }: ToxicitySearchProps) {
   const selectSuggestion = (item: ToxicityItem) => {
     handleSearch(item.name);
   };
+
+  useEffect(() => {
+    if (urlQuery.length < 2) return;
+
+    setQuery(urlQuery);
+    setSelectedIdx(-1);
+    setShowSuggestions(false);
+    setSuggestions([]);
+    setResults(searchToxicity(urlQuery, petFilter));
+    setHasSearched(true);
+  }, [urlQuery, petFilter]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (!showSuggestions || suggestions.length === 0) return;
