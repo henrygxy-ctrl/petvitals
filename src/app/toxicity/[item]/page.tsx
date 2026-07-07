@@ -60,8 +60,40 @@ function lookupItem(slug: string): ToxicityItem | undefined {
   );
 }
 
+function isSafeForPet(item: ToxicityItem, pet: "dogs" | "cats") {
+  const configuredSafe = pet === "dogs" ? item.safeForDog : item.safeForCat;
+
+  if (
+    configuredSafe &&
+    item.safeForDog &&
+    item.safeForCat &&
+    (item.riskLevel === "toxic" || item.riskLevel === "danger")
+  ) {
+    return false;
+  }
+
+  return configuredSafe;
+}
+
+function unsafeLabel(item: ToxicityItem) {
+  if (item.riskLevel === "danger") return "Dangerous";
+  if (item.riskLevel === "caution") return "Use Caution";
+  return "Toxic";
+}
+
+function buildPetVerdictTitle(item: ToxicityItem) {
+  const dogSafe = isSafeForPet(item, "dogs");
+  const catSafe = isSafeForPet(item, "cats");
+  const unsafe = unsafeLabel(item);
+
+  if (dogSafe && catSafe) return `${item.name}: Safe for Dogs & Cats?`;
+  if (!dogSafe && !catSafe) return `${item.name}: ${unsafe} for Dogs & Cats?`;
+  if (dogSafe) return `${item.name}: Safe for Dogs, ${unsafe} for Cats?`;
+  return `${item.name}: ${unsafe} for Dogs, Safe for Cats?`;
+}
+
 function safetyAnswer(item: ToxicityItem, pet: "dogs" | "cats") {
-  const isSafe = pet === "dogs" ? item.safeForDog : item.safeForCat;
+  const isSafe = isSafeForPet(item, pet);
   const petLabel = pet === "dogs" ? "dogs" : "cats";
 
   if (isSafe) {
@@ -103,23 +135,14 @@ export async function generateMetadata({
   const item = lookupItem(slug);
   if (!item) return { title: "Not Found" };
 
-  const isSafe = item.riskLevel === "safe";
-  const petTarget =
-    item.safeForDog && item.safeForCat
-      ? "Dogs & Cats"
-      : item.safeForDog
-        ? "Dogs"
-        : item.safeForCat
-          ? "Cats"
-          : "Dogs & Cats";
-  const verdict = isSafe ? "Safe" : "Toxic";
+  const title = buildPetVerdictTitle(item);
 
   return {
-    title: `${item.name}: ${verdict} for ${petTarget}? | ${SITE_NAME}`,
+    title: `${title} | ${SITE_NAME}`,
     description: item.description.slice(0, 160),
     alternates: { canonical: `${SITE_BASE_URL}/toxicity/${item.id}` },
     openGraph: {
-      title: `Is ${item.name} ${verdict} for ${petTarget}?`,
+      title,
       description: item.description.slice(0, 160),
       url: `${SITE_BASE_URL}/toxicity/${item.id}`,
       siteName: SITE_NAME,
@@ -142,6 +165,8 @@ export default async function ToxicityItemPage({
 
   const style = riskStyles[item.riskLevel];
   const faqQuestions = buildToxicityFaq(item);
+  const dogIsSafe = isSafeForPet(item, "dogs");
+  const catIsSafe = isSafeForPet(item, "cats");
 
   const relatedItems = toxicityDatabase
     .filter(
@@ -202,23 +227,23 @@ export default async function ToxicityItemPage({
                   <div className="flex gap-3 mt-3">
                     <div
                       className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
-                        item.safeForDog
+                        dogIsSafe
                           ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
                           : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
                       }`}
                     >
                       <Dog className="h-3.5 w-3.5" />
-                      {item.safeForDog ? "Safe for Dogs" : "Unsafe for Dogs"}
+                      {dogIsSafe ? "Safe for Dogs" : "Unsafe for Dogs"}
                     </div>
                     <div
                       className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
-                        item.safeForCat
+                        catIsSafe
                           ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
                           : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
                       }`}
                     >
                       <Cat className="h-3.5 w-3.5" />
-                      {item.safeForCat ? "Safe for Cats" : "Unsafe for Cats"}
+                      {catIsSafe ? "Safe for Cats" : "Unsafe for Cats"}
                     </div>
                   </div>
                 </div>
