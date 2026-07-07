@@ -21,7 +21,7 @@ export const TOXICITY_CATEGORY_META = {
   },
   household: {
     label: "Household Items",
-    description: "Check cleaners, chemicals, and common home products that can harm pets.",
+    description: "Check pet-safe cleaners, disinfectants, chemicals, and common home products that can harm pets.",
   },
   medications: {
     label: "Medications",

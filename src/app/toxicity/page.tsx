@@ -9,12 +9,12 @@ import { getToxicityCategoryEntries } from "@/lib/toxicity-category-metadata";
 export const metadata: Metadata = {
   title: `Is This Food Safe for My Dog & Cat? Free Toxicity Checker | ${SITE_NAME}`,
   description:
-    "Instantly check if foods, plants, and household items are safe for your dog or cat. Search grapes, chocolate, avocado, onions, lilies, and 500+ more items. Vet-reviewed data.",
+    "Instantly check if foods, plants, cleaners, and household items are safe for your dog or cat. Search grapes, chocolate, wisteria, cantaloupe, cleaning wipes, and 500+ more items.",
   alternates: { canonical: `${SITE_BASE_URL}/toxicity` },
   openGraph: {
     title: `Is It Safe for My Pet? Free Toxicity Checker | ${SITE_NAME}`,
     description:
-      "Search 500+ foods, plants, and household items. Instant safety check for dogs and cats. Free, no sign-up.",
+      "Search 500+ foods, plants, cleaners, and household items. Instant safety check for dogs and cats. Free, no sign-up.",
     url: `${SITE_BASE_URL}/toxicity`,
     siteName: SITE_NAME,
     type: "website",
@@ -127,6 +127,9 @@ export default function ToxicityPage() {
                   { label: "onions", href: "/toxicity/onions" },
                   { label: "garlic", href: "/toxicity/garlic" },
                   { label: "lilies", href: "/toxicity/lilies" },
+                  { label: "wisteria", href: "/toxicity/wisteria" },
+                  { label: "cantaloupe", href: "/toxicity/cantaloupe" },
+                  { label: "cleaning wipes", href: "/toxicity/cleaning-wipe" },
                   { label: "xylitol", href: "/toxicity/xylitol" },
                   { label: "macadamia nuts", href: "/toxicity/macadamia-nuts" },
                   { label: "coffee", href: "/toxicity/coffee" },
