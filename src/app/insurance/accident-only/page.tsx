@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { AdUnit } from "@/components/ads/AdUnit";
-import { JsonLdBreadcrumb } from "@/components/seo/json-ld";
+import { JsonLdBreadcrumb, JsonLdFAQ } from "@/components/seo/json-ld";
 import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
 import { InsuranceComparison } from "@/components/affiliate/insurance-comparison";
 import { INSURANCE_PARTNERS } from "@/lib/affiliate";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link"
 
 export const metadata: Metadata = {
@@ -26,9 +27,28 @@ const breadcrumbs = [
   { name: "Accident-Only", url: `${SITE_BASE_URL}/insurance/accident-only` },
 ];
 
+const faq = [
+  {
+    question: "Does accident-only pet insurance cover poisoning?",
+    answer:
+      "Many accident-only pet insurance policies may cover eligible accidental toxin ingestion, such as chocolate, xylitol, medication, or poisonous plants. Coverage depends on the policy, waiting period, exclusions, and whether the ingestion happened after coverage started.",
+  },
+  {
+    question: "Does accident-only pet insurance cover broken bones?",
+    answer:
+      "Broken bones from an eligible accident are commonly covered by accident-only plans. Check the deductible, reimbursement rate, annual limit, orthopedic waiting periods, and any breed or bilateral-condition rules before choosing a policy.",
+  },
+  {
+    question: "Does accident-only pet insurance cover emergency surgery?",
+    answer:
+      "It may cover emergency surgery when the surgery is needed for an eligible accident, such as foreign object removal, traumatic wound repair, or fracture repair. Surgery for illnesses, pre-existing conditions, or excluded conditions usually is not covered by accident-only plans.",
+  },
+];
+
 export default function AccidentOnlyPage() {
   return (
     <>
+      <JsonLdFAQ questions={faq} />
       <JsonLdBreadcrumb items={breadcrumbs} />
       <div className="min-h-screen flex flex-col">
       <header className="border-b">
@@ -41,11 +61,29 @@ export default function AccidentOnlyPage() {
         </div>
       </header>
       <main className="flex-1 max-w-3xl mx-auto px-4 py-12 w-full">
-        <div className="mb-6">
-          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Pet Insurance Guide</span>
-          <h1 className="text-3xl font-bold mt-2 mb-3">Accident-Only Pet Insurance: Cost and Coverage</h1>
-          <p className="text-muted-foreground">The most affordable entry point into pet insurance. It covers emergency treatment when your pet gets hurt in an accident, but it does not cover illnesses.</p>
-        </div>
+	        <div className="mb-6">
+	          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Pet Insurance Guide</span>
+	          <h1 className="text-3xl font-bold mt-2 mb-3">Accident-Only Pet Insurance: Cost and Coverage</h1>
+	          <p className="text-muted-foreground">The most affordable entry point into pet insurance. It covers emergency treatment when your pet gets hurt in an accident, but it does not cover illnesses.</p>
+	          <div className="mt-5 flex flex-wrap gap-3">
+	            <a
+	              href="#providers"
+	              className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
+	            >
+	              Compare accident-only prices
+	              <ArrowRight className="h-4 w-4" />
+	            </a>
+	            <Link
+	              href="/insurance/pet-insurance-cost"
+	              className="inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium hover:bg-muted transition-colors"
+	            >
+	              See monthly pet insurance cost
+	            </Link>
+	          </div>
+	          <p className="mt-3 text-xs text-muted-foreground">
+	            Good fit if you mainly want a lower-cost backup for poisoning, broken bones, bite wounds, or emergency surgery after an accident.
+	          </p>
+	        </div>
 
         <div className="prose prose-sm max-w-none space-y-8 text-foreground/80">
           <section>
@@ -118,15 +156,31 @@ export default function AccidentOnlyPage() {
             </ul>
           </section>
 
-          <div className="p-5 rounded-xl border bg-muted/50 not-prose">
-            <p className="text-sm text-muted-foreground">
-              <strong className="text-foreground">Tip:</strong> Compare at least 3 providers before choosing. Premiums for the same coverage level can vary by 50% or more between companies. Many offer free online quotes in under 5 minutes.
-            </p>
-          </div>
-        </div>
-                <div className="max-w-3xl mx-auto px-4 mt-8">
-          <InsuranceComparison partners={INSURANCE_PARTNERS} />
-        </div>
+	          <div className="p-5 rounded-xl border bg-muted/50 not-prose">
+	            <p className="text-sm text-muted-foreground">
+	              <strong className="text-foreground">Tip:</strong> Compare at least 3 providers before choosing. Premiums for the same coverage level can vary by 50% or more between companies. Many offer free online quotes in under 5 minutes.
+	            </p>
+	          </div>
+
+	          <section>
+	            <h2 className="text-xl font-semibold text-foreground">Accident-Only Coverage FAQ</h2>
+	            <div className="space-y-3 not-prose">
+	              {faq.map((item) => (
+	                <details key={item.question} className="rounded-lg border bg-card">
+	                  <summary className="px-5 py-4 cursor-pointer text-sm font-medium list-none">
+	                    {item.question}
+	                  </summary>
+	                  <div className="px-5 pb-4 text-sm text-muted-foreground leading-relaxed">
+	                    {item.answer}
+	                  </div>
+	                </details>
+	              ))}
+	            </div>
+	          </section>
+	        </div>
+	        <div id="providers" className="max-w-3xl mx-auto px-4 mt-8 scroll-mt-20">
+	          <InsuranceComparison partners={INSURANCE_PARTNERS} />
+	        </div>
 
         <AdUnit className="max-w-3xl mx-auto px-4" />
       </main>

@@ -42,6 +42,21 @@ const faq = [
     answer:
       "You can buy a policy later, but the emergency and related conditions may be considered pre-existing and excluded. Insurance works best when it is in place before symptoms or injuries happen.",
   },
+  {
+    question: "Does accident-only pet insurance cover poisoning emergencies?",
+    answer:
+      "Many accident-only policies may cover eligible accidental toxin ingestion, such as a pet eating chocolate, xylitol, medication, or a poisonous plant. Coverage depends on the policy, waiting period, exclusions, and whether the ingestion happened after coverage started.",
+  },
+  {
+    question: "Does accident-only pet insurance cover broken bones?",
+    answer:
+      "Broken bones from an eligible accident are commonly the kind of injury accident-only plans are designed for. Check the deductible, reimbursement rate, annual limit, orthopedic waiting periods, and any breed or bilateral-condition rules.",
+  },
+  {
+    question: "Does accident-only pet insurance cover emergency surgery?",
+    answer:
+      "It may cover emergency surgery when the surgery is needed for an eligible accident, such as a swallowed foreign object, traumatic wound, or fracture repair. Surgery for illness, pre-existing conditions, or excluded conditions usually is not covered by accident-only plans.",
+  },
 ];
 
 export default function EmergencyVetCostPage() {
@@ -51,6 +66,9 @@ export default function EmergencyVetCostPage() {
       label="Emergency Vet Cost"
       title="Emergency Vet Cost: What to Expect Before You Need It"
       intro="Emergency care is where pet insurance often matters most. The first exam fee is only one part of the bill; diagnostics, overnight care, surgery, and medications can quickly push costs into the thousands."
+      primaryCtaLabel="Compare emergency coverage"
+      secondaryCtaLabel="Estimate monthly premiums"
+      heroNote="Start with the monthly cost guide, then compare deductibles, annual limits, and waiting periods before relying on a policy for emergency bills."
       stats={[
         { label: "ER exam", value: "$135+", note: "CareCredit lists emergency exam costs around $135 for dogs and $143 for cats." },
         { label: "Full bill", value: "$100-$5k+", note: "BluePearl notes emergency vet bills can range widely by severity." },

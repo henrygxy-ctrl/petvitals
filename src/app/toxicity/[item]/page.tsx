@@ -45,6 +45,33 @@ const riskStyles: Record<string, { bg: string; border: string; badge: string }> 
   },
 };
 
+const featuredSafetyLinks: Record<string, { id: string; reason: string }[]> = {
+  wisteria: [
+    { id: "sago-palm", reason: "Another high-risk garden plant" },
+    { id: "lilies", reason: "Major toxic plant risk for cats" },
+    { id: "azalea", reason: "Common poisonous ornamental shrub" },
+    { id: "chocolate", reason: "Common emergency food toxin" },
+  ],
+  "sesame-seeds": [
+    { id: "chocolate", reason: "High-risk food toxin" },
+    { id: "grapes", reason: "Unsafe fruit comparison" },
+    { id: "xylitol", reason: "Sweetener emergency risk" },
+    { id: "wisteria", reason: "Common plant poisoning query" },
+  ],
+  "sago-palm": [
+    { id: "wisteria", reason: "Another toxic garden plant" },
+    { id: "lilies", reason: "Major toxic plant risk for cats" },
+    { id: "oleander", reason: "Dangerous ornamental plant" },
+    { id: "chocolate", reason: "Common emergency food toxin" },
+  ],
+  chocolate: [
+    { id: "xylitol", reason: "Another urgent ingestion risk" },
+    { id: "grapes", reason: "Common toxic food search" },
+    { id: "onions", reason: "Kitchen toxin for dogs and cats" },
+    { id: "sesame-seeds", reason: "Safe seed comparison" },
+  ],
+};
+
 export async function generateStaticParams() {
   return toxicityDatabase.map((item) => ({
     item: item.id,
@@ -174,11 +201,19 @@ export default async function ToxicityItemPage({
   const faqQuestions = buildToxicityFaq(item);
   const dogIsSafe = isSafeForPet(item, "dogs");
   const catIsSafe = isSafeForPet(item, "cats");
+  const featuredRelatedItems = (featuredSafetyLinks[item.id] || [])
+    .map((link) => {
+      const linkedItem = getToxicityById(link.id);
+      return linkedItem ? { item: linkedItem, reason: link.reason } : null;
+    })
+    .filter((link): link is { item: ToxicityItem; reason: string } => Boolean(link));
+  const featuredRelatedIds = new Set(featuredRelatedItems.map((link) => link.item.id));
 
   const relatedItems = toxicityDatabase
     .filter(
       (i) =>
         i.id !== item.id &&
+        !featuredRelatedIds.has(i.id) &&
         (i.category === item.category || i.tags.some((t) => item.tags.includes(t)))
     )
     .slice(0, 6);
@@ -308,6 +343,35 @@ export default async function ToxicityItemPage({
             {/* Insurance CTA — relevant for toxic/danger items */}
             {(item.riskLevel === "toxic" || item.riskLevel === "danger") && (
               <InsuranceCtaBanner />
+            )}
+
+            {featuredRelatedItems.length > 0 && (
+              <section className="mt-8 rounded-xl border bg-card p-5">
+                <div className="flex items-center gap-2 mb-4">
+                  <BookOpen className="h-5 w-5 text-primary" />
+                  <h2 className="font-bold text-lg">Related Pet Safety Checks</h2>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {featuredRelatedItems.map(({ item: featuredItem, reason }) => {
+                    const rs = riskStyles[featuredItem.riskLevel];
+                    return (
+                      <Link
+                        key={featuredItem.id}
+                        href={`/toxicity/${featuredItem.id}`}
+                        className={`block rounded-lg border p-4 ${rs.border} ${rs.bg} hover:opacity-90 transition-opacity`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <span className="font-medium text-sm">{featuredItem.name}</span>
+                          <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium shrink-0 ${rs.badge}`}>
+                            {riskLabels[featuredItem.riskLevel]}
+                          </span>
+                        </div>
+                        <p className="text-xs text-muted-foreground mt-1">{reason}</p>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </section>
             )}
 
             {/* Tags */}
