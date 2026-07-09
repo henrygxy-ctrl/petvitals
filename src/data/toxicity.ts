@@ -17,7 +17,7 @@ export interface ToxicityItem {
   tags: string[];
 }
 
-export const toxicityDatabase: ToxicityItem[] = [
+const toxicityDatabaseRaw: ToxicityItem[] = [
   {
     id: "apple",
     name: "Apples",
@@ -5946,6 +5946,19 @@ export const toxicityDatabase: ToxicityItem[] = [
     sources: ["https://vcahospitals.com/know-your-pet", "https://www.petmd.com", "https://www.fda.gov/animal-veterinary"],
   },
 ];
+
+function dedupeToxicityItems(items: ToxicityItem[]): ToxicityItem[] {
+  const seen = new Set<string>();
+
+  return items.filter((item) => {
+    if (seen.has(item.id)) return false;
+    seen.add(item.id);
+    return true;
+  });
+}
+
+// Keep exported data canonical so duplicate source records do not create duplicate toxicity URLs.
+export const toxicityDatabase: ToxicityItem[] = dedupeToxicityItems(toxicityDatabaseRaw);
 
 export const toxicityCategories = [
   { id: "fruits", label: "Fruits", emoji: "\ud83c\udf4e" },
