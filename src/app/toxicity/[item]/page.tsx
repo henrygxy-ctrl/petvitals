@@ -75,16 +75,14 @@ function isSafeForPet(item: ToxicityItem, pet: "dogs" | "cats") {
   return configuredSafe;
 }
 
-function unsafeLabel(item: ToxicityItem) {
-  if (item.riskLevel === "danger") return "Dangerous";
-  if (item.riskLevel === "caution") return "Use Caution";
-  return "Toxic";
+function unsafeTitleLabel(item: ToxicityItem) {
+  return item.riskLevel === "danger" ? "Dangerous" : "Poisonous";
 }
 
 function buildPetVerdictTitle(item: ToxicityItem) {
   const dogSafe = isSafeForPet(item, "dogs");
   const catSafe = isSafeForPet(item, "cats");
-  const unsafe = unsafeLabel(item);
+  const unsafe = unsafeTitleLabel(item);
 
   if (dogSafe && catSafe) return `${item.name}: Safe for Dogs & Cats?`;
   if (!dogSafe && !catSafe) return `${item.name}: ${unsafe} for Dogs & Cats?`;
@@ -102,17 +100,26 @@ function safetyAnswer(item: ToxicityItem, pet: "dogs" | "cats") {
       : `${item.name} is generally considered safe for ${petLabel}, but portions and preparation still matter.`;
   }
 
-  return `${item.name} is not considered safe for ${petLabel}. ${item.description}`;
+  return `${item.name} is poisonous or toxic to ${petLabel}. ${item.description}`;
+}
+
+function petSafetyQuestion(item: ToxicityItem, pet: "dogs" | "cats") {
+  const petLabel = pet === "dogs" ? "dogs" : "cats";
+  const isSafe = isSafeForPet(item, pet);
+
+  if (isSafe) return `Is ${item.name} safe for ${petLabel}?`;
+  if (pet === "dogs") return `Is ${item.name} poisonous to dogs?`;
+  return `Is ${item.name} toxic to cats?`;
 }
 
 function buildToxicityFaq(item: ToxicityItem) {
   return [
     {
-      question: `Is ${item.name} safe for dogs?`,
+      question: petSafetyQuestion(item, "dogs"),
       answer: safetyAnswer(item, "dogs"),
     },
     {
-      question: `Is ${item.name} safe for cats?`,
+      question: petSafetyQuestion(item, "cats"),
       answer: safetyAnswer(item, "cats"),
     },
     {
