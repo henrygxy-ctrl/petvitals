@@ -139,6 +139,40 @@ function petSafetyQuestion(item: ToxicityItem, pet: "dogs" | "cats") {
   return `Is ${item.name} toxic to cats?`;
 }
 
+function truncateMetaDescription(description: string) {
+  const normalized = description.replace(/\s+/g, " ").trim();
+  if (normalized.length <= 155) return normalized;
+  const cutoff = normalized.lastIndexOf(" ", 152);
+  return `${normalized.slice(0, cutoff > 100 ? cutoff : 152).trimEnd()}...`;
+}
+
+function buildToxicityDescription(item: ToxicityItem) {
+  const dogSafe = isSafeForPet(item, "dogs");
+  const catSafe = isSafeForPet(item, "cats");
+
+  if (dogSafe && catSafe) {
+    return truncateMetaDescription(
+      `Can dogs and cats have ${item.name}? ${item.description}`
+    );
+  }
+
+  if (!dogSafe && !catSafe) {
+    return truncateMetaDescription(
+      `Is ${item.name} toxic to dogs or cats? ${item.description} Learn symptoms and what to do.`
+    );
+  }
+
+  if (dogSafe) {
+    return truncateMetaDescription(
+      `Is ${item.name} safe for dogs but toxic to cats? ${item.description}`
+    );
+  }
+
+  return truncateMetaDescription(
+    `Is ${item.name} toxic to dogs but safe for cats? ${item.description}`
+  );
+}
+
 function buildToxicityFaq(item: ToxicityItem) {
   return [
     {
@@ -170,17 +204,23 @@ export async function generateMetadata({
   if (!item) return { title: "Not Found" };
 
   const title = buildPetVerdictTitle(item);
+  const description = buildToxicityDescription(item);
 
   return {
     title: `${title} | ${SITE_NAME}`,
-    description: item.description.slice(0, 160),
+    description,
     alternates: { canonical: `${SITE_BASE_URL}/toxicity/${item.id}` },
     openGraph: {
       title,
-      description: item.description.slice(0, 160),
+      description,
       url: `${SITE_BASE_URL}/toxicity/${item.id}`,
       siteName: SITE_NAME,
       type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
     },
   };
 }
