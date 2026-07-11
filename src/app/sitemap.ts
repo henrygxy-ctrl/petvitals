@@ -15,8 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_BASE_URL}/blog`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE_BASE_URL}/insurance`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "monthly" as const, priority: 0.75 },
     { url: `${SITE_BASE_URL}/contact`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "monthly", priority: 0.5 },
-    { url: `${SITE_BASE_URL}/privacy`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "monthly", priority: 0.3 },
-    { url: `${SITE_BASE_URL}/terms`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "monthly", priority: 0.3 },
     { url: `${SITE_BASE_URL}/about`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "monthly" as const, priority: 0.6 },
   ];
 
