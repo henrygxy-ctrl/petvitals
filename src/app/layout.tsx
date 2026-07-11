@@ -138,9 +138,6 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* hreflang tags for US market */}
-        <link rel="alternate" hrefLang="en-US" href={SITE_BASE_URL} />
-        <link rel="alternate" hrefLang="x-default" href={SITE_BASE_URL} />
         <link rel="manifest" href="/manifest.json" />
 
         {/* Impact.com affiliate tracking */}
