@@ -33,24 +33,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(slug);
   if (!post) return {};
 
+  const title = post.seo?.title || post.title;
+  const description = post.seo?.description || post.excerpt;
+  const image = post.seo?.ogImage || post.featuredImage || `${SITE_BASE_URL}/og-image.png`;
+  const url = `${SITE_BASE_URL}/blog/${post.slug}`;
+
   return {
-    title: post.seo?.title || post.title,
-    description: post.seo?.description || post.excerpt,
-    alternates: { canonical: `${SITE_BASE_URL}/blog/${post.slug}` },
+    title,
+    description,
+    alternates: { canonical: url },
     openGraph: {
-      title: post.seo?.title || post.title,
-      description: post.seo?.description || post.excerpt,
-      url: `${SITE_BASE_URL}/blog/${post.slug}`,
+      title,
+      description,
+      url,
       siteName: SITE_NAME,
       type: "article",
       publishedTime: post.date,
       authors: [SITE_NAME],
-      images: post.seo?.ogImage
-        ? [{ url: post.seo.ogImage }]
-        : post.featuredImage
-          ? [{ url: post.featuredImage }]
-          : undefined,
+      images: [{ url: image }],
       tags: post.tags,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
     },
   };
 }

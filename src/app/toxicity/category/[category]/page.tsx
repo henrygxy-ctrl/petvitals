@@ -55,17 +55,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const meta = TOXICITY_CATEGORY_META[category];
   const url = `${SITE_BASE_URL}/toxicity/category/${category}`;
+  const title = `${meta.label} Toxicity Guide for Dogs & Cats`;
+  const description = `${meta.description} Browse PetVitals safety notes, symptoms, emergency steps, and full toxicity details.`;
+  const image = `${SITE_BASE_URL}/og-image.png`;
 
   return {
-    title: `${meta.label} Toxicity Guide for Dogs & Cats | ${SITE_NAME}`,
-    description: `${meta.description} Browse PetVitals safety notes, symptoms, emergency steps, and full toxicity details.`,
+    title: `${title} | ${SITE_NAME}`,
+    description,
     alternates: { canonical: url },
     openGraph: {
-      title: `${meta.label} Toxicity Guide for Dogs & Cats`,
-      description: meta.description,
+      title,
+      description,
       url,
       siteName: SITE_NAME,
       type: "website",
+      images: [{ url: image, width: 1200, height: 630, alt: `${SITE_NAME} Toxicity Guide` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
     },
   };
 }
