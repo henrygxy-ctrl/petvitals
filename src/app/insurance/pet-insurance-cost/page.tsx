@@ -19,6 +19,13 @@ export const metadata: Metadata = {
     type: "website",
     images: [{ url: `${SITE_BASE_URL}/og-image.png`, width: 1200, height: 630, alt: "Pet insurance cost guide" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pet Insurance Cost in 2026",
+    description:
+      "Typical monthly pet insurance costs, pricing factors, and quote comparison tips for dogs and cats.",
+    images: [`${SITE_BASE_URL}/og-image.png`],
+  },
 };
 
 const faq = [

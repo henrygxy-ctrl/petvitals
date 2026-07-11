@@ -19,6 +19,13 @@ export const metadata: Metadata = {
     type: "website",
     images: [{ url: `${SITE_BASE_URL}/og-image.png`, width: 1200, height: 630, alt: "Best pet insurance for dogs guide" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Best Pet Insurance for Dogs",
+    description:
+      "A practical dog insurance comparison guide by breed, age, budget, and emergency risk.",
+    images: [`${SITE_BASE_URL}/og-image.png`],
+  },
 };
 
 const faq = [

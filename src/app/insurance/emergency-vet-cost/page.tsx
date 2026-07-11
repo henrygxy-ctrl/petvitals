@@ -19,6 +19,13 @@ export const metadata: Metadata = {
     type: "website",
     images: [{ url: `${SITE_BASE_URL}/og-image.png`, width: 1200, height: 630, alt: "Emergency vet cost guide" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Emergency Vet Cost: What to Expect",
+    description:
+      "Understand emergency vet exam fees, common urgent-care cost drivers, and how pet insurance affects out-of-pocket risk.",
+    images: [`${SITE_BASE_URL}/og-image.png`],
+  },
 };
 
 const faq = [
