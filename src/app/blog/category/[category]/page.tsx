@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getPostsByCategory, getAllCategories } from "@/lib/blog";
 import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
-import { JsonLdBreadcrumb } from "@/components/seo/json-ld";
+import { JsonLdBreadcrumb, JsonLdItemList } from "@/components/seo/json-ld";
 import { ArticleCard } from "@/components/blog/article-card";
 
 interface Props {
@@ -21,16 +21,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category } = await params;
   const categories = getAllCategories();
   const cat = categories.find((c) => c.slug === category);
+  const title = cat
+    ? `${cat.name} | Pet Health Articles | ${SITE_NAME}`
+    : `Category | ${SITE_NAME}`;
+  const description = cat
+    ? `Browse our ${cat.name.toLowerCase()} articles. Evidence-based pet health guides for dog and cat owners.`
+    : "Browse pet health articles by category.";
+  const url = `${SITE_BASE_URL}/blog/category/${category}`;
 
   return {
-    title: cat
-      ? `${cat.name} | Pet Health Articles | ${SITE_NAME}`
-      : `Category | ${SITE_NAME}`,
-    description: cat
-      ? `Browse our ${cat.name.toLowerCase()} articles. Evidence-based pet health guides for dog and cat owners.`
-      : "Browse pet health articles by category.",
+    title,
+    description,
     alternates: {
-      canonical: `${SITE_BASE_URL}/blog/category/${category}`,
+      canonical: url,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: SITE_NAME,
+      type: "website",
+      images: [{ url: `${SITE_BASE_URL}/og-image.png`, width: 1200, height: 630, alt: `${SITE_NAME} Blog` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [`${SITE_BASE_URL}/og-image.png`],
     },
   };
 }
@@ -50,10 +67,16 @@ export default async function CategoryPage({ params }: Props) {
     { name: "Blog", url: `${SITE_BASE_URL}/blog` },
     { name: displayName, url: `${SITE_BASE_URL}/blog/category/${category}` },
   ];
+  const postItems = posts.map((post) => ({
+    name: post.title,
+    url: `${SITE_BASE_URL}/blog/${post.slug}`,
+    description: post.excerpt,
+  }));
 
   return (
     <>
       <JsonLdBreadcrumb items={breadcrumbs} />
+      <JsonLdItemList items={postItems} />
       <div className="min-h-screen flex flex-col">
       <header className="border-b">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center gap-2">

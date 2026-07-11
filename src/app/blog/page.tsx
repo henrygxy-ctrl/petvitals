@@ -6,6 +6,7 @@ import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
 import { NewsletterSignup } from "@/components/newsletter/newsletter-signup";
 import { AdUnit } from "@/components/ads/AdUnit";
 import { BlogListClient } from "@/components/blog/blog-list-client";
+import { JsonLdItemList } from "@/components/seo/json-ld";
 
 export const revalidate = 3600;
 
@@ -23,14 +24,28 @@ export const metadata: Metadata = {
     type: "website",
     images: [{ url: `${SITE_BASE_URL}/og-image.png`, width: 1200, height: 630, alt: "PetVitals Blog" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `Pet Health Blog | ${SITE_NAME}`,
+    description:
+      "Evidence-based pet health guides for dog and cat owners. Nutrition, safety, weight management, and more.",
+    images: [`${SITE_BASE_URL}/og-image.png`],
+  },
 };
 
 export default function BlogPage() {
   const posts = getAllPosts();
   const categories = getAllCategories();
+  const postItems = posts.map((post) => ({
+    name: post.title,
+    url: `${SITE_BASE_URL}/blog/${post.slug}`,
+    description: post.excerpt,
+  }));
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <>
+      <JsonLdItemList items={postItems} />
+      <div className="min-h-screen flex flex-col">
       <header className="border-b">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center gap-2">
           <Link
@@ -63,9 +78,10 @@ export default function BlogPage() {
             </div>
           </section>
 
-        <footer className="border-t py-6 text-center text-xs text-muted-foreground">
+      <footer className="border-t py-6 text-center text-xs text-muted-foreground">
         &copy; {new Date().getFullYear()} {SITE_NAME}. Always consult your veterinarian.
       </footer>
     </div>
+    </>
   );
 }
