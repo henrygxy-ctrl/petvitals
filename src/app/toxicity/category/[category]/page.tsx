@@ -9,7 +9,7 @@ import {
   isToxicityCategory,
   TOXICITY_CATEGORY_META,
 } from "@/lib/toxicity-category-metadata";
-import { JsonLdBreadcrumb } from "@/components/seo/json-ld";
+import { JsonLdBreadcrumb, JsonLdItemList } from "@/components/seo/json-ld";
 
 interface Props {
   params: Promise<{ category: string }>;
@@ -96,6 +96,13 @@ export default async function ToxicityCategoryPage({ params }: Props) {
   return (
     <>
       <JsonLdBreadcrumb items={breadcrumbs} />
+      <JsonLdItemList
+        items={items.map((item) => ({
+          name: item.name,
+          url: `${SITE_BASE_URL}/toxicity/${item.id}`,
+          description: item.description,
+        }))}
+      />
       <div className="min-h-screen flex flex-col">
         <header className="border-b">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center gap-2">

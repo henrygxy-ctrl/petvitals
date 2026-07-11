@@ -89,3 +89,28 @@ export function JsonLdFAQ({
     />
   );
 }
+
+export function JsonLdItemList({
+  items,
+}: {
+  items: { name: string; url: string; description?: string }[];
+}) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: item.url,
+      name: item.name,
+      ...(item.description ? { description: item.description } : {}),
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}

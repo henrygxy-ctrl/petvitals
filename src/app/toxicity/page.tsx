@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
 import { ToxicitySearchWrapper } from "@/components/toxicity/toxicity-search-wrapper";
-import { JsonLdFAQ, JsonLdBreadcrumb } from "@/components/seo/json-ld";
+import { JsonLdFAQ, JsonLdBreadcrumb, JsonLdItemList } from "@/components/seo/json-ld";
 import { ArrowLeft, BookOpen, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { getToxicityCategoryEntries } from "@/lib/toxicity-category-metadata";
@@ -66,6 +66,13 @@ export default function ToxicityPage() {
     <>
       <JsonLdFAQ questions={faqQuestions} />
       <JsonLdBreadcrumb items={breadcrumbs} />
+      <JsonLdItemList
+        items={categoryEntries.map((category) => ({
+          name: `${category.label} Toxicity Guide`,
+          url: `${SITE_BASE_URL}/toxicity/category/${category.id}`,
+          description: category.description,
+        }))}
+      />
       <div className="min-h-screen flex flex-col">
         <header className="border-b">
           <div className="max-w-4xl mx-auto px-4 h-14 flex items-center gap-2">
