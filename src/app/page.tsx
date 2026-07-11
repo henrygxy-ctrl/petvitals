@@ -1,4 +1,4 @@
-import { JsonLdOrganization } from "@/components/seo/json-ld";
+import { JsonLdOrganization, JsonLdWebSiteSearch } from "@/components/seo/json-ld";
 import { Hero } from "@/components/landing/hero";
 import { Features } from "@/components/landing/features";
 import { NavHeader } from "@/components/landing/nav-header";
@@ -31,6 +31,7 @@ export default function Home() {
   return (
     <>
       <JsonLdOrganization />
+      <JsonLdWebSiteSearch />
       <div className="flex flex-col min-h-screen">
         <NavHeader />
         <Hero />

@@ -40,6 +40,27 @@ export function JsonLdOrganization() {
   );
 }
 
+export function JsonLdWebSiteSearch() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    url: SITE_BASE_URL,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${SITE_BASE_URL}/toxicity?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
 export function JsonLdBreadcrumb({
   items,
 }: {
