@@ -18,6 +18,12 @@ export const metadata: Metadata = {
     type: "website",
     images: [{ url: `${SITE_BASE_URL}/og-image.png`, width: 1200, height: 630, alt: "PetVitals Accident & Illness Pet Insurance Guide" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Accident & Illness Pet Insurance Guide",
+    description: "The most popular pet insurance type. Covers accidents plus illnesses including cancer, infections, and chronic diseases. Learn about costs, coverage, and how to choose.",
+    images: [`${SITE_BASE_URL}/og-image.png`],
+  },
 };
 
 const breadcrumbs = [
@@ -130,4 +136,3 @@ export default function AccidentIllnessPage() {
     </>
   );
 }
-

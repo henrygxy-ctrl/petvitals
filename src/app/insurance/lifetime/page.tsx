@@ -18,6 +18,12 @@ export const metadata: Metadata = {
     type: "website",
     images: [{ url: `${SITE_BASE_URL}/og-image.png`, width: 1200, height: 630, alt: "PetVitals Lifetime & Chronic Condition Pet Insurance Guide" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lifetime & Chronic Condition Pet Insurance Guide",
+    description: "Learn about lifetime pet insurance and coverage for chronic conditions like diabetes, arthritis, and hip dysplasia. Compare annual vs lifetime limits and find the best long-term protection.",
+    images: [`${SITE_BASE_URL}/og-image.png`],
+  },
 };
 
 const breadcrumbs = [
@@ -152,4 +158,3 @@ export default function LifetimePage() {
     </>
   );
 }
-

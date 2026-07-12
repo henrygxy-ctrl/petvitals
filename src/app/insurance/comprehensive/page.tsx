@@ -18,6 +18,12 @@ export const metadata: Metadata = {
     type: "website",
     images: [{ url: `${SITE_BASE_URL}/og-image.png`, width: 1200, height: 630, alt: "PetVitals Comprehensive & Wellness Pet Insurance Guide" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Comprehensive & Wellness Pet Insurance Guide",
+    description: "Full-coverage pet insurance with wellness add-ons. Covers accidents, illnesses, routine checkups, vaccinations, dental cleaning, and more. Learn about costs and coverage.",
+    images: [`${SITE_BASE_URL}/og-image.png`],
+  },
 };
 
 const breadcrumbs = [
@@ -130,4 +136,3 @@ export default function ComprehensivePage() {
     </>
   );
 }
-
