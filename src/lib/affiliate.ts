@@ -404,6 +404,40 @@ export const PRODUCT_RECS: Record<string, ProductRecommendation[]> = {
       platform: "amazon",
     },
   ],
+  "cat-friendly-cleaning-products": [
+    {
+      name: "Enzymatic Cat Accident Cleaner",
+      description: "Designed for urine, vomit, and litter-area cleanup without heavy fragrance.",
+      url: chewyUrl("b/stain-odor-removers-1037"),
+      priceHint: "$8-$25",
+      platform: "chewy",
+    },
+    {
+      name: "Unscented Cat Litter Box Wipes",
+      description: "Low-fragrance cleanup option for litter boxes and nearby hard surfaces.",
+      url: chewyUrl("b/cat-cleaning-deodorizing-387"),
+      priceHint: "$7-$18",
+      platform: "chewy",
+    },
+  ],
+  "pet-safe-floor-cleaners-dogs-cats": [
+    {
+      name: "Pet Stain & Odor Floor Cleaner",
+      description: "Enzymatic cleanup for urine, vomit, and tracked-in messes on pet traffic areas.",
+      url: chewyUrl("b/stain-odor-removers-1037"),
+      priceHint: "$8-$30",
+      platform: "chewy",
+    },
+  ],
+  "can-cats-eat-cantaloupe": [
+    {
+      name: "Single-Ingredient Cat Treats",
+      description: "A more species-appropriate treat choice than sugary fruit snacks.",
+      url: chewyUrl("b/freeze-dried-dehydrated-treats-1561"),
+      priceHint: "$5-$18",
+      platform: "chewy",
+    },
+  ],
   "dog-exercise-needs-by-breed": [
     {
       name: "Dog Food Puzzle Toy",

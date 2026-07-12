@@ -1,4 +1,70 @@
 export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> = {
+  "cat-friendly-cleaning-products": [
+    {
+      question: "What cleaning products are safe for cats?",
+      answer:
+        "For routine home cleaning, safer choices are usually unscented, low-residue products used with cats out of the room until surfaces are dry. Steam, diluted castile soap, enzymatic pet accident cleaners, and EPA Safer Choice-certified products are common starting points.",
+    },
+    {
+      question: "Are disinfectant wipes safe around cats?",
+      answer:
+        "Disinfectant wipes can leave residue. Do not let cats walk on, lick, or sleep on freshly wiped surfaces. If wipes are necessary, use them only as directed, ventilate, and let the surface dry completely before cats return.",
+    },
+    {
+      question: "Are essential-oil cleaners safe for cats?",
+      answer:
+        "Essential-oil cleaners are risky for cats, especially concentrated sprays, diffusers, and wet residues. Avoid tea tree, eucalyptus, peppermint, citrus, pine, wintergreen, cinnamon, and clove oil products around cats.",
+    },
+    {
+      question: "What is the safest way to clean cat urine?",
+      answer:
+        "Use an enzymatic pet accident cleaner designed for urine. Blot first, apply the product as directed, keep cats away while it works, and let the area dry. Avoid ammonia cleaners because the smell can resemble urine.",
+    },
+  ],
+  "pet-safe-floor-cleaners-dogs-cats": [
+    {
+      question: "What floor cleaner is safe for dogs and cats?",
+      answer:
+        "Steam, diluted castile soap, enzymatic pet accident cleaners, and low-residue unscented products are common safer choices when used with pets out of the room until floors are dry.",
+    },
+    {
+      question: "Is vinegar safe for pet floors?",
+      answer:
+        "Diluted vinegar can be useful on some sealed surfaces, but it should not be used on marble, stone, or some wood floors. It can also smell strong to pets. Keep pets away until the floor dries.",
+    },
+    {
+      question: "Are steam mops safe for pets?",
+      answer:
+        "Steam mops can be a good low-residue option because they use water instead of added chemicals. Check that your flooring can tolerate steam, and keep pets away until the floor is dry and cool.",
+    },
+    {
+      question: "Can dogs or cats walk on floors after disinfecting?",
+      answer:
+        "Only after the product's required contact time is complete and the floor is fully dry. If the label calls for rinsing on food-contact or pet-contact surfaces, rinse before pets return.",
+    },
+  ],
+  "can-cats-eat-cantaloupe": [
+    {
+      question: "Can cats eat cantaloupe?",
+      answer:
+        "Most healthy adult cats can eat a tiny amount of plain cantaloupe flesh as an occasional treat. Remove the rind and seeds, cut it into very small pieces, and avoid added sugar, dairy, salt, or seasoning.",
+    },
+    {
+      question: "Is cantaloupe good for cats?",
+      answer:
+        "Cantaloupe is not toxic, but it is not nutritionally important for cats. Cats are obligate carnivores, so fruit should stay rare and small.",
+    },
+    {
+      question: "Can cats eat cantaloupe rind?",
+      answer:
+        "No. Cantaloupe rind is tough and can cause choking, vomiting, or digestive blockage. Feed only the soft orange flesh in tiny pieces.",
+    },
+    {
+      question: "Can cats eat melon every day?",
+      answer:
+        "No. Melon should not be a daily food for cats because it is sugary, plant-based, and unnecessary for feline nutrition.",
+    },
+  ],
   "best-pet-safe-cleaning-products": [
     {
       question: "What cleaning products are pet friendly?",
