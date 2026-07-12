@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getPostBySlug, getRelatedPosts } from "@/lib/blog";
+import { BLOG_FAQS } from "@/lib/blog-faq";
 import { slugify } from "@/lib/utils";
 import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
 import { SourceCitation } from "@/components/blog/source-citation";
@@ -13,7 +14,7 @@ import { ArticleJsonLd } from "@/components/blog/article-json-ld";
 import { InArticleAd } from "@/components/ads/AdUnit";
 import { ProductRecommendationCard } from "@/components/affiliate/product-rec-card";
 import { getProductRecommendations } from "@/lib/affiliate";
-import { JsonLdBreadcrumb } from "@/components/seo/json-ld";
+import { JsonLdBreadcrumb, JsonLdFAQ } from "@/components/seo/json-ld";
 import { Calendar, Clock, Tag, User } from "lucide-react";
 
 interface Props {
@@ -69,6 +70,7 @@ export default async function BlogArticlePage({ params }: Props) {
 
   const related = getRelatedPosts(slug);
   const productRecs = getProductRecommendations(post.slug);
+  const faqQuestions = BLOG_FAQS[post.slug] || [];
 
   let Content: React.ComponentType;
   try {
@@ -89,6 +91,7 @@ export default async function BlogArticlePage({ params }: Props) {
   return (
     <>
       <ArticleJsonLd post={post} />
+      {faqQuestions.length > 0 && <JsonLdFAQ questions={faqQuestions} />}
       <JsonLdBreadcrumb items={breadcrumbs} />
       <div className="min-h-screen flex flex-col">
         <header className="border-b">
