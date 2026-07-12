@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 
 const withMDX = createMDX({
   options: {
+    remarkPlugins: [["remark-frontmatter", ["yaml"]]],
     rehypePlugins: [
       ["rehype-slug", {}],
       ["rehype-autolink-headings", { behavior: "wrap" }],
