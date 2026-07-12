@@ -18,6 +18,14 @@ export const metadata: Metadata = {
     url: `${SITE_BASE_URL}/insurance`,
     siteName: SITE_NAME,
     type: "website",
+    images: [{ url: `${SITE_BASE_URL}/og-image.png`, width: 1200, height: 630, alt: "PetVitals Pet Insurance Guide" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Pet Insurance Guide — Compare Coverage Types | ${SITE_NAME}`,
+    description:
+      "Free, unbiased guide to pet insurance types. Accident-only, accident & illness, comprehensive, and lifetime coverage explained.",
+    images: [`${SITE_BASE_URL}/og-image.png`],
   },
 };
 

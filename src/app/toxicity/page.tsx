@@ -18,6 +18,14 @@ export const metadata: Metadata = {
     url: `${SITE_BASE_URL}/toxicity`,
     siteName: SITE_NAME,
     type: "website",
+    images: [{ url: `${SITE_BASE_URL}/og-image.png`, width: 1200, height: 630, alt: "PetVitals Toxicity Checker" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Is It Safe for My Pet? Free Toxicity Checker | ${SITE_NAME}`,
+    description:
+      "Search 500+ foods, plants, cleaners, and household items. Instant safety check for dogs and cats. Free, no sign-up.",
+    images: [`${SITE_BASE_URL}/og-image.png`],
   },
 };
 
