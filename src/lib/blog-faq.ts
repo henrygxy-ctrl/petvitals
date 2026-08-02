@@ -6,6 +6,11 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
         "For routine home cleaning, safer choices are usually unscented, low-residue products used with cats out of the room until surfaces are dry. Steam, diluted castile soap, enzymatic pet accident cleaners, and EPA Safer Choice-certified products are common starting points.",
     },
     {
+      question: "What cleaners are not safe for cats?",
+      answer:
+        "Avoid phenol-based cleaners, essential-oil cleaners, ammonia, bleach-heavy sprays, quaternary ammonium disinfectants, strong fragrances, and products that leave wet residue where cats walk, sleep, eat, or use the litter box.",
+    },
+    {
       question: "Are disinfectant wipes safe around cats?",
       answer:
         "Disinfectant wipes can leave residue. Do not let cats walk on, lick, or sleep on freshly wiped surfaces. If wipes are necessary, use them only as directed, ventilate, and let the surface dry completely before cats return.",
@@ -26,6 +31,11 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
       question: "What floor cleaner is safe for dogs and cats?",
       answer:
         "Steam, diluted castile soap, enzymatic pet accident cleaners, and low-residue unscented products are common safer choices when used with pets out of the room until floors are dry.",
+    },
+    {
+      question: "What is the best pet-safe floor cleaner?",
+      answer:
+        "For routine sealed hard floors, steam is often the lowest-residue option. For urine, vomit, or stool accidents, an enzymatic pet accident cleaner is usually a better fit because it breaks down organic residue.",
     },
     {
       question: "Is vinegar safe for pet floors?",
@@ -66,6 +76,11 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
     },
   ],
   "best-pet-safe-cleaning-products": [
+    {
+      question: "What are the best pet-safe cleaning products?",
+      answer:
+        "The best everyday pet-safe cleaning products are low-residue options that dry fully before pets return: steam, diluted castile soap, enzymatic pet accident cleaners, EPA Safer Choice-certified cleaners, and 3% hydrogen peroxide on compatible hard surfaces after proper contact time.",
+    },
     {
       question: "What cleaning products are pet friendly?",
       answer:

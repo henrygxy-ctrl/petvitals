@@ -36,6 +36,7 @@ export interface CommercialInsurancePageProps {
   intro: string;
   primaryCtaLabel?: string;
   secondaryCtaLabel?: string;
+  secondaryCtaHref?: string;
   heroNote?: string;
   stats: CommercialStat[];
   sections: CommercialSection[];
@@ -51,6 +52,7 @@ export function CommercialInsurancePage({
   intro,
   primaryCtaLabel = "Compare provider prices",
   secondaryCtaLabel = "See monthly costs",
+  secondaryCtaHref = "/insurance/pet-insurance-cost",
   heroNote,
   stats,
   sections,
@@ -100,7 +102,7 @@ export function CommercialInsurancePage({
                 <ArrowRight className="h-4 w-4" />
               </a>
               <Link
-                href="/insurance/pet-insurance-cost"
+                href={secondaryCtaHref}
                 className="inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium hover:bg-muted transition-colors"
               >
                 {secondaryCtaLabel}

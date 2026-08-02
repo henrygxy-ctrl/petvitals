@@ -5,15 +5,15 @@ import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
 import { InsuranceComparison } from "@/components/affiliate/insurance-comparison";
 import { INSURANCE_PARTNERS } from "@/lib/affiliate";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link"
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Accident-Only Pet Insurance: Cost, Coverage & What It Covers | PetVitals",
-  description: "Learn what accident-only pet insurance covers, what it usually costs for dogs and cats, who it is best for, and what exclusions to check before choosing a plan.",
+  title: "Accident-Only Pet Insurance: Cost, Coverage & Emergency Limits | PetVitals",
+  description: "Compare accident-only pet insurance cost and coverage for poisoning, broken bones, bite wounds, swallowed objects, and emergency surgery after accidents.",
   alternates: { canonical: `${SITE_BASE_URL}/insurance/accident-only` },
   openGraph: {
-    title: "Accident-Only Pet Insurance: Cost, Coverage & What It Covers | PetVitals",
-    description: "Learn what accident-only pet insurance covers, what it usually costs for dogs and cats, who it is best for, and what exclusions to check before choosing a plan.",
+    title: "Accident-Only Pet Insurance: Cost, Coverage & Emergency Limits | PetVitals",
+    description: "Compare accident-only pet insurance cost and coverage for poisoning, broken bones, bite wounds, swallowed objects, and emergency surgery after accidents.",
     url: `${SITE_BASE_URL}/insurance/accident-only`,
     siteName: SITE_NAME,
     type: "website",
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Accident-Only Pet Insurance: Cost, Coverage & What It Covers | PetVitals",
-    description: "Learn what accident-only pet insurance covers, what it usually costs for dogs and cats, who it is best for, and what exclusions to check before choosing a plan.",
+    title: "Accident-Only Pet Insurance: Cost, Coverage & Emergency Limits | PetVitals",
+    description: "Compare accident-only pet insurance cost and coverage for poisoning, broken bones, bite wounds, swallowed objects, and emergency surgery after accidents.",
     images: [`${SITE_BASE_URL}/og-image.png`],
   },
 };
@@ -34,6 +34,11 @@ const breadcrumbs = [
 ];
 
 const faq = [
+  {
+    question: "How much does accident-only pet insurance cost?",
+    answer:
+      "Accident-only pet insurance is usually the cheapest pet insurance type. Many plans start around $10 per month for dogs and lower for cats, but price still depends on age, breed, location, deductible, reimbursement rate, and annual limit.",
+  },
   {
     question: "Does accident-only pet insurance cover poisoning?",
     answer:
@@ -48,6 +53,16 @@ const faq = [
     question: "Does accident-only pet insurance cover emergency surgery?",
     answer:
       "It may cover emergency surgery when the surgery is needed for an eligible accident, such as foreign object removal, traumatic wound repair, or fracture repair. Surgery for illnesses, pre-existing conditions, or excluded conditions usually is not covered by accident-only plans.",
+  },
+  {
+    question: "What does accident-only pet insurance not cover?",
+    answer:
+      "Accident-only plans usually do not cover illnesses, cancer, allergies, infections, diabetes, routine wellness care, vaccines, dental disease, or pre-existing conditions. If you want illness coverage, compare accident and illness plans instead.",
+  },
+  {
+    question: "Is accident-only pet insurance worth it?",
+    answer:
+      "It can be worth it if you want a lower monthly premium and mainly need backup for injuries, toxin ingestion, swallowed objects, or emergency accident care. It is not enough if you want coverage for illness or chronic disease.",
   },
 ];
 
@@ -69,32 +84,39 @@ export default function AccidentOnlyPage() {
       <main className="flex-1 max-w-3xl mx-auto px-4 py-12 w-full">
 	        <div className="mb-6">
 	          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Pet Insurance Guide</span>
-	          <h1 className="text-3xl font-bold mt-2 mb-3">Accident-Only Pet Insurance: Cost and Coverage</h1>
-	          <p className="text-muted-foreground">The most affordable entry point into pet insurance. It covers emergency treatment when your pet gets hurt in an accident, but it does not cover illnesses.</p>
+	          <h1 className="text-3xl font-bold mt-2 mb-3">Accident-Only Pet Insurance: Cost, Coverage, and Emergency Limits</h1>
+	          <p className="text-muted-foreground">Accident-only pet insurance is the lower-cost option for injuries and accidental emergencies. It may cover poisoning, broken bones, bite wounds, swallowed objects, and emergency surgery after an eligible accident, but it does not cover illnesses.</p>
 	          <div className="mt-5 flex flex-wrap gap-3">
 	            <a
 	              href="#providers"
 	              className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
 	            >
-	              Compare accident-only prices
+	              Compare accident-only quotes
 	              <ArrowRight className="h-4 w-4" />
 	            </a>
 	            <Link
 	              href="/insurance/pet-insurance-cost"
 	              className="inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium hover:bg-muted transition-colors"
 	            >
-	              See monthly pet insurance cost
+	              See full pet insurance cost
+	            </Link>
+	            <Link
+	              href="/insurance/emergency-vet-cost"
+	              className="inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium hover:bg-muted transition-colors"
+	            >
+	              Estimate emergency vet bills
 	            </Link>
 	          </div>
 	          <p className="mt-3 text-xs text-muted-foreground">
-	            Good fit if you mainly want a lower-cost backup for poisoning, broken bones, bite wounds, or emergency surgery after an accident.
+	            Good fit if you mainly want a lower-cost backup for poisoning, broken bones, bite wounds, swallowed objects, or emergency surgery after an accident.
 	          </p>
 	        </div>
 
         <div className="prose prose-sm max-w-none space-y-8 text-foreground/80">
           <section>
             <h2 className="text-xl font-semibold text-foreground">Quick Answer</h2>
-            <p>Accident-only pet insurance usually covers injuries such as broken bones, bite wounds, swallowed objects, toxin ingestion, and car accidents. It is cheaper than accident-and-illness coverage, but it does not cover sickness, cancer, allergies, infections, or routine care.</p>
+            <p>Accident-only pet insurance usually covers eligible injuries such as broken bones, bite wounds, swallowed objects, toxin ingestion, and car accidents. It is cheaper than accident-and-illness coverage, but it does not cover sickness, cancer, allergies, infections, chronic disease, or routine care.</p>
+            <p>If your main concern is the monthly price, start with this page and then compare the broader <Link href="/insurance/pet-insurance-cost" className="underline underline-offset-2">cost of pet insurance</Link>. If your main concern is a large urgent-care bill, compare it against typical <Link href="/insurance/emergency-vet-cost" className="underline underline-offset-2">emergency vet costs</Link>.</p>
           </section>
 
           <section>
@@ -109,6 +131,12 @@ export default function AccidentOnlyPage() {
               <li><strong>Foreign object ingestion</strong>: surgery to remove swallowed toys, socks, or bones</li>
               <li><strong>Eye injuries</strong>: corneal scratches, punctures, or foreign bodies</li>
             </ul>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold text-foreground">When Accident-Only Coverage Makes Sense</h2>
+            <p>Accident-only coverage is strongest when you want protection against sudden, expensive events but need to keep the monthly premium low. It is a better fit for pet parents who can handle routine care and minor illness bills themselves, but would struggle with a large emergency accident bill.</p>
+            <p>It is weaker for breeds with high illness risk, senior pets, or owners who want coverage for diagnostics, cancer, infections, allergies, urinary disease, or chronic conditions. In those cases, compare <Link href="/insurance/accident-illness" className="underline underline-offset-2">accident and illness coverage</Link>.</p>
           </section>
 
           <section>
@@ -138,7 +166,7 @@ export default function AccidentOnlyPage() {
                 <p className="text-xs text-muted-foreground">per month</p>
               </div>
             </div>
-            <p>Deductibles usually range from $100-$500 annually, and reimbursement rates are typically 70-90% of covered costs. Most plans have annual coverage limits between $2,500 and $10,000.</p>
+            <p>Deductibles usually range from $100-$500 annually, and reimbursement rates are typically 70-90% of covered costs. Most plans have annual coverage limits between $2,500 and $10,000. For broader averages, see the full <Link href="/insurance/pet-insurance-cost" className="underline underline-offset-2">pet insurance cost guide</Link>.</p>
           </section>
 
           <section>

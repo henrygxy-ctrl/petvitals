@@ -7,14 +7,14 @@ import { INSURANCE_PARTNERS } from "@/lib/affiliate";
 import { Car, Stethoscope, Syringe, Clock, ArrowLeft, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: `Pet Insurance Guide — Compare Coverage Types | ${SITE_NAME}`,
+  title: `Pet Insurance Cost & Coverage Guide | ${SITE_NAME}`,
   description:
-    "Understand the four main types of pet insurance: accident-only, accident & illness, comprehensive with wellness, and lifetime/chronic condition coverage. Free, unbiased guide.",
+    "Compare pet insurance cost, accident-only coverage, accident and illness plans, emergency vet risk, and dog insurance options before requesting quotes.",
   alternates: { canonical: `${SITE_BASE_URL}/insurance` },
   openGraph: {
-    title: `Pet Insurance Guide — Compare Coverage Types | ${SITE_NAME}`,
+    title: `Pet Insurance Cost & Coverage Guide | ${SITE_NAME}`,
     description:
-      "Free, unbiased guide to pet insurance types. Accident-only, accident & illness, comprehensive, and lifetime coverage explained.",
+      "Compare pet insurance cost, accident-only coverage, accident and illness plans, emergency vet risk, and dog insurance options before requesting quotes.",
     url: `${SITE_BASE_URL}/insurance`,
     siteName: SITE_NAME,
     type: "website",
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Pet Insurance Guide — Compare Coverage Types | ${SITE_NAME}`,
+    title: `Pet Insurance Cost & Coverage Guide | ${SITE_NAME}`,
     description:
-      "Free, unbiased guide to pet insurance types. Accident-only, accident & illness, comprehensive, and lifetime coverage explained.",
+      "Compare pet insurance cost, accident-only coverage, accident and illness plans, emergency vet risk, and dog insurance options before requesting quotes.",
     images: [`${SITE_BASE_URL}/og-image.png`],
   },
 };
@@ -131,11 +131,12 @@ export default function InsurancePage() {
             Pet Insurance Guide
           </span>
           <h1 className="text-3xl sm:text-4xl font-bold mt-2 mb-4">
-            Understanding Pet Insurance
+            Pet Insurance Cost and Coverage Guide
           </h1>
           <p className="text-muted-foreground max-w-2xl">
-            A straightforward guide to the types of pet insurance available. We don&apos;t sell insurance
-            — we just want you to know your options before the unexpected happens.
+            Compare monthly pet insurance cost, accident-only coverage, accident and illness plans,
+            and emergency vet risk before requesting quotes. Start with the price guide if budget is
+            your main question, or choose a coverage type below.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <a
@@ -146,10 +147,16 @@ export default function InsurancePage() {
               <ArrowRight className="h-4 w-4" />
             </a>
             <Link
-              href="/blog/pet-insurance-worth-it"
+              href="/insurance/pet-insurance-cost"
               className="inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium hover:bg-muted transition-colors"
             >
-              Is insurance worth it?
+              See monthly pet insurance cost
+            </Link>
+            <Link
+              href="/insurance/accident-only"
+              className="inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium hover:bg-muted transition-colors"
+            >
+              Compare accident-only coverage
             </Link>
           </div>
         </div>
