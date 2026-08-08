@@ -6,14 +6,14 @@ import { SITE_BASE_URL, SITE_NAME } from "@/lib/constants";
 const slug = "pet-insurance-cost";
 
 export const metadata: Metadata = {
-  title: `Pet Insurance Cost: Dog & Cat Monthly Prices in 2026 | ${SITE_NAME}`,
+  title: `Pet Insurance Cost in 2026: Dog & Cat Price Table | ${SITE_NAME}`,
   description:
-    "Compare pet insurance cost for dogs and cats in 2026, including average monthly premiums, dog insurance cost factors, deductibles, and quote tips.",
+    "See 2026 pet insurance cost by dog, cat, plan type, deductible, reimbursement rate, and annual limit before comparing quotes.",
   alternates: { canonical: `${SITE_BASE_URL}/insurance/${slug}` },
   openGraph: {
-    title: "Pet Insurance Cost: Dog & Cat Monthly Prices in 2026",
+    title: "Pet Insurance Cost in 2026: Dog & Cat Price Table",
     description:
-      "Average monthly pet insurance costs, dog insurance cost factors, and quote comparison tips for dogs and cats.",
+      "Compare dog and cat pet insurance cost, average monthly premiums, plan types, deductibles, and quote settings.",
     url: `${SITE_BASE_URL}/insurance/${slug}`,
     siteName: SITE_NAME,
     type: "website",
@@ -21,9 +21,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pet Insurance Cost: Dog & Cat Monthly Prices in 2026",
+    title: "Pet Insurance Cost in 2026: Dog & Cat Price Table",
     description:
-      "Average monthly pet insurance costs, dog insurance cost factors, and quote comparison tips for dogs and cats.",
+      "Compare dog and cat pet insurance cost, average monthly premiums, plan types, deductibles, and quote settings.",
     images: [`${SITE_BASE_URL}/og-image.png`],
   },
 };
@@ -33,6 +33,11 @@ const faq = [
     question: "How much does pet insurance cost per month?",
     answer:
       "Accident and illness pet insurance often costs around $62 per month for dogs and $32 per month for cats on average, but your quote can be higher or lower based on age, breed, location, deductible, reimbursement rate, and annual limit.",
+  },
+  {
+    question: "What is the average cost of pet insurance?",
+    answer:
+      "A useful average cost estimate is about $62 per month for dogs and $32 per month for cats for accident and illness coverage. Accident-only plans can cost less, while lower deductibles, higher reimbursement rates, and higher annual limits usually raise the monthly price.",
   },
   {
     question: "How much does dog insurance cost per month?",
@@ -71,44 +76,49 @@ export default function PetInsuranceCostPage() {
     <CommercialInsurancePage
       slug={slug}
       label="Pet Insurance Cost"
-      title="Pet Insurance Cost: Dog and Cat Monthly Prices in 2026"
-      intro="Most pet parents want one clear number before comparing quotes: dog insurance often averages around $62 per month, while cat insurance often averages around $32 per month for accident and illness coverage. Your actual cost changes with age, breed, location, deductible, reimbursement rate, and annual limit."
-      primaryCtaLabel="Compare pet insurance quotes"
+      title="Pet Insurance Cost in 2026: Dog and Cat Price Table"
+      intro="Quick answer: pet insurance often costs about $62 per month for dogs and $32 per month for cats for accident and illness coverage. Use the table below to compare average pet insurance cost, dog insurance cost, cat insurance cost, and the plan settings that change your quote."
+      primaryCtaLabel="Compare quotes by price"
       secondaryCtaLabel="See cheaper accident-only plans"
       secondaryCtaHref="/insurance/accident-only"
       heroNote="For the cleanest comparison, request quotes with the same deductible, reimbursement rate, and annual limit across providers."
       stats={[
         { label: "Dog insurance cost", value: "$62/mo", note: "Average accident and illness premium reported by NAPHIA." },
         { label: "Cat insurance cost", value: "$32/mo", note: "Average accident and illness premium reported by NAPHIA." },
-        { label: "Lower-cost option", value: "$10+", note: "Accident-only plans can cost less but exclude illness coverage." },
+        { label: "Price drivers", value: "6", note: "Age, breed, zip code, deductible, reimbursement, and limit change quotes." },
       ]}
       sections={[
         {
-          title: "Quick Cost Breakdown",
+          title: "2026 Average Pet Insurance Cost Table",
           content: (
             <>
               <p>
-                If you are comparing the cost of pet insurance, start with the plan type. Accident-only plans are usually the cheapest. Accident and illness plans cost more but cover a much broader set of emergency and medical problems.
+                If you are comparing the cost of pet insurance, start with species and plan type. Dog insurance cost is usually higher than cat insurance cost, and accident-only coverage usually costs less than accident and illness coverage.
               </p>
               <div className="not-prose overflow-x-auto rounded-xl border my-4">
                 <table className="w-full text-sm">
                   <thead className="bg-muted/60">
                     <tr>
-                      <th className="px-4 py-3 text-left font-semibold">Coverage type</th>
+                      <th className="px-4 py-3 text-left font-semibold">Quote type</th>
                       <th className="px-4 py-3 text-left font-semibold">Typical use case</th>
-                      <th className="px-4 py-3 text-left font-semibold">Cost signal</th>
+                      <th className="px-4 py-3 text-left font-semibold">Average cost signal</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-t">
-                      <td className="px-4 py-3">Accident-only</td>
-                      <td className="px-4 py-3">Poisoning, broken bones, wounds, swallowed objects</td>
-                      <td className="px-4 py-3">Lowest monthly premium</td>
+                      <td className="px-4 py-3">Dog accident and illness</td>
+                      <td className="px-4 py-3">Broad coverage for injuries, illness, diagnostics, and emergencies</td>
+                      <td className="px-4 py-3">About $62 per month</td>
                     </tr>
                     <tr className="border-t">
-                      <td className="px-4 py-3">Accident and illness</td>
-                      <td className="px-4 py-3">Accidents plus cancer, infections, allergies, diagnostics</td>
-                      <td className="px-4 py-3">Higher, but broader protection</td>
+                      <td className="px-4 py-3">Cat accident and illness</td>
+                      <td className="px-4 py-3">Broad coverage for injuries, illness, urinary issues, diagnostics, and emergencies</td>
+                      <td className="px-4 py-3">About $32 per month</td>
+                    </tr>
+                    <tr className="border-t">
+                      <td className="px-4 py-3">Accident-only</td>
+                      <td className="px-4 py-3">Poisoning, broken bones, wounds, swallowed objects</td>
+                      <td className="px-4 py-3">Usually lower than full illness coverage</td>
                     </tr>
                     <tr className="border-t">
                       <td className="px-4 py-3">Wellness add-on</td>
@@ -121,6 +131,22 @@ export default function PetInsuranceCostPage() {
               <p>
                 If you only want backup for injuries and accidental ingestion, compare <Link href="/insurance/accident-only" className="underline underline-offset-2">accident-only pet insurance</Link>. If you want protection from illness and emergency care, compare accident and illness quotes against possible <Link href="/insurance/emergency-vet-cost" className="underline underline-offset-2">emergency vet costs</Link>.
               </p>
+            </>
+          ),
+        },
+        {
+          title: "Use These Settings Like a Pet Insurance Cost Calculator",
+          content: (
+            <>
+              <p>
+                The fastest way to estimate pet insurance price is to hold the quote settings steady. Compare the same pet, zip code, deductible, reimbursement rate, annual limit, and plan type across providers. Otherwise, a cheaper quote may simply be buying less protection.
+              </p>
+              <ul className="space-y-2">
+                <li><strong>Deductible:</strong> Higher deductibles usually lower the monthly price but raise your first out-of-pocket cost.</li>
+                <li><strong>Reimbursement:</strong> 70% costs less than 90%, but you pay more of every covered bill.</li>
+                <li><strong>Annual limit:</strong> Lower limits reduce premiums but can run out during surgery, hospitalization, or cancer care.</li>
+                <li><strong>Plan type:</strong> Accident-only is cheaper, while accident and illness is broader.</li>
+              </ul>
             </>
           ),
         },
@@ -145,7 +171,7 @@ export default function PetInsuranceCostPage() {
                 Dog insurance cost is usually higher because dogs tend to have higher claim costs, larger breed differences, and more orthopedic and accident risk. Large-breed dogs and breeds with common hereditary issues can price well above average.
               </p>
               <p>
-                Cat insurance cost is often lower, but indoor cats still face emergency risks such as urinary blockage, toxin exposure, falls, and foreign object ingestion. For cats, the right question is not only the monthly price, but whether the plan limit could handle a serious emergency.
+                Cat insurance cost is often lower, but indoor cats still face emergency risks such as urinary blockage, toxin exposure, falls, and foreign object ingestion. For cats, the right question is not only the monthly price, but whether the plan limit could handle a serious emergency. If the quote is much lower than average, check whether illness coverage, exam fees, dental disease, or hereditary conditions are excluded.
               </p>
             </>
           ),

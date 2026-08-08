@@ -11,6 +11,11 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
         "Avoid phenol-based cleaners, essential-oil cleaners, ammonia, bleach-heavy sprays, quaternary ammonium disinfectants, strong fragrances, and products that leave wet residue where cats walk, sleep, eat, or use the litter box.",
     },
     {
+      question: "What disinfectant is safe for cats?",
+      answer:
+        "There is no single disinfectant that is automatically safe in every cat home. The safer approach is to use the mildest effective product for the job, keep cats out during contact time, ventilate, rinse pet-contact surfaces if required, and let everything dry completely before cats return.",
+    },
+    {
       question: "Are disinfectant wipes safe around cats?",
       answer:
         "Disinfectant wipes can leave residue. Do not let cats walk on, lick, or sleep on freshly wiped surfaces. If wipes are necessary, use them only as directed, ventilate, and let the surface dry completely before cats return.",
@@ -36,6 +41,11 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
       question: "What is the best pet-safe floor cleaner?",
       answer:
         "For routine sealed hard floors, steam is often the lowest-residue option. For urine, vomit, or stool accidents, an enzymatic pet accident cleaner is usually a better fit because it breaks down organic residue.",
+    },
+    {
+      question: "What is the best floor cleaner for pets?",
+      answer:
+        "For everyday floor cleaning in pet homes, start with steam on compatible sealed floors or a small amount of diluted castile soap. For pet urine, vomit, or stool, use an enzymatic cleaner and keep pets away until the area is fully dry.",
     },
     {
       question: "Is vinegar safe for pet floors?",
@@ -76,6 +86,11 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
     },
   ],
   "best-pet-safe-cleaning-products": [
+    {
+      question: "What pet-safe cleaners should I use?",
+      answer:
+        "For everyday cleaning, start with low-residue options: steam, diluted castile soap, enzymatic pet accident cleaners, EPA Safer Choice-certified products, and 3% hydrogen peroxide on compatible hard surfaces after it dries. Keep pets away during cleaning and until surfaces are fully dry.",
+    },
     {
       question: "What are the best pet-safe cleaning products?",
       answer:
