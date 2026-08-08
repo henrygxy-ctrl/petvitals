@@ -71,6 +71,16 @@ const commercialGuides = [
     desc: "Monthly cost ranges, quote factors, and ways to lower premiums without buying too little coverage.",
   },
   {
+    title: "Dog Insurance Cost",
+    href: "/insurance/dog-insurance-cost",
+    desc: "Dog-specific monthly premiums by breed, age, quote settings, and coverage type.",
+  },
+  {
+    title: "Cat Insurance Cost",
+    href: "/insurance/cat-insurance-cost",
+    desc: "Cat-specific monthly premiums, indoor risk, urinary emergencies, and quote settings.",
+  },
+  {
     title: "Emergency Vet Cost",
     href: "/insurance/emergency-vet-cost",
     desc: "What urgent visits can cost and how insurance changes the risk of large emergency bills.",
@@ -212,7 +222,7 @@ export default function InsurancePage() {
               Commercial-intent guides for comparing monthly premiums, emergency risk, and dog-specific coverage.
             </p>
           </div>
-          <div className="grid sm:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {commercialGuides.map((guide) => (
               <Link
                 key={guide.href}

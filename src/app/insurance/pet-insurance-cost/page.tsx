@@ -129,7 +129,7 @@ export default function PetInsuranceCostPage() {
                 </table>
               </div>
               <p>
-                If you only want backup for injuries and accidental ingestion, compare <Link href="/insurance/accident-only" className="underline underline-offset-2">accident-only pet insurance</Link>. If you want protection from illness and emergency care, compare accident and illness quotes against possible <Link href="/insurance/emergency-vet-cost" className="underline underline-offset-2">emergency vet costs</Link>.
+                If you are pricing one pet, use the dog-specific <Link href="/insurance/dog-insurance-cost" className="underline underline-offset-2">dog insurance cost</Link> and <Link href="/insurance/cat-insurance-cost" className="underline underline-offset-2">cat insurance cost</Link> guides. If you only want backup for injuries and accidental ingestion, compare <Link href="/insurance/accident-only" className="underline underline-offset-2">accident-only pet insurance</Link>. If you want protection from illness and emergency care, compare accident and illness quotes against possible <Link href="/insurance/emergency-vet-cost" className="underline underline-offset-2">emergency vet costs</Link>.
               </p>
             </>
           ),
@@ -221,6 +221,8 @@ export default function PetInsuranceCostPage() {
       ]}
       faq={faq}
       relatedGuides={[
+        { title: "Dog Insurance Cost", href: "/insurance/dog-insurance-cost", description: "Compare dog premiums by breed, age, and quote settings." },
+        { title: "Cat Insurance Cost", href: "/insurance/cat-insurance-cost", description: "Compare cat premiums, indoor risks, and illness coverage." },
         { title: "Emergency Vet Cost", href: "/insurance/emergency-vet-cost", description: "See why one urgent visit can cost more than years of premiums." },
         { title: "Accident-Only Insurance", href: "/insurance/accident-only", description: "Compare the cheaper plan type for injuries and accidental ingestion." },
         { title: "Best Pet Insurance for Dogs", href: "/insurance/best-pet-insurance-for-dogs", description: "Compare dog insurance by age, breed, and risk profile." },

@@ -23,6 +23,8 @@ const insuranceTypes = [
 
 const insuranceCostGuides = [
   { title: "Pet Insurance Cost", href: "/insurance/pet-insurance-cost", desc: "Monthly premiums, deductibles, and quote comparison tips." },
+  { title: "Dog Insurance Cost", href: "/insurance/dog-insurance-cost", desc: "Dog premiums by age, breed risk, and coverage settings." },
+  { title: "Cat Insurance Cost", href: "/insurance/cat-insurance-cost", desc: "Cat premiums, indoor emergency risks, and quote settings." },
   { title: "Emergency Vet Cost", href: "/insurance/emergency-vet-cost", desc: "What urgent visits can cost and how insurance changes risk." },
   { title: "Best Pet Insurance for Dogs", href: "/insurance/best-pet-insurance-for-dogs", desc: "Choose coverage by age, breed risk, and budget." },
 ];
@@ -105,7 +107,7 @@ export default function Home() {
                 </Link>
               ))}
             </div>
-            <div className="mt-8 grid sm:grid-cols-3 gap-3">
+            <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {insuranceCostGuides.map((guide) => (
                 <Link key={guide.href} href={guide.href} className="p-4 rounded-xl border bg-card block hover:border-primary/30 transition-colors">
                   <h3 className="text-sm font-semibold">{guide.title}</h3>

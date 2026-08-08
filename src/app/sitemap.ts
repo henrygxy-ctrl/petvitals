@@ -5,6 +5,7 @@ import { toxicityDatabase } from "@/data/toxicity";
 import { getToxicityCategoryEntries } from "@/lib/toxicity-category-metadata";
 
 const CONTENT_LAST_MODIFIED = new Date("2026-07-11");
+const INSURANCE_LAST_MODIFIED = new Date("2026-08-08");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
@@ -13,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_BASE_URL}/feeding-calculator`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "weekly", priority: 0.85 },
     { url: `${SITE_BASE_URL}/weight-tracking`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "weekly" as const, priority: 0.8 },
     { url: `${SITE_BASE_URL}/blog`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${SITE_BASE_URL}/insurance`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "monthly" as const, priority: 0.75 },
+    { url: `${SITE_BASE_URL}/insurance`, lastModified: INSURANCE_LAST_MODIFIED, changeFrequency: "monthly" as const, priority: 0.75 },
     { url: `${SITE_BASE_URL}/contact`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE_BASE_URL}/about`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "monthly" as const, priority: 0.6 },
   ];
@@ -24,11 +25,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "comprehensive",
     "lifetime",
     "pet-insurance-cost",
+    "dog-insurance-cost",
+    "cat-insurance-cost",
     "emergency-vet-cost",
     "best-pet-insurance-for-dogs",
   ].map((slug) => ({
     url: `${SITE_BASE_URL}/insurance/${slug}`,
-    lastModified: CONTENT_LAST_MODIFIED,
+    lastModified: INSURANCE_LAST_MODIFIED,
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
