@@ -1,8 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowRight, Calculator, DollarSign, ShieldCheck } from "lucide-react";
 import { Label } from "@/components/ui/label";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 import {
   Select,
   SelectContent,
@@ -94,6 +95,8 @@ export function InsuranceCostEstimator({
   lockSpecies = false,
   title = "Pet Insurance Cost Calculator",
 }: InsuranceCostEstimatorProps) {
+  const estimatorRef = useRef<HTMLDivElement>(null);
+  const hasTrackedViewRef = useRef(false);
   const [species, setSpecies] = useState<Species>(defaultSpecies);
   const [coverage, setCoverage] = useState<Coverage>("accident-illness");
   const [ageBand, setAgeBand] = useState<AgeBand>("adult");
@@ -103,6 +106,7 @@ export function InsuranceCostEstimator({
   const [reimbursement, setReimbursement] = useState("80");
   const [annualLimit, setAnnualLimit] = useState<AnnualLimit>("10000");
   const [wellness, setWellness] = useState(false);
+  const [hasTrackedInteraction, setHasTrackedInteraction] = useState(false);
 
   const estimate = useMemo(() => {
     const base = BASE_MONTHLY_COST[species][coverage];
@@ -148,8 +152,117 @@ export function InsuranceCostEstimator({
     wellness,
   ]);
 
+  useEffect(() => {
+    const estimator = estimatorRef.current;
+    if (!estimator || hasTrackedViewRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const isVisible = entries.some((entry) => entry.isIntersecting);
+        if (!isVisible || hasTrackedViewRef.current) return;
+
+        hasTrackedViewRef.current = true;
+        trackAnalyticsEvent("insurance_calculator_view", {
+          calculator_title: title,
+          species,
+          coverage,
+          estimate_midpoint: estimate.midpoint,
+        });
+        observer.disconnect();
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(estimator);
+    return () => observer.disconnect();
+  }, [coverage, estimate.midpoint, species, title]);
+
+  function trackCalculatorInteraction(field: string, value: string | boolean) {
+    if (!hasTrackedInteraction) {
+      setHasTrackedInteraction(true);
+      trackAnalyticsEvent("insurance_calculator_start", {
+        calculator_title: title,
+        species,
+        coverage,
+        estimate_midpoint: estimate.midpoint,
+      });
+    }
+
+    trackAnalyticsEvent("insurance_calculator_change", {
+      calculator_title: title,
+      changed_field: field,
+      changed_value: String(value),
+      species,
+      coverage,
+      deductible,
+      reimbursement,
+      annual_limit: annualLimit,
+      estimate_low: estimate.low,
+      estimate_high: estimate.high,
+    });
+  }
+
+  function updateSpecies(value: Species) {
+    setSpecies(value);
+    trackCalculatorInteraction("species", value);
+  }
+
+  function updateCoverage(value: Coverage) {
+    setCoverage(value);
+    trackCalculatorInteraction("coverage", value);
+  }
+
+  function updateAgeBand(value: AgeBand) {
+    setAgeBand(value);
+    trackCalculatorInteraction("age_band", value);
+  }
+
+  function updateRiskLevel(value: RiskLevel) {
+    setRiskLevel(value);
+    trackCalculatorInteraction("risk_level", value);
+  }
+
+  function updateCostArea(value: CostArea) {
+    setCostArea(value);
+    trackCalculatorInteraction("cost_area", value);
+  }
+
+  function updateDeductible(value: string) {
+    setDeductible(value);
+    trackCalculatorInteraction("deductible", value);
+  }
+
+  function updateReimbursement(value: string) {
+    setReimbursement(value);
+    trackCalculatorInteraction("reimbursement", value);
+  }
+
+  function updateAnnualLimit(value: AnnualLimit) {
+    setAnnualLimit(value);
+    trackCalculatorInteraction("annual_limit", value);
+  }
+
+  function updateWellness(value: boolean) {
+    setWellness(value);
+    trackCalculatorInteraction("wellness_addon", value);
+  }
+
+  function trackCompareClick() {
+    trackAnalyticsEvent("insurance_calculator_compare_click", {
+      calculator_title: title,
+      species,
+      coverage,
+      deductible,
+      reimbursement,
+      annual_limit: annualLimit,
+      estimate_low: estimate.low,
+      estimate_high: estimate.high,
+      estimate_midpoint: estimate.midpoint,
+    });
+  }
+
   return (
-    <div className="not-prose my-6 overflow-hidden rounded-xl border bg-card">
+    <div ref={estimatorRef} className="not-prose my-6 overflow-hidden rounded-xl border bg-card">
       <div className="border-b bg-muted/40 p-5">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div>
@@ -164,6 +277,7 @@ export function InsuranceCostEstimator({
           </div>
           <a
             href="#providers"
+            onClick={trackCompareClick}
             className="inline-flex h-9 w-full shrink-0 items-center justify-center gap-1.5 rounded-lg bg-primary px-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 sm:w-auto"
           >
             Compare quotes
@@ -178,7 +292,7 @@ export function InsuranceCostEstimator({
             label="Pet"
             value={species}
             disabled={lockSpecies}
-            onChange={(value) => setSpecies(value as Species)}
+            onChange={(value) => updateSpecies(value as Species)}
             options={[
               { value: "dog", label: "Dog" },
               { value: "cat", label: "Cat" },
@@ -187,7 +301,7 @@ export function InsuranceCostEstimator({
           <EstimatorSelect
             label="Coverage"
             value={coverage}
-            onChange={(value) => setCoverage(value as Coverage)}
+            onChange={(value) => updateCoverage(value as Coverage)}
             options={[
               { value: "accident-illness", label: "Accident and illness" },
               { value: "accident-only", label: "Accident-only" },
@@ -196,7 +310,7 @@ export function InsuranceCostEstimator({
           <EstimatorSelect
             label="Age"
             value={ageBand}
-            onChange={(value) => setAgeBand(value as AgeBand)}
+            onChange={(value) => updateAgeBand(value as AgeBand)}
             options={[
               { value: "young", label: species === "dog" ? "Puppy / young dog" : "Kitten / young cat" },
               { value: "adult", label: "Adult" },
@@ -207,7 +321,7 @@ export function InsuranceCostEstimator({
           <EstimatorSelect
             label={species === "dog" ? "Breed risk" : "Health risk"}
             value={riskLevel}
-            onChange={(value) => setRiskLevel(value as RiskLevel)}
+            onChange={(value) => updateRiskLevel(value as RiskLevel)}
             options={[
               { value: "lower", label: species === "dog" ? "Small / lower-risk" : "Lower-risk" },
               { value: "average", label: "Average" },
@@ -217,7 +331,7 @@ export function InsuranceCostEstimator({
           <EstimatorSelect
             label="Vet cost area"
             value={costArea}
-            onChange={(value) => setCostArea(value as CostArea)}
+            onChange={(value) => updateCostArea(value as CostArea)}
             options={[
               { value: "lower", label: "Lower-cost area" },
               { value: "average", label: "Average area" },
@@ -227,7 +341,7 @@ export function InsuranceCostEstimator({
           <EstimatorSelect
             label="Deductible"
             value={deductible}
-            onChange={setDeductible}
+            onChange={updateDeductible}
             options={[
               { value: "250", label: "$250" },
               { value: "500", label: "$500" },
@@ -238,7 +352,7 @@ export function InsuranceCostEstimator({
           <EstimatorSelect
             label="Reimbursement"
             value={reimbursement}
-            onChange={setReimbursement}
+            onChange={updateReimbursement}
             options={[
               { value: "70", label: "70%" },
               { value: "80", label: "80%" },
@@ -248,7 +362,7 @@ export function InsuranceCostEstimator({
           <EstimatorSelect
             label="Annual limit"
             value={annualLimit}
-            onChange={(value) => setAnnualLimit(value as AnnualLimit)}
+            onChange={(value) => updateAnnualLimit(value as AnnualLimit)}
             options={[
               { value: "5000", label: "$5,000" },
               { value: "10000", label: "$10,000" },
@@ -259,7 +373,7 @@ export function InsuranceCostEstimator({
             <input
               type="checkbox"
               checked={wellness}
-              onChange={(event) => setWellness(event.target.checked)}
+              onChange={(event) => updateWellness(event.target.checked)}
               className="h-4 w-4 rounded border-input"
             />
             <span>
