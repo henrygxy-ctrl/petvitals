@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CommercialInsurancePage } from "../_components/commercial-insurance-page";
+import { InsuranceCostEstimator } from "@/components/insurance/insurance-cost-estimator";
 import { SITE_BASE_URL, SITE_NAME } from "@/lib/constants";
 
 const slug = "dog-insurance-cost";
 
 export const metadata: Metadata = {
-  title: `Dog Insurance Cost in 2026: Monthly Price Guide | ${SITE_NAME}`,
+  title: `Dog Insurance Cost Calculator: 2026 Monthly Guide | ${SITE_NAME}`,
   description:
-    "Compare dog insurance cost by age, breed, deductible, reimbursement rate, annual limit, and plan type before requesting quotes.",
+    "Estimate dog insurance cost by age, breed risk, deductible, reimbursement rate, annual limit, and plan type before requesting quotes.",
   alternates: { canonical: `${SITE_BASE_URL}/insurance/${slug}` },
   openGraph: {
-    title: "Dog Insurance Cost in 2026: Monthly Price Guide",
+    title: "Dog Insurance Cost Calculator: 2026 Monthly Guide",
     description:
-      "Compare average dog insurance cost, breed and age price drivers, quote settings, and cheaper coverage options.",
+      "Estimate average dog insurance cost, breed and age price drivers, quote settings, and cheaper coverage options.",
     url: `${SITE_BASE_URL}/insurance/${slug}`,
     siteName: SITE_NAME,
     type: "website",
@@ -21,9 +22,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dog Insurance Cost in 2026: Monthly Price Guide",
+    title: "Dog Insurance Cost Calculator: 2026 Monthly Guide",
     description:
-      "Compare average dog insurance cost, breed and age price drivers, quote settings, and cheaper coverage options.",
+      "Estimate average dog insurance cost, breed and age price drivers, quote settings, and cheaper coverage options.",
     images: [`${SITE_BASE_URL}/og-image.png`],
   },
 };
@@ -38,6 +39,11 @@ const faq = [
     question: "Why is dog insurance more expensive than cat insurance?",
     answer:
       "Dog insurance is often more expensive because many dogs have higher claim costs, more orthopedic risk, larger breed differences, and higher emergency treatment costs than cats.",
+  },
+  {
+    question: "How can I estimate dog insurance cost?",
+    answer:
+      "Use the same deductible, reimbursement rate, annual limit, plan type, age band, breed risk, and location assumptions across providers. A calculator can show a planning range, but each insurer's quote is the final price.",
   },
   {
     question: "What dog breeds cost more to insure?",
@@ -61,8 +67,8 @@ export default function DogInsuranceCostPage() {
     <CommercialInsurancePage
       slug={slug}
       label="Dog Insurance Cost"
-      title="Dog Insurance Cost in 2026: Monthly Price Guide"
-      intro="Quick answer: dog insurance often costs about $62 per month for accident and illness coverage. The real quote depends on your dog's breed, age, zip code, deductible, reimbursement rate, annual limit, and whether you choose accident-only or broader illness coverage."
+      title="Dog Insurance Cost Calculator and 2026 Monthly Guide"
+      intro="Quick answer: dog insurance often costs about $62 per month for accident and illness coverage. Use the calculator below to adjust breed risk, age, zip code cost level, deductible, reimbursement rate, annual limit, and whether you choose accident-only or broader illness coverage."
       primaryCtaLabel="Compare dog insurance quotes"
       secondaryCtaLabel="See all pet insurance costs"
       secondaryCtaHref="/insurance/pet-insurance-cost"
@@ -73,6 +79,10 @@ export default function DogInsuranceCostPage() {
         { label: "Big drivers", value: "Breed + age", note: "Large breeds and older dogs usually quote higher." },
       ]}
       sections={[
+        {
+          title: "Dog Insurance Cost Calculator",
+          content: <InsuranceCostEstimator defaultSpecies="dog" lockSpecies title="Dog Insurance Cost Calculator" />,
+        },
         {
           title: "Average Dog Insurance Cost",
           content: (

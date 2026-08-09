@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CommercialInsurancePage } from "../_components/commercial-insurance-page";
+import { InsuranceCostEstimator } from "@/components/insurance/insurance-cost-estimator";
 import { SITE_BASE_URL, SITE_NAME } from "@/lib/constants";
 
 const slug = "cat-insurance-cost";
 
 export const metadata: Metadata = {
-  title: `Cat Insurance Cost in 2026: Monthly Price Guide | ${SITE_NAME}`,
+  title: `Cat Insurance Cost Calculator: 2026 Monthly Guide | ${SITE_NAME}`,
   description:
-    "Compare cat insurance cost by age, indoor risk, deductible, reimbursement rate, annual limit, and plan type before requesting quotes.",
+    "Estimate cat insurance cost by age, indoor risk, deductible, reimbursement rate, annual limit, and plan type before requesting quotes.",
   alternates: { canonical: `${SITE_BASE_URL}/insurance/${slug}` },
   openGraph: {
-    title: "Cat Insurance Cost in 2026: Monthly Price Guide",
+    title: "Cat Insurance Cost Calculator: 2026 Monthly Guide",
     description:
-      "Compare average cat insurance cost, indoor cat emergency risks, quote settings, and cheaper coverage options.",
+      "Estimate average cat insurance cost, indoor cat emergency risks, quote settings, and cheaper coverage options.",
     url: `${SITE_BASE_URL}/insurance/${slug}`,
     siteName: SITE_NAME,
     type: "website",
@@ -21,9 +22,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cat Insurance Cost in 2026: Monthly Price Guide",
+    title: "Cat Insurance Cost Calculator: 2026 Monthly Guide",
     description:
-      "Compare average cat insurance cost, indoor cat emergency risks, quote settings, and cheaper coverage options.",
+      "Estimate average cat insurance cost, indoor cat emergency risks, quote settings, and cheaper coverage options.",
     images: [`${SITE_BASE_URL}/og-image.png`],
   },
 };
@@ -38,6 +39,11 @@ const faq = [
     question: "Is cat insurance cheaper than dog insurance?",
     answer:
       "Yes, cat insurance is often cheaper than dog insurance because average claim costs and breed-related risk differences are usually lower. Indoor cats can still face expensive emergencies such as urinary blockage, toxin exposure, falls, and foreign object ingestion.",
+  },
+  {
+    question: "How can I estimate cat insurance cost?",
+    answer:
+      "Use the same deductible, reimbursement rate, annual limit, plan type, age band, health risk, and location assumptions across providers. A calculator can show a planning range, but each insurer's quote is the final price.",
   },
   {
     question: "Is pet insurance worth it for an indoor cat?",
@@ -61,8 +67,8 @@ export default function CatInsuranceCostPage() {
     <CommercialInsurancePage
       slug={slug}
       label="Cat Insurance Cost"
-      title="Cat Insurance Cost in 2026: Monthly Price Guide"
-      intro="Quick answer: cat insurance often costs about $32 per month for accident and illness coverage. Cats are usually cheaper to insure than dogs, but serious issues like urinary blockage, toxin exposure, dental injury, and emergency hospitalization can still create large bills."
+      title="Cat Insurance Cost Calculator and 2026 Monthly Guide"
+      intro="Quick answer: cat insurance often costs about $32 per month for accident and illness coverage. Use the calculator below to adjust age, health risk, location cost level, deductible, reimbursement rate, annual limit, and whether you choose accident-only or broader illness coverage."
       primaryCtaLabel="Compare cat insurance quotes"
       secondaryCtaLabel="See all pet insurance costs"
       secondaryCtaHref="/insurance/pet-insurance-cost"
@@ -73,6 +79,10 @@ export default function CatInsuranceCostPage() {
         { label: "Key risk", value: "Urinary care", note: "Blockage and urinary disease can become urgent quickly." },
       ]}
       sections={[
+        {
+          title: "Cat Insurance Cost Calculator",
+          content: <InsuranceCostEstimator defaultSpecies="cat" lockSpecies title="Cat Insurance Cost Calculator" />,
+        },
         {
           title: "Average Cat Insurance Cost",
           content: (

@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CommercialInsurancePage } from "../_components/commercial-insurance-page";
+import { InsuranceCostEstimator } from "@/components/insurance/insurance-cost-estimator";
 import { SITE_BASE_URL, SITE_NAME } from "@/lib/constants";
 
 const slug = "pet-insurance-cost";
 
 export const metadata: Metadata = {
-  title: `Pet Insurance Cost in 2026: Dog & Cat Price Table | ${SITE_NAME}`,
+  title: `Pet Insurance Cost Calculator & Price Table | ${SITE_NAME}`,
   description:
-    "See 2026 pet insurance cost by dog, cat, plan type, deductible, reimbursement rate, and annual limit before comparing quotes.",
+    "Estimate 2026 pet insurance cost by dog, cat, plan type, deductible, reimbursement rate, annual limit, and quote settings.",
   alternates: { canonical: `${SITE_BASE_URL}/insurance/${slug}` },
   openGraph: {
-    title: "Pet Insurance Cost in 2026: Dog & Cat Price Table",
+    title: "Pet Insurance Cost Calculator and Price Table",
     description:
-      "Compare dog and cat pet insurance cost, average monthly premiums, plan types, deductibles, and quote settings.",
+      "Estimate dog and cat pet insurance cost, average monthly premiums, plan types, deductibles, and quote settings.",
     url: `${SITE_BASE_URL}/insurance/${slug}`,
     siteName: SITE_NAME,
     type: "website",
@@ -21,9 +22,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pet Insurance Cost in 2026: Dog & Cat Price Table",
+    title: "Pet Insurance Cost Calculator and Price Table",
     description:
-      "Compare dog and cat pet insurance cost, average monthly premiums, plan types, deductibles, and quote settings.",
+      "Estimate dog and cat pet insurance cost, average monthly premiums, plan types, deductibles, and quote settings.",
     images: [`${SITE_BASE_URL}/og-image.png`],
   },
 };
@@ -38,6 +39,11 @@ const faq = [
     question: "What is the average cost of pet insurance?",
     answer:
       "A useful average cost estimate is about $62 per month for dogs and $32 per month for cats for accident and illness coverage. Accident-only plans can cost less, while lower deductibles, higher reimbursement rates, and higher annual limits usually raise the monthly price.",
+  },
+  {
+    question: "How can I estimate my pet insurance cost?",
+    answer:
+      "Start with your pet's species and plan type, then compare quotes using the same deductible, reimbursement rate, annual limit, age, breed or health risk, and location. A calculator can show a useful range, but only provider quotes can confirm your actual premium.",
   },
   {
     question: "How much does dog insurance cost per month?",
@@ -76,8 +82,8 @@ export default function PetInsuranceCostPage() {
     <CommercialInsurancePage
       slug={slug}
       label="Pet Insurance Cost"
-      title="Pet Insurance Cost in 2026: Dog and Cat Price Table"
-      intro="Quick answer: pet insurance often costs about $62 per month for dogs and $32 per month for cats for accident and illness coverage. Use the table below to compare average pet insurance cost, dog insurance cost, cat insurance cost, and the plan settings that change your quote."
+      title="Pet Insurance Cost Calculator and 2026 Price Table"
+      intro="Quick answer: pet insurance often costs about $62 per month for dogs and $32 per month for cats for accident and illness coverage. Use the calculator and table below to estimate pet insurance cost, dog insurance cost, cat insurance cost, and the plan settings that change your quote."
       primaryCtaLabel="Compare quotes by price"
       secondaryCtaLabel="See cheaper accident-only plans"
       secondaryCtaHref="/insurance/accident-only"
@@ -88,6 +94,10 @@ export default function PetInsuranceCostPage() {
         { label: "Price drivers", value: "6", note: "Age, breed, zip code, deductible, reimbursement, and limit change quotes." },
       ]}
       sections={[
+        {
+          title: "Pet Insurance Cost Calculator",
+          content: <InsuranceCostEstimator title="Pet Insurance Cost Calculator" />,
+        },
         {
           title: "2026 Average Pet Insurance Cost Table",
           content: (
