@@ -63,7 +63,7 @@ export default function Home() {
                 </div>
                 <h3 className="font-semibold mb-2">Get Instant Results</h3>
                 <p className="text-sm text-muted-foreground">
-                  Every result is backed by veterinary references and clinical sources. No ads disguised as content, no sponsored recommendations.
+                  Every result is backed by veterinary references and clinical sources. Recommendations and affiliate links are clearly labeled.
                 </p>
               </div>
               <div className="text-center">

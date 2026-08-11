@@ -7,14 +7,14 @@ import Link from "next/link";
 import { getToxicityCategoryEntries } from "@/lib/toxicity-category-metadata";
 
 export const metadata: Metadata = {
-  title: `Is This Food Safe for My Dog & Cat? Free Toxicity Checker | ${SITE_NAME}`,
+  title: `Dog & Cat Toxicity Checker: Is It Safe? | ${SITE_NAME}`,
   description:
-    "Instantly check if foods, plants, cleaners, and household items are safe for your dog or cat. Search grapes, chocolate, wisteria, cantaloupe, cleaning wipes, and 500+ more items.",
+    "Search 500+ foods, plants, cleaners, and household items to see what's safe for dogs and cats, with symptoms and what to do next.",
   alternates: { canonical: `${SITE_BASE_URL}/toxicity` },
   openGraph: {
-    title: `Is It Safe for My Pet? Free Toxicity Checker | ${SITE_NAME}`,
+    title: `Dog & Cat Toxicity Checker | ${SITE_NAME}`,
     description:
-      "Search 500+ foods, plants, cleaners, and household items. Instant safety check for dogs and cats. Free, no sign-up.",
+      "Search 500+ foods, plants, cleaners, and household items to see what's safe for dogs and cats.",
     url: `${SITE_BASE_URL}/toxicity`,
     siteName: SITE_NAME,
     type: "website",
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Is It Safe for My Pet? Free Toxicity Checker | ${SITE_NAME}`,
+    title: `Dog & Cat Toxicity Checker | ${SITE_NAME}`,
     description:
-      "Search 500+ foods, plants, cleaners, and household items. Instant safety check for dogs and cats. Free, no sign-up.",
+      "Search 500+ foods, plants, cleaners, and household items to see what's safe for dogs and cats.",
     images: [`${SITE_BASE_URL}/og-image.png`],
   },
 };
