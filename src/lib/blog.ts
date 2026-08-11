@@ -27,6 +27,7 @@ export interface BlogPostMeta {
   slug: string;
   title: string;
   date: string;
+  updated?: string;
   category: string;
   subcategory?: string;
   tags: string[];
@@ -69,6 +70,7 @@ export function getAllPosts(): BlogPost[] {
       slug: data.slug || filename.replace(/\.mdx$/, ""),
       title: data.title,
       date: data.date,
+      updated: data.updated,
       category: data.category,
       subcategory: data.subcategory,
       tags: data.tags || [],

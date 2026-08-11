@@ -139,4 +139,48 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
         "Ask your veterinarian for local guidance. Many puppies can socialize in controlled, lower-risk settings with healthy vaccinated dogs, but dog parks, pet stores, and high-traffic dog areas are usually avoided until the vaccine series is complete.",
     },
   ],
+  "dog-dental-care-guide": [
+    {
+      question: "How often should I brush my dog's teeth?",
+      answer:
+        "Daily brushing is best, because plaque can harden into tartar quickly. If daily brushing is not realistic, aim for several short sessions each week and be consistent.",
+    },
+    {
+      question: "Can dental chews replace brushing?",
+      answer:
+        "No. Dental chews can reduce plaque and tartar, especially if they are VOHC-accepted, but they do not clean as thoroughly as brushing and they cannot treat disease below the gumline.",
+    },
+    {
+      question: "Is anesthesia-free dental cleaning safe for dogs?",
+      answer:
+        "It may remove visible tartar, but it cannot clean below the gumline, take dental X-rays, or safely treat painful teeth. Ask your veterinarian about a full dental exam and cleaning if your dog has tartar, gum disease, or pain signs.",
+    },
+    {
+      question: "What toothpaste is safe for dogs?",
+      answer:
+        "Use dog-specific enzymatic toothpaste. Do not use human toothpaste because it may contain fluoride, xylitol, foaming agents, or flavors that are unsafe or irritating for dogs.",
+    },
+  ],
+  "flea-tick-prevention-guide": [
+    {
+      question: "Do dogs and cats need flea and tick prevention year-round?",
+      answer:
+        "Many pets benefit from year-round prevention, especially in warmer regions, high-tick areas, multi-pet homes, and households where pets travel, board, hike, or visit dog parks. Ask your veterinarian about local risk.",
+    },
+    {
+      question: "Is oral or topical flea prevention better?",
+      answer:
+        "Neither is always better. Oral products are convenient for dogs that swim or bathe often. Topicals can work well for pets that cannot take oral medication, but they must be applied correctly and kept away from pets that might lick them.",
+    },
+    {
+      question: "Can I use dog flea medicine on my cat?",
+      answer:
+        "No. Do not use dog flea and tick medicine on a cat unless the product is specifically labeled for cats and your veterinarian confirms it. Some dog-only ingredients are dangerous to cats.",
+    },
+    {
+      question: "What if my pet has seizures?",
+      answer:
+        "Tell your veterinarian before choosing a flea and tick product. Some oral products have FDA-labeled neurologic precautions, so pets with seizure history need individualized guidance.",
+    },
+  ],
 };

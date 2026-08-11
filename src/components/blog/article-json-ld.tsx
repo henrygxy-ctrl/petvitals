@@ -27,6 +27,7 @@ export function ArticleJsonLd({ post }: { post: BlogPost }) {
       name: SITE_NAME,
       url: SITE_BASE_URL,
     },
+    dateModified: post.updated || post.date,
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `${SITE_BASE_URL}/blog/${post.slug}`,
