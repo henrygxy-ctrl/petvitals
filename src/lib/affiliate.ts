@@ -327,6 +327,38 @@ export const PRODUCT_RECS: Record<string, ProductRecommendation[]> = {
       platform: "amazon",
     },
   ],
+  "how-much-is-a-dog-teeth-cleaning": [
+    {
+      name: "Enzymatic Dog Toothpaste Kit",
+      description: "Daily brushing helps reduce plaque between veterinary dental cleanings.",
+      url: chewyUrl("enzymatic-toothpaste-kit"),
+      priceHint: "$10-$18",
+      platform: "chewy",
+    },
+    {
+      name: "Compare Pet Insurance Quotes",
+      description: "Check whether dental injury, dental disease, or wellness cleaning benefits fit your budget.",
+      url: insuranceUrl("NEXT_PUBLIC_AFFILIATE_LEMONADE_URL", "https://www.lemonade.com/pet"),
+      priceHint: "From $10/mo",
+      platform: "other",
+    },
+  ],
+  "dog-dental-cleaning-cost": [
+    {
+      name: "Greenies Dental Chews",
+      description: "VOHC-accepted daily dental chews that can support plaque and tartar control.",
+      url: amazonUrl("B07XYZ0007"),
+      priceHint: "$25-$40",
+      platform: "amazon",
+    },
+    {
+      name: "Compare Pet Insurance Quotes",
+      description: "Review dental injury, illness, and wellness rules before assuming dental costs are covered.",
+      url: insuranceUrl("NEXT_PUBLIC_AFFILIATE_LEMONADE_URL", "https://www.lemonade.com/pet"),
+      priceHint: "From $10/mo",
+      platform: "other",
+    },
+  ],
   "best-dog-food-for-weight-loss": [
     {
       name: "Weight Management Dry Dog Food",
@@ -384,6 +416,54 @@ export const PRODUCT_RECS: Record<string, ProductRecommendation[]> = {
       url: amazonUrl("B07XYZ0010"),
       priceHint: "$12-$25",
       platform: "amazon",
+    },
+  ],
+  "flea-treatment-for-cats": [
+    {
+      name: "Cat Flea & Tick Treatment",
+      description: "Use only cat-labeled flea products matched to your cat's weight and vet guidance.",
+      url: chewyUrl("b/flea-tick-cat-381"),
+      priceHint: "$15-$65",
+      platform: "chewy",
+    },
+    {
+      name: "Enzymatic Cat Accident Cleaner",
+      description: "Low-residue cleanup option for bedding and cat traffic areas during home cleaning.",
+      url: chewyUrl("b/stain-odor-removers-1037"),
+      priceHint: "$8-$25",
+      platform: "chewy",
+    },
+  ],
+  "best-flea-medicine-for-dogs": [
+    {
+      name: "Dog Flea & Tick Prevention",
+      description: "Compare dog-labeled oral, topical, and collar options with your veterinarian.",
+      url: chewyUrl("b/flea-tick-dog-380"),
+      priceHint: "$15-$70",
+      platform: "chewy",
+    },
+    {
+      name: "Tick Removal Tool Kit",
+      description: "Keep a tick remover in your walking, hiking, or car emergency kit.",
+      url: amazonUrl("B07XYZ0005"),
+      priceHint: "$5-$12",
+      platform: "amazon",
+    },
+  ],
+  "puppy-first-vet-visit-cost": [
+    {
+      name: "Puppy Starter Kit",
+      description: "Crate, bowls, toys, cleaner, and training basics for the first week home.",
+      url: amazonUrl("B07XYZ0004"),
+      priceHint: "$80-$150",
+      platform: "amazon",
+    },
+    {
+      name: "Pet Insurance - Accident & Illness",
+      description: "Enroll before symptoms are documented to reduce pre-existing condition complications.",
+      url: insuranceUrl("NEXT_PUBLIC_AFFILIATE_LEMONADE_URL", "https://www.lemonade.com/pet"),
+      priceHint: "From $10/mo",
+      platform: "other",
     },
   ],
   "signs-your-cat-is-sick": [

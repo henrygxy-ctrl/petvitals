@@ -60,6 +60,21 @@ const faq = [
     answer:
       "You can usually lower the monthly premium by choosing a higher deductible, lower reimbursement rate, lower annual limit, or accident-only coverage. Compare carefully because cheaper settings can increase your out-of-pocket cost during a serious claim.",
   },
+  {
+    question: "Does dog insurance cover dental cleaning?",
+    answer:
+      "Routine dental cleaning is usually handled through wellness add-ons, not core accident and illness coverage. Dental injury or dental disease coverage varies by provider, so read the dental rules before choosing a policy.",
+  },
+  {
+    question: "Does dog insurance cover hereditary conditions?",
+    answer:
+      "Many accident and illness plans may cover eligible hereditary conditions if they are not pre-existing and are not excluded by the policy. Check breed-specific exclusions, orthopedic waiting periods, and bilateral condition rules.",
+  },
+  {
+    question: "Should I buy dog insurance for a puppy?",
+    answer:
+      "Early enrollment can be useful because puppies are accident-prone and conditions found before coverage may be considered pre-existing. Compare waiting periods, wellness add-ons, and accident and illness coverage before the first big vet bill.",
+  },
 ];
 
 export default function DogInsuranceCostPage() {

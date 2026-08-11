@@ -60,6 +60,21 @@ const faq = [
     answer:
       "You can usually lower the monthly premium by choosing a higher deductible, lower reimbursement rate, lower annual limit, or accident-only coverage. Make sure the cheaper plan still covers the emergencies you care about most.",
   },
+  {
+    question: "Does cat insurance cover dental disease?",
+    answer:
+      "Dental coverage varies. Routine cleaning is often a wellness add-on, while dental illness or tooth injury may have separate rules, exclusions, or waiting periods. Read the dental section before buying.",
+  },
+  {
+    question: "Is cat insurance worth it for older cats?",
+    answer:
+      "It can be useful, but premiums are usually higher and pre-existing condition rules matter more. Compare coverage for kidney disease, diabetes, hyperthyroidism, cancer, dental disease, diagnostics, and medications.",
+  },
+  {
+    question: "Should indoor cats have accident and illness coverage?",
+    answer:
+      "Indoor cats can still need urgent care for urinary blockage, vomiting, toxin exposure, swallowed objects, falls, dental pain, or chronic illness. Accident and illness coverage is broader than accident-only coverage.",
+  },
 ];
 
 export default function CatInsuranceCostPage() {

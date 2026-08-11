@@ -125,6 +125,24 @@ export function CommercialInsurancePage({
             ))}
           </section>
 
+          <section className="mb-10 rounded-xl border bg-primary/5 p-5">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <h2 className="text-base font-semibold">Compare quotes with the same settings</h2>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Use one deductible, reimbursement rate, annual limit, and pet profile across providers so the lowest price is not just weaker coverage.
+                </p>
+              </div>
+              <a
+                href="#providers"
+                className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
+              >
+                Compare providers
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+          </section>
+
           <div className="prose prose-sm max-w-none space-y-8 text-foreground/80">
             {sections.map((section) => (
               <section key={section.title}>

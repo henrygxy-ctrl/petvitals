@@ -183,4 +183,199 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
         "Tell your veterinarian before choosing a flea and tick product. Some oral products have FDA-labeled neurologic precautions, so pets with seizure history need individualized guidance.",
     },
   ],
+  "senior-dog-care-tips": [
+    {
+      question: "How often should a senior dog see the vet?",
+      answer:
+        "Many senior dogs benefit from veterinary exams every six months. More frequent visits may be needed for dogs with arthritis, dental disease, kidney disease, heart disease, diabetes, cancer, or unexplained weight changes.",
+    },
+    {
+      question: "What are common signs of pain in senior dogs?",
+      answer:
+        "Pain may show as slowing down, reluctance to climb stairs, panting at night, irritability, licking joints, trouble rising, reduced appetite, or sudden behavior changes. Limping is not the only sign.",
+    },
+    {
+      question: "Should senior dogs eat senior dog food?",
+      answer:
+        "Not always. The best diet depends on body condition, muscle loss, dental health, kidney values, and disease history. Ask your veterinarian before switching if your dog has medical issues.",
+    },
+    {
+      question: "Is pet insurance worth it for a senior dog?",
+      answer:
+        "It can be, but compare carefully. Premiums are usually higher, and pre-existing condition rules matter. Review diagnostic, medication, dental, orthopedic, cancer, and emergency coverage before choosing.",
+    },
+  ],
+  "bringing-home-new-puppy-checklist": [
+    {
+      question: "What should I buy before bringing a puppy home?",
+      answer:
+        "Start with a crate or pen, leash, collar, ID tag, bowls, the current puppy food, safe chew toys, enzymatic cleaner, baby gates, and a vet appointment. Add extras later after you know your puppy's size and habits.",
+    },
+    {
+      question: "When should a new puppy go to the vet?",
+      answer:
+        "Schedule the first visit within a few days of coming home, sooner if the puppy is coughing, vomiting, has diarrhea, seems weak, or lacks vaccine records.",
+    },
+    {
+      question: "Should I get pet insurance before the first vet visit?",
+      answer:
+        "If you plan to buy insurance, earlier is usually cleaner because symptoms found before enrollment may become pre-existing conditions. Compare coverage and waiting periods before relying on a policy.",
+    },
+    {
+      question: "How often should a puppy go outside to potty?",
+      answer:
+        "Many puppies need to go out after waking, eating, drinking, playing, and at least every couple of hours during the day. Young puppies cannot reliably hold it for long.",
+    },
+  ],
+  "cat-weight-management": [
+    {
+      question: "How fast should a cat lose weight?",
+      answer:
+        "Slowly. Many cats should lose no more than about 0.5-2% of body weight per week, and some need an even slower plan. Ask your veterinarian to set a safe target.",
+    },
+    {
+      question: "Why is fasting dangerous for overweight cats?",
+      answer:
+        "Cats, especially overweight cats, can develop hepatic lipidosis if they stop eating. Never use starvation or sudden severe calorie restriction as a weight-loss plan.",
+    },
+    {
+      question: "Is wet food better for cat weight loss?",
+      answer:
+        "Wet food can help because it is higher in moisture and often less calorie dense per bite, but total calories still matter. Choose the diet with your veterinarian.",
+    },
+    {
+      question: "How do I help one cat lose weight in a multi-cat home?",
+      answer:
+        "Use separated meals, microchip feeders, scheduled feeding, and measured portions. Free-feeding several cats from one bowl makes weight loss hard to control.",
+    },
+  ],
+  "dog-exercise-needs-by-breed": [
+    {
+      question: "How much exercise does my dog need each day?",
+      answer:
+        "It depends on breed, age, health, and temperament. Some working breeds need two or more hours of combined physical and mental work, while flat-faced, giant, senior, or medically limited dogs may need shorter sessions.",
+    },
+    {
+      question: "Is walking enough exercise for a dog?",
+      answer:
+        "For some dogs, yes. For high-energy working, herding, sporting, and terrier breeds, walks may need to be paired with training, scent work, fetch, swimming, or structured jobs.",
+    },
+    {
+      question: "Can too much exercise hurt a puppy?",
+      answer:
+        "Yes. Forced running, repetitive jumping, and long hard-surface exercise can be too much before growth plates close. Keep puppy exercise short, positive, and age-appropriate.",
+    },
+    {
+      question: "What are signs my dog is over-exercised?",
+      answer:
+        "Watch for lagging, excessive panting, limping, stiffness, reluctance to rise, vomiting, disorientation, dark gums, or collapse. Stop and seek veterinary help for severe signs.",
+    },
+  ],
+  "pet-emergency-kit-checklist": [
+    {
+      question: "What should be in a pet emergency kit?",
+      answer:
+        "Include gauze, bandage wrap, saline, antiseptic wipes, gloves, thermometer, tweezers, tick remover, muzzle, leash, flashlight, medication records, poison control numbers, food, water, bowls, and evacuation supplies.",
+    },
+    {
+      question: "Should I keep hydrogen peroxide in a pet first aid kit?",
+      answer:
+        "Only as a tool to use under professional instruction. Do not induce vomiting unless a veterinarian or poison control tells you to, because some toxins cause more damage if vomited.",
+    },
+    {
+      question: "How often should I update my pet emergency kit?",
+      answer:
+        "Check it every three months. Replace expired items, rotate food and water, update medical records, and refresh photos if your pet's appearance changed.",
+    },
+    {
+      question: "Do I need a separate kit for travel?",
+      answer:
+        "A small car kit is useful if your pet hikes, swims, travels, goes to daycare, or joins road trips. Include restraint, water, wound supplies, tick tools, and records.",
+    },
+  ],
+  "how-much-is-a-dog-teeth-cleaning": [
+    {
+      question: "How much is a dog teeth cleaning without extractions?",
+      answer:
+        "It may be a few hundred dollars, but the exact cost depends on location, anesthesia, bloodwork, dental X-rays, and clinic pricing. Ask for a written estimate before the procedure.",
+    },
+    {
+      question: "Why does dog dental cleaning require anesthesia?",
+      answer:
+        "Anesthesia lets the veterinary team clean below the gumline, take X-rays, examine every tooth, prevent pain, and protect the airway during scaling and polishing.",
+    },
+    {
+      question: "Are dog dental cleanings worth it?",
+      answer:
+        "Yes, when dental disease is present or prevention is needed. Untreated periodontal disease can cause pain, infection, tooth loss, and higher future bills.",
+    },
+  ],
+  "dog-dental-cleaning-cost": [
+    {
+      question: "Why is dog dental cleaning so expensive?",
+      answer:
+        "A real dental cleaning involves anesthesia, monitoring, skilled staff time, cleaning below the gumline, polishing, and sometimes X-rays, extractions, and medication.",
+    },
+    {
+      question: "What is the cheapest way to clean a dog's teeth?",
+      answer:
+        "Daily brushing is the cheapest prevention. Once tartar and periodontal disease are present, veterinary cleaning is usually needed.",
+    },
+    {
+      question: "Does wellness coverage pay for dental cleaning?",
+      answer:
+        "Some wellness add-ons reimburse part of routine dental cleaning, but limits vary. Standard accident and illness plans often handle dental disease differently from preventive cleaning.",
+    },
+  ],
+  "flea-treatment-for-cats": [
+    {
+      question: "What is the best flea treatment for cats?",
+      answer:
+        "The best treatment is a cat-labeled product chosen with your veterinarian based on weight, age, health history, other pets in the home, and local parasite risk.",
+    },
+    {
+      question: "Can I use dog flea medicine on my cat?",
+      answer:
+        "No. Do not use dog flea medicine on a cat unless the label and your veterinarian specifically confirm it is safe for cats.",
+    },
+    {
+      question: "Why does my cat still have fleas after treatment?",
+      answer:
+        "New fleas may be emerging from eggs and pupae in the home. Treat all pets, clean the environment, and keep prevention consistent.",
+    },
+  ],
+  "best-flea-medicine-for-dogs": [
+    {
+      question: "What is the best flea medicine for dogs?",
+      answer:
+        "There is no single best product for every dog. The right choice depends on age, weight, health history, tick exposure, swimming, household cats, and whether you prefer oral, topical, or collar protection.",
+    },
+    {
+      question: "Are oral flea medications safe for dogs?",
+      answer:
+        "Many dogs use them safely, but some products have neurologic precautions. Talk to your veterinarian if your dog has seizures, tremors, or prior reactions.",
+    },
+    {
+      question: "Can dog flea medicine hurt cats?",
+      answer:
+        "Yes. Some dog products are dangerous to cats. Keep cat safety in mind if your dog and cat groom each other or share bedding.",
+    },
+  ],
+  "puppy-first-vet-visit-cost": [
+    {
+      question: "How soon should a new puppy see a vet?",
+      answer:
+        "Within a few days of coming home is a common target, and sooner if the puppy is coughing, vomiting, has diarrhea, seems weak, or lacks reliable records.",
+    },
+    {
+      question: "What should I bring to the first puppy vet visit?",
+      answer:
+        "Bring vaccine records, deworming history, adoption or breeder paperwork, a fresh stool sample if requested, current food information, and your questions.",
+    },
+    {
+      question: "Is puppy insurance worth buying early?",
+      answer:
+        "It can be useful if a large unexpected bill would be difficult to pay. Early enrollment may reduce pre-existing condition complications, but waiting periods and exclusions still apply.",
+    },
+  ],
 };
