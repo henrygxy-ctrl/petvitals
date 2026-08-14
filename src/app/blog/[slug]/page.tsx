@@ -15,7 +15,11 @@ import { InArticleAd } from "@/components/ads/AdUnit";
 import { ProductRecommendationCard } from "@/components/affiliate/product-rec-card";
 import { getProductRecommendations } from "@/lib/affiliate";
 import { JsonLdBreadcrumb, JsonLdFAQ } from "@/components/seo/json-ld";
-import { Calendar, Clock, Tag, User } from "lucide-react";
+import { DownloadResourceCard } from "@/components/downloads/resource-card";
+import { CleaningIngredientChecker } from "@/components/tools/cleaning-ingredient-checker";
+import { PuppyVaccinationPlanner } from "@/components/tools/puppy-vaccination-planner";
+import { VetBillEstimator } from "@/components/tools/vet-bill-estimator";
+import { Calendar, Clock, ShieldCheck, Tag, User } from "lucide-react";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -71,6 +75,12 @@ export default async function BlogArticlePage({ params }: Props) {
   const related = getRelatedPosts(slug);
   const productRecs = getProductRecommendations(post.slug);
   const faqQuestions = BLOG_FAQS[post.slug] || [];
+  const toolMode = getVetBillToolMode(post.slug);
+  const downloadVariant = getDownloadVariant(post.slug);
+  const showCleaningChecker = CLEANING_TOOL_SLUGS.has(post.slug);
+  const showPuppyPlanner = post.slug === "puppy-vaccination-schedule";
+  const editorialDate = post.updated || post.date;
+  const editorialDateLabel = post.updated ? "updated" : "published";
 
   let Content: React.ComponentType;
   try {
@@ -159,7 +169,34 @@ export default async function BlogArticlePage({ params }: Props) {
               </div>
             </div>
 
+            <section className="mb-8 rounded-xl border bg-card p-5">
+              <div className="flex items-start gap-3">
+                <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" />
+                <div>
+                  <h2 className="text-sm font-semibold text-foreground">Editorial Standards</h2>
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                    Written by the PetVitals Editorial Team and {editorialDateLabel} on{" "}
+                    {new Date(editorialDate).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                    . We use public veterinary, government, and industry sources where available and keep advice educational, not a substitute for your veterinarian.
+                  </p>
+                  {post.sources.length > 0 && (
+                    <p className="mt-2 text-xs text-muted-foreground">
+                      Sources are listed below so readers can check the original guidance.
+                    </p>
+                  )}
+                </div>
+              </div>
+            </section>
+
             <TableOfContents />
+
+            {showPuppyPlanner && <PuppyVaccinationPlanner />}
+            {toolMode && <VetBillEstimator mode={toolMode} />}
+            {showCleaningChecker && <CleaningIngredientChecker />}
 
             {productRecs.length > 0 && (
               <ProductRecommendationCard products={productRecs} />
@@ -179,6 +216,8 @@ export default async function BlogArticlePage({ params }: Props) {
             {post.sources.length > 0 && (
               <SourceCitation sources={post.sources} />
             )}
+
+            {downloadVariant && <DownloadResourceCard variant={downloadVariant} />}
 
             {post.readNext && post.readNext.length > 0 && (
               <ReadNext slugs={post.readNext} />
@@ -227,4 +266,44 @@ export default async function BlogArticlePage({ params }: Props) {
       </div>
     </>
   );
+}
+
+const CLEANING_TOOL_SLUGS = new Set([
+  "best-pet-safe-cleaning-products",
+  "cat-friendly-cleaning-products",
+  "pet-safe-floor-cleaners-dogs-cats",
+]);
+
+function getVetBillToolMode(slug: string) {
+  if (slug === "how-much-is-a-dog-teeth-cleaning" || slug === "dog-dental-cleaning-cost") {
+    return "dental" as const;
+  }
+  if (slug === "puppy-first-vet-visit-cost") {
+    return "puppy" as const;
+  }
+  return null;
+}
+
+function getDownloadVariant(slug: string) {
+  if (
+    slug.includes("poison") ||
+    slug.includes("toxicity") ||
+    slug === "dog-chocolate-toxicity" ||
+    slug === "can-dogs-eat-grapes" ||
+    slug === "can-dogs-eat-onions" ||
+    slug === "common-household-poisons-pets" ||
+    CLEANING_TOOL_SLUGS.has(slug)
+  ) {
+    return "poison" as const;
+  }
+
+  if (
+    slug === "puppy-vaccination-schedule" ||
+    slug === "puppy-first-vet-visit-cost" ||
+    slug === "bringing-home-new-puppy-checklist"
+  ) {
+    return "puppy" as const;
+  }
+
+  return null;
 }

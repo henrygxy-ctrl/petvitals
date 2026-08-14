@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CommercialInsurancePage } from "../_components/commercial-insurance-page";
+import { VetBillEstimator } from "@/components/tools/vet-bill-estimator";
 import { SITE_BASE_URL, SITE_NAME } from "@/lib/constants";
 
 const slug = "emergency-vet-cost";
@@ -82,6 +83,10 @@ export default function EmergencyVetCostPage() {
         { label: "Best timing", value: "Before", note: "Insurance should be active before symptoms, injury, or diagnosis." },
       ]}
       sections={[
+        {
+          title: "Emergency Vet Bill Estimator",
+          content: <VetBillEstimator mode="emergency" />,
+        },
         {
           title: "Emergency Exam Fee vs. the Total Bill",
           content: (

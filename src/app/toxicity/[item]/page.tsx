@@ -7,6 +7,7 @@ import { ArrowLeft, ExternalLink, Shield, AlertTriangle, Info, CheckCircle, Dog,
 import { JsonLdBreadcrumb, JsonLdFAQ } from "@/components/seo/json-ld";
 import { AdUnit } from "@/components/ads/AdUnit";
 import { InsuranceCtaBanner } from "@/components/affiliate/insurance-cta";
+import { DownloadResourceCard } from "@/components/downloads/resource-card";
 
 const riskLabels: Record<string, string> = {
   safe: "Safe",
@@ -194,6 +195,22 @@ function buildToxicityFaq(item: ToxicityItem) {
   ];
 }
 
+function quickPetVerdict(item: ToxicityItem, pet: "dogs" | "cats") {
+  const isSafe = isSafeForPet(item, pet);
+  if (isSafe && item.riskLevel === "safe") return "Generally safe";
+  if (isSafe) return "Use caution";
+  if (item.riskLevel === "danger") return "Emergency risk";
+  return "Unsafe";
+}
+
+function quickText(value: string | undefined, fallback: string) {
+  const normalized = (value || "").replace(/\s+/g, " ").trim();
+  if (!normalized) return fallback;
+  if (normalized.length <= 120) return normalized;
+  const cutoff = normalized.lastIndexOf(" ", 117);
+  return `${normalized.slice(0, cutoff > 80 ? cutoff : 117).trimEnd()}...`;
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -332,6 +349,34 @@ export default async function ToxicityItemPage({
               </div>
             </div>
 
+            <section className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <QuickSafetyFact
+                label="Dogs"
+                value={quickPetVerdict(item, "dogs")}
+                tone={dogIsSafe ? "safe" : "danger"}
+              />
+              <QuickSafetyFact
+                label="Cats"
+                value={quickPetVerdict(item, "cats")}
+                tone={catIsSafe ? "safe" : "danger"}
+              />
+              <QuickSafetyFact
+                label="Risk level"
+                value={riskLabels[item.riskLevel]}
+                tone={item.riskLevel === "safe" ? "safe" : item.riskLevel === "caution" ? "caution" : "danger"}
+              />
+              <QuickSafetyFact
+                label="Symptoms"
+                value={quickText(item.symptoms, "No common symptoms expected when used appropriately.")}
+                tone={item.symptoms ? "caution" : "safe"}
+              />
+              <QuickSafetyFact
+                label="What to do now"
+                value={quickText(item.action, "Use small portions and monitor for unusual signs.")}
+                tone={item.riskLevel === "safe" ? "safe" : "danger"}
+              />
+            </section>
+
             {/* Ad placement */}
             <div className="mt-6">
               <AdUnit format="rectangle" />
@@ -382,7 +427,10 @@ export default async function ToxicityItemPage({
 
             {/* Insurance CTA — relevant for toxic/danger items */}
             {(item.riskLevel === "toxic" || item.riskLevel === "danger") && (
-              <InsuranceCtaBanner />
+              <>
+                <InsuranceCtaBanner />
+                <DownloadResourceCard variant="poison" />
+              </>
             )}
 
             {featuredRelatedItems.length > 0 && (
@@ -530,5 +578,29 @@ export default async function ToxicityItemPage({
         </footer>
       </div>
     </>
+  );
+}
+
+function QuickSafetyFact({
+  label,
+  value,
+  tone,
+}: {
+  label: string;
+  value: string;
+  tone: "safe" | "caution" | "danger";
+}) {
+  const toneClass =
+    tone === "safe"
+      ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900 dark:bg-emerald-950/20 dark:text-emerald-300"
+      : tone === "caution"
+        ? "border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900 dark:bg-amber-950/20 dark:text-amber-300"
+        : "border-red-200 bg-red-50 text-red-700 dark:border-red-900 dark:bg-red-950/20 dark:text-red-300";
+
+  return (
+    <div className={`rounded-xl border p-4 ${toneClass}`}>
+      <p className="text-xs font-semibold uppercase tracking-wide opacity-80">{label}</p>
+      <p className="mt-2 text-sm font-semibold leading-snug">{value}</p>
+    </div>
   );
 }
