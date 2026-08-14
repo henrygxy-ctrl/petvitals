@@ -185,7 +185,7 @@ export default async function BlogArticlePage({ params }: Props) {
             )}
 
             {/* Cross-promotion to tools */}
-            <div className="mt-8 grid sm:grid-cols-2 gap-4">
+            <div className="mt-8 grid sm:grid-cols-3 gap-4">
               <a
                 href="/toxicity"
                 className="p-4 rounded-lg border bg-card hover:border-primary/30 transition-colors text-sm"
@@ -199,6 +199,13 @@ export default async function BlogArticlePage({ params }: Props) {
               >
                 <span className="font-semibold block mb-1">Feeding Calculator</span>
                 <span className="text-muted-foreground text-xs">Calculate daily portions based on your pet&apos;s weight</span>
+              </a>
+              <a
+                href="/insurance/pet-insurance-cost"
+                className="p-4 rounded-lg border bg-card hover:border-primary/30 transition-colors text-sm"
+              >
+                <span className="font-semibold block mb-1">Pet Insurance Cost</span>
+                <span className="text-muted-foreground text-xs">Estimate monthly premiums before an emergency bill</span>
               </a>
             </div>
 

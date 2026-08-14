@@ -33,6 +33,39 @@ export const metadata: Metadata = {
   },
 };
 
+const popularGuides = [
+  {
+    title: "Pet Toxicity Checker",
+    href: "/toxicity",
+    desc: "Search foods, plants, cleaners, and household items for dogs and cats.",
+  },
+  {
+    title: "Dog Dental Costs",
+    href: "/blog/how-much-is-a-dog-teeth-cleaning",
+    desc: "Compare teeth cleaning, dental X-rays, extractions, and insurance rules.",
+  },
+  {
+    title: "Flea and Tick Hub",
+    href: "/blog/flea-tick-prevention-guide",
+    desc: "Choose safer flea and tick prevention for cats, dogs, and multi-pet homes.",
+  },
+  {
+    title: "New Puppy Costs",
+    href: "/blog/puppy-first-vet-visit-cost",
+    desc: "Plan first vet visit, vaccine series, supplies, insurance, and emergency buffers.",
+  },
+  {
+    title: "Pet Insurance Cost",
+    href: "/insurance/pet-insurance-cost",
+    desc: "Use the calculator to compare dog and cat insurance settings.",
+  },
+  {
+    title: "Emergency Vet Cost",
+    href: "/insurance/emergency-vet-cost",
+    desc: "Understand urgent-care bills before poisoning, injuries, or surgery happen.",
+  },
+];
+
 export default function BlogPage() {
   const posts = getAllPosts();
   const categories = getAllCategories();
@@ -65,6 +98,24 @@ export default function BlogPage() {
             
             <p className="mt-2 text-muted-foreground max-w-2xl">Evidence-based guides on pet nutrition, safety, weight management, and more.</p>
           </div>
+
+          <section className="mb-8">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-3">
+              Start Here
+            </h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {popularGuides.map((guide) => (
+                <Link
+                  key={guide.href}
+                  href={guide.href}
+                  className="rounded-xl border bg-card p-4 hover:border-primary/40 transition-colors"
+                >
+                  <h3 className="text-sm font-semibold">{guide.title}</h3>
+                  <p className="mt-1 text-xs text-muted-foreground">{guide.desc}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
 
           <BlogListClient posts={posts} categories={categories} />
 

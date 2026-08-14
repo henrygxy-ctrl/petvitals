@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { JsonLdOrganization, JsonLdWebSiteSearch } from "@/components/seo/json-ld";
 import { Hero } from "@/components/landing/hero";
 import { Features } from "@/components/landing/features";
@@ -5,8 +6,32 @@ import { NavHeader } from "@/components/landing/nav-header";
 import { LatestBlog } from "@/components/landing/latest-blog";
 import { NewsletterSignup } from "@/components/newsletter/newsletter-signup";
 import { AdUnit } from "@/components/ads/AdUnit";
+import { SITE_BASE_URL, SITE_NAME } from "@/lib/constants";
 import Link from "next/link";
 import { BookOpen, ShieldCheck, Mail, Car, Stethoscope, Syringe, Clock, Rss } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: `Pet Toxicity Checker & Free Health Tools | ${SITE_NAME}`,
+  description:
+    "Check foods, plants, cleaners, and substances for dogs and cats. Use free pet toxicity, feeding, weight, and insurance cost tools.",
+  alternates: { canonical: SITE_BASE_URL },
+  openGraph: {
+    title: `Pet Toxicity Checker & Free Health Tools | ${SITE_NAME}`,
+    description:
+      "Check foods, plants, cleaners, and substances for dogs and cats. Use free pet toxicity, feeding, weight, and insurance cost tools.",
+    url: SITE_BASE_URL,
+    siteName: SITE_NAME,
+    type: "website",
+    images: [{ url: `${SITE_BASE_URL}/og-image.png`, width: 1200, height: 630, alt: "PetVitals pet health tools" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Pet Toxicity Checker & Free Health Tools | ${SITE_NAME}`,
+    description:
+      "Check foods, plants, cleaners, and substances for dogs and cats. Use free pet toxicity, feeding, weight, and insurance cost tools.",
+    images: [`${SITE_BASE_URL}/og-image.png`],
+  },
+};
 
 const trustItems = [
   { icon: BookOpen, title: "Science-Based", desc: "All calculations use veterinary standard formulas (RER, MER, BCS) from peer-reviewed research." },
