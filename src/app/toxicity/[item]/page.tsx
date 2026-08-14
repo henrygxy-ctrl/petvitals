@@ -8,6 +8,7 @@ import { JsonLdBreadcrumb, JsonLdFAQ } from "@/components/seo/json-ld";
 import { AdUnit } from "@/components/ads/AdUnit";
 import { InsuranceCtaBanner } from "@/components/affiliate/insurance-cta";
 import { DownloadResourceCard } from "@/components/downloads/resource-card";
+import { ContextualHubLinks, type ContextualHubLink } from "@/components/hubs/contextual-hub-links";
 
 const riskLabels: Record<string, string> = {
   safe: "Safe",
@@ -211,6 +212,47 @@ function quickText(value: string | undefined, fallback: string) {
   return `${normalized.slice(0, cutoff > 80 ? cutoff : 117).trimEnd()}...`;
 }
 
+function buildToxicityHubLinks(
+  item: ToxicityItem,
+  dogIsSafe: boolean,
+  catIsSafe: boolean
+): ContextualHubLink[] {
+  const links: ContextualHubLink[] = [
+    {
+      title: "Dog Toxicity Guide",
+      href: "/toxicity/dogs",
+      label: dogIsSafe ? "Dog safety" : "Dog poisoning",
+      description: `Compare ${item.name} with common dog food, plant, medication, and household toxicity risks.`,
+    },
+    {
+      title: "Cat Toxicity Guide",
+      href: "/toxicity/cats",
+      label: catIsSafe ? "Cat safety" : "Cat poisoning",
+      description: `See cat-specific guidance for ${item.name}, plants, cleaners, foods, and medication risks.`,
+    },
+  ];
+
+  if (item.category === "household") {
+    links.push({
+      title: "Pet-Safe Cleaning Hub",
+      href: "/pet-safe-cleaning",
+      label: "Cleaner safety",
+      description: "Check safer cleaning routines, floor residue risks, and cat-safe disinfectant guidance.",
+    });
+  }
+
+  if (item.riskLevel === "toxic" || item.riskLevel === "danger") {
+    links.push({
+      title: "Vet Cost Hub",
+      href: "/vet-costs",
+      label: "Emergency planning",
+      description: "Plan for emergency exams, toxin ingestion care, hospitalization, and insurance decisions.",
+    });
+  }
+
+  return links;
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -258,6 +300,7 @@ export default async function ToxicityItemPage({
   const faqQuestions = buildToxicityFaq(item);
   const dogIsSafe = isSafeForPet(item, "dogs");
   const catIsSafe = isSafeForPet(item, "cats");
+  const toxicityHubLinks = buildToxicityHubLinks(item, dogIsSafe, catIsSafe);
   const featuredRelatedItems = (featuredSafetyLinks[item.id] || [])
     .map((link) => {
       const linkedItem = getToxicityById(link.id);
@@ -376,6 +419,13 @@ export default async function ToxicityItemPage({
                 tone={item.riskLevel === "safe" ? "safe" : "danger"}
               />
             </section>
+
+            <ContextualHubLinks
+              title="Explore Related Safety Hubs"
+              description="Use these hub pages for broader dog, cat, cleaner, and emergency planning guidance."
+              links={toxicityHubLinks}
+              className="mt-8"
+            />
 
             {/* Ad placement */}
             <div className="mt-6">

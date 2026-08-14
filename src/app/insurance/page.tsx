@@ -66,6 +66,11 @@ const plans = [
 
 const commercialGuides = [
   {
+    title: "Vet Cost Hub",
+    href: "/vet-costs",
+    desc: "Emergency, dental, puppy, and insurance cost planning tools in one place.",
+  },
+  {
     title: "Pet Insurance Cost",
     href: "/insurance/pet-insurance-cost",
     desc: "Monthly cost ranges, quote factors, and ways to lower premiums without buying too little coverage.",

@@ -16,6 +16,7 @@ import { ProductRecommendationCard } from "@/components/affiliate/product-rec-ca
 import { getProductRecommendations } from "@/lib/affiliate";
 import { JsonLdBreadcrumb, JsonLdFAQ } from "@/components/seo/json-ld";
 import { DownloadResourceCard } from "@/components/downloads/resource-card";
+import { ContextualHubLinks, type ContextualHubLink } from "@/components/hubs/contextual-hub-links";
 import {
   CleaningSafetyInfographic,
   PuppyTimelineInfographic,
@@ -86,6 +87,7 @@ export default async function BlogArticlePage({ params }: Props) {
   const showPuppyPlanner = post.slug === "puppy-vaccination-schedule";
   const editorialDate = post.updated || post.date;
   const editorialDateLabel = post.updated ? "updated" : "published";
+  const contextualHubLinks = getContextualHubLinks(post.slug, post.tags);
 
   let Content: React.ComponentType;
   try {
@@ -228,6 +230,13 @@ export default async function BlogArticlePage({ params }: Props) {
 
             {downloadVariant && <DownloadResourceCard variant={downloadVariant} />}
 
+            <ContextualHubLinks
+              title="Continue With a Topic Hub"
+              description="Use the full hub pages for related tools, checklists, and next-step guides."
+              links={contextualHubLinks}
+              className="mt-8"
+            />
+
             {post.readNext && post.readNext.length > 0 && (
               <ReadNext slugs={post.readNext} />
             )}
@@ -282,6 +291,118 @@ const CLEANING_TOOL_SLUGS = new Set([
   "cat-friendly-cleaning-products",
   "pet-safe-floor-cleaners-dogs-cats",
 ]);
+
+const PUPPY_HUB_SLUGS = new Set([
+  "puppy-vaccination-schedule",
+  "puppy-first-vet-visit-cost",
+  "bringing-home-new-puppy-checklist",
+]);
+
+const VET_COST_HUB_SLUGS = new Set([
+  "puppy-first-vet-visit-cost",
+  "how-much-is-a-dog-teeth-cleaning",
+  "dog-dental-cleaning-cost",
+  "pet-insurance-worth-it",
+  "pet-emergency-kit-checklist",
+]);
+
+const DOG_TOXICITY_HUB_SLUGS = new Set([
+  "dog-chocolate-toxicity",
+  "can-dogs-eat-grapes",
+  "can-dogs-eat-onions",
+  "can-dogs-eat-avocado",
+  "common-household-poisons-pets",
+  "sago-palm-toxicity-pets",
+]);
+
+const CAT_TOXICITY_HUB_SLUGS = new Set([
+  "lily-toxicity-cats",
+  "household-plants-toxic-to-cats",
+  "can-cats-eat-tuna",
+  "can-cats-eat-cantaloupe",
+  "common-household-poisons-pets",
+  "sago-palm-toxicity-pets",
+]);
+
+function getContextualHubLinks(slug: string, tags: string[]): ContextualHubLink[] {
+  const links: ContextualHubLink[] = [];
+  const tagText = tags.join(" ").toLowerCase();
+
+  const add = (link: ContextualHubLink) => {
+    if (!links.some((existing) => existing.href === link.href)) {
+      links.push(link);
+    }
+  };
+
+  if (
+    CLEANING_TOOL_SLUGS.has(slug) ||
+    tagText.includes("cleaning") ||
+    tagText.includes("cleaners") ||
+    tagText.includes("disinfectants")
+  ) {
+    add({
+      title: "Pet-Safe Cleaning Hub",
+      href: "/pet-safe-cleaning",
+      label: "Cleaning hub",
+      description: "Cleaner ingredient checker, floor residue guidance, and cat-safe disinfectant advice.",
+    });
+  }
+
+  if (PUPPY_HUB_SLUGS.has(slug) || tagText.includes("puppy")) {
+    add({
+      title: "Puppy Care Hub",
+      href: "/puppy-care",
+      label: "Puppy hub",
+      description: "Vaccines, first-year costs, supplies, safety, and new puppy planning tools.",
+    });
+  }
+
+  if (
+    VET_COST_HUB_SLUGS.has(slug) ||
+    slug.includes("cost") ||
+    tagText.includes("insurance") ||
+    tagText.includes("emergency")
+  ) {
+    add({
+      title: "Vet Cost Hub",
+      href: "/vet-costs",
+      label: "Cost hub",
+      description: "Emergency, dental, puppy, and insurance cost planning resources in one place.",
+    });
+  }
+
+  if (
+    DOG_TOXICITY_HUB_SLUGS.has(slug) ||
+    slug.includes("poison") ||
+    slug.includes("toxicity") ||
+    tagText.includes("toxicity") ||
+    tagText.includes("poison")
+  ) {
+    add({
+      title: "Dog Toxicity Guide",
+      href: "/toxicity/dogs",
+      label: "Dog safety",
+      description: "Common dog food, plant, medication, and household poisoning searches.",
+    });
+  }
+
+  if (
+    CAT_TOXICITY_HUB_SLUGS.has(slug) ||
+    slug.includes("poison") ||
+    slug.includes("toxicity") ||
+    tagText.includes("cats") ||
+    tagText.includes("cat safety")
+  ) {
+    add({
+      title: "Cat Toxicity Guide",
+      href: "/toxicity/cats",
+      label: "Cat safety",
+      description: "Cat-specific plant, cleaner, food, and medication toxicity resources.",
+    });
+  }
+
+  return links.slice(0, 4);
+}
 
 function getVetBillToolMode(slug: string) {
   if (slug === "how-much-is-a-dog-teeth-cleaning" || slug === "dog-dental-cleaning-cost") {

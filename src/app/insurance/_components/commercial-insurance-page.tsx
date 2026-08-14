@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, Shield } from "lucide-react";
 import { AdUnit } from "@/components/ads/AdUnit";
 import { InsuranceComparison } from "@/components/affiliate/insurance-comparison";
+import { ContextualHubLinks } from "@/components/hubs/contextual-hub-links";
 import { JsonLdBreadcrumb, JsonLdFAQ } from "@/components/seo/json-ld";
 import { INSURANCE_PARTNERS } from "@/lib/affiliate";
 import { SITE_BASE_URL, SITE_NAME } from "@/lib/constants";
@@ -61,11 +62,38 @@ export function CommercialInsurancePage({
   sources,
 }: CommercialInsurancePageProps) {
   const canonical = `${SITE_BASE_URL}/insurance/${slug}`;
+  const currentPath = `/insurance/${slug}`;
   const breadcrumbs = [
     { name: "Home", url: SITE_BASE_URL },
     { name: "Pet Insurance", url: `${SITE_BASE_URL}/insurance` },
     { name: label, url: canonical },
   ];
+  const planningHubLinks = [
+    {
+      title: "Vet Cost Hub",
+      href: "/vet-costs",
+      label: "Cost hub",
+      description: "Compare emergency, dental, puppy, and insurance cost planning resources.",
+    },
+    {
+      title: "Pet Insurance Cost",
+      href: "/insurance/pet-insurance-cost",
+      label: "Premiums",
+      description: "Estimate monthly premiums before comparing provider quotes.",
+    },
+    {
+      title: "Emergency Vet Cost",
+      href: "/insurance/emergency-vet-cost",
+      label: "Emergency bills",
+      description: "See how exam fees, diagnostics, hospitalization, and surgery affect urgent bills.",
+    },
+    {
+      title: "Puppy Care Hub",
+      href: "/puppy-care",
+      label: "First-year planning",
+      description: "Plan vaccines, first vet visits, supplies, safety, and first-year cost decisions.",
+    },
+  ].filter((link) => link.href !== currentPath);
 
   return (
     <>
@@ -124,6 +152,13 @@ export function CommercialInsurancePage({
               </div>
             ))}
           </section>
+
+          <ContextualHubLinks
+            title="Related Cost Planning Hubs"
+            description="Use these planning hubs before choosing a deductible, annual limit, or emergency budget."
+            links={planningHubLinks}
+            className="mb-10"
+          />
 
           <section className="mb-10 rounded-xl border bg-primary/5 p-5">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
