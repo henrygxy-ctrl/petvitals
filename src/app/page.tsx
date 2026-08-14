@@ -54,6 +54,14 @@ const insuranceCostGuides = [
   { title: "Best Pet Insurance for Dogs", href: "/insurance/best-pet-insurance-for-dogs", desc: "Choose coverage by age, breed risk, and budget." },
 ];
 
+const topicHubs = [
+  { title: "Dog Toxicity Guide", href: "/toxicity/dogs", desc: "Common foods, plants, medicines, and household risks for dogs." },
+  { title: "Cat Toxicity Guide", href: "/toxicity/cats", desc: "Cat-specific plant, cleaner, medication, and food safety risks." },
+  { title: "Pet-Safe Cleaning", href: "/pet-safe-cleaning", desc: "Cleaner ingredients, floor residue, and cat-safe disinfectant guidance." },
+  { title: "Puppy Care Hub", href: "/puppy-care", desc: "Vaccines, first vet visit cost, supplies, and first-year planning." },
+  { title: "Vet Cost Hub", href: "/vet-costs", desc: "Emergency, dental, puppy, and insurance cost planning tools." },
+];
+
 export default function Home() {
   return (
     <>
@@ -106,6 +114,25 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <AdUnit />
         </div>
+
+        <section className="py-16 sm:py-20 border-t">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6">
+            <div className="mb-8">
+              <h2 className="text-2xl sm:text-3xl font-bold">Pet Safety Resource Hubs</h2>
+              <p className="mt-2 max-w-2xl text-muted-foreground">
+                Start with a topic hub when you need a complete path: quick answers, tools, calculators, checklists, and related guides.
+              </p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {topicHubs.map((hub) => (
+                <Link key={hub.href} href={hub.href} className="rounded-xl border bg-card p-5 hover:border-primary/40 transition-colors">
+                  <h3 className="text-sm font-semibold">{hub.title}</h3>
+                  <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{hub.desc}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <LatestBlog />
 

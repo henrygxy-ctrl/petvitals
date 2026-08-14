@@ -6,6 +6,11 @@ import { Button } from "@/components/ui/button";
 import { ChevronDown, BookMarked } from "lucide-react";
 
 const blogCategories = [
+  { name: "Dog Toxicity Hub", href: "/toxicity/dogs" },
+  { name: "Cat Toxicity Hub", href: "/toxicity/cats" },
+  { name: "Pet-Safe Cleaning", href: "/pet-safe-cleaning" },
+  { name: "Puppy Care Hub", href: "/puppy-care" },
+  { name: "Vet Cost Hub", href: "/vet-costs" },
   { name: "Pet Healthcare", href: "/blog/category/pet-healthcare" },
   { name: "Nutrition & Safety", href: "/blog/category/nutrition-and-safety" },
   { name: "Weight & Wellness", href: "/blog/category/weight-and-wellness" },
@@ -38,7 +43,7 @@ export function NavHeader() {
               <ChevronDown className={`h-3 w-3 transition-transform ${blogOpen ? "rotate-180" : ""}`} />
             </button>
             {blogOpen && (
-              <div className="absolute top-full right-0 mt-1 w-48 py-1.5 rounded-lg border bg-card shadow-lg z-50">
+              <div className="absolute top-full right-0 mt-1 w-56 py-1.5 rounded-lg border bg-card shadow-lg z-50">
                 {blogCategories.map((cat) => (
                   <Link
                     key={cat.href}

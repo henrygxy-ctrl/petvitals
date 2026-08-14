@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CommercialInsurancePage } from "../_components/commercial-insurance-page";
+import { VetCostInfographic } from "@/components/infographics/topic-infographics";
 import { VetBillEstimator } from "@/components/tools/vet-bill-estimator";
 import { SITE_BASE_URL, SITE_NAME } from "@/lib/constants";
 
@@ -85,7 +86,12 @@ export default function EmergencyVetCostPage() {
       sections={[
         {
           title: "Emergency Vet Bill Estimator",
-          content: <VetBillEstimator mode="emergency" />,
+          content: (
+            <>
+              <VetCostInfographic />
+              <VetBillEstimator mode="emergency" />
+            </>
+          ),
         },
         {
           title: "Emergency Exam Fee vs. the Total Bill",

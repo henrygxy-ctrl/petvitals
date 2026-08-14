@@ -16,6 +16,11 @@ import { ProductRecommendationCard } from "@/components/affiliate/product-rec-ca
 import { getProductRecommendations } from "@/lib/affiliate";
 import { JsonLdBreadcrumb, JsonLdFAQ } from "@/components/seo/json-ld";
 import { DownloadResourceCard } from "@/components/downloads/resource-card";
+import {
+  CleaningSafetyInfographic,
+  PuppyTimelineInfographic,
+  VetCostInfographic,
+} from "@/components/infographics/topic-infographics";
 import { CleaningIngredientChecker } from "@/components/tools/cleaning-ingredient-checker";
 import { PuppyVaccinationPlanner } from "@/components/tools/puppy-vaccination-planner";
 import { VetBillEstimator } from "@/components/tools/vet-bill-estimator";
@@ -193,6 +198,10 @@ export default async function BlogArticlePage({ params }: Props) {
             </section>
 
             <TableOfContents />
+
+            {showPuppyPlanner && <PuppyTimelineInfographic />}
+            {toolMode && <VetCostInfographic />}
+            {showCleaningChecker && <CleaningSafetyInfographic />}
 
             {showPuppyPlanner && <PuppyVaccinationPlanner />}
             {toolMode && <VetBillEstimator mode={toolMode} />}

@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, Download } from "lucide-react";
+import { DownloadLink } from "@/components/downloads/download-link";
 
 type DownloadVariant = "poison" | "puppy" | "both";
 
@@ -42,13 +45,15 @@ export function DownloadResourceCard({ variant }: DownloadResourceCardProps) {
             <h2 className="text-base font-bold text-foreground">{resource.title}</h2>
             <p className="mt-2 text-sm text-muted-foreground">{resource.description}</p>
             <div className="mt-4 flex flex-wrap gap-3">
-              <a
+              <DownloadLink
                 href={resource.href}
+                title={resource.title}
+                variant={variant}
                 className="inline-flex items-center gap-2 rounded-lg bg-primary px-3 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
               >
                 Download PDF
                 <Download className="h-4 w-4" />
-              </a>
+              </DownloadLink>
               <Link
                 href={resource.followupHref}
                 className="inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-medium hover:bg-muted"

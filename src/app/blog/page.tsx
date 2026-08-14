@@ -35,6 +35,31 @@ export const metadata: Metadata = {
 
 const popularGuides = [
   {
+    title: "Dog Toxicity Hub",
+    href: "/toxicity/dogs",
+    desc: "Common dog poison searches, emergency risks, and prevention guides.",
+  },
+  {
+    title: "Cat Toxicity Hub",
+    href: "/toxicity/cats",
+    desc: "Cat plant, cleaner, medication, and food toxicity resources.",
+  },
+  {
+    title: "Pet-Safe Cleaning Hub",
+    href: "/pet-safe-cleaning",
+    desc: "Cleaner ingredient checker, floor cleaner guide, and cat-safe disinfectants.",
+  },
+  {
+    title: "Puppy Care Hub",
+    href: "/puppy-care",
+    desc: "Vaccines, first vet cost, supplies, and first-year puppy planning.",
+  },
+  {
+    title: "Vet Cost Hub",
+    href: "/vet-costs",
+    desc: "Emergency, dental, puppy, and insurance cost tools in one place.",
+  },
+  {
     title: "Pet Toxicity Checker",
     href: "/toxicity",
     desc: "Search foods, plants, cleaners, and household items for dogs and cats.",
