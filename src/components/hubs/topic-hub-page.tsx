@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { DownloadLink } from "@/components/downloads/download-link";
-import { JsonLdBreadcrumb, JsonLdItemList } from "@/components/seo/json-ld";
+import { JsonLdBreadcrumb, JsonLdFAQ, JsonLdItemList } from "@/components/seo/json-ld";
 import { SITE_BASE_URL, SITE_NAME } from "@/lib/constants";
 
 export interface HubLink {
@@ -22,6 +22,7 @@ interface TopicHubPageProps {
   highlights: { value: string; label: string; note: string }[];
   infographic?: ReactNode;
   sections: { title: string; description: string; links: HubLink[] }[];
+  faq?: { question: string; answer: string }[];
   resource?: ReactNode;
   footerNote?: string;
 }
@@ -36,6 +37,7 @@ export function TopicHubPage({
   highlights,
   infographic,
   sections,
+  faq,
   resource,
   footerNote,
 }: TopicHubPageProps) {
@@ -57,6 +59,7 @@ export function TopicHubPage({
           description: link.description,
         }))}
       />
+      {faq && faq.length > 0 && <JsonLdFAQ questions={faq} />}
       <div className="min-h-screen flex flex-col">
         <header className="border-b">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center gap-2">
@@ -155,6 +158,24 @@ export function TopicHubPage({
             </div>
 
             {resource}
+
+            {faq && faq.length > 0 && (
+              <section className="mt-10">
+                <h2 className="text-xl font-bold">Frequently Asked Questions</h2>
+                <div className="mt-4 space-y-3">
+                  {faq.map((item) => (
+                    <details key={item.question} className="rounded-lg border bg-card">
+                      <summary className="cursor-pointer px-5 py-4 text-sm font-medium">
+                        {item.question}
+                      </summary>
+                      <div className="px-5 pb-4 text-sm leading-relaxed text-muted-foreground">
+                        {item.answer}
+                      </div>
+                    </details>
+                  ))}
+                </div>
+              </section>
+            )}
 
             {footerNote && (
               <div className="mt-10 rounded-lg bg-muted/50 p-4 text-xs leading-relaxed text-muted-foreground">

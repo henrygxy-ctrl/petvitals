@@ -20,6 +20,29 @@ export const metadata: Metadata = {
   },
 };
 
+const faq = [
+  {
+    question: "What is the safest cleaner to use around pets?",
+    answer:
+      "For routine cleaning, start with low-residue options such as steam on compatible surfaces, diluted mild soap, enzymatic pet accident cleaners, and fragrance-free products used exactly as directed. Keep pets out until surfaces are fully dry.",
+  },
+  {
+    question: "Are pet-safe cleaners safe as soon as I mop?",
+    answer:
+      "No. Even milder cleaners can irritate paws, skin, or mouths while wet. Let floors and pet-contact surfaces dry completely before dogs or cats walk, lick, sleep, or eat there.",
+  },
+  {
+    question: "What cleaning ingredients should cat owners avoid?",
+    answer:
+      "Cat homes should be cautious with phenols, pine oil, essential oils, ammonia, strong fragrance, and wet disinfectant residue. Cats groom their paws and fur, so residue can turn into ingestion exposure.",
+  },
+  {
+    question: "When is a cleaning-product exposure an emergency?",
+    answer:
+      "Call a veterinarian or poison hotline if a pet licked a concentrated product, walked through wet chemicals and is licking paws, has trouble breathing, vomits, drools, trembles, seems weak, or has burns on skin, eyes, or mouth.",
+  },
+];
+
 export default function PetSafeCleaningHubPage() {
   return (
     <TopicHubPage
@@ -58,6 +81,7 @@ export default function PetSafeCleaningHubPage() {
         },
       ]}
       resource={<DownloadResourceCard variant="poison" />}
+      faq={faq}
       footerNote="Clean when pets are out of the room, ventilate, follow product labels, and let surfaces dry before pets return."
     />
   );

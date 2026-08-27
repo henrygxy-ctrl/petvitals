@@ -20,6 +20,29 @@ export const metadata: Metadata = {
   },
 };
 
+const faq = [
+  {
+    question: "What are the most dangerous toxins for cats?",
+    answer:
+      "High-risk cat exposures include lilies, acetaminophen, ibuprofen, permethrin dog flea products, sago palm, onions, garlic, xylitol, and concentrated cleaning products. Cats are also at risk from residue they groom from paws and fur.",
+  },
+  {
+    question: "Why are cleaners risky for cats?",
+    answer:
+      "Cats walk on cleaned surfaces and then groom their paws and fur. Wet residue, essential oils, phenols, pine oil, strong fragrance, and some disinfectants can become skin, inhalation, or ingestion exposures.",
+  },
+  {
+    question: "What should I do if my cat licked a cleaner?",
+    answer:
+      "Move the cleaner away, prevent more licking, check the product label, and call your veterinarian or a pet poison hotline. Do not give home treatments or induce vomiting unless a professional tells you to.",
+  },
+  {
+    question: "Are lilies toxic to cats?",
+    answer:
+      "Yes. True lilies are an emergency for cats because leaves, flowers, stems, pollen, and vase water may cause severe kidney injury. Contact a veterinarian or poison hotline immediately after possible exposure.",
+  },
+];
+
 export default function CatToxicityHubPage() {
   return (
     <TopicHubPage
@@ -61,6 +84,7 @@ export default function CatToxicityHubPage() {
         },
       ]}
       resource={<DownloadResourceCard variant="poison" />}
+      faq={faq}
       footerNote="If a cat may have contacted lilies, human medication, concentrated cleaner, or another known toxin, call a veterinarian or pet poison hotline immediately."
     />
   );

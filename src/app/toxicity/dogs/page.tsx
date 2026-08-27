@@ -20,6 +20,29 @@ export const metadata: Metadata = {
   },
 };
 
+const faq = [
+  {
+    question: "What foods are most toxic to dogs?",
+    answer:
+      "High-risk dog food exposures include chocolate, grapes and raisins, xylitol, onions, garlic, macadamia nuts, alcohol, coffee, and moldy food. Risk depends on the item, amount eaten, and the dog's weight.",
+  },
+  {
+    question: "What should I do if my dog ate something toxic?",
+    answer:
+      "Move the item away, check what and how much was eaten, and call your veterinarian or a pet poison hotline. Do not induce vomiting unless a professional tells you to, because some toxins can cause more harm if vomited.",
+  },
+  {
+    question: "Are dog poisoning symptoms immediate?",
+    answer:
+      "Not always. Some toxins cause vomiting quickly, while others can affect the kidneys, liver, blood, or nervous system hours later. With known high-risk exposures, call for advice before waiting for symptoms.",
+  },
+  {
+    question: "Which plants are dangerous for dogs?",
+    answer:
+      "Sago palm, oleander, autumn crocus, azalea, lilies, tulips, daffodils, and many garden bulbs can be dangerous to dogs. Search the specific plant and call a veterinarian if ingestion may have occurred.",
+  },
+];
+
 export default function DogToxicityHubPage() {
   return (
     <TopicHubPage
@@ -61,6 +84,7 @@ export default function DogToxicityHubPage() {
         },
       ]}
       resource={<DownloadResourceCard variant="poison" />}
+      faq={faq}
       footerNote="If your dog may have eaten a known toxin, call your veterinarian or a pet poison hotline. Do not wait for symptoms with high-risk exposures."
     />
   );
