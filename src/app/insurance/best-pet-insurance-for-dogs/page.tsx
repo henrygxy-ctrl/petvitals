@@ -60,7 +60,7 @@ export default function BestPetInsuranceForDogsPage() {
       intro="The best dog insurance is not just the cheapest quote. It is the plan that matches your dog's age, breed risks, emergency exposure, and your ability to handle a large vet bill."
       stats={[
         { label: "Common pick", value: "A&I", note: "Accident and illness coverage is the broad middle ground for many dogs." },
-        { label: "Dog average", value: "$62/mo", note: "NAPHIA reported this average for accident and illness coverage." },
+        { label: "Dog average", value: "$70/mo", note: "NAPHIA reported this average for accident and illness coverage." },
         { label: "Quote rule", value: "3+", note: "Compare at least three providers with the same plan settings." },
       ]}
       sections={[
@@ -134,7 +134,7 @@ export default function BestPetInsuranceForDogsPage() {
         { title: "Comprehensive Plans", href: "/insurance/comprehensive", description: "Learn when wellness add-ons make sense." },
       ]}
       sources={[
-        { label: "NAPHIA 2025 State of the Industry Report", href: "https://naphia.org/news/naphia-news/soi-report-2025/" },
+        { label: "NAPHIA 2026 State of the Industry Report Highlights", href: "https://naphia.org/industry-data/report-highlights-download/" },
         { label: "NAIC: A Regulator's Guide to Pet Insurance", href: "https://content.naic.org/article/consumer-insight-a-regulators-guide-to-pet-insurance" },
       ]}
     />

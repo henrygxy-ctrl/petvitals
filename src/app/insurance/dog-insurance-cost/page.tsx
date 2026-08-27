@@ -7,14 +7,14 @@ import { SITE_BASE_URL, SITE_NAME } from "@/lib/constants";
 const slug = "dog-insurance-cost";
 
 export const metadata: Metadata = {
-  title: `Dog Insurance Cost Calculator: 2026 Monthly Guide | ${SITE_NAME}`,
+  title: `Dog Insurance Cost Per Month: 2026 Price Guide | ${SITE_NAME}`,
   description:
-    "Estimate dog insurance cost by age, breed risk, deductible, reimbursement rate, annual limit, and plan type before requesting quotes.",
+    "How much is dog insurance per month? Estimate dog insurance cost and price by age, breed risk, deductible, reimbursement, annual limit, and plan type.",
   alternates: { canonical: `${SITE_BASE_URL}/insurance/${slug}` },
   openGraph: {
-    title: "Dog Insurance Cost Calculator: 2026 Monthly Guide",
+    title: "Dog Insurance Cost Per Month: 2026 Price Guide",
     description:
-      "Estimate average dog insurance cost, breed and age price drivers, quote settings, and cheaper coverage options.",
+      "Estimate average dog insurance cost per month, breed and age price drivers, quote settings, and cheaper coverage options.",
     url: `${SITE_BASE_URL}/insurance/${slug}`,
     siteName: SITE_NAME,
     type: "website",
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dog Insurance Cost Calculator: 2026 Monthly Guide",
+    title: "Dog Insurance Cost Per Month: 2026 Price Guide",
     description:
-      "Estimate average dog insurance cost, breed and age price drivers, quote settings, and cheaper coverage options.",
+      "Estimate average dog insurance cost per month, breed and age price drivers, quote settings, and cheaper coverage options.",
     images: [`${SITE_BASE_URL}/og-image.png`],
   },
 };
@@ -33,7 +33,7 @@ const faq = [
   {
     question: "How much does dog insurance cost per month?",
     answer:
-      "A useful planning number is about $62 per month for dog accident and illness coverage, based on NAPHIA-reported average premiums. Your quote can be higher or lower based on age, breed, location, deductible, reimbursement rate, annual limit, and plan type.",
+      "A useful planning number is about $70 per month for dog accident and illness coverage, based on NAPHIA-reported average premiums. Your quote can be higher or lower based on age, breed, location, deductible, reimbursement rate, annual limit, and plan type.",
   },
   {
     question: "Why is dog insurance more expensive than cat insurance?",
@@ -82,14 +82,14 @@ export default function DogInsuranceCostPage() {
     <CommercialInsurancePage
       slug={slug}
       label="Dog Insurance Cost"
-      title="Dog Insurance Cost Calculator and 2026 Monthly Guide"
-      intro="Quick answer: dog insurance often costs about $62 per month for accident and illness coverage. Use the calculator below to adjust breed risk, age, zip code cost level, deductible, reimbursement rate, annual limit, and whether you choose accident-only or broader illness coverage."
+      title="Dog Insurance Cost Per Month: 2026 Price Guide"
+      intro="Quick answer: dog insurance often costs about $70 per month for accident and illness coverage. Use the calculator below to estimate dog insurance price by breed risk, age, zip code cost level, deductible, reimbursement rate, annual limit, and whether you choose accident-only or broader illness coverage."
       primaryCtaLabel="Compare dog insurance quotes"
       secondaryCtaLabel="See all pet insurance costs"
       secondaryCtaHref="/insurance/pet-insurance-cost"
       heroNote="For a clean comparison, request every dog insurance quote with the same deductible, reimbursement rate, and annual limit."
       stats={[
-        { label: "Dog average", value: "$62/mo", note: "Average accident and illness premium reported by NAPHIA." },
+        { label: "Dog average", value: "$70/mo", note: "Average accident and illness premium reported by NAPHIA." },
         { label: "Cheaper option", value: "Accident-only", note: "Lower monthly price, but no illness coverage." },
         { label: "Big drivers", value: "Breed + age", note: "Large breeds and older dogs usually quote higher." },
       ]}
@@ -103,7 +103,7 @@ export default function DogInsuranceCostPage() {
           content: (
             <>
               <p>
-                The easiest starting point is the average dog insurance cost for accident and illness coverage: about $62 per month. Use that as a benchmark, then adjust expectations based on your dog's age, breed, and quote settings.
+                The easiest starting point is the average dog insurance cost for accident and illness coverage: about $70 per month. Use that as a benchmark, then adjust expectations based on your dog's age, breed, and quote settings.
               </p>
               <div className="not-prose overflow-x-auto rounded-xl border my-4">
                 <table className="w-full text-sm">
@@ -118,12 +118,12 @@ export default function DogInsuranceCostPage() {
                     <tr className="border-t">
                       <td className="px-4 py-3">Accident and illness</td>
                       <td className="px-4 py-3">Broad protection for injuries, illness, diagnostics, and emergencies</td>
-                      <td className="px-4 py-3">About $62 per month on average</td>
+                      <td className="px-4 py-3">About $70 per month on average</td>
                     </tr>
                     <tr className="border-t">
                       <td className="px-4 py-3">Accident-only</td>
                       <td className="px-4 py-3">Lower-cost backup for trauma, poisoning, swallowed objects, and broken bones</td>
-                      <td className="px-4 py-3">Usually cheaper than illness coverage</td>
+                      <td className="px-4 py-3">About $16 per month on average</td>
                     </tr>
                     <tr className="border-t">
                       <td className="px-4 py-3">Wellness add-on</td>
@@ -134,7 +134,7 @@ export default function DogInsuranceCostPage() {
                 </table>
               </div>
               <p>
-                If you are comparing more than dogs, use the broader <Link href="/insurance/pet-insurance-cost" className="underline underline-offset-2">pet insurance cost guide</Link>. If you only need injury protection, compare <Link href="/insurance/accident-only" className="underline underline-offset-2">accident-only pet insurance</Link>.
+                If you are comparing more than dogs, use the broader <Link href="/insurance/pet-insurance-cost" className="underline underline-offset-2">pet insurance cost per month guide</Link> for the average cost of pet insurance across dogs, cats, and plan types. If you only need injury protection, compare <Link href="/insurance/accident-only" className="underline underline-offset-2">accident-only pet insurance</Link>.
               </p>
             </>
           ),
@@ -192,12 +192,12 @@ export default function DogInsuranceCostPage() {
       ]}
       faq={faq}
       relatedGuides={[
-        { title: "Pet Insurance Cost", href: "/insurance/pet-insurance-cost", description: "Compare dog costs against cat costs and plan types." },
+        { title: "Pet Insurance Cost", href: "/insurance/pet-insurance-cost", description: "Compare dog insurance price against cat costs and plan types." },
         { title: "Best Pet Insurance for Dogs", href: "/insurance/best-pet-insurance-for-dogs", description: "Choose dog coverage by breed, age, and risk." },
         { title: "Emergency Vet Cost", href: "/insurance/emergency-vet-cost", description: "See why one urgent dog visit can exceed a year of premiums." },
       ]}
       sources={[
-        { label: "NAPHIA 2025 State of the Industry Report", href: "https://naphia.org/news/naphia-news/soi-report-2025/" },
+        { label: "NAPHIA 2026 State of the Industry Report Highlights", href: "https://naphia.org/industry-data/report-highlights-download/" },
         { label: "NAIC: A Regulator's Guide to Pet Insurance", href: "https://content.naic.org/article/consumer-insight-a-regulators-guide-to-pet-insurance" },
       ]}
     />

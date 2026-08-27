@@ -27,12 +27,12 @@ interface InsuranceCostEstimatorProps {
 
 const BASE_MONTHLY_COST: Record<Species, Record<Coverage, number>> = {
   dog: {
-    "accident-illness": 62,
-    "accident-only": 18,
+    "accident-illness": 70,
+    "accident-only": 16,
   },
   cat: {
-    "accident-illness": 32,
-    "accident-only": 11,
+    "accident-illness": 36,
+    "accident-only": 9,
   },
 };
 

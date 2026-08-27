@@ -7,14 +7,14 @@ import { SITE_BASE_URL, SITE_NAME } from "@/lib/constants";
 const slug = "cat-insurance-cost";
 
 export const metadata: Metadata = {
-  title: `Cat Insurance Cost Calculator: 2026 Monthly Guide | ${SITE_NAME}`,
+  title: `Cat Insurance Cost Per Month: 2026 Price Guide | ${SITE_NAME}`,
   description:
-    "Estimate cat insurance cost by age, indoor risk, deductible, reimbursement rate, annual limit, and plan type before requesting quotes.",
+    "How much is cat insurance? Estimate cat insurance cost per month by age, indoor risk, deductible, reimbursement, annual limit, and plan type.",
   alternates: { canonical: `${SITE_BASE_URL}/insurance/${slug}` },
   openGraph: {
-    title: "Cat Insurance Cost Calculator: 2026 Monthly Guide",
+    title: "Cat Insurance Cost Per Month: 2026 Price Guide",
     description:
-      "Estimate average cat insurance cost, indoor cat emergency risks, quote settings, and cheaper coverage options.",
+      "Estimate average cat insurance cost per month, indoor cat emergency risks, quote settings, and cheaper coverage options.",
     url: `${SITE_BASE_URL}/insurance/${slug}`,
     siteName: SITE_NAME,
     type: "website",
@@ -22,18 +22,18 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cat Insurance Cost Calculator: 2026 Monthly Guide",
+    title: "Cat Insurance Cost Per Month: 2026 Price Guide",
     description:
-      "Estimate average cat insurance cost, indoor cat emergency risks, quote settings, and cheaper coverage options.",
+      "Estimate average cat insurance cost per month, indoor cat emergency risks, quote settings, and cheaper coverage options.",
     images: [`${SITE_BASE_URL}/og-image.png`],
   },
 };
 
 const faq = [
   {
-    question: "How much does cat insurance cost per month?",
+    question: "How much is pet insurance for a cat?",
     answer:
-      "A useful planning number is about $32 per month for cat accident and illness coverage, based on NAPHIA-reported average premiums. Your actual quote depends on age, location, deductible, reimbursement rate, annual limit, and plan type.",
+      "A useful planning number is about $36 per month for cat accident and illness coverage, based on NAPHIA-reported average premiums. Your actual quote depends on age, location, deductible, reimbursement rate, annual limit, and plan type.",
   },
   {
     question: "Is cat insurance cheaper than dog insurance?",
@@ -82,14 +82,14 @@ export default function CatInsuranceCostPage() {
     <CommercialInsurancePage
       slug={slug}
       label="Cat Insurance Cost"
-      title="Cat Insurance Cost Calculator and 2026 Monthly Guide"
-      intro="Quick answer: cat insurance often costs about $32 per month for accident and illness coverage. Use the calculator below to adjust age, health risk, location cost level, deductible, reimbursement rate, annual limit, and whether you choose accident-only or broader illness coverage."
+      title="Cat Insurance Cost Per Month: 2026 Price Guide"
+      intro="Quick answer: cat insurance often costs about $36 per month for accident and illness coverage. Use the calculator below to estimate how much pet insurance is for a cat by age, health risk, location cost level, deductible, reimbursement rate, annual limit, and whether you choose accident-only or broader illness coverage."
       primaryCtaLabel="Compare cat insurance quotes"
       secondaryCtaLabel="See all pet insurance costs"
       secondaryCtaHref="/insurance/pet-insurance-cost"
       heroNote="For fair quotes, keep the deductible, reimbursement rate, annual limit, and plan type the same across providers."
       stats={[
-        { label: "Cat average", value: "$32/mo", note: "Average accident and illness premium reported by NAPHIA." },
+        { label: "Cat average", value: "$36/mo", note: "Average accident and illness premium reported by NAPHIA." },
         { label: "Compared with dogs", value: "Lower", note: "Cats often cost less to insure than dogs." },
         { label: "Key risk", value: "Urinary care", note: "Blockage and urinary disease can become urgent quickly." },
       ]}
@@ -103,7 +103,7 @@ export default function CatInsuranceCostPage() {
           content: (
             <>
               <p>
-                The average cat insurance cost for accident and illness coverage is about $32 per month. That makes cats one of the more affordable pet insurance segments, but the monthly premium still depends on location, age, plan type, and quote settings.
+                The average cat insurance cost for accident and illness coverage is about $36 per month. That makes cats one of the more affordable pet insurance segments, but the monthly premium still depends on location, age, plan type, and quote settings.
               </p>
               <div className="not-prose overflow-x-auto rounded-xl border my-4">
                 <table className="w-full text-sm">
@@ -118,12 +118,12 @@ export default function CatInsuranceCostPage() {
                     <tr className="border-t">
                       <td className="px-4 py-3">Accident and illness</td>
                       <td className="px-4 py-3">Broad coverage for injuries, illness, diagnostics, urinary issues, and emergencies</td>
-                      <td className="px-4 py-3">About $32 per month on average</td>
+                      <td className="px-4 py-3">About $36 per month on average</td>
                     </tr>
                     <tr className="border-t">
                       <td className="px-4 py-3">Accident-only</td>
                       <td className="px-4 py-3">Lower-cost backup for falls, toxin ingestion, bite wounds, and swallowed objects</td>
-                      <td className="px-4 py-3">Usually cheaper than illness coverage</td>
+                      <td className="px-4 py-3">About $9 per month on average</td>
                     </tr>
                     <tr className="border-t">
                       <td className="px-4 py-3">Wellness add-on</td>
@@ -134,7 +134,7 @@ export default function CatInsuranceCostPage() {
                 </table>
               </div>
               <p>
-                For a dog-versus-cat comparison, start with the full <Link href="/insurance/pet-insurance-cost" className="underline underline-offset-2">pet insurance cost guide</Link>. If you only want accident backup, compare <Link href="/insurance/accident-only" className="underline underline-offset-2">accident-only coverage</Link>.
+                For a dog-versus-cat comparison, start with the full <Link href="/insurance/pet-insurance-cost" className="underline underline-offset-2">pet insurance cost per month guide</Link>. If you only want accident backup, compare <Link href="/insurance/accident-only" className="underline underline-offset-2">accident-only coverage</Link>.
               </p>
             </>
           ),
@@ -192,12 +192,12 @@ export default function CatInsuranceCostPage() {
       ]}
       faq={faq}
       relatedGuides={[
-        { title: "Pet Insurance Cost", href: "/insurance/pet-insurance-cost", description: "Compare cat costs against dog costs and plan types." },
+        { title: "Pet Insurance Cost", href: "/insurance/pet-insurance-cost", description: "Compare how much pet insurance is for cats, dogs, and plan types." },
         { title: "Emergency Vet Cost", href: "/insurance/emergency-vet-cost", description: "See how urgent cat care can affect your budget." },
         { title: "Accident-Only Insurance", href: "/insurance/accident-only", description: "Compare lower-cost accident coverage for cats." },
       ]}
       sources={[
-        { label: "NAPHIA 2025 State of the Industry Report", href: "https://naphia.org/news/naphia-news/soi-report-2025/" },
+        { label: "NAPHIA 2026 State of the Industry Report Highlights", href: "https://naphia.org/industry-data/report-highlights-download/" },
         { label: "NAIC: A Regulator's Guide to Pet Insurance", href: "https://content.naic.org/article/consumer-insight-a-regulators-guide-to-pet-insurance" },
       ]}
     />
