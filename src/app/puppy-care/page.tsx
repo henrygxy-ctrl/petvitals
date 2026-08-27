@@ -20,6 +20,29 @@ export const metadata: Metadata = {
   },
 };
 
+const faq = [
+  {
+    question: "When should a new puppy go to the vet?",
+    answer:
+      "Many new puppies should see a veterinarian within a few days of coming home, sooner if they seem weak, cough, vomit, have diarrhea, or lack reliable vaccine and deworming records.",
+  },
+  {
+    question: "When do puppy vaccinations start?",
+    answer:
+      "Puppy vaccine series commonly start around 6-8 weeks of age, with boosters every few weeks until at least 16 weeks. Your veterinarian may adjust the schedule based on local risk and records.",
+  },
+  {
+    question: "What should I budget for a puppy's first year?",
+    answer:
+      "Budget for exams, vaccines, deworming, parasite prevention, fecal testing, spay or neuter planning, supplies, training, and unexpected urgent care. Costs vary by location and clinic.",
+  },
+  {
+    question: "Should I buy pet insurance before the first vet visit?",
+    answer:
+      "If you plan to buy insurance, earlier enrollment can reduce pre-existing condition complications. Compare waiting periods, exclusions, deductibles, reimbursement rates, and annual limits before relying on a policy.",
+  },
+];
+
 export default function PuppyCareHubPage() {
   return (
     <TopicHubPage
@@ -59,6 +82,7 @@ export default function PuppyCareHubPage() {
         },
       ]}
       resource={<DownloadResourceCard variant="puppy" />}
+      faq={faq}
       footerNote="Puppy vaccine timing and prevention should be personalized by a veterinarian based on age, records, health, local disease risk, and lifestyle."
     />
   );

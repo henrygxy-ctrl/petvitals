@@ -20,6 +20,29 @@ export const metadata: Metadata = {
   },
 };
 
+const faq = [
+  {
+    question: "How much does an emergency vet visit cost?",
+    answer:
+      "Emergency vet costs vary by city, clinic, time of day, diagnostics, treatment, and hospitalization. A basic urgent exam may be much lower than surgery, oxygen, imaging, or overnight care.",
+  },
+  {
+    question: "Why are vet bills so expensive?",
+    answer:
+      "Large vet bills often include skilled staff time, diagnostics, anesthesia, monitoring, medications, surgery, hospitalization, and emergency availability. Ask for an itemized estimate before non-emergency procedures.",
+  },
+  {
+    question: "Does pet insurance cover emergency vet bills?",
+    answer:
+      "Many accident and illness plans can reimburse eligible emergency care after waiting periods, deductibles, and exclusions. Pre-existing conditions, routine care, and policy limits still matter.",
+  },
+  {
+    question: "What pet costs should I plan for first?",
+    answer:
+      "Plan for routine exams, vaccines, parasite prevention, dental care, food, medications, and an emergency fund. If a large unexpected bill would be hard to pay, compare insurance before symptoms or injuries occur.",
+  },
+];
+
 export default function VetCostsHubPage() {
   return (
     <TopicHubPage
@@ -60,6 +83,7 @@ export default function VetCostsHubPage() {
         },
       ]}
       resource={<DownloadResourceCard variant="both" />}
+      faq={faq}
       footerNote="Cost pages are educational estimates, not quotes. Ask your veterinarian for itemized estimates and compare insurance policy terms before relying on coverage."
     />
   );
