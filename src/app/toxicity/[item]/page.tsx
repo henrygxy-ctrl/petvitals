@@ -212,6 +212,51 @@ function quickText(value: string | undefined, fallback: string) {
   return `${normalized.slice(0, cutoff > 80 ? cutoff : 117).trimEnd()}...`;
 }
 
+function quickToxicityQuestion(item: ToxicityItem, pet: "dogs" | "cats") {
+  return `Is ${item.name} toxic to ${pet}?`;
+}
+
+function quickToxicityAnswer(item: ToxicityItem, pet: "dogs" | "cats") {
+  const isSafe = isSafeForPet(item, pet);
+  const petLabel = pet === "dogs" ? "dogs" : "cats";
+
+  if (isSafe && item.riskLevel === "safe") {
+    return item.safeAmount
+      ? `No. ${item.name} is generally safe for ${petLabel} when prepared appropriately. Keep portions small: ${item.safeAmount}.`
+      : `No. ${item.name} is generally safe for ${petLabel} when prepared appropriately and offered in reasonable amounts.`;
+  }
+
+  if (isSafe) {
+    return `Usually no, but use caution. ${item.name} may still cause problems for ${petLabel} depending on amount, preparation, or sensitivity.`;
+  }
+
+  if (item.riskLevel === "danger") {
+    return `Yes. Treat ${item.name} as an emergency risk for ${petLabel}. Call your veterinarian or a pet poison hotline right away after exposure.`;
+  }
+
+  if (item.riskLevel === "toxic") {
+    return `Yes. ${item.name} is toxic to ${petLabel} and should be avoided. Contact a veterinarian if your pet ate it or has symptoms.`;
+  }
+
+  return `Avoid it unless your veterinarian says otherwise. ${item.name} may cause problems for ${petLabel}, especially after larger exposures.`;
+}
+
+function quickUrgencyAnswer(item: ToxicityItem) {
+  if (item.riskLevel === "danger") {
+    return `Urgent: ${item.name} can be a serious poisoning risk. Do not wait for symptoms if your pet had a meaningful exposure.`;
+  }
+
+  if (item.riskLevel === "toxic") {
+    return `Call for guidance if your pet ate ${item.name}, especially if the amount is unknown, your pet is small, or symptoms appear.`;
+  }
+
+  if (item.riskLevel === "caution") {
+    return `Monitor closely and call your veterinarian if your pet ate a large amount or develops vomiting, diarrhea, weakness, or unusual behavior.`;
+  }
+
+  return `Not usually urgent when prepared appropriately, but monitor your pet and avoid overfeeding or unsafe preparation.`;
+}
+
 function buildToxicityHubLinks(
   item: ToxicityItem,
   dogIsSafe: boolean,
@@ -391,6 +436,48 @@ export default async function ToxicityItemPage({
                 </div>
               </div>
             </div>
+
+            <section className="mt-4 rounded-xl border bg-card p-5">
+              <div className="flex items-start gap-3">
+                <Info className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                <div>
+                  <h2 className="text-lg font-bold">
+                    Quick Answer: Is {item.name} Toxic to Dogs or Cats?
+                  </h2>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    Use this short answer first, then read symptoms and what to do next.
+                  </p>
+                </div>
+              </div>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                <div>
+                  <h3 className="text-sm font-semibold">{quickToxicityQuestion(item, "dogs")}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                    {quickToxicityAnswer(item, "dogs")}
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold">{quickToxicityQuestion(item, "cats")}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                    {quickToxicityAnswer(item, "cats")}
+                  </p>
+                </div>
+              </div>
+              <div className="mt-4 grid gap-4 border-t pt-4 sm:grid-cols-2">
+                <div>
+                  <h3 className="text-sm font-semibold">Symptoms to watch for</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                    {quickText(item.symptoms, "No common symptoms are expected when this item is prepared and used appropriately.")}
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold">What should I do now?</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                    {quickText(item.action, quickUrgencyAnswer(item))}
+                  </p>
+                </div>
+              </div>
+            </section>
 
             <section className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               <QuickSafetyFact
