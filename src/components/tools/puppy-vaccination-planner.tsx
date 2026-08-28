@@ -21,14 +21,14 @@ const BASE_ROWS: ScheduleRow[] = [
   {
     label: "10-12 weeks",
     week: 12,
-    core: "DHPP #2",
-    optional: "Leptospirosis, Lyme, or canine influenza if your vet recommends them",
+    core: "DHPP #2 and leptospirosis discussion around 12 weeks",
+    optional: "Lyme or canine influenza if your vet recommends them",
   },
   {
     label: "14-16 weeks",
     week: 16,
-    core: "Final puppy DHPP booster and rabies per local law",
-    optional: "Second doses for selected non-core vaccines",
+    core: "Final puppy DHPP booster, rabies per local law, and leptospirosis booster if started",
+    optional: "Second doses for selected lifestyle vaccines",
   },
   {
     label: "12-16 months",
@@ -63,7 +63,7 @@ export function PuppyVaccinationPlanner() {
     const notes: string[] = [];
     if (boarding) notes.push("Ask about bordetella and canine influenza for group-dog exposure.");
     if (ticks) notes.push("Ask whether Lyme vaccination is common in your region.");
-    if (water) notes.push("Ask about leptospirosis risk from wildlife, puddles, lakes, or streams.");
+    if (water) notes.push("Ask how your clinic times leptospirosis protection for wildlife, puddles, lakes, or streams.");
     return notes;
   }, [boarding, ticks, water]);
 

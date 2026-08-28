@@ -63,8 +63,8 @@ export function CleaningSafetyInfographic() {
 export function PuppyTimelineInfographic() {
   const rows = [
     { age: "6-8 weeks", care: "DHPP start, exam, deworming, fecal test" },
-    { age: "10-12 weeks", care: "DHPP booster, risk-based vaccine discussion" },
-    { age: "14-16 weeks", care: "Final puppy booster, rabies, socialization plan" },
+    { age: "10-12 weeks", care: "DHPP booster, leptospirosis discussion, lifestyle vaccines" },
+    { age: "14-16 weeks", care: "Final puppy booster, rabies, lepto booster, socialization plan" },
     { age: "12-16 months", care: "First adult booster, long-term prevention" },
   ];
 

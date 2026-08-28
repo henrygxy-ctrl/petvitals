@@ -131,12 +131,27 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
     {
       question: "Which puppy vaccines are core?",
       answer:
-        "Core puppy vaccines usually include DHPP and rabies. Non-core vaccines such as bordetella, leptospirosis, Lyme disease, and canine influenza depend on lifestyle, region, and exposure risk.",
+        "Core puppy vaccines usually include DHPP or DA2PP and rabies. AAHA also recommends leptospirosis as a core vaccine for dogs, commonly starting around 12 weeks. Bordetella, Lyme disease, and canine influenza depend on lifestyle, region, and exposure risk.",
+    },
+    {
+      question: "Does my puppy need the leptospirosis vaccine?",
+      answer:
+        "Ask your veterinarian, but leptospirosis is now commonly discussed as a core dog vaccine in AAHA-guided practices. Puppies usually need a two-dose starter series, and timing depends on age, product label, local disease risk, and clinic protocol.",
     },
     {
       question: "Can my puppy go outside before all shots are complete?",
       answer:
         "Ask your veterinarian for local guidance. Many puppies can socialize in controlled, lower-risk settings with healthy vaccinated dogs, but dog parks, pet stores, and high-traffic dog areas are usually avoided until the vaccine series is complete.",
+    },
+    {
+      question: "What if my puppy shots are late?",
+      answer:
+        "Call your veterinarian and bring any vaccine records you have. The clinic may continue or adjust the series depending on the puppy's age, vaccine history, timing gaps, local risk, and rabies law.",
+    },
+    {
+      question: "What shots does a puppy need before daycare or boarding?",
+      answer:
+        "Many daycare, grooming, and boarding facilities ask for DHPP, rabies when age-eligible, and bordetella. Some also ask about canine influenza. Check requirements early because some vaccines need time or multiple doses before protection is expected.",
     },
   ],
   "dog-dental-care-guide": [

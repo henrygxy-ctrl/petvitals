@@ -63,7 +63,7 @@ export default function PuppyCareHubPage() {
           title: "First-Year Puppy Guides",
           description: "Start here for schedule, budget, and setup decisions.",
           links: [
-            { title: "Puppy Vaccination Schedule", href: "/blog/puppy-vaccination-schedule", description: "Generate dates and discuss core vs. non-core vaccines.", label: "Tool" },
+            { title: "Puppy Vaccination Schedule", href: "/blog/puppy-vaccination-schedule", description: "Generate dates and discuss core and lifestyle vaccines.", label: "Tool" },
             { title: "Puppy First Vet Visit Cost", href: "/blog/puppy-first-vet-visit-cost", description: "Estimate first visit and first-year care costs.", label: "Cost" },
             { title: "New Puppy Checklist", href: "/blog/bringing-home-new-puppy-checklist", description: "Supplies, home setup, and first-week planning." },
             { title: "Dog Insurance Cost", href: "/insurance/dog-insurance-cost", description: "Compare monthly premiums before pre-existing issues appear." },
