@@ -4,7 +4,7 @@ import Link from "next/link";
 import { toxicityDatabase, getToxicityById, type ToxicityItem } from "@/data/toxicity";
 import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
 import { ArrowLeft, ExternalLink, Shield, AlertTriangle, Info, CheckCircle, Dog, Cat, BookOpen } from "lucide-react";
-import { JsonLdBreadcrumb, JsonLdFAQ } from "@/components/seo/json-ld";
+import { JsonLdBreadcrumb, JsonLdFAQ, JsonLdWebPage } from "@/components/seo/json-ld";
 import { AdUnit } from "@/components/ads/AdUnit";
 import { InsuranceCtaBanner } from "@/components/affiliate/insurance-cta";
 import { DownloadResourceCard } from "@/components/downloads/resource-card";
@@ -46,6 +46,8 @@ const riskStyles: Record<string, { bg: string; border: string; badge: string }> 
     badge: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
   },
 };
+
+const TOXICITY_PAGE_LAST_MODIFIED = "2026-08-28";
 
 const featuredSafetyLinks: Record<string, { id: string; reason: string }[]> = {
   wisteria: [
@@ -161,6 +163,31 @@ const targetedSearchAnswers: Record<
     ],
   },
 };
+
+function sourceNameFromUrl(url: string) {
+  if (url.includes("aspca.org")) return "ASPCA Poison Control";
+  if (url.includes("petpoisonhelpline.com")) return "Pet Poison Helpline";
+  if (url.includes("vcahospitals.com")) return "VCA Animal Hospitals";
+  if (url.includes("fda.gov")) return "FDA Animal & Veterinary";
+  if (url.includes("akc.org")) return "American Kennel Club";
+  if (url.includes("petmd.com")) return "PetMD";
+
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return url;
+  }
+}
+
+function buildToxicityPageTitle(item: ToxicityItem) {
+  return targetedToxicityMeta[item.id]?.title || buildPetVerdictTitle(item);
+}
+
+function buildToxicityPageDescription(item: ToxicityItem) {
+  return targetedToxicityMeta[item.id]?.description
+    ? truncateMetaDescription(targetedToxicityMeta[item.id].description)
+    : buildToxicityDescription(item);
+}
 
 export async function generateStaticParams() {
   return toxicityDatabase.map((item) => ({
@@ -406,11 +433,8 @@ export async function generateMetadata({
   const item = lookupItem(slug);
   if (!item) return { title: "Not Found" };
 
-  const targetedMeta = targetedToxicityMeta[item.id];
-  const title = targetedMeta?.title || buildPetVerdictTitle(item);
-  const description = targetedMeta?.description
-    ? truncateMetaDescription(targetedMeta.description)
-    : buildToxicityDescription(item);
+  const title = buildToxicityPageTitle(item);
+  const description = buildToxicityPageDescription(item);
 
   return {
     title: `${title} | ${SITE_NAME}`,
@@ -447,6 +471,8 @@ export default async function ToxicityItemPage({
   const faqQuestions = buildToxicityFaq(item);
   const dogIsSafe = isSafeForPet(item, "dogs");
   const catIsSafe = isSafeForPet(item, "cats");
+  const pageTitle = buildToxicityPageTitle(item);
+  const pageDescription = buildToxicityPageDescription(item);
   const toxicityHubLinks = buildToxicityHubLinks(item, dogIsSafe, catIsSafe);
   const featuredRelatedItems = (featuredSafetyLinks[item.id] || [])
     .map((link) => {
@@ -475,6 +501,22 @@ export default async function ToxicityItemPage({
           { name: "Toxicity Checker", url: `${SITE_BASE_URL}/toxicity` },
           { name: item.name, url: `${SITE_BASE_URL}/toxicity/${item.id}` },
         ]}
+      />
+      <JsonLdWebPage
+        name={pageTitle}
+        url={`${SITE_BASE_URL}/toxicity/${item.id}`}
+        description={pageDescription}
+        dateModified={TOXICITY_PAGE_LAST_MODIFIED}
+        keywords={Array.from(new Set([...item.tags, ...item.aliases])).slice(0, 18)}
+        about={{
+          name: item.name,
+          description: item.description,
+          alternateName: item.aliases,
+        }}
+        citations={item.sources?.map((url) => ({
+          name: sourceNameFromUrl(url),
+          url,
+        }))}
       />
       <div className="min-h-screen flex flex-col">
         <header className="border-b">

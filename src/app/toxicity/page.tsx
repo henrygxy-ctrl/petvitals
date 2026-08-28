@@ -143,6 +143,7 @@ export default function ToxicityPage() {
                   { label: "garlic", href: "/toxicity/garlic" },
                   { label: "lilies", href: "/toxicity/lilies" },
                   { label: "wisteria", href: "/toxicity/wisteria" },
+                  { label: "sago palm", href: "/toxicity/sago-palm" },
                   { label: "cantaloupe", href: "/toxicity/cantaloupe" },
                   { label: "cleaning wipes", href: "/toxicity/cleaning-wipe" },
                   { label: "xylitol", href: "/toxicity/xylitol" },

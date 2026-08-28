@@ -7,11 +7,12 @@ import { getToxicityCategoryEntries } from "@/lib/toxicity-category-metadata";
 const CONTENT_LAST_MODIFIED = new Date("2026-07-11");
 const INSURANCE_LAST_MODIFIED = new Date("2026-08-09");
 const HUB_LAST_MODIFIED = new Date("2026-08-14");
+const TOXICITY_LAST_MODIFIED = new Date("2026-08-28");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: SITE_BASE_URL, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "weekly", priority: 1.0 },
-    { url: `${SITE_BASE_URL}/toxicity`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE_BASE_URL}/toxicity`, lastModified: TOXICITY_LAST_MODIFIED, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_BASE_URL}/feeding-calculator`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "weekly", priority: 0.85 },
     { url: `${SITE_BASE_URL}/weight-tracking`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "weekly" as const, priority: 0.8 },
     { url: `${SITE_BASE_URL}/blog`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "weekly", priority: 0.8 },
@@ -21,8 +22,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_BASE_URL}/pet-safe-cleaning`, lastModified: HUB_LAST_MODIFIED, changeFrequency: "weekly" as const, priority: 0.82 },
     { url: `${SITE_BASE_URL}/puppy-care`, lastModified: HUB_LAST_MODIFIED, changeFrequency: "weekly" as const, priority: 0.82 },
     { url: `${SITE_BASE_URL}/vet-costs`, lastModified: HUB_LAST_MODIFIED, changeFrequency: "weekly" as const, priority: 0.82 },
-    { url: `${SITE_BASE_URL}/toxicity/dogs`, lastModified: HUB_LAST_MODIFIED, changeFrequency: "weekly" as const, priority: 0.82 },
-    { url: `${SITE_BASE_URL}/toxicity/cats`, lastModified: HUB_LAST_MODIFIED, changeFrequency: "weekly" as const, priority: 0.82 },
+    { url: `${SITE_BASE_URL}/toxicity/dogs`, lastModified: TOXICITY_LAST_MODIFIED, changeFrequency: "weekly" as const, priority: 0.82 },
+    { url: `${SITE_BASE_URL}/toxicity/cats`, lastModified: TOXICITY_LAST_MODIFIED, changeFrequency: "weekly" as const, priority: 0.82 },
   ];
 
   const insurancePages: MetadataRoute.Sitemap = [
@@ -60,14 +61,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const toxicityCategoryPages: MetadataRoute.Sitemap = getToxicityCategoryEntries().map((cat) => ({
     url: `${SITE_BASE_URL}/toxicity/category/${cat.id}`,
-    lastModified: CONTENT_LAST_MODIFIED,
+    lastModified: TOXICITY_LAST_MODIFIED,
     changeFrequency: "weekly" as const,
     priority: 0.72,
   }));
 
   const toxicityPages: MetadataRoute.Sitemap = toxicityDatabase.map((item) => ({
     url: `${SITE_BASE_URL}/toxicity/${item.id}`,
-    lastModified: CONTENT_LAST_MODIFIED,
+    lastModified: TOXICITY_LAST_MODIFIED,
     changeFrequency: "monthly" as const,
     priority: 0.65,
   }));

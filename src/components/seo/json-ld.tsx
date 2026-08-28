@@ -135,3 +135,62 @@ export function JsonLdItemList({
     />
   );
 }
+
+export function JsonLdWebPage({
+  name,
+  url,
+  description,
+  dateModified,
+  keywords,
+  about,
+  citations,
+}: {
+  name: string;
+  url: string;
+  description: string;
+  dateModified?: string;
+  keywords?: string[];
+  about?: { name: string; description: string; alternateName?: string[] };
+  citations?: { name: string; url: string }[];
+}) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name,
+    url,
+    description,
+    inLanguage: "en-US",
+    isAccessibleForFree: true,
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_BASE_URL,
+    },
+    ...(dateModified && { dateModified }),
+    ...(keywords && keywords.length > 0 && { keywords: keywords.join(", ") }),
+    ...(about && {
+      about: {
+        "@type": "Thing",
+        name: about.name,
+        description: about.description,
+        ...(about.alternateName && about.alternateName.length > 0
+          ? { alternateName: about.alternateName }
+          : {}),
+      },
+    }),
+    ...(citations && citations.length > 0 && {
+      citation: citations.map((citation) => ({
+        "@type": "CreativeWork",
+        name: citation.name,
+        url: citation.url,
+      })),
+    }),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
