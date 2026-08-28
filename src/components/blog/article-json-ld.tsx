@@ -16,6 +16,12 @@ export function ArticleJsonLd({ post }: { post: BlogPost }) {
     "@type": "Article",
     headline: post.title,
     description: post.excerpt,
+    inLanguage: "en-US",
+    isAccessibleForFree: true,
+    articleSection: post.subcategory
+      ? [post.category, post.subcategory]
+      : post.category,
+    ...(post.tags.length > 0 && { keywords: post.tags.join(", ") }),
     datePublished: post.date,
     author: {
       "@type": "Organization",
@@ -33,6 +39,13 @@ export function ArticleJsonLd({ post }: { post: BlogPost }) {
       "@id": `${SITE_BASE_URL}/blog/${post.slug}`,
     },
     ...(image && { image: toAbsoluteUrl(image) }),
+    ...(post.sources.length > 0 && {
+      citation: post.sources.map((source) => ({
+        "@type": "CreativeWork",
+        name: source.name,
+        url: source.url,
+      })),
+    }),
   };
 
   return (
