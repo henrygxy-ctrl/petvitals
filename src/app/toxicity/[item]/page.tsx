@@ -74,6 +74,94 @@ const featuredSafetyLinks: Record<string, { id: string; reason: string }[]> = {
   ],
 };
 
+const targetedToxicityMeta: Record<string, { title: string; description: string }> = {
+  wisteria: {
+    title: "Is Wisteria Poisonous to Dogs or Cats?",
+    description:
+      "Wisteria is poisonous to dogs and cats, especially seeds and pods. Learn symptoms, what to do after exposure, and related toxic garden plants.",
+  },
+  "sago-palm": {
+    title: "Is Sago Palm Toxic to Dogs or Cats?",
+    description:
+      "Sago palm is highly toxic to dogs and cats. Learn why seeds are dangerous, poisoning symptoms, emergency steps, and related toxic plants.",
+  },
+};
+
+const targetedSearchAnswers: Record<
+  string,
+  {
+    title: string;
+    intro: string;
+    answers: { question: string; answer: string }[];
+    links: { href: string; title: string }[];
+  }
+> = {
+  wisteria: {
+    title: "Wisteria Poisoning Search Answers",
+    intro:
+      "These are the quick answers pet owners usually need after finding wisteria vines, seeds, or pods in the yard.",
+    answers: [
+      {
+        question: "Is wisteria poisonous to dogs?",
+        answer:
+          "Yes. Wisteria should be treated as poisonous to dogs, especially if a dog chews the seeds or pods. Vomiting, diarrhea, abdominal pain, weakness, or depression should prompt veterinary guidance.",
+      },
+      {
+        question: "Is wisteria toxic to cats?",
+        answer:
+          "Yes. Wisteria is toxic to cats. Cats may be exposed by chewing leaves, flowers, seeds, or pods, and they can also groom plant residue from paws or fur.",
+      },
+      {
+        question: "What part of wisteria is most dangerous?",
+        answer:
+          "Seeds and pods are the main concern because they can contain higher toxin concentrations. Flowers, leaves, and vines should still be kept away from pets.",
+      },
+      {
+        question: "What should I do if my pet ate wisteria?",
+        answer:
+          "Remove access to the plant, note which part was eaten, take a photo if possible, and call your veterinarian or pet poison control. Do not wait for severe symptoms if the amount is unknown.",
+      },
+    ],
+    links: [
+      { href: "/toxicity/sago-palm", title: "Sago palm toxicity" },
+      { href: "/toxicity/azalea", title: "Azalea toxicity" },
+      { href: "/blog/household-plants-toxic-to-cats", title: "Toxic houseplants for cats" },
+    ],
+  },
+  "sago-palm": {
+    title: "Sago Palm Poisoning Search Answers",
+    intro:
+      "Use these answers first if a dog or cat chewed a sago palm, cycad, seed, nut, or leaf.",
+    answers: [
+      {
+        question: "Is sago palm toxic to dogs?",
+        answer:
+          "Yes. Sago palm is highly toxic to dogs. All parts are risky, but seeds and nuts are especially dangerous and can lead to severe liver injury.",
+      },
+      {
+        question: "Is sago palm toxic to cats?",
+        answer:
+          "Yes. Sago palm is toxic to cats as well as dogs. Any chewing or ingestion should be treated as urgent, even before severe symptoms appear.",
+      },
+      {
+        question: "How much sago palm is dangerous?",
+        answer:
+          "There is no safe snack amount. Because the seeds can be highly concentrated, even a small unknown exposure deserves immediate veterinary or poison-control guidance.",
+      },
+      {
+        question: "What should I do if my pet chewed a sago palm?",
+        answer:
+          "Call a veterinarian or pet poison hotline immediately, bring the plant or a photo, and do not induce vomiting unless a professional tells you to do so.",
+      },
+    ],
+    links: [
+      { href: "/toxicity/wisteria", title: "Wisteria toxicity" },
+      { href: "/toxicity/lilies", title: "Lily toxicity" },
+      { href: "/blog/sago-palm-toxicity-pets", title: "Full sago palm guide" },
+    ],
+  },
+};
+
 export async function generateStaticParams() {
   return toxicityDatabase.map((item) => ({
     item: item.id,
@@ -176,7 +264,7 @@ function buildToxicityDescription(item: ToxicityItem) {
 }
 
 function buildToxicityFaq(item: ToxicityItem) {
-  return [
+  const baseFaq = [
     {
       question: petSafetyQuestion(item, "dogs"),
       answer: safetyAnswer(item, "dogs"),
@@ -194,6 +282,17 @@ function buildToxicityFaq(item: ToxicityItem) {
       answer: item.action || "Contact your veterinarian for guidance, especially if your pet ate a large amount or has symptoms.",
     },
   ];
+
+  const baseQuestions = new Set(baseFaq.map((entry) => entry.question.toLowerCase()));
+  const targetedFaq =
+    targetedSearchAnswers[item.id]?.answers
+      .filter((entry) => !baseQuestions.has(entry.question.toLowerCase()))
+      .map((entry) => ({
+        question: entry.question,
+        answer: entry.answer,
+      })) || [];
+
+  return [...baseFaq, ...targetedFaq];
 }
 
 function quickPetVerdict(item: ToxicityItem, pet: "dogs" | "cats") {
@@ -307,8 +406,11 @@ export async function generateMetadata({
   const item = lookupItem(slug);
   if (!item) return { title: "Not Found" };
 
-  const title = buildPetVerdictTitle(item);
-  const description = buildToxicityDescription(item);
+  const targetedMeta = targetedToxicityMeta[item.id];
+  const title = targetedMeta?.title || buildPetVerdictTitle(item);
+  const description = targetedMeta?.description
+    ? truncateMetaDescription(targetedMeta.description)
+    : buildToxicityDescription(item);
 
   return {
     title: `${title} | ${SITE_NAME}`,
@@ -353,6 +455,7 @@ export default async function ToxicityItemPage({
     })
     .filter((link): link is { item: ToxicityItem; reason: string } => Boolean(link));
   const featuredRelatedIds = new Set(featuredRelatedItems.map((link) => link.item.id));
+  const targetedAnswerBlock = targetedSearchAnswers[item.id];
 
   const relatedItems = toxicityDatabase
     .filter(
@@ -478,6 +581,41 @@ export default async function ToxicityItemPage({
                 </div>
               </div>
             </section>
+
+            {targetedAnswerBlock && (
+              <section className="mt-4 rounded-xl border bg-card p-5">
+                <div className="flex items-start gap-3">
+                  <BookOpen className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                  <div>
+                    <h2 className="text-lg font-bold">{targetedAnswerBlock.title}</h2>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      {targetedAnswerBlock.intro}
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                  {targetedAnswerBlock.answers.map((entry) => (
+                    <div key={entry.question}>
+                      <h3 className="text-sm font-semibold">{entry.question}</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                        {entry.answer}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 flex flex-wrap gap-2 border-t pt-4">
+                  {targetedAnswerBlock.links.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground hover:border-primary/40 hover:text-primary"
+                    >
+                      {link.title}
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
 
             <section className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               <QuickSafetyFact

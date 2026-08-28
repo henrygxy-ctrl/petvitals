@@ -30,6 +30,21 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
       answer:
         "Use an enzymatic pet accident cleaner designed for urine. Blot first, apply the product as directed, keep cats away while it works, and let the area dry. Avoid ammonia cleaners because the smell can resemble urine.",
     },
+    {
+      question: "Can cats walk on floors after mopping?",
+      answer:
+        "Cats should stay away until the floor is fully dry and any required rinsing is complete. Wet residue can transfer to paws and then be swallowed during grooming.",
+    },
+    {
+      question: "Are pine-oil or phenol cleaners safe for cats?",
+      answer:
+        "Avoid pine-oil and phenol-based cleaners on surfaces cats can walk on, sleep on, or groom after touching. Choose unscented, low-residue options instead, and use disinfectants only when there is a clear reason.",
+    },
+    {
+      question: "What is the best cat-safe cleaner for litter boxes?",
+      answer:
+        "Hot water and mild unscented dish soap are usually the best first choice for routine litter box cleaning. Rinse thoroughly, dry the box, and avoid strong fragrance because scent can discourage litter box use.",
+    },
   ],
   "pet-safe-floor-cleaners-dogs-cats": [
     {
@@ -115,6 +130,21 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
       question: "Are natural cleaners automatically safe for pets?",
       answer:
         "No. Natural cleaners can still be risky. Essential oils, citrus oils, pine oils, and strong fragrances can irritate pets or be toxic to cats, especially when used in concentrated sprays, diffusers, or freshly cleaned floor areas.",
+    },
+    {
+      question: "What is the best pet-safe cleaner for urine?",
+      answer:
+        "Use an enzymatic pet accident cleaner made for urine. Blot up liquid first, follow the label's contact time, and keep pets away until the area is fully dry. Avoid ammonia because its smell can resemble urine and may encourage repeat marking.",
+    },
+    {
+      question: "Can puppies and kittens be around cleaning products?",
+      answer:
+        "Puppies and kittens should be kept out of the room during cleaning and drying because they lick floors, chew toys, and have smaller bodies. Return them only after surfaces are dry, bowls and toys are rinsed when needed, and strong odors are gone.",
+    },
+    {
+      question: "What cleaner is safe for pet toys and bowls?",
+      answer:
+        "Hot water and mild unscented dish soap are usually the best first choice for bowls and many washable toys. Rinse thoroughly and dry completely. If a label calls for disinfecting, follow the dilution, contact time, rinse, and drying instructions before pets use the item again.",
     },
   ],
   "puppy-vaccination-schedule": [
