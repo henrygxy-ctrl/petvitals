@@ -5,14 +5,14 @@ import { DownloadResourceCard } from "@/components/downloads/resource-card";
 import { SITE_BASE_URL, SITE_NAME } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: `Pet-Safe Cleaning Hub: Cleaners, Floors & Cats | ${SITE_NAME}`,
+  title: `Pet-Safe & Pet-Friendly Cleaning Products Hub | ${SITE_NAME}`,
   description:
-    "Pet-safe cleaning hub for cat-safe cleaners, floor cleaners, disinfectants, ingredients to avoid, and cleaning-product poisoning prevention.",
+    "Pet-safe and pet-friendly cleaning products hub for floor cleaners, cat-safe disinfectants, ingredients to avoid, and cleaning-product poisoning prevention.",
   alternates: { canonical: `${SITE_BASE_URL}/pet-safe-cleaning` },
   openGraph: {
-    title: "Pet-Safe Cleaning Hub",
+    title: "Pet-Safe and Pet-Friendly Cleaning Products Hub",
     description:
-      "Compare safer cleaning routines, ingredients to avoid, and cat-friendly cleaner guides.",
+      "Compare safer cleaning routines, floor cleaners, cat-safe disinfectants, ingredients to avoid, and cleaning-product exposure steps.",
     url: `${SITE_BASE_URL}/pet-safe-cleaning`,
     siteName: SITE_NAME,
     type: "website",
@@ -41,6 +41,16 @@ const faq = [
     answer:
       "Call a veterinarian or poison hotline if a pet licked a concentrated product, walked through wet chemicals and is licking paws, has trouble breathing, vomits, drools, trembles, seems weak, or has burns on skin, eyes, or mouth.",
   },
+  {
+    question: "Are pet-friendly cleaning products the same as pet-safe cleaning products?",
+    answer:
+      "Not always. Pet-friendly usually means a product is marketed for homes with pets. Pet-safe depends on the exact ingredients, dilution, surface, ventilation, drying time, and whether a dog or cat can lick residue. Treat low-residue, unscented products used as directed as the safer starting point.",
+  },
+  {
+    question: "What should I do if my pet licked floor cleaner?",
+    answer:
+      "Move your pet away, prevent more licking, save the product label, and call your veterinarian or a pet poison hotline if the cleaner was concentrated, the amount is unknown, or symptoms such as drooling, vomiting, coughing, tremors, weakness, or mouth irritation appear.",
+  },
 ];
 
 export default function PetSafeCleaningHubPage() {
@@ -48,14 +58,14 @@ export default function PetSafeCleaningHubPage() {
     <TopicHubPage
       label="Pet-Safe Cleaning Hub"
       canonicalPath="/pet-safe-cleaning"
-      title="Pet-Safe Cleaning Products, Floor Cleaners, and Cat-Safe Disinfectants"
-      intro="A central guide for cleaning homes with dogs and cats. Start with the ingredient checker, then compare floor, cat, and emergency-cleanup guides."
-      primaryCta={{ title: "Open ingredient checker", href: "/blog/best-pet-safe-cleaning-products", description: "Check bleach, vinegar, essential oils, phenols, and more." }}
+      title="Pet-Safe and Pet-Friendly Cleaning Products for Dogs and Cats"
+      intro="A central guide for cleaning homes with dogs and cats. Start with pet-safe cleaner choices, compare floor and cat-safe disinfectant guidance, then check poisoning symptoms and cleaner toxicity records if exposure happens."
+      primaryCta={{ title: "Compare pet-safe cleaners", href: "/blog/best-pet-safe-cleaning-products", description: "Check bleach, vinegar, essential oils, phenols, and safer alternatives." }}
       secondaryCta={{ title: "Search cleaner toxicity", href: "/toxicity/category/household", description: "Search household toxicity records." }}
       highlights={[
         { value: "Dry", label: "Core rule", note: "Pets should stay away until surfaces are fully dry." },
         { value: "Cats", label: "Extra caution", note: "Cats groom residue from paws and fur." },
-        { value: "Low residue", label: "Best default", note: "Use mild cleaners, ventilation, and label directions." },
+        { value: "Low residue", label: "Best default", note: "Use mild, unscented cleaners, ventilation, and label directions." },
       ]}
       infographic={<CleaningSafetyInfographic />}
       sections={[
@@ -70,11 +80,23 @@ export default function PetSafeCleaningHubPage() {
           ],
         },
         {
+          title: "Search Answers by Cleaning Need",
+          description: "Direct paths for the cleaning searches already getting impressions.",
+          links: [
+            { title: "Pet-Friendly Cleaning Products", href: "/blog/best-pet-safe-cleaning-products", description: "Understand what pet-friendly really means and when residue still matters.", label: "Search answer" },
+            { title: "Disinfectants Safe for Cats", href: "/blog/cat-friendly-cleaning-products", description: "Cat-specific disinfectant rules for floors, bowls, litter boxes, and counters." },
+            { title: "Pet-Safe Floor Cleaner", href: "/blog/pet-safe-floor-cleaners-dogs-cats", description: "Compare steam, diluted soap, vinegar, enzymatic cleaners, and disinfectant residue." },
+            { title: "Poisoning Symptoms After Cleaner Exposure", href: "/toxicity/symptoms", description: "Look up vomiting, drooling, tremors, coughing, and other warning signs." },
+          ],
+        },
+        {
           title: "Cleaner Toxicity Checks",
           description: "Quick checks for household products and exposures.",
           links: [
             { title: "Cleaning Wipes", href: "/toxicity/cleaning-wipe", description: "Disinfecting wipe residue and ingestion concerns." },
             { title: "Bleach", href: "/toxicity/bleach", description: "Use caution with wet residue, fumes, and mixing risks." },
+            { title: "Ammonia", href: "/toxicity/ammonia", description: "Airway irritation and dangerous mixing risks." },
+            { title: "Vinegar", href: "/toxicity/vinegar", description: "Surface limits and odor concerns around pets." },
             { title: "Essential Oils", href: "/toxicity/essential-oils", description: "Concentrated oil and fragrance concerns around pets." },
             { title: "Emergency Vet Cost", href: "/insurance/emergency-vet-cost", description: "Financial planning after accidental toxin exposure." },
           ],
