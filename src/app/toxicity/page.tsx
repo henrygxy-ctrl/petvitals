@@ -237,6 +237,13 @@ export default function ToxicityPage() {
                   <p className="mt-1 text-sm text-muted-foreground">
                     Not sure what your pet got into? Search the toxicity checker by common symptom keywords.
                   </p>
+                  <Link
+                    href="/toxicity/symptoms"
+                    className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+                  >
+                    Open the poisoning symptoms guide
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
                 </div>
               </div>
               <div className="mt-4 flex flex-wrap gap-2">

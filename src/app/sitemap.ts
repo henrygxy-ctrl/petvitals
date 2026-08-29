@@ -7,7 +7,7 @@ import { getToxicityCategoryEntries } from "@/lib/toxicity-category-metadata";
 const CONTENT_LAST_MODIFIED = new Date("2026-07-11");
 const INSURANCE_LAST_MODIFIED = new Date("2026-08-09");
 const HUB_LAST_MODIFIED = new Date("2026-08-14");
-const TOXICITY_LAST_MODIFIED = new Date("2026-08-28");
+const TOXICITY_LAST_MODIFIED = new Date("2026-08-29");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_BASE_URL}/vet-costs`, lastModified: HUB_LAST_MODIFIED, changeFrequency: "weekly" as const, priority: 0.82 },
     { url: `${SITE_BASE_URL}/toxicity/dogs`, lastModified: TOXICITY_LAST_MODIFIED, changeFrequency: "weekly" as const, priority: 0.82 },
     { url: `${SITE_BASE_URL}/toxicity/cats`, lastModified: TOXICITY_LAST_MODIFIED, changeFrequency: "weekly" as const, priority: 0.82 },
+    { url: `${SITE_BASE_URL}/toxicity/symptoms`, lastModified: TOXICITY_LAST_MODIFIED, changeFrequency: "weekly" as const, priority: 0.82 },
   ];
 
   const insurancePages: MetadataRoute.Sitemap = [
