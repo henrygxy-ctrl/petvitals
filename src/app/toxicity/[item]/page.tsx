@@ -47,7 +47,7 @@ const riskStyles: Record<string, { bg: string; border: string; badge: string }> 
   },
 };
 
-const TOXICITY_PAGE_LAST_MODIFIED = "2026-08-28";
+const TOXICITY_PAGE_LAST_MODIFIED = "2026-08-29";
 
 const featuredSafetyLinks: Record<string, { id: string; reason: string }[]> = {
   wisteria: [
@@ -226,6 +226,14 @@ function unsafeTitleLabel(item: ToxicityItem) {
 function buildPetVerdictTitle(item: ToxicityItem) {
   const dogSafe = isSafeForPet(item, "dogs");
   const catSafe = isSafeForPet(item, "cats");
+
+  if (item.riskLevel === "caution") {
+    if (dogSafe && catSafe) return `${item.name}: Safe in Moderation for Dogs & Cats?`;
+    if (!dogSafe && !catSafe) return `${item.name}: Use Caution for Dogs & Cats?`;
+    if (dogSafe) return `${item.name}: Safe for Dogs, Use Caution for Cats?`;
+    return `${item.name}: Use Caution for Dogs, Safe for Cats?`;
+  }
+
   const unsafe = unsafeTitleLabel(item);
 
   if (dogSafe && catSafe) return `${item.name}: Safe for Dogs & Cats?`;
@@ -244,6 +252,10 @@ function safetyAnswer(item: ToxicityItem, pet: "dogs" | "cats") {
       : `${item.name} is generally considered safe for ${petLabel}, but portions and preparation still matter.`;
   }
 
+  if (item.riskLevel === "caution") {
+    return `Use caution with ${item.name} for ${petLabel}. ${item.description}`;
+  }
+
   return `${item.name} is poisonous or toxic to ${petLabel}. ${item.description}`;
 }
 
@@ -252,6 +264,7 @@ function petSafetyQuestion(item: ToxicityItem, pet: "dogs" | "cats") {
   const isSafe = isSafeForPet(item, pet);
 
   if (isSafe) return `Is ${item.name} safe for ${petLabel}?`;
+  if (item.riskLevel === "caution") return `Can ${petLabel} have ${item.name}?`;
   if (pet === "dogs") return `Is ${item.name} poisonous to dogs?`;
   return `Is ${item.name} toxic to cats?`;
 }
@@ -266,6 +279,30 @@ function truncateMetaDescription(description: string) {
 function buildToxicityDescription(item: ToxicityItem) {
   const dogSafe = isSafeForPet(item, "dogs");
   const catSafe = isSafeForPet(item, "cats");
+
+  if (item.riskLevel === "caution") {
+    if (dogSafe && catSafe) {
+      return truncateMetaDescription(
+        `Can dogs and cats have ${item.name}? Use caution with portions, preparation, and individual sensitivity. ${item.description}`
+      );
+    }
+
+    if (!dogSafe && !catSafe) {
+      return truncateMetaDescription(
+        `Can dogs or cats have ${item.name}? Use caution: ${item.description} Learn symptoms and what to do.`
+      );
+    }
+
+    if (dogSafe) {
+      return truncateMetaDescription(
+        `Can dogs have ${item.name}, and is it risky for cats? ${item.description}`
+      );
+    }
+
+    return truncateMetaDescription(
+      `Can cats have ${item.name}, and is it risky for dogs? ${item.description}`
+    );
+  }
 
   if (dogSafe && catSafe) {
     return truncateMetaDescription(
@@ -325,7 +362,8 @@ function buildToxicityFaq(item: ToxicityItem) {
 function quickPetVerdict(item: ToxicityItem, pet: "dogs" | "cats") {
   const isSafe = isSafeForPet(item, pet);
   if (isSafe && item.riskLevel === "safe") return "Generally safe";
-  if (isSafe) return "Use caution";
+  if (item.riskLevel === "caution") return "Use caution";
+  if (isSafe) return "Generally safe";
   if (item.riskLevel === "danger") return "Emergency risk";
   return "Unsafe";
 }
@@ -339,6 +377,7 @@ function quickText(value: string | undefined, fallback: string) {
 }
 
 function quickToxicityQuestion(item: ToxicityItem, pet: "dogs" | "cats") {
+  if (item.riskLevel === "caution") return `Can ${pet} have ${item.name}?`;
   return `Is ${item.name} toxic to ${pet}?`;
 }
 
@@ -381,6 +420,29 @@ function quickUrgencyAnswer(item: ToxicityItem) {
   }
 
   return `Not usually urgent when prepared appropriately, but monitor your pet and avoid overfeeding or unsafe preparation.`;
+}
+
+function petSafetyBadgeLabel(item: ToxicityItem, pet: "Dogs" | "Cats", isSafe: boolean) {
+  if (item.riskLevel === "caution") {
+    return isSafe ? `Use Caution for ${pet}` : `Not Recommended for ${pet}`;
+  }
+
+  return isSafe ? `Safe for ${pet}` : `Unsafe for ${pet}`;
+}
+
+function petSafetyBadgeClass(item: ToxicityItem, isSafe: boolean) {
+  if (item.riskLevel === "caution") {
+    return "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400";
+  }
+
+  return isSafe
+    ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
+    : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400";
+}
+
+function petSafetyTone(item: ToxicityItem, isSafe: boolean): "safe" | "caution" | "danger" {
+  if (item.riskLevel === "caution") return "caution";
+  return isSafe ? "safe" : "danger";
 }
 
 function buildToxicityHubLinks(
@@ -558,24 +620,16 @@ export default async function ToxicityItemPage({
                   {/* Pet safety badges */}
                   <div className="flex gap-3 mt-3">
                     <div
-                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
-                        dogIsSafe
-                          ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
-                          : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
-                      }`}
+                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${petSafetyBadgeClass(item, dogIsSafe)}`}
                     >
                       <Dog className="h-3.5 w-3.5" />
-                      {dogIsSafe ? "Safe for Dogs" : "Unsafe for Dogs"}
+                      {petSafetyBadgeLabel(item, "Dogs", dogIsSafe)}
                     </div>
                     <div
-                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${
-                        catIsSafe
-                          ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
-                          : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
-                      }`}
+                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${petSafetyBadgeClass(item, catIsSafe)}`}
                     >
                       <Cat className="h-3.5 w-3.5" />
-                      {catIsSafe ? "Safe for Cats" : "Unsafe for Cats"}
+                      {petSafetyBadgeLabel(item, "Cats", catIsSafe)}
                     </div>
                   </div>
                 </div>
@@ -663,12 +717,12 @@ export default async function ToxicityItemPage({
               <QuickSafetyFact
                 label="Dogs"
                 value={quickPetVerdict(item, "dogs")}
-                tone={dogIsSafe ? "safe" : "danger"}
+                tone={petSafetyTone(item, dogIsSafe)}
               />
               <QuickSafetyFact
                 label="Cats"
                 value={quickPetVerdict(item, "cats")}
-                tone={catIsSafe ? "safe" : "danger"}
+                tone={petSafetyTone(item, catIsSafe)}
               />
               <QuickSafetyFact
                 label="Risk level"

@@ -423,4 +423,356 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
         "It can be useful if a large unexpected bill would be difficult to pay. Early enrollment may reduce pre-existing condition complications, but waiting periods and exclusions still apply.",
     },
   ],
+  "common-household-poisons-pets": [
+    {
+      question: "What household items are most toxic to dogs and cats?",
+      answer:
+        "High-priority household risks include xylitol, grapes and raisins, onions and garlic, human pain relievers, acetaminophen, lilies, sago palm, antifreeze, rodenticides, and concentrated cleaners.",
+    },
+    {
+      question: "What should I do if my pet ate something poisonous at home?",
+      answer:
+        "Move the item out of reach, save the label or packaging, estimate the amount and time, and call your veterinarian or a pet poison-control hotline. Do not induce vomiting unless a professional tells you to.",
+    },
+    {
+      question: "Which rooms have the most pet poisoning risks?",
+      answer:
+        "Kitchens, bathrooms, laundry rooms, garages, and plant areas are common risk zones because they contain foods, medications, cleaners, automotive fluids, pesticides, and toxic plants.",
+    },
+    {
+      question: "How can I prevent household poisoning in pets?",
+      answer:
+        "Store medication, cleaners, rodenticides, antifreeze, and risky foods behind secured doors. Keep toxic plants out of pet homes and make emergency phone numbers easy to find.",
+    },
+  ],
+  "pet-insurance-worth-it": [
+    {
+      question: "Is pet insurance worth it in 2026?",
+      answer:
+        "Pet insurance can be worth it if a large emergency bill would be difficult to pay out of pocket. It is most useful before symptoms or diagnoses create pre-existing condition exclusions.",
+    },
+    {
+      question: "When does pet insurance usually pay off?",
+      answer:
+        "It tends to pay off during expensive accidents, emergency surgery, hospitalization, cancer treatment, chronic illness, diagnostics, and specialist care, especially when the plan has suitable limits and reimbursement.",
+    },
+    {
+      question: "When might pet insurance not be worth it?",
+      answer:
+        "It may be less useful if your pet already has major pre-existing conditions, you can comfortably self-insure, or the policy has exclusions and limits that do not match your biggest risks.",
+    },
+    {
+      question: "What should I compare before choosing pet insurance?",
+      answer:
+        "Compare deductible, reimbursement rate, annual limit, waiting periods, exclusions, exam-fee coverage, dental rules, age limits, claim process, and the monthly premium using the same settings across providers.",
+    },
+  ],
+  "best-dog-food-for-weight-loss": [
+    {
+      question: "What is the best dog food for weight loss?",
+      answer:
+        "The best weight-loss food is usually a complete, calorie-controlled diet with enough protein, fiber, and nutrients for your dog. Ask your veterinarian before making a major change, especially if your dog has medical issues.",
+    },
+    {
+      question: "How fast should a dog lose weight?",
+      answer:
+        "Weight loss should be gradual. Your veterinarian can set a target rate based on body condition, age, breed, current weight, and health history so calories are reduced without crash dieting.",
+    },
+    {
+      question: "Should I reduce food or increase exercise first?",
+      answer:
+        "Start by measuring food accurately and counting treats, then add appropriate activity. Exercise helps, but unmeasured portions and treats often prevent weight loss.",
+    },
+    {
+      question: "When should an overweight dog see the vet?",
+      answer:
+        "See a veterinarian if weight gain is sudden, your dog is lethargic, exercise tolerance drops, pain limits movement, or weight does not improve despite a controlled feeding plan.",
+    },
+  ],
+  "how-to-read-dog-food-labels": [
+    {
+      question: "What is the most important part of a dog food label?",
+      answer:
+        "The AAFCO nutritional adequacy statement is one of the most important parts because it tells you whether the food is complete and balanced for a life stage or intended only for supplemental feeding.",
+    },
+    {
+      question: "What does guaranteed analysis mean on dog food?",
+      answer:
+        "Guaranteed analysis lists minimum or maximum nutrient levels such as protein, fat, fiber, and moisture. To compare wet and dry foods fairly, convert values to a dry matter basis.",
+    },
+    {
+      question: "Does the first ingredient prove a dog food is best?",
+      answer:
+        "No. Ingredient order is by weight before processing, and high-moisture ingredients can appear first. Look at the full formula, adequacy statement, calories, and your dog's individual needs.",
+    },
+    {
+      question: "Are grain-free dog foods better?",
+      answer:
+        "Not automatically. Grain-free is a marketing category, not a quality guarantee. Ask your veterinarian before choosing grain-free food, especially if the diet relies heavily on legumes or unusual ingredients.",
+    },
+  ],
+  "signs-your-cat-is-sick": [
+    {
+      question: "What are subtle signs that a cat is sick?",
+      answer:
+        "Subtle warning signs include hiding, litter box changes, appetite changes, weight loss, drinking more, grooming changes, bad breath, vomiting, breathing changes, vocalization changes, or a visible third eyelid.",
+    },
+    {
+      question: "When is a sick cat an emergency?",
+      answer:
+        "Seek urgent care for trouble breathing, collapse, seizures, inability to urinate, repeated vomiting, severe weakness, pale gums, major trauma, toxin exposure, or not eating for a concerning period.",
+    },
+    {
+      question: "Why do cats hide illness?",
+      answer:
+        "Cats often hide pain or weakness, so behavior changes may be the first clue. Small changes in routine, posture, appetite, grooming, or litter box habits deserve attention.",
+    },
+    {
+      question: "Should I wait to see if my cat gets better?",
+      answer:
+        "Do not wait if symptoms are severe, your cat stops eating, breathing changes, urination changes, or toxin exposure is possible. For mild changes, call your veterinarian for timing guidance.",
+    },
+  ],
+  "understanding-body-condition-score": [
+    {
+      question: "What is a body condition score for pets?",
+      answer:
+        "Body condition score is a hands-on way to estimate whether a dog or cat is underweight, ideal, or overweight by checking ribs, waist, and abdominal tuck.",
+    },
+    {
+      question: "What is an ideal body condition score for dogs and cats?",
+      answer:
+        "On the common 9-point scale, many dogs and cats are considered ideal around 4 or 5 out of 9. Your veterinarian can confirm the target for your pet's breed, age, and health.",
+    },
+    {
+      question: "Is body condition score better than weight alone?",
+      answer:
+        "Yes. Weight alone does not show body fat, muscle, frame size, or breed differences. Body condition score adds context so feeding and weight goals are more realistic.",
+    },
+    {
+      question: "How often should I check my pet's body condition?",
+      answer:
+        "Check monthly at home and during veterinary visits. Recheck sooner during weight loss, growth, senior care, illness recovery, or any major feeding change.",
+    },
+  ],
+  "can-cats-eat-tuna": [
+    {
+      question: "Can cats eat tuna?",
+      answer:
+        "Cats can eat a small amount of plain, water-packed tuna as an occasional treat, but it should not become a regular meal or replace complete cat food.",
+    },
+    {
+      question: "How much tuna can I give my cat?",
+      answer:
+        "Keep tuna portions tiny and occasional. Use it as a treat or medication helper, not a daily food, and avoid tuna packed in oil, salt, seasoning, onion, or garlic.",
+    },
+    {
+      question: "Why is too much tuna bad for cats?",
+      answer:
+        "Too much tuna can create nutritional imbalance and may increase mercury exposure over time. Some fish-heavy diets can also contribute to vitamin or mineral problems.",
+    },
+    {
+      question: "What fish is safer than tuna for cats?",
+      answer:
+        "Plain cooked fish can be an occasional treat, but complete commercial cat food is safer as the main diet because it is balanced for feline nutrition.",
+    },
+  ],
+  "why-is-my-cat-losing-weight": [
+    {
+      question: "Is unexplained weight loss in cats normal?",
+      answer:
+        "No. Unexplained weight loss is not normal in cats and can be linked to hyperthyroidism, diabetes, kidney disease, dental disease, gastrointestinal disease, cancer, or other medical problems.",
+    },
+    {
+      question: "When should I take a losing-weight cat to the vet?",
+      answer:
+        "Schedule a veterinary visit if weight loss is visible, the scale is dropping, appetite changes, drinking or urination changes, vomiting, diarrhea, bad breath, weakness, or behavior changes appear.",
+    },
+    {
+      question: "Can a cat lose weight but still eat normally?",
+      answer:
+        "Yes. Cats with conditions such as hyperthyroidism, diabetes, malabsorption, or cancer may lose weight even when appetite seems normal or increased.",
+    },
+    {
+      question: "What tests might a vet run for cat weight loss?",
+      answer:
+        "Common starting tests include a physical exam, weight history, bloodwork, urinalysis, thyroid testing, fecal testing, dental exam, and imaging when the first results do not explain the loss.",
+    },
+  ],
+  "lily-toxicity-cats": [
+    {
+      question: "Are lilies toxic to cats?",
+      answer:
+        "Yes. True lilies and daylilies are dangerous for cats and can cause acute kidney failure. Exposure to leaves, flowers, pollen, or vase water should be treated as urgent.",
+    },
+    {
+      question: "How much lily exposure is dangerous for a cat?",
+      answer:
+        "There is no safe exposure amount for true lilies or daylilies in cats. Even small or uncertain contact deserves immediate veterinary or poison-control guidance.",
+    },
+    {
+      question: "What should I do if my cat touched or ate a lily?",
+      answer:
+        "Remove access, prevent grooming if pollen is on the coat, save the plant or a photo, and call a veterinarian or pet poison-control hotline immediately.",
+    },
+    {
+      question: "Which lilies are safest for cat homes?",
+      answer:
+        "The safest policy is to keep true lilies and daylilies out of cat homes entirely. Choose clearly non-toxic alternatives instead of relying on partial plant identification.",
+    },
+  ],
+  "sago-palm-toxicity-pets": [
+    {
+      question: "Is sago palm toxic to dogs and cats?",
+      answer:
+        "Yes. Sago palm is highly toxic to dogs and cats. All parts are risky, and seeds or nuts are especially dangerous because toxin concentration can be high.",
+    },
+    {
+      question: "What are symptoms of sago palm poisoning?",
+      answer:
+        "Early signs can include vomiting, diarrhea, drooling, lethargy, and appetite loss. Severe cases can progress to liver failure, bleeding problems, neurologic signs, collapse, or death.",
+    },
+    {
+      question: "What should I do if my pet ate sago palm?",
+      answer:
+        "Call a veterinarian or pet poison-control hotline immediately, even if symptoms have not started. Bring the plant, seed, label, or a clear photo if you go to a clinic.",
+    },
+    {
+      question: "Should pet owners remove sago palms?",
+      answer:
+        "Yes, removal is the most reliable prevention in homes or yards with dogs or cats because chewing a seed, leaf, or root can become an emergency.",
+    },
+  ],
+  "can-dogs-eat-avocado": [
+    {
+      question: "Can dogs eat avocado?",
+      answer:
+        "Dogs should not be fed avocado as a routine treat. The flesh may cause stomach upset, the fat content can be a problem, and the pit is a serious choking or obstruction risk.",
+    },
+    {
+      question: "Is avocado toxic to dogs?",
+      answer:
+        "Avocado contains persin, and sensitivity varies by species. For dogs, the larger practical risks are stomach upset, high fat, pancreatitis risk, and the pit or skin causing choking or blockage.",
+    },
+    {
+      question: "What should I do if my dog swallowed an avocado pit?",
+      answer:
+        "Call your veterinarian promptly. An avocado pit can lodge in the throat or intestines, and obstruction may require imaging or surgery.",
+    },
+    {
+      question: "Is guacamole safe for dogs?",
+      answer:
+        "No. Guacamole often contains onion, garlic, salt, lime, spices, or other ingredients that can be unsafe for dogs, in addition to the avocado itself.",
+    },
+  ],
+  "can-dogs-eat-grapes": [
+    {
+      question: "Can dogs eat grapes?",
+      answer:
+        "No. Dogs should not eat grapes or raisins because they can cause sudden kidney injury. Treat even a small or unknown amount as a reason to call a veterinarian or poison-control hotline.",
+    },
+    {
+      question: "How many grapes are toxic to dogs?",
+      answer:
+        "There is no reliable safe number because dogs vary widely in sensitivity. The safest response is to call for guidance as soon as you know or suspect exposure.",
+    },
+    {
+      question: "What are signs of grape poisoning in dogs?",
+      answer:
+        "Possible signs include vomiting, diarrhea, lethargy, loss of appetite, abdominal pain, increased thirst, reduced urination, weakness, or signs of kidney trouble.",
+    },
+    {
+      question: "Are raisins worse than grapes for dogs?",
+      answer:
+        "Raisins can be especially concerning because they are concentrated grapes and may be eaten in baked goods, trail mix, or cereal without owners noticing quickly.",
+    },
+  ],
+  "dog-chocolate-toxicity": [
+    {
+      question: "Can dogs eat chocolate?",
+      answer:
+        "No. Dogs should not eat chocolate because theobromine and caffeine can cause poisoning. Risk depends on dog size, chocolate type, and amount eaten.",
+    },
+    {
+      question: "Which chocolate is most toxic to dogs?",
+      answer:
+        "Cocoa powder, baking chocolate, and dark chocolate are usually the highest-risk forms because they contain more theobromine. Milk chocolate is still unsafe, especially in larger amounts.",
+    },
+    {
+      question: "What are symptoms of chocolate poisoning in dogs?",
+      answer:
+        "Symptoms can include vomiting, diarrhea, restlessness, fast heart rate, panting, tremors, seizures, and collapse. Call a veterinarian or poison-control hotline after exposure.",
+    },
+    {
+      question: "Is white chocolate safe for dogs?",
+      answer:
+        "White chocolate usually contains much less theobromine, but it is still not recommended because fat and sugar can cause stomach upset or pancreatitis risk.",
+    },
+  ],
+  "can-dogs-eat-onions": [
+    {
+      question: "Can dogs eat onions?",
+      answer:
+        "No. Dogs should not eat onions. Raw, cooked, powdered, dehydrated, or hidden onion in prepared foods can damage red blood cells and cause anemia.",
+    },
+    {
+      question: "How much onion is toxic to dogs?",
+      answer:
+        "Toxic risk depends on dog size, amount, form, and repeat exposure. Onion powder can be concentrated, so call your veterinarian if your dog ate onion-containing food.",
+    },
+    {
+      question: "What are symptoms of onion poisoning in dogs?",
+      answer:
+        "Signs may include vomiting, diarrhea, weakness, pale gums, fast breathing, dark urine, reduced appetite, or lethargy. Anemia signs can be delayed.",
+    },
+    {
+      question: "Are garlic and chives dangerous for dogs too?",
+      answer:
+        "Yes. Garlic, chives, leeks, scallions, and related alliums can also be unsafe for dogs and cats, including when cooked or powdered.",
+    },
+  ],
+  "household-plants-toxic-to-cats": [
+    {
+      question: "Which houseplants are most toxic to cats?",
+      answer:
+        "High-concern cat plant risks include true lilies, daylilies, sago palm, pothos, philodendron, dieffenbachia, aloe, English ivy, peace lily, snake plant, and jade plant.",
+    },
+    {
+      question: "What should I do if my cat eats a toxic plant?",
+      answer:
+        "Remove access, identify the plant, take a photo, note what part was eaten, and call your veterinarian or pet poison-control hotline. Do not wait for severe symptoms with lilies or sago palm.",
+    },
+    {
+      question: "Why do cats chew houseplants?",
+      answer:
+        "Cats may chew plants from curiosity, boredom, texture, scent, or lack of better enrichment. Provide safer alternatives and keep risky plants out of reach or out of the home.",
+    },
+    {
+      question: "Are peace lilies the same as true lilies for cats?",
+      answer:
+        "No. Peace lilies are not true lilies, but they can still irritate the mouth and digestive tract. True lilies and daylilies are the major kidney-failure emergency for cats.",
+    },
+  ],
+  "calculate-dog-calorie-needs": [
+    {
+      question: "How do I calculate my dog's daily calories?",
+      answer:
+        "Start with resting energy requirement, then apply a maintenance multiplier for age, neuter status, activity, growth, or weight-loss goals. Adjust based on body condition and veterinary guidance.",
+    },
+    {
+      question: "What is RER for dogs?",
+      answer:
+        "RER means resting energy requirement, an estimate of calories needed for basic body functions at rest. It is the starting point before applying a life-stage or activity multiplier.",
+    },
+    {
+      question: "Do treats count toward my dog's calories?",
+      answer:
+        "Yes. Treats, chews, table scraps, training rewards, and dental snacks all count. A common target is to keep treats to a small share of total daily calories.",
+    },
+    {
+      question: "When should I ask a vet about dog calories?",
+      answer:
+        "Ask your veterinarian if your dog is a puppy, senior, pregnant, nursing, overweight, underweight, very active, ill, or not responding as expected to a measured feeding plan.",
+    },
+  ],
 };
