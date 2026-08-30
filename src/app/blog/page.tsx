@@ -91,6 +91,44 @@ const popularGuides = [
   },
 ];
 
+const searchOpportunityGuides = [
+  {
+    title: "Can Cats Eat Melon?",
+    href: "/blog/can-cats-eat-cantaloupe",
+    desc: "Cantaloupe, honeydew, watermelon flesh, serving size, and unsafe fruit mixes.",
+  },
+  {
+    title: "Pet-Safe Floor Cleaners",
+    href: "/blog/pet-safe-floor-cleaners-dogs-cats",
+    desc: "Residue, drying time, paw licking, and safer cleaning routines for dogs and cats.",
+  },
+  {
+    title: "Cat-Friendly Cleaning Products",
+    href: "/blog/cat-friendly-cleaning-products",
+    desc: "Cleaner ingredients, disinfectants, fragrance risk, and cat household rules.",
+  },
+  {
+    title: "Best Pet-Safe Cleaning Products",
+    href: "/blog/best-pet-safe-cleaning-products",
+    desc: "A buying checklist for pet-safe cleaners, floors, fabrics, and odor control.",
+  },
+  {
+    title: "Pet Insurance Cost",
+    href: "/insurance/pet-insurance-cost",
+    desc: "Monthly premiums, deductibles, reimbursement settings, and quote comparison.",
+  },
+  {
+    title: "Cat Insurance Cost",
+    href: "/insurance/cat-insurance-cost",
+    desc: "What cat owners should compare before choosing accident or illness coverage.",
+  },
+  {
+    title: "Accident-Only Pet Insurance",
+    href: "/insurance/accident-only",
+    desc: "When a lower-premium accident plan helps with poisoning, injuries, and surgery.",
+  },
+];
+
 export default function BlogPage() {
   const posts = getAllPosts();
   const categories = getAllCategories();
@@ -123,6 +161,24 @@ export default function BlogPage() {
             
             <p className="mt-2 text-muted-foreground max-w-2xl">Evidence-based guides on pet nutrition, safety, weight management, and more.</p>
           </div>
+
+          <section className="mb-8">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-3">
+              Popular Questions
+            </h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {searchOpportunityGuides.map((guide) => (
+                <Link
+                  key={guide.href}
+                  href={guide.href}
+                  className="rounded-xl border bg-card p-4 hover:border-primary/40 transition-colors"
+                >
+                  <h3 className="text-sm font-semibold">{guide.title}</h3>
+                  <p className="mt-1 text-xs text-muted-foreground">{guide.desc}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
 
           <section className="mb-8">
             <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-3">

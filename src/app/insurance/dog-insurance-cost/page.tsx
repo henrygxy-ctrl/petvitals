@@ -197,8 +197,8 @@ export default function DogInsuranceCostPage() {
         { title: "Emergency Vet Cost", href: "/insurance/emergency-vet-cost", description: "See why one urgent dog visit can exceed a year of premiums." },
       ]}
       sources={[
-        { label: "NAPHIA 2026 State of the Industry Report Highlights", href: "https://naphia.org/industry-data/report-highlights-download/" },
-        { label: "NAIC: A Regulator's Guide to Pet Insurance", href: "https://content.naic.org/article/consumer-insight-a-regulators-guide-to-pet-insurance" },
+        { label: "NAPHIA Pet Insurance Industry Data", href: "https://naphia.org/industry-data/" },
+        { label: "NAIC Pet Insurance Consumer Information", href: "https://content.naic.org/insurance-topics/pet-insurance" },
       ]}
     />
   );

@@ -184,6 +184,27 @@ export default function AboutPage() {
             </p>
           </section>
 
+          {/* Editorial Standards */}
+          <section>
+            <h2 className="text-2xl font-bold text-foreground">Editorial Standards and Corrections</h2>
+            <p>
+              PetVitals separates educational guidance from advertising and affiliate links. Articles and tool pages
+              are written to answer practical pet-owner questions first, then connect readers to calculators,
+              toxicity records, source references, or insurance explainers when those next steps are relevant.
+            </p>
+            <p>
+              We update pages when source links change, when a clearer veterinary reference is available, or when
+              Search Console data shows that owners are asking a question our page does not answer directly enough.
+              If a reader, veterinarian, researcher, or pet owner flags a possible error, we review the claim against
+              the cited sources and correct the page when needed.
+            </p>
+            <p>
+              Suggested corrections can be sent through the <Link href="/contact" className="text-primary hover:underline">contact page</Link>.
+              For urgent poison or medical situations, contact a veterinarian or pet poison hotline instead of waiting
+              for an editorial response.
+            </p>
+          </section>
+
           {/* Important Disclaimer */}
           <section>
             <h2 className="text-2xl font-bold text-foreground">Important Medical Disclaimer</h2>

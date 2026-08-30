@@ -238,8 +238,8 @@ export default function PetInsuranceCostPage() {
         { title: "Best Pet Insurance for Dogs", href: "/insurance/best-pet-insurance-for-dogs", description: "Compare dog insurance by age, breed, and risk profile." },
       ]}
       sources={[
-        { label: "NAPHIA 2026 State of the Industry Report Highlights", href: "https://naphia.org/industry-data/report-highlights-download/" },
-        { label: "NAIC: A Regulator's Guide to Pet Insurance", href: "https://content.naic.org/article/consumer-insight-a-regulators-guide-to-pet-insurance" },
+        { label: "NAPHIA Pet Insurance Industry Data", href: "https://naphia.org/industry-data/" },
+        { label: "NAIC Pet Insurance Consumer Information", href: "https://content.naic.org/insurance-topics/pet-insurance" },
       ]}
     />
   );

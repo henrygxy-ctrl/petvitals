@@ -153,7 +153,7 @@ export default function EmergencyVetCostPage() {
       sources={[
         { label: "CareCredit: Average Veterinary Pricing by Procedure", href: "https://www.carecredit.com/vetmed/costs/" },
         { label: "BluePearl: Emergency Vet Costs and Bills", href: "https://bluepearlvet.com/articles/emergency-vet-costs/" },
-        { label: "NAIC: A Regulator's Guide to Pet Insurance", href: "https://content.naic.org/article/consumer-insight-a-regulators-guide-to-pet-insurance" },
+        { label: "NAIC Pet Insurance Consumer Information", href: "https://content.naic.org/insurance-topics/pet-insurance" },
       ]}
     />
   );

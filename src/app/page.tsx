@@ -8,7 +8,7 @@ import { NewsletterSignup } from "@/components/newsletter/newsletter-signup";
 import { AdUnit } from "@/components/ads/AdUnit";
 import { SITE_BASE_URL, SITE_NAME } from "@/lib/constants";
 import Link from "next/link";
-import { BookOpen, ShieldCheck, Mail, Car, Stethoscope, Syringe, Clock, Rss } from "lucide-react";
+import { BookOpen, ShieldCheck, Mail, Car, Stethoscope, Syringe, Clock, Rss, Search } from "lucide-react";
 
 export const metadata: Metadata = {
   title: `Pet Toxicity Checker & Free Health Tools | ${SITE_NAME}`,
@@ -60,6 +60,16 @@ const topicHubs = [
   { title: "Pet-Safe Cleaning", href: "/pet-safe-cleaning", desc: "Cleaner ingredients, floor residue, and cat-safe disinfectant guidance." },
   { title: "Puppy Care Hub", href: "/puppy-care", desc: "Vaccines, first vet visit cost, supplies, and first-year planning." },
   { title: "Vet Cost Hub", href: "/vet-costs", desc: "Emergency, dental, puppy, and insurance cost planning tools." },
+];
+
+const popularQuestions = [
+  { title: "Can cats eat melon?", href: "/blog/can-cats-eat-cantaloupe", desc: "Melon and cantaloupe serving size, rind risk, and when cats should avoid fruit." },
+  { title: "How much does pet insurance cost?", href: "/insurance/pet-insurance-cost", desc: "Monthly premiums, deductibles, reimbursement rates, and quote settings." },
+  { title: "What cleaners are safe for cats?", href: "/blog/cat-friendly-cleaning-products", desc: "Cat-safe cleaner ingredients, residue rules, and products to avoid." },
+  { title: "Are floor cleaners safe after drying?", href: "/blog/pet-safe-floor-cleaners-dogs-cats", desc: "Floor cleaner residue, paw contact, licking risk, and safer routines." },
+  { title: "Can dogs eat tiger nuts?", href: "/toxicity/tiger-nut", desc: "Quick dog safety check for tiger nuts and similar snack exposures." },
+  { title: "Is nail polish remover toxic to pets?", href: "/toxicity/nail-polish-remover", desc: "Acetone exposure, grooming risk, symptoms, and emergency next steps." },
+  { title: "Is dry ice dangerous for pets?", href: "/toxicity/dry-ice", desc: "Cold burns, carbon dioxide risk, and safe handling around dogs and cats." },
 ];
 
 export default function Home() {
@@ -128,6 +138,30 @@ export default function Home() {
                 <Link key={hub.href} href={hub.href} className="rounded-xl border bg-card p-5 hover:border-primary/40 transition-colors">
                   <h3 className="text-sm font-semibold">{hub.title}</h3>
                   <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{hub.desc}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-14 sm:py-16 border-t bg-muted/20">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6">
+            <div className="mb-6 flex items-start gap-3">
+              <div className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <Search className="h-5 w-5" />
+              </div>
+              <div>
+                <h2 className="text-2xl sm:text-3xl font-bold">Popular Pet Questions</h2>
+                <p className="mt-2 max-w-2xl text-muted-foreground">
+                  Fast answers for the food, cleaner, toxin, and insurance questions pet owners search most often.
+                </p>
+              </div>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {popularQuestions.map((question) => (
+                <Link key={question.href} href={question.href} className="rounded-xl border bg-card p-4 hover:border-primary/40 transition-colors">
+                  <h3 className="text-sm font-semibold">{question.title}</h3>
+                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{question.desc}</p>
                 </Link>
               ))}
             </div>
