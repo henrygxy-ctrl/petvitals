@@ -2,6 +2,7 @@
 
 import { Shield, Star, ArrowRight } from "lucide-react";
 import type { InsurancePartner } from "@/lib/affiliate";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 
 interface InsuranceComparisonProps {
   partners: InsurancePartner[];
@@ -31,6 +32,12 @@ export function InsuranceComparison({ partners, className = "" }: InsuranceCompa
             href={p.url}
             target="_blank"
             rel={p.isAffiliate ? "noopener sponsored" : "noopener"}
+            onClick={() =>
+              trackAnalyticsEvent("affiliate_insurance_click", {
+                partner_name: p.name,
+                affiliate: p.isAffiliate,
+              })
+            }
             className="p-5 rounded-xl border bg-card hover:border-primary/40 hover:shadow-sm transition-all group"
           >
             <div className="flex items-center justify-between mb-3">

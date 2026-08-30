@@ -145,6 +145,9 @@ export default async function BlogArticlePage({ params }: Props) {
               <h1 className="text-2xl sm:text-3xl font-bold mt-2 mb-4">
                 {post.title}
               </h1>
+              <p className="mb-4 text-base leading-relaxed text-muted-foreground">
+                {post.excerpt}
+              </p>
               <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
                 <span className="flex items-center gap-1.5">
                   <Calendar className="h-4 w-4" />
@@ -415,14 +418,17 @@ function getVetBillToolMode(slug: string) {
 }
 
 function getDownloadVariant(slug: string) {
+  if (CLEANING_TOOL_SLUGS.has(slug)) {
+    return "cleaning" as const;
+  }
+
   if (
     slug.includes("poison") ||
     slug.includes("toxicity") ||
     slug === "dog-chocolate-toxicity" ||
     slug === "can-dogs-eat-grapes" ||
     slug === "can-dogs-eat-onions" ||
-    slug === "common-household-poisons-pets" ||
-    CLEANING_TOOL_SLUGS.has(slug)
+    slug === "common-household-poisons-pets"
   ) {
     return "poison" as const;
   }

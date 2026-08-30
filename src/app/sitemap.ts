@@ -5,8 +5,8 @@ import { toxicityDatabase } from "@/data/toxicity";
 import { getToxicityCategoryEntries } from "@/lib/toxicity-category-metadata";
 
 const CONTENT_LAST_MODIFIED = new Date("2026-07-11");
-const INSURANCE_LAST_MODIFIED = new Date("2026-08-09");
-const HUB_LAST_MODIFIED = new Date("2026-08-29");
+const INSURANCE_LAST_MODIFIED = new Date("2026-08-30");
+const HUB_LAST_MODIFIED = new Date("2026-08-30");
 const TOXICITY_LAST_MODIFIED = new Date("2026-08-29");
 
 export default function sitemap(): MetadataRoute.Sitemap {

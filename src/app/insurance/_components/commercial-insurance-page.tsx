@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, Shield } from "lucide-react";
 import { AdUnit } from "@/components/ads/AdUnit";
 import { InsuranceComparison } from "@/components/affiliate/insurance-comparison";
+import { DownloadResourceCard } from "@/components/downloads/resource-card";
 import { ContextualHubLinks } from "@/components/hubs/contextual-hub-links";
 import { JsonLdBreadcrumb, JsonLdFAQ } from "@/components/seo/json-ld";
 import { INSURANCE_PARTNERS } from "@/lib/affiliate";
@@ -94,6 +95,7 @@ export function CommercialInsurancePage({
       description: "Plan vaccines, first vet visits, supplies, safety, and first-year cost decisions.",
     },
   ].filter((link) => link.href !== currentPath);
+  const downloadVariant = slug === "emergency-vet-cost" ? "emergency" : "insurance";
 
   return (
     <>
@@ -141,6 +143,20 @@ export function CommercialInsurancePage({
                 {heroNote}
               </p>
             )}
+            <div className="mt-5 grid gap-3 sm:grid-cols-3">
+              <div className="rounded-lg border bg-card p-4">
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Step 1</p>
+                <p className="mt-1 text-sm font-medium">Estimate the monthly cost</p>
+              </div>
+              <div className="rounded-lg border bg-card p-4">
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Step 2</p>
+                <p className="mt-1 text-sm font-medium">Compare the same coverage settings</p>
+              </div>
+              <div className="rounded-lg border bg-card p-4">
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Step 3</p>
+                <p className="mt-1 text-sm font-medium">Check exclusions before price</p>
+              </div>
+            </div>
           </section>
 
           <section className="grid sm:grid-cols-3 gap-4 mb-10">
@@ -177,6 +193,8 @@ export function CommercialInsurancePage({
               </a>
             </div>
           </section>
+
+          <DownloadResourceCard variant={downloadVariant} />
 
           <div className="prose prose-sm max-w-none space-y-8 text-foreground/80">
             {sections.map((section) => (

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Download } from "lucide-react";
 import { DownloadLink } from "@/components/downloads/download-link";
 
-type DownloadVariant = "poison" | "puppy" | "both";
+type DownloadVariant = "poison" | "puppy" | "insurance" | "emergency" | "cleaning" | "both" | "costs";
 
 interface DownloadResourceCardProps {
   variant: DownloadVariant;
@@ -27,11 +27,39 @@ const RESOURCES = {
     followupHref: "/blog/puppy-vaccination-schedule",
     followupLabel: "Build a vaccine schedule",
   },
+  insurance: {
+    title: "Pet Insurance Cost Comparison Checklist",
+    description:
+      "A quote-comparison sheet for deductibles, reimbursement, annual limits, waiting periods, and exclusions.",
+    href: "/downloads/pet-insurance-cost-comparison-checklist.pdf",
+    followupHref: "/insurance/pet-insurance-cost",
+    followupLabel: "Estimate monthly cost",
+  },
+  emergency: {
+    title: "Emergency Vet Cost Planning Checklist",
+    description:
+      "A one-page worksheet for emergency hospitals, upfront payment options, insurance details, and urgent-care notes.",
+    href: "/downloads/emergency-vet-cost-checklist.pdf",
+    followupHref: "/insurance/emergency-vet-cost",
+    followupLabel: "Estimate emergency cost",
+  },
+  cleaning: {
+    title: "Pet-Safe Cleaning Checklist",
+    description:
+      "A printable dry-before-return checklist for floors, litter boxes, bowls, disinfectants, and exposure notes.",
+    href: "/downloads/pet-safe-cleaning-checklist.pdf",
+    followupHref: "/pet-safe-cleaning",
+    followupLabel: "Open cleaning hub",
+  },
 };
 
 export function DownloadResourceCard({ variant }: DownloadResourceCardProps) {
   const resources =
-    variant === "both" ? [RESOURCES.poison, RESOURCES.puppy] : [RESOURCES[variant]];
+    variant === "both"
+      ? [RESOURCES.poison, RESOURCES.puppy]
+      : variant === "costs"
+        ? [RESOURCES.insurance, RESOURCES.emergency]
+        : [RESOURCES[variant]];
 
   return (
     <section className="not-prose my-8 rounded-xl border bg-primary/5 p-5">

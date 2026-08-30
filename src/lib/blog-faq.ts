@@ -45,6 +45,16 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
       answer:
         "Hot water and mild unscented dish soap are usually the best first choice for routine litter box cleaning. Rinse thoroughly, dry the box, and avoid strong fragrance because scent can discourage litter box use.",
     },
+    {
+      question: "What is the safest cleaner for a home with cats and dogs?",
+      answer:
+        "Use the cat-safe option as the default: low-residue, unscented cleaners, steam on compatible floors, diluted mild soap, and enzymatic pet accident cleaners. Keep every pet away until the surface is dry.",
+    },
+    {
+      question: "Can I disinfect a litter box with bleach?",
+      answer:
+        "Use bleach only when the label or veterinary guidance calls for it. Dilute exactly as directed, never mix it with ammonia or acids, rinse thoroughly when required, ventilate, and let the box dry completely before adding litter.",
+    },
   ],
   "pet-safe-floor-cleaners-dogs-cats": [
     {
@@ -76,6 +86,16 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
       question: "Can dogs or cats walk on floors after disinfecting?",
       answer:
         "Only after the product's required contact time is complete and the floor is fully dry. If the label calls for rinsing on food-contact or pet-contact surfaces, rinse before pets return.",
+    },
+    {
+      question: "What is the best pet-safe mopping solution?",
+      answer:
+        "For many sealed floors, the best starting point is plain steam or a very small amount of mild unscented soap in water. Avoid soaking floors, strong fragrance, essential oils, ammonia, and disinfectants used without a clear reason.",
+    },
+    {
+      question: "Is a floor cleaner safe for cats if it says pet friendly?",
+      answer:
+        "Not automatically. Cats groom residue from paws, so the safer test is whether the product is low-residue, unscented, used exactly as directed, and fully dry before the cat returns.",
     },
   ],
   "can-cats-eat-cantaloupe": [
@@ -145,6 +165,16 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
       question: "What cleaner is safe for pet toys and bowls?",
       answer:
         "Hot water and mild unscented dish soap are usually the best first choice for bowls and many washable toys. Rinse thoroughly and dry completely. If a label calls for disinfecting, follow the dilution, contact time, rinse, and drying instructions before pets use the item again.",
+    },
+    {
+      question: "What is the safest pet-friendly cleaner for a multi-pet home?",
+      answer:
+        "For a home with both dogs and cats, choose the cat-safe option first because cats groom residue from paws and fur. Steam, diluted mild soap, enzymatic pet accident cleaners, and fragrance-free low-residue products are better defaults than essential-oil, phenol, ammonia, or heavily scented cleaners.",
+    },
+    {
+      question: "Is a product labeled pet-friendly always safe?",
+      answer:
+        "No. A pet-friendly label is a shopping clue, not a safety guarantee. Check the ingredient type, surface directions, dilution, ventilation, rinse instructions, and whether pets can reach the area before it is dry.",
     },
   ],
   "puppy-vaccination-schedule": [

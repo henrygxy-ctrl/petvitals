@@ -3,6 +3,7 @@ import { AdUnit } from "@/components/ads/AdUnit";
 import { JsonLdBreadcrumb, JsonLdFAQ } from "@/components/seo/json-ld";
 import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
 import { InsuranceComparison } from "@/components/affiliate/insurance-comparison";
+import { DownloadResourceCard } from "@/components/downloads/resource-card";
 import { INSURANCE_PARTNERS } from "@/lib/affiliate";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -107,10 +108,12 @@ export default function AccidentOnlyPage() {
 	              Estimate emergency vet bills
 	            </Link>
 	          </div>
-	          <p className="mt-3 text-xs text-muted-foreground">
-	            Good fit if you mainly want a lower-cost backup for poisoning, broken bones, bite wounds, swallowed objects, or emergency surgery after an accident.
-	          </p>
-	        </div>
+          <p className="mt-3 text-xs text-muted-foreground">
+            Good fit if you mainly want a lower-cost backup for poisoning, broken bones, bite wounds, swallowed objects, or emergency surgery after an accident.
+          </p>
+        </div>
+
+        <DownloadResourceCard variant="insurance" />
 
         <div className="prose prose-sm max-w-none space-y-8 text-foreground/80">
           <section>

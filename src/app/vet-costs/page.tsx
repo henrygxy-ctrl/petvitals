@@ -82,7 +82,7 @@ export default function VetCostsHubPage() {
           ],
         },
       ]}
-      resource={<DownloadResourceCard variant="both" />}
+      resource={<DownloadResourceCard variant="costs" />}
       faq={faq}
       footerNote="Cost pages are educational estimates, not quotes. Ask your veterinarian for itemized estimates and compare insurance policy terms before relying on coverage."
     />

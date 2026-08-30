@@ -102,7 +102,7 @@ export default function PetSafeCleaningHubPage() {
           ],
         },
       ]}
-      resource={<DownloadResourceCard variant="poison" />}
+      resource={<DownloadResourceCard variant="cleaning" />}
       faq={faq}
       footerNote="Clean when pets are out of the room, ventilate, follow product labels, and let surfaces dry before pets return."
     />
