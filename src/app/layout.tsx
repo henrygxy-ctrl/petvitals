@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   },
 };
 
-const GA_MEASUREMENT_ID = "G-GDWKQMY31K";
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-GDWKQMY31K";
 const ADSENSE_PUBLISHER_ID = "ca-pub-7248211571487483";
 
 export default function RootLayout({
@@ -89,14 +89,14 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        {/* Google Analytics via Partytown worker */}
+        {/* Google Analytics must stay on the main thread so GA4 receives events reliably. */}
         <Script
-          strategy="worker"
+          strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
         />
         <Script
           id="ga-init"
-          strategy="worker"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
