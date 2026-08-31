@@ -63,15 +63,18 @@ const topicHubs = [
 ];
 
 const popularQuestions = [
+  { title: "Can cats walk after mopping?", href: "/blog/can-cats-walk-on-floors-after-mopping", desc: "Drying time, paw residue, cleaner risks, and what to do if a cat steps on wet floors." },
+  { title: "Are disinfectants safe for cats?", href: "/blog/disinfectants-safe-for-cats", desc: "Cat-safe disinfecting rules for litter boxes, floors, carriers, bowls, and counters." },
+  { title: "Does insurance cover poisoning?", href: "/blog/does-pet-insurance-cover-poisoning", desc: "How toxin ingestion may be handled by accident-only and accident-illness policies." },
   { title: "Can cats eat melon?", href: "/blog/can-cats-eat-cantaloupe", desc: "Melon and cantaloupe serving size, rind risk, and when cats should avoid fruit." },
   { title: "How much does pet insurance cost?", href: "/insurance/pet-insurance-cost", desc: "Monthly premiums, deductibles, reimbursement rates, and quote settings." },
   { title: "What cleaning products are pet friendly?", href: "/blog/pet-friendly-cleaning-products", desc: "Room-by-room cleaner choices for pet homes with dogs and cats." },
+  { title: "Does insurance cover surgery?", href: "/blog/does-pet-insurance-cover-emergency-surgery", desc: "Emergency surgery, foreign body claims, annual limits, and reimbursement rules." },
   { title: "What cleaners are safe for cats?", href: "/blog/cat-friendly-cleaning-products", desc: "Cat-safe cleaner ingredients, residue rules, and products to avoid." },
-  { title: "Are floor cleaners safe after drying?", href: "/blog/pet-safe-floor-cleaners-dogs-cats", desc: "Floor cleaner residue, paw contact, licking risk, and safer routines." },
+  { title: "Are essential-oil cleaners safe?", href: "/blog/are-essential-oil-cleaners-safe-for-cats", desc: "Cat risks from tea tree, eucalyptus, citrus, pine, diffusers, and wet residues." },
   { title: "Is wisteria poisonous to dogs?", href: "/blog/is-wisteria-poisonous-to-dogs", desc: "Wisteria seeds, pods, symptoms, and what to do if a dog chews the vine." },
   { title: "Is wisteria toxic to cats?", href: "/blog/is-wisteria-toxic-to-cats", desc: "Cat exposure risks, plant parts, symptoms, and prevention." },
   { title: "When do puppy shots start?", href: "/blog/puppy-vaccination-schedule", desc: "Puppy vaccine timing, boosters, lifestyle shots, and vet visit planning." },
-  { title: "Is nail polish remover toxic to pets?", href: "/toxicity/nail-polish-remover", desc: "Acetone exposure, grooming risk, symptoms, and emergency next steps." },
 ];
 
 export default function Home() {

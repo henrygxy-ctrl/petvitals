@@ -93,9 +93,44 @@ const popularGuides = [
 
 const searchOpportunityGuides = [
   {
+    title: "Disinfectants Safe for Cats",
+    href: "/blog/disinfectants-safe-for-cats",
+    desc: "Contact time, drying, rinsing, and ingredient cautions for cat homes.",
+  },
+  {
+    title: "Can Cats Walk After Mopping?",
+    href: "/blog/can-cats-walk-on-floors-after-mopping",
+    desc: "Drying time, paw residue, floor cleaner choices, and what to do after exposure.",
+  },
+  {
+    title: "Vinegar Floor Cleaner and Pets",
+    href: "/blog/is-vinegar-floor-cleaner-safe-for-pets",
+    desc: "When diluted vinegar is reasonable, when to avoid it, and better urine cleaners.",
+  },
+  {
+    title: "Essential-Oil Cleaners and Cats",
+    href: "/blog/are-essential-oil-cleaners-safe-for-cats",
+    desc: "Tea tree, eucalyptus, citrus, pine, diffusers, wet residue, and safer alternatives.",
+  },
+  {
     title: "Pet-Friendly Cleaning Products",
     href: "/blog/pet-friendly-cleaning-products",
     desc: "Room-by-room cleaner choices for dogs, cats, floors, urine, bowls, toys, and disinfecting.",
+  },
+  {
+    title: "Does Insurance Cover Poisoning?",
+    href: "/blog/does-pet-insurance-cover-poisoning",
+    desc: "Toxin ingestion, accident-only coverage, emergency treatment, and exclusions.",
+  },
+  {
+    title: "Does Insurance Cover Surgery?",
+    href: "/blog/does-pet-insurance-cover-emergency-surgery",
+    desc: "Emergency surgery coverage, foreign body claims, deductibles, and annual limits.",
+  },
+  {
+    title: "Pet Insurance Waiting Period",
+    href: "/blog/pet-insurance-waiting-period-explained",
+    desc: "Accident, illness, orthopedic, wellness, and pre-existing condition timing.",
   },
   {
     title: "Is Wisteria Poisonous to Dogs?",

@@ -47,7 +47,7 @@ const riskStyles: Record<string, { bg: string; border: string; badge: string }> 
   },
 };
 
-const TOXICITY_PAGE_LAST_MODIFIED = "2026-08-29";
+const TOXICITY_PAGE_LAST_MODIFIED = "2026-08-31";
 
 const featuredSafetyLinks: Record<string, { id: string; reason: string }[]> = {
   wisteria: [
@@ -162,6 +162,186 @@ const targetedSearchAnswers: Record<
       { href: "/blog/sago-palm-toxicity-pets", title: "Full sago palm guide" },
     ],
   },
+};
+
+const toxicityArticleBridges: Record<
+  string,
+  { title: string; href: string; description: string; label?: string }[]
+> = {
+  wisteria: [
+    {
+      title: "Is wisteria poisonous to dogs?",
+      href: "/blog/is-wisteria-poisonous-to-dogs",
+      description: "Dog-specific symptoms, seed and pod risks, yard cleanup, and emergency steps.",
+      label: "Dog guide",
+    },
+    {
+      title: "Is wisteria toxic to cats?",
+      href: "/blog/is-wisteria-toxic-to-cats",
+      description: "Cat-specific exposure risks, plant parts, symptoms, and prevention for gardens.",
+      label: "Cat guide",
+    },
+    {
+      title: "Does pet insurance cover poisoning?",
+      href: "/blog/does-pet-insurance-cover-poisoning",
+      description: "How accidental toxin ingestion may be handled by accident-only and illness plans.",
+      label: "Cost guide",
+    },
+    {
+      title: "Household plants toxic to cats",
+      href: "/blog/household-plants-toxic-to-cats",
+      description: "Compare wisteria with lilies, sago palm, pothos, philodendron, and other plant risks.",
+      label: "Plant cluster",
+    },
+  ],
+  "sago-palm": [
+    {
+      title: "Sago palm toxicity in pets",
+      href: "/blog/sago-palm-toxicity-pets",
+      description: "Full emergency guide for dogs and cats, including seeds, liver injury, and first steps.",
+      label: "Full guide",
+    },
+    {
+      title: "Does pet insurance cover poisoning?",
+      href: "/blog/does-pet-insurance-cover-poisoning",
+      description: "Use this before choosing coverage for toxin ingestion and emergency hospitalization risk.",
+      label: "Cost guide",
+    },
+    {
+      title: "Emergency vet cost",
+      href: "/insurance/emergency-vet-cost",
+      description: "Plan for urgent exam, diagnostics, hospitalization, and intensive treatment costs.",
+      label: "Commercial",
+    },
+    {
+      title: "Household plants toxic to cats",
+      href: "/blog/household-plants-toxic-to-cats",
+      description: "See the broader toxic plant cluster for cat homes and indoor plant choices.",
+      label: "Plant cluster",
+    },
+  ],
+  chocolate: [
+    {
+      title: "Dog chocolate toxicity",
+      href: "/blog/dog-chocolate-toxicity",
+      description: "Dose risk, symptoms, chocolate types, and when chocolate exposure becomes urgent.",
+      label: "Dog guide",
+    },
+    {
+      title: "Does pet insurance cover poisoning?",
+      href: "/blog/does-pet-insurance-cover-poisoning",
+      description: "Chocolate ingestion can become an accident claim when coverage is already active.",
+      label: "Cost guide",
+    },
+    {
+      title: "Emergency vet cost",
+      href: "/insurance/emergency-vet-cost",
+      description: "Compare emergency exam, monitoring, hospitalization, and treatment planning.",
+      label: "Commercial",
+    },
+  ],
+  grapes: [
+    {
+      title: "Can dogs eat grapes?",
+      href: "/blog/can-dogs-eat-grapes",
+      description: "Dog-specific grape and raisin toxicity guide with emergency next steps.",
+      label: "Dog guide",
+    },
+    {
+      title: "Common household poisons",
+      href: "/blog/common-household-poisons-pets",
+      description: "Compare grapes with xylitol, chocolate, medications, plants, and cleaners.",
+      label: "Poison cluster",
+    },
+    {
+      title: "Does pet insurance cover poisoning?",
+      href: "/blog/does-pet-insurance-cover-poisoning",
+      description: "Understand poisoning coverage before a costly ingestion event happens.",
+      label: "Cost guide",
+    },
+  ],
+  xylitol: [
+    {
+      title: "Common household poisons",
+      href: "/blog/common-household-poisons-pets",
+      description: "Where xylitol hides and how to reduce kitchen, purse, pantry, and bathroom risks.",
+      label: "Poison cluster",
+    },
+    {
+      title: "Does pet insurance cover poisoning?",
+      href: "/blog/does-pet-insurance-cover-poisoning",
+      description: "Review accident coverage, emergency care, poison fees, and waiting periods.",
+      label: "Cost guide",
+    },
+    {
+      title: "Pet insurance waiting period",
+      href: "/blog/pet-insurance-waiting-period-explained",
+      description: "Coverage usually needs to be active before the toxin exposure happens.",
+      label: "Insurance",
+    },
+  ],
+  lilies: [
+    {
+      title: "Lily toxicity in cats",
+      href: "/blog/lily-toxicity-cats",
+      description: "Cat kidney risk, exposure steps, and why lily contact deserves immediate action.",
+      label: "Cat guide",
+    },
+    {
+      title: "Household plants toxic to cats",
+      href: "/blog/household-plants-toxic-to-cats",
+      description: "Build a safer indoor plant list around lilies, sago palm, pothos, and philodendron.",
+      label: "Plant cluster",
+    },
+    {
+      title: "Does pet insurance cover poisoning?",
+      href: "/blog/does-pet-insurance-cover-poisoning",
+      description: "Coverage questions to ask before toxin ingestion, hospitalization, or emergency treatment.",
+      label: "Cost guide",
+    },
+  ],
+  onions: [
+    {
+      title: "Can dogs eat onions?",
+      href: "/blog/can-dogs-eat-onions",
+      description: "Allium toxicity, cooked onion risk, symptoms, and safer kitchen habits.",
+      label: "Dog guide",
+    },
+    {
+      title: "Common household poisons",
+      href: "/blog/common-household-poisons-pets",
+      description: "Kitchen, medication, cleaner, and plant risks that commonly trigger emergency calls.",
+      label: "Poison cluster",
+    },
+  ],
+  "sesame-seeds": [
+    {
+      title: "Common household poisons",
+      href: "/blog/common-household-poisons-pets",
+      description: "Compare safe seeds with dangerous foods such as grapes, xylitol, onions, and chocolate.",
+      label: "Food cluster",
+    },
+    {
+      title: "Pet-friendly cleaning products",
+      href: "/blog/pet-friendly-cleaning-products",
+      description: "A broader home safety path for readers checking multiple everyday exposures.",
+      label: "Home safety",
+    },
+  ],
+  "essential-oils": [
+    {
+      title: "Are essential-oil cleaners safe for cats?",
+      href: "/blog/are-essential-oil-cleaners-safe-for-cats",
+      description: "Cat-specific cleaner and diffuser risks from tea tree, eucalyptus, citrus, pine, and more.",
+      label: "Cat guide",
+    },
+    {
+      title: "Disinfectants safe for cats",
+      href: "/blog/disinfectants-safe-for-cats",
+      description: "Choose lower-residue disinfecting routines without relying on essential-oil cleaners.",
+      label: "Cleaning",
+    },
+  ],
 };
 
 function sourceNameFromUrl(url: string) {
@@ -544,6 +724,7 @@ export default async function ToxicityItemPage({
     .filter((link): link is { item: ToxicityItem; reason: string } => Boolean(link));
   const featuredRelatedIds = new Set(featuredRelatedItems.map((link) => link.item.id));
   const targetedAnswerBlock = targetedSearchAnswers[item.id];
+  const articleBridgeLinks = toxicityArticleBridges[item.id] || [];
 
   const relatedItems = toxicityDatabase
     .filter(
@@ -747,6 +928,39 @@ export default async function ToxicityItemPage({
               links={toxicityHubLinks}
               className="mt-8"
             />
+
+            {articleBridgeLinks.length > 0 && (
+              <section className="mt-6 rounded-xl border bg-card p-5">
+                <div className="mb-4 flex items-start gap-3">
+                  <BookOpen className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                  <div>
+                    <h2 className="text-lg font-bold">More Detailed Guides</h2>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      Continue with related articles, prevention pages, and emergency cost guides.
+                    </p>
+                  </div>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {articleBridgeLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="rounded-lg border p-4 transition-colors hover:border-primary/40"
+                    >
+                      {link.label && (
+                        <span className="text-xs font-semibold uppercase tracking-wide text-primary">
+                          {link.label}
+                        </span>
+                      )}
+                      <h3 className="mt-1 text-sm font-semibold">{link.title}</h3>
+                      <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                        {link.description}
+                      </p>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
 
             {/* Ad placement */}
             <div className="mt-6">

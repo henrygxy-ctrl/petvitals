@@ -91,6 +91,26 @@ const commercialGuides = [
     desc: "What urgent visits can cost and how insurance changes the risk of large emergency bills.",
   },
   {
+    title: "Does Insurance Cover Poisoning?",
+    href: "/blog/does-pet-insurance-cover-poisoning",
+    desc: "Toxin ingestion, accident claims, poison hotline fees, hospitalization, and exclusions.",
+  },
+  {
+    title: "Does Insurance Cover Emergency Surgery?",
+    href: "/blog/does-pet-insurance-cover-emergency-surgery",
+    desc: "Foreign body surgery, fracture repair, hospitalization, specialist care, and annual limits.",
+  },
+  {
+    title: "Does Insurance Cover Broken Bones?",
+    href: "/blog/does-pet-insurance-cover-broken-bones",
+    desc: "Fracture claims, X-rays, orthopedic surgery, accident-only coverage, and waiting periods.",
+  },
+  {
+    title: "Pet Insurance Waiting Period",
+    href: "/blog/pet-insurance-waiting-period-explained",
+    desc: "Accident, illness, orthopedic, wellness, and pre-existing condition timing rules.",
+  },
+  {
     title: "Best Pet Insurance for Dogs",
     href: "/insurance/best-pet-insurance-for-dogs",
     desc: "Compare dog plans by age, breed risk, deductible, reimbursement, and emergency protection.",

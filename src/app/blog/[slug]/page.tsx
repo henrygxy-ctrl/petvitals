@@ -296,6 +296,10 @@ const CLEANING_TOOL_SLUGS = new Set([
   "best-pet-safe-cleaning-products",
   "cat-friendly-cleaning-products",
   "pet-safe-floor-cleaners-dogs-cats",
+  "disinfectants-safe-for-cats",
+  "can-cats-walk-on-floors-after-mopping",
+  "is-vinegar-floor-cleaner-safe-for-pets",
+  "are-essential-oil-cleaners-safe-for-cats",
 ]);
 
 const PUPPY_HUB_SLUGS = new Set([

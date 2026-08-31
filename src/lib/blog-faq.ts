@@ -164,6 +164,182 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
         "Not automatically. Cats groom residue from paws, so the safer test is whether the product is low-residue, unscented, used exactly as directed, and fully dry before the cat returns.",
     },
   ],
+  "disinfectants-safe-for-cats": [
+    {
+      question: "What disinfectant is safe for cats?",
+      answer:
+        "No disinfectant is automatically safe in every cat home. Use the mildest product that fits the actual risk, keep cats away during contact time, ventilate, rinse pet-contact surfaces when the label requires it, and wait until everything is fully dry.",
+    },
+    {
+      question: "Can I use disinfectant wipes around cats?",
+      answer:
+        "Use caution. Disinfectant wipes can leave residue on paws, counters, carriers, and litter areas. Keep cats away until the surface is dry, and avoid using wipes on areas cats lick, sleep on, or eat from unless the label supports that use.",
+    },
+    {
+      question: "Is bleach safe around cats?",
+      answer:
+        "Bleach should not be a routine cat cleaner, but it may be used for specific disinfecting needs when diluted exactly as directed. Never mix it with ammonia, vinegar, or other cleaners, and keep cats away until the surface is rinsed if required and fully dry.",
+    },
+    {
+      question: "How long should cats stay away after disinfecting?",
+      answer:
+        "Cats should stay away through the product's contact time, ventilation period, any required rinse, and complete drying. If odor remains strong or the surface feels tacky, keep cats away longer.",
+    },
+  ],
+  "can-cats-walk-on-floors-after-mopping": [
+    {
+      question: "Can cats walk on floors after mopping?",
+      answer:
+        "Cats should wait until mopped floors are fully dry and any label-required rinsing is complete. Wet cleaner can stick to paws and fur, then be swallowed during grooming.",
+    },
+    {
+      question: "How long after mopping can cats go back in the room?",
+      answer:
+        "There is no single time because dry time depends on floor type, humidity, airflow, and product amount. Use the surface test: if socks feel damp, sticky, or scented, it is too soon for cats.",
+    },
+    {
+      question: "What should I do if my cat walked on a wet floor?",
+      answer:
+        "Move the cat to a clean dry room and gently wipe paws with a damp cloth if exposure was mild. Call a veterinarian or poison hotline if the product contained disinfectants, essential oils, bleach, ammonia, phenols, or if your cat licked residue or shows symptoms.",
+    },
+    {
+      question: "Are steam-mopped floors safe for cats?",
+      answer:
+        "Steam can be a low-residue option on compatible sealed floors, but cats should still stay away until the floor is dry and cool.",
+    },
+  ],
+  "is-vinegar-floor-cleaner-safe-for-pets": [
+    {
+      question: "Is vinegar floor cleaner safe for pets?",
+      answer:
+        "Diluted vinegar may be usable on some compatible sealed floors, but it is not automatically safe for every surface or pet. Keep pets away until the floor is fully dry and avoid strong concentrations.",
+    },
+    {
+      question: "Is vinegar safe for cats?",
+      answer:
+        "Diluted vinegar residue is usually less concerning than many disinfectants or essential oils, but cats should not walk on wet vinegar-cleaned floors because they may groom residue from paws.",
+    },
+    {
+      question: "Can vinegar remove pet urine smell?",
+      answer:
+        "Vinegar may change odor temporarily, but enzymatic pet accident cleaners are usually better for urine because they break down organic residue. Avoid ammonia cleaners around urine accidents.",
+    },
+    {
+      question: "What floors should not be cleaned with vinegar?",
+      answer:
+        "Avoid vinegar on marble, limestone, travertine, many natural stone surfaces, waxed wood, and any floor finish that warns against acidic cleaners.",
+    },
+  ],
+  "are-essential-oil-cleaners-safe-for-cats": [
+    {
+      question: "Are essential-oil cleaners safe for cats?",
+      answer:
+        "Essential-oil cleaners are not a safe default for cats, especially concentrated sprays, diffusers, wet floor residue, and products used on cat-contact surfaces.",
+    },
+    {
+      question: "Which essential oils should cat owners avoid?",
+      answer:
+        "Avoid tea tree, eucalyptus, peppermint, citrus, pine, wintergreen, cinnamon, clove, pennyroyal, and strongly fragranced oil blends around cats, especially in cleaners and diffusers.",
+    },
+    {
+      question: "Are essential-oil floor cleaners safe after drying?",
+      answer:
+        "Drying lowers exposure, but some oil and fragrance residue can remain. Cat homes should choose unscented, low-residue cleaners instead of essential-oil floor cleaners.",
+    },
+    {
+      question: "What should I do if my cat licked essential-oil cleaner?",
+      answer:
+        "Move the cat away, keep the product bottle, and call a veterinarian or pet poison hotline. Seek urgent help for drooling, vomiting, tremors, weakness, wobbliness, burns, coughing, or breathing changes.",
+    },
+  ],
+  "does-pet-insurance-cover-poisoning": [
+    {
+      question: "Does pet insurance cover poisoning?",
+      answer:
+        "Pet insurance may cover poisoning when it is a new accidental ingestion after the waiting period and the policy does not exclude the event. Coverage depends on plan type, deductible, reimbursement rate, annual limit, and exam fee rules.",
+    },
+    {
+      question: "Does accident-only pet insurance cover poisoning?",
+      answer:
+        "Accident-only policies often treat toxin ingestion as a relevant accident claim, but the policy wording controls the answer. Ask about chocolate, xylitol, grapes, lilies, sago palm, medication, and cleaning product exposure before buying.",
+    },
+    {
+      question: "Will pet insurance cover poison control fees?",
+      answer:
+        "Some policies may reimburse poison control consultation fees, while others may not. Check the policy's emergency, exam fee, and consultation fee language.",
+    },
+    {
+      question: "Can I buy pet insurance after my pet eats a toxin?",
+      answer:
+        "You can buy a policy later, but that specific event and related symptoms will usually not be covered because they happened before coverage started.",
+    },
+  ],
+  "does-pet-insurance-cover-emergency-surgery": [
+    {
+      question: "Does pet insurance cover emergency surgery?",
+      answer:
+        "Pet insurance may cover emergency surgery when the surgery is caused by a new eligible accident or illness after the waiting period. Deductibles, reimbursement rates, annual limits, and exclusions still apply.",
+    },
+    {
+      question: "Does pet insurance cover foreign body surgery?",
+      answer:
+        "Many accident or accident and illness policies may cover foreign body surgery if the ingestion is new, eligible, and after the waiting period. Read repeat-ingestion, pre-existing, and exam fee rules carefully.",
+    },
+    {
+      question: "Does accident-only pet insurance cover surgery?",
+      answer:
+        "Accident-only coverage may cover surgery tied to covered accidental injuries or ingestion events, but it usually does not cover illness-driven surgery.",
+    },
+    {
+      question: "Can pet insurance pay the emergency vet directly?",
+      answer:
+        "Some insurers and clinics support direct pay, but many plans reimburse you after you pay the bill. Ask before relying on direct payment during an emergency.",
+    },
+  ],
+  "does-pet-insurance-cover-broken-bones": [
+    {
+      question: "Does pet insurance cover broken bones?",
+      answer:
+        "Pet insurance may cover broken bones when the fracture is caused by a new covered accident after the waiting period. X-rays, surgery, hospitalization, medication, and follow-up rules depend on the policy.",
+    },
+    {
+      question: "Does accident-only pet insurance cover broken bones?",
+      answer:
+        "Broken bones are commonly aligned with accident-only coverage, but each policy defines covered accidents, orthopedic rules, exam fees, and waiting periods differently.",
+    },
+    {
+      question: "What broken bone costs should I compare?",
+      answer:
+        "Compare emergency exam, X-rays, sedation, splinting, surgery, hospitalization, medication, specialist referral, follow-up X-rays, deductible, reimbursement percentage, and annual limit.",
+    },
+    {
+      question: "Will insurance cover a fracture if my pet was limping before enrollment?",
+      answer:
+        "Possibly not. Prior lameness or symptoms may be treated as pre-existing or related to a pre-existing issue. Read the policy and medical record rules before assuming coverage.",
+    },
+  ],
+  "pet-insurance-waiting-period-explained": [
+    {
+      question: "What is a pet insurance waiting period?",
+      answer:
+        "A waiting period is the time after enrollment before coverage starts. Claims for symptoms, injuries, or diagnoses during that period may be denied or treated as pre-existing later.",
+    },
+    {
+      question: "Are accident waiting periods shorter than illness waiting periods?",
+      answer:
+        "Often they are, but timing varies by insurer, state, plan, and condition. Orthopedic conditions may have separate rules.",
+    },
+    {
+      question: "Can a vet exam shorten a waiting period?",
+      answer:
+        "Some insurers may reduce or waive certain waiting periods after a veterinary exam, while others may not. Ask for the policy's exact rule in writing.",
+    },
+    {
+      question: "Should I buy pet insurance before the first vet visit?",
+      answer:
+        "If you already plan to buy coverage, earlier can be cleaner because symptoms documented before enrollment may become pre-existing. Do not delay veterinary care to protect insurance.",
+    },
+  ],
   "can-cats-eat-cantaloupe": [
     {
       question: "Can cats eat cantaloupe?",

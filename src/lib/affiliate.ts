@@ -525,6 +525,85 @@ export const PRODUCT_RECS: Record<string, ProductRecommendation[]> = {
       platform: "chewy",
     },
   ],
+  "disinfectants-safe-for-cats": [
+    {
+      name: "Cat Cleaning & Deodorizing Supplies",
+      description: "Choose low-fragrance cleanup options and keep cats away until surfaces are dry.",
+      url: chewyUrl("b/cat-cleaning-deodorizing-387"),
+      priceHint: "$7-$25",
+      platform: "chewy",
+    },
+    {
+      name: "Pet Stain & Odor Removers",
+      description: "Enzymatic cleaners for urine, vomit, and litter-area messes before disinfecting.",
+      url: chewyUrl("b/stain-odor-removers-1037"),
+      priceHint: "$8-$30",
+      platform: "chewy",
+    },
+  ],
+  "can-cats-walk-on-floors-after-mopping": [
+    {
+      name: "Pet Stain & Odor Floor Cleaner",
+      description: "Low-residue enzymatic cleanup for pet traffic areas. Keep cats away until dry.",
+      url: chewyUrl("b/stain-odor-removers-1037"),
+      priceHint: "$8-$30",
+      platform: "chewy",
+    },
+  ],
+  "is-vinegar-floor-cleaner-safe-for-pets": [
+    {
+      name: "Pet Accident Enzymatic Cleaner",
+      description: "A better fit than vinegar for urine, vomit, and repeat-marking cleanup.",
+      url: chewyUrl("b/stain-odor-removers-1037"),
+      priceHint: "$8-$30",
+      platform: "chewy",
+    },
+  ],
+  "are-essential-oil-cleaners-safe-for-cats": [
+    {
+      name: "Cat-Safe Cleaning & Deodorizing",
+      description: "Compare cat cleaning supplies without relying on essential-oil floor residues.",
+      url: chewyUrl("b/cat-cleaning-deodorizing-387"),
+      priceHint: "$7-$25",
+      platform: "chewy",
+    },
+  ],
+  "does-pet-insurance-cover-poisoning": [
+    {
+      name: "Compare Pet Insurance Quotes",
+      description: "Check accident coverage before toxin ingestion, plant exposure, or emergency hospitalization.",
+      url: insuranceUrl("NEXT_PUBLIC_AFFILIATE_LEMONADE_URL", "https://www.lemonade.com/pet"),
+      priceHint: "From $10/mo",
+      platform: "other",
+    },
+  ],
+  "does-pet-insurance-cover-emergency-surgery": [
+    {
+      name: "Compare Pet Insurance Quotes",
+      description: "Review surgery, hospitalization, exam fee, and specialist coverage before an emergency bill.",
+      url: insuranceUrl("NEXT_PUBLIC_AFFILIATE_LEMONADE_URL", "https://www.lemonade.com/pet"),
+      priceHint: "From $10/mo",
+      platform: "other",
+    },
+  ],
+  "does-pet-insurance-cover-broken-bones": [
+    {
+      name: "Compare Accident Coverage",
+      description: "Compare fracture, X-ray, orthopedic surgery, deductible, and annual limit rules.",
+      url: insuranceUrl("NEXT_PUBLIC_AFFILIATE_LEMONADE_URL", "https://www.lemonade.com/pet"),
+      priceHint: "From $10/mo",
+      platform: "other",
+    },
+  ],
+  "pet-insurance-waiting-period-explained": [
+    {
+      name: "Compare Pet Insurance Quotes",
+      description: "Review waiting periods before symptoms, injuries, or diagnoses are documented.",
+      url: insuranceUrl("NEXT_PUBLIC_AFFILIATE_LEMONADE_URL", "https://www.lemonade.com/pet"),
+      priceHint: "From $10/mo",
+      platform: "other",
+    },
+  ],
   "is-wisteria-poisonous-to-dogs": [
     {
       name: "Pet First Aid Kit",
