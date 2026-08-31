@@ -1,5 +1,8 @@
+"use client";
+
 import type { ProductRecommendation } from "@/lib/affiliate";
-import { ShoppingBag, Package } from "lucide-react";
+import { ShoppingBag, Package, Shield } from "lucide-react";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 
 interface ProductRecCardProps {
   products: ProductRecommendation[];
@@ -9,13 +12,13 @@ interface ProductRecCardProps {
 const platformIcon = (platform: string) => {
   if (platform === "amazon") return <ShoppingBag className="h-4 w-4" />;
   if (platform === "chewy") return <Package className="h-4 w-4" />;
-  return null;
+  return <Shield className="h-4 w-4" />;
 };
 
 const platformLabel = (platform: string) => {
   if (platform === "amazon") return "Amazon";
   if (platform === "chewy") return "Chewy";
-  return "";
+  return "provider site";
 };
 
 export function ProductRecommendationCard({ products, className = "" }: ProductRecCardProps) {
@@ -34,6 +37,22 @@ export function ProductRecommendationCard({ products, className = "" }: ProductR
             href={p.url}
             target="_blank"
             rel="noopener sponsored"
+            onClick={() => {
+              let destinationHost = "";
+              try {
+                destinationHost = new URL(p.url).hostname;
+              } catch {
+                destinationHost = p.platform;
+              }
+
+              trackAnalyticsEvent("affiliate_product_click", {
+                product_name: p.name,
+                product_platform: p.platform,
+                price_hint: p.priceHint,
+                destination_host: destinationHost,
+                cta_location: "product_recommendation_card",
+              });
+            }}
             className="flex items-start gap-3 p-3 rounded-lg border border-border/60 hover:border-primary/30 hover:bg-muted/50 transition-all group"
           >
             <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">

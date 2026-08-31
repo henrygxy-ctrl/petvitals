@@ -484,6 +484,22 @@ export const PRODUCT_RECS: Record<string, ProductRecommendation[]> = {
       platform: "amazon",
     },
   ],
+  "pet-friendly-cleaning-products": [
+    {
+      name: "Pet Stain & Odor Cleaner",
+      description: "Enzymatic cleaner for urine, vomit, and tracked-in messes in dog and cat homes.",
+      url: chewyUrl("b/stain-odor-removers-1037"),
+      priceHint: "$8-$30",
+      platform: "chewy",
+    },
+    {
+      name: "Steam Mop for Sealed Floors",
+      description: "Low-residue cleaning option that uses water on compatible sealed hard floors.",
+      url: amazonUrl("B07XYZ0011"),
+      priceHint: "$60-$120",
+      platform: "amazon",
+    },
+  ],
   "cat-friendly-cleaning-products": [
     {
       name: "Enzymatic Cat Accident Cleaner",
@@ -507,6 +523,38 @@ export const PRODUCT_RECS: Record<string, ProductRecommendation[]> = {
       url: chewyUrl("b/stain-odor-removers-1037"),
       priceHint: "$8-$30",
       platform: "chewy",
+    },
+  ],
+  "is-wisteria-poisonous-to-dogs": [
+    {
+      name: "Pet First Aid Kit",
+      description: "Keep emergency supplies ready for plant, food, and household exposure events.",
+      url: amazonUrl("B07XYZ0000"),
+      priceHint: "$25-$40",
+      platform: "amazon",
+    },
+    {
+      name: "Pet Insurance - Accident Coverage",
+      description: "Compare coverage before unexpected toxin ingestion, injuries, or emergency visits.",
+      url: insuranceUrl("NEXT_PUBLIC_AFFILIATE_LEMONADE_URL", "https://www.lemonade.com/pet"),
+      priceHint: "From $10/mo",
+      platform: "other",
+    },
+  ],
+  "is-wisteria-toxic-to-cats": [
+    {
+      name: "Pet-Safe Houseplants Bundle",
+      description: "Replace toxic plant access with cat-safer indoor plant options.",
+      url: amazonUrl("B07XYZ0002"),
+      priceHint: "$20-$50",
+      platform: "amazon",
+    },
+    {
+      name: "Pet Insurance - Cat Accident & Illness",
+      description: "Compare coverage for diagnostics, emergency visits, and hospitalization before symptoms appear.",
+      url: insuranceUrl("NEXT_PUBLIC_AFFILIATE_LEMONADE_URL", "https://www.lemonade.com/pet"),
+      priceHint: "From $6/mo",
+      platform: "other",
     },
   ],
   "can-cats-eat-cantaloupe": [

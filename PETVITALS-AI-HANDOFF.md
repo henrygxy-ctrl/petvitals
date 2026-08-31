@@ -149,13 +149,13 @@ public/
    Current state: sitemap includes static pages, toxicity pages, blog posts, category pages, and insurance pages.
 
 4. Blog SEO strengthened
-   Current state: MDX frontmatter supports SEO title, description, OG image, sources, read-next links, and author display.
+   Current state: MDX frontmatter supports SEO title, description, OG image, sources, read-next links, and author display. New long-tail articles added for `pet-friendly-cleaning-products`, `is-wisteria-poisonous-to-dogs`, and `is-wisteria-toxic-to-cats`.
 
 5. Insurance content added
    Current state: insurance index and four insurance detail pages exist for commercial-intent traffic.
 
 6. Monetization components wired
-   Current state: AdSense components, product recommendations, insurance affiliate components, and Impact tracking are present.
+   Current state: AdSense components, product recommendations, insurance affiliate components, Impact tracking, PDF download tracking, newsletter signup tracking, and affiliate click tracking are present. Run `npm run monetization:audit` before deployment to confirm local commercial env vars are not empty.
 
 ## Prioritized TODO
 
@@ -175,10 +175,16 @@ P1 - AdSense:
 - Set `NEXT_PUBLIC_ADSENSE_ARTICLE_SLOT` and `NEXT_PUBLIC_ADSENSE_FEED_SLOT`.
 - Check AdSense coverage, page RPM, impressions, and policy warnings.
 
+P1 - Affiliate revenue:
+- Set at least one insurance affiliate URL in Vercel Production env vars before expecting quote commission.
+- Set `NEXT_PUBLIC_AFFILIATE_AMAZON_TAG`, `NEXT_PUBLIC_AFFILIATE_CHEWY_URL`, or `NEXT_PUBLIC_AFFILIATE_CHEWY_TAG` before expecting product recommendation commission.
+- After changing any `NEXT_PUBLIC_` affiliate value, redeploy because public env vars are embedded at build time.
+
 P2 - Content expansion:
 - Add dedicated articles for high-search toxicity terms that currently only route to category pages.
 - Expand thin blog posts where useful.
 - Add stronger internal links from toxicity pages to related blog and tools.
+- Continue adding GSC-led long-tail pages only where there is a distinct search intent, not duplicate copies of the same answer.
 
 P2 - Performance:
 - Continue `next/image` migration where plain images remain.

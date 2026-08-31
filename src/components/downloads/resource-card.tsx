@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { ArrowRight, Download } from "lucide-react";
 import { DownloadLink } from "@/components/downloads/download-link";
+import { NewsletterSignup } from "@/components/newsletter/newsletter-signup";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 
 type DownloadVariant = "poison" | "puppy" | "insurance" | "emergency" | "cleaning" | "both" | "costs";
 
@@ -60,6 +62,7 @@ export function DownloadResourceCard({ variant }: DownloadResourceCardProps) {
       : variant === "costs"
         ? [RESOURCES.insurance, RESOURCES.emergency]
         : [RESOURCES[variant]];
+  const interest = resources.map((resource) => resource.title).join(", ");
 
   return (
     <section className="not-prose my-8 rounded-xl border bg-primary/5 p-5">
@@ -84,6 +87,13 @@ export function DownloadResourceCard({ variant }: DownloadResourceCardProps) {
               </DownloadLink>
               <Link
                 href={resource.followupHref}
+                onClick={() =>
+                  trackAnalyticsEvent("download_followup_click", {
+                    resource_title: resource.title,
+                    followup_href: resource.followupHref,
+                    download_variant: variant,
+                  })
+                }
                 className="inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-medium hover:bg-muted"
               >
                 {resource.followupLabel}
@@ -92,6 +102,16 @@ export function DownloadResourceCard({ variant }: DownloadResourceCardProps) {
             </div>
           </div>
         ))}
+      </div>
+      <div className="mt-5 border-t pt-4">
+        <NewsletterSignup
+          compact
+          source={`download_${variant}`}
+          interest={interest}
+          title="Get new pet safety checklists"
+          description="Receive future printable checklists and timely pet safety updates tied to this topic."
+          buttonLabel="Send updates"
+        />
       </div>
     </section>
   );

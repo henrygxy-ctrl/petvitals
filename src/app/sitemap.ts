@@ -4,7 +4,7 @@ import { getAllPosts, getAllCategories } from "@/lib/blog";
 import { toxicityDatabase } from "@/data/toxicity";
 import { getToxicityCategoryEntries } from "@/lib/toxicity-category-metadata";
 
-const CONTENT_LAST_MODIFIED = new Date("2026-07-11");
+const CONTENT_LAST_MODIFIED = new Date("2026-08-31");
 const INSURANCE_LAST_MODIFIED = new Date("2026-08-30");
 const HUB_LAST_MODIFIED = new Date("2026-08-30");
 const TOXICITY_LAST_MODIFIED = new Date("2026-08-29");

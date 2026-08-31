@@ -32,12 +32,21 @@ export function InsuranceComparison({ partners, className = "" }: InsuranceCompa
             href={p.url}
             target="_blank"
             rel={p.isAffiliate ? "noopener sponsored" : "noopener"}
-            onClick={() =>
+            onClick={() => {
+              let destinationHost = "";
+              try {
+                destinationHost = new URL(p.url).hostname;
+              } catch {
+                destinationHost = p.name;
+              }
+
               trackAnalyticsEvent("affiliate_insurance_click", {
                 partner_name: p.name,
                 affiliate: p.isAffiliate,
+                destination_host: destinationHost,
+                cta_location: "insurance_comparison_grid",
               })
-            }
+            }}
             className="p-5 rounded-xl border bg-card hover:border-primary/40 hover:shadow-sm transition-all group"
           >
             <div className="flex items-center justify-between mb-3">

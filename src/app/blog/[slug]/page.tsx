@@ -277,7 +277,10 @@ export default async function BlogArticlePage({ params }: Props) {
 
                 <section className="py-12 border-t">
           <div className="max-w-3xl mx-auto px-4">
-            <NewsletterSignup />
+            <NewsletterSignup
+              source="blog_article_footer"
+              interest={post.category}
+            />
           </div>
         </section>
 

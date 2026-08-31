@@ -50,7 +50,7 @@ export async function POST(request: Request) {
 
     if (existing) {
       return NextResponse.json(
-        { message: "You're already subscribed!" },
+        { message: "You're already subscribed!", existing: true },
         { status: 200 }
       );
     }
@@ -60,7 +60,7 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json(
-      { message: "Successfully subscribed!" },
+      { message: "Successfully subscribed!", existing: false },
       { status: 201 }
     );
   } catch (error) {

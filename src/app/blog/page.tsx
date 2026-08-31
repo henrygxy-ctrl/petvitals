@@ -93,6 +93,21 @@ const popularGuides = [
 
 const searchOpportunityGuides = [
   {
+    title: "Pet-Friendly Cleaning Products",
+    href: "/blog/pet-friendly-cleaning-products",
+    desc: "Room-by-room cleaner choices for dogs, cats, floors, urine, bowls, toys, and disinfecting.",
+  },
+  {
+    title: "Is Wisteria Poisonous to Dogs?",
+    href: "/blog/is-wisteria-poisonous-to-dogs",
+    desc: "Wisteria seed and pod risks, dog poisoning symptoms, and what to do after exposure.",
+  },
+  {
+    title: "Is Wisteria Toxic to Cats?",
+    href: "/blog/is-wisteria-toxic-to-cats",
+    desc: "Cat wisteria exposure, toxic plant symptoms, prevention, and emergency next steps.",
+  },
+  {
     title: "Can Cats Eat Melon?",
     href: "/blog/can-cats-eat-cantaloupe",
     desc: "Cantaloupe, honeydew, watermelon flesh, serving size, and unsafe fruit mixes.",
@@ -206,7 +221,10 @@ export default function BlogPage() {
 
                 <section className="py-12 border-t">
             <div className="max-w-5xl mx-auto px-4 sm:px-6">
-              <NewsletterSignup />
+              <NewsletterSignup
+                source="blog_index_footer"
+                interest="pet-health-guides"
+              />
             </div>
           </section>
 

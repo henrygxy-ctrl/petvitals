@@ -1,4 +1,70 @@
 export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> = {
+  "pet-friendly-cleaning-products": [
+    {
+      question: "What cleaning products are pet friendly?",
+      answer:
+        "Pet-friendly cleaning products are usually unscented, low-residue products used with pets away until surfaces are dry. Steam, diluted mild soap, enzymatic pet accident cleaners, and EPA Safer Choice-certified products are common starting points.",
+    },
+    {
+      question: "Are pet-friendly cleaning products safe for cats?",
+      answer:
+        "Not automatically. Cats groom residue from paws and fur, so a product should be low-residue, used exactly as directed, ventilated when needed, and fully dry before cats return.",
+    },
+    {
+      question: "What is the safest cleaner for pet urine?",
+      answer:
+        "An enzymatic pet accident cleaner is usually the best first choice for urine because it targets organic residue rather than only covering odor. Avoid ammonia cleaners around urine accidents.",
+    },
+    {
+      question: "Can pets walk on floors after mopping?",
+      answer:
+        "Pets should stay away until floors are fully dry and any label-required rinsing is complete. Wet cleaner can transfer to paws and then be swallowed during grooming.",
+    },
+  ],
+  "is-wisteria-poisonous-to-dogs": [
+    {
+      question: "Is wisteria poisonous to dogs?",
+      answer:
+        "Yes. Wisteria is poisonous to dogs. Seeds and seed pods are especially concerning, and exposure can cause vomiting, diarrhea, depression, nausea, and sometimes blood in vomit.",
+    },
+    {
+      question: "What should I do if my dog ate wisteria?",
+      answer:
+        "Move your dog away from the plant, save a photo or sample, estimate what part was eaten, and call your veterinarian, an emergency clinic, or a pet poison hotline.",
+    },
+    {
+      question: "Are wisteria seeds poisonous to dogs?",
+      answer:
+        "Yes. Wisteria seeds and pods are a higher concern because dogs may chew or swallow them. Call for veterinary guidance promptly if seeds or pods were eaten.",
+    },
+    {
+      question: "Should I remove wisteria if I have a dog?",
+      answer:
+        "If your dog chews plants or can access fallen seed pods, removal or secure exclusion is the safest option. At minimum, block access and clean up pods quickly.",
+    },
+  ],
+  "is-wisteria-toxic-to-cats": [
+    {
+      question: "Is wisteria toxic to cats?",
+      answer:
+        "Yes. Wisteria is toxic to cats. Seeds, pods, leaves, vines, and flowers should not be eaten, and ingestion can cause vomiting, diarrhea, depression, and appetite loss.",
+    },
+    {
+      question: "What should I do if my cat ate wisteria?",
+      answer:
+        "Remove access, prevent more chewing, photograph the plant and missing pieces, note the time and symptoms, and call your veterinarian or a pet poison hotline.",
+    },
+    {
+      question: "Are wisteria flowers safe for cats?",
+      answer:
+        "No part of wisteria should be treated as safe for cats to eat. Flowers may be less commonly eaten than seeds or pods, but ingestion is still a concern.",
+    },
+    {
+      question: "Should cat owners remove wisteria?",
+      answer:
+        "If a cat can reach the plant, fallen pods, or cut stems, removal or secure exclusion is safer. Cats should not have access to toxic plant material.",
+    },
+  ],
   "cat-friendly-cleaning-products": [
     {
       question: "What cleaning products are safe for cats?",
