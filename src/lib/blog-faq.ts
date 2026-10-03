@@ -342,14 +342,24 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
   ],
   "can-cats-eat-cantaloupe": [
     {
-      question: "Can cats eat cantaloupe?",
+      question: "Can cats have cantaloupe?",
       answer:
-        "Most healthy adult cats can eat a tiny amount of plain cantaloupe flesh as an occasional treat. Remove the rind and seeds, cut it into very small pieces, and avoid added sugar, dairy, salt, or seasoning.",
+        "Yes, most healthy adult cats can have a little plain, ripe cantaloupe flesh occasionally. Remove rind and seeds and cut it into very small pieces. It is a treat, not a replacement for complete cat food.",
     },
     {
-      question: "Is cantaloupe good for cats?",
+      question: "How much cantaloupe can a cat eat?",
       answer:
-        "Cantaloupe is not toxic, but it is not nutritionally important for cats. Cats are obligate carnivores, so fruit should stay rare and small.",
+        "There is no universal amount based only on weight. A single pea-sized piece is a cautious first-taste example for a healthy adult cat, not a medically established dose. Keep all treats combined within 10% of daily calories and follow your veterinarian's advice.",
+    },
+    {
+      question: "Can cats eat canary melon?",
+      answer:
+        "Canary melon belongs to the same species as cantaloupe and honeydew. Similar flesh-only precautions are an inference, not a cat-specific feeding study. Our sources do not establish a separate safe portion for canary melon; ask your veterinarian before offering it if you are unsure.",
+    },
+    {
+      question: "Can kittens eat cantaloupe?",
+      answer:
+        "It is better to skip cantaloupe for kittens. Kittens have small stomachs and need complete kitten food for growth. Treats can displace nutrition quickly.",
     },
     {
       question: "Can cats eat cantaloupe rind?",
@@ -357,9 +367,19 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
         "No. Cantaloupe rind is tough and can cause choking, vomiting, or digestive blockage. Feed only the soft orange flesh in tiny pieces.",
     },
     {
+      question: "Can cats eat cantaloupe seeds?",
+      answer:
+        "Do not offer the seeds as treats. Remove them before serving melon because they add no necessary nutrition and may be difficult to swallow. If your cat ate seeds and has retching, vomiting, breathing trouble, or discomfort, contact a veterinarian.",
+    },
+    {
       question: "Can cats eat melon every day?",
       answer:
-        "No. Melon should not be a daily food for cats because it is sugary, plant-based, and unnecessary for feline nutrition.",
+        "No. Melon should not be a daily food for cats. It is sugary, plant-based, and not necessary for feline nutrition.",
+    },
+    {
+      question: "Why does my cat like cantaloupe?",
+      answer:
+        "Some cats are attracted to melon aroma. That does not mean they need it nutritionally. If your cat enjoys it, keep the serving tiny and occasional.",
     },
   ],
   "best-pet-safe-cleaning-products": [
