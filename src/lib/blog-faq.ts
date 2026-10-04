@@ -69,57 +69,42 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
     {
       question: "What cleaning products are safe for cats?",
       answer:
-        "For routine home cleaning, safer choices are usually unscented, low-residue products used with cats out of the room until surfaces are dry. Steam, diluted castile soap, enzymatic pet accident cleaners, and EPA Safer Choice-certified products are common starting points.",
+        "Choose a compatible mild cleaner for ordinary dirt and a labeled enzymatic product for appropriate pet messes. Avoid phenol-containing disinfectants. Keep cats away and complete every required dilution, contact-time, rinse, ventilation, drying, and pet-access step.",
     },
     {
       question: "What cleaners are not safe for cats?",
       answer:
-        "Avoid phenol-based cleaners, essential-oil cleaners, ammonia, bleach-heavy sprays, quaternary ammonium disinfectants, strong fragrances, and products that leave wet residue where cats walk, sleep, eat, or use the litter box.",
+        "Do not use phenol-containing disinfectants in cat homes. Concentrated essential oils, peroxide, ammonia, and quaternary ammonium compounds also require caution. Prevent licking, paw contact, and exposure to fumes; a brand name does not establish the formula.",
     },
     {
       question: "What disinfectant is safe for cats?",
       answer:
-        "There is no single disinfectant that is automatically safe in every cat home. The safer approach is to use the mildest effective product for the job, keep cats out during contact time, ventilate, rinse pet-contact surfaces if required, and let everything dry completely before cats return.",
+        "No disinfectant is universally safe. Use one appropriate for the surface and target germ, keep cats away, complete wet contact time and required rinsing, ventilate, and meet every label-directed pet-access condition.",
     },
     {
       question: "Are disinfectant wipes safe around cats?",
       answer:
-        "Disinfectant wipes can leave residue. Do not let cats walk on, lick, or sleep on freshly wiped surfaces. If wipes are necessary, use them only as directed, ventilate, and let the surface dry completely before cats return.",
+        "Some can be used on permitted surfaces under their exact label directions. Keep cats away, complete wet contact time and any required rinsing, and let surfaces dry before access. Never use household disinfectant wipes on paws, fur, or skin.",
     },
     {
       question: "Are essential-oil cleaners safe for cats?",
       answer:
-        "Essential-oil cleaners are risky for cats, especially concentrated sprays, diffusers, and wet residues. Avoid tea tree, eucalyptus, peppermint, citrus, pine, wintergreen, cinnamon, and clove oil products around cats.",
+        "Natural does not mean safe. Concentrated essential oils and wet residues can be risky, and moving a cat out briefly does not prevent later grooming exposure. Choose a suitable alternative and check the complete product directions.",
     },
     {
       question: "What is the safest way to clean cat urine?",
       answer:
-        "Use an enzymatic pet accident cleaner designed for urine. Blot first, apply the product as directed, keep cats away while it works, and let the area dry. Avoid ammonia cleaners because the smell can resemble urine.",
-    },
-    {
-      question: "Can cats walk on floors after mopping?",
-      answer:
-        "Cats should stay away until the floor is fully dry and any required rinsing is complete. Wet residue can transfer to paws and then be swallowed during grooming.",
-    },
-    {
-      question: "Are pine-oil or phenol cleaners safe for cats?",
-      answer:
-        "Avoid pine-oil and phenol-based cleaners on surfaces cats can walk on, sleep on, or groom after touching. Choose unscented, low-residue options instead, and use disinfectants only when there is a clear reason.",
-    },
-    {
-      question: "What is the best cat-safe cleaner for litter boxes?",
-      answer:
-        "Hot water and mild unscented dish soap are usually the best first choice for routine litter box cleaning. Rinse thoroughly, dry the box, and avoid strong fragrance because scent can discourage litter box use.",
+        "Consider an enzymatic cleaner labeled for urine and the affected surface. Blot first, follow application, rinsing, drying, and pet-access directions, and avoid ammonia or mixing cleaners. An odor-removing product is not necessarily a disinfectant.",
     },
     {
       question: "What is the safest cleaner for a home with cats and dogs?",
       answer:
-        "Use the cat-safe option as the default: low-residue, unscented cleaners, steam on compatible floors, diluted mild soap, and enzymatic pet accident cleaners. Keep every pet away until the surface is dry.",
+        "Choose for the surface and the needs of both species. Avoid phenol-containing disinfectants in cat areas, use products exactly as directed, and keep both cats and dogs away until all rinsing, drying, ventilation, and pet-access conditions are met.",
     },
     {
       question: "Can I disinfect a litter box with bleach?",
       answer:
-        "Use bleach only when the label or veterinary guidance calls for it. Dilute exactly as directed, never mix it with ammonia or acids, rinse thoroughly when required, ventilate, and let the box dry completely before adding litter.",
+        "Use a suitable bleach product only under its exact label or veterinary directions. Clean first, follow dilution and wet contact time, never mix cleaners, rinse as directed, ventilate, and let the box dry before refilling and allowing access.",
     },
   ],
   "pet-safe-floor-cleaners-dogs-cats": [
@@ -406,57 +391,57 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
     {
       question: "What pet-safe cleaners should I use?",
       answer:
-        "For everyday cleaning, start with low-residue options: steam, diluted castile soap, enzymatic pet accident cleaners, EPA Safer Choice-certified products, and 3% hydrogen peroxide on compatible hard surfaces after it dries. Keep pets away during cleaning and until surfaces are fully dry.",
+        "Choose a mild cleaner labeled for the surface for ordinary dirt, an enzymatic pet-mess cleaner for suitable accidents, and an appropriate labeled disinfectant when germ control is needed. Keep pets away and complete all dilution, contact-time, rinse, ventilation, and pet-access directions.",
     },
     {
       question: "What are the best pet-safe cleaning products?",
       answer:
-        "The best everyday pet-safe cleaning products are low-residue options that dry fully before pets return: steam, diluted castile soap, enzymatic pet accident cleaners, EPA Safer Choice-certified cleaners, and 3% hydrogen peroxide on compatible hard surfaces after proper contact time.",
+        "There is no universal best product. Compare the cleaning job, surface, complete formula, application directions, required rinsing, and pet re-entry conditions. A brand name or the words pet-friendly do not establish safety.",
     },
     {
       question: "What cleaning products are pet friendly?",
       answer:
-        "Pet-friendly cleaning products are usually low-residue, unscented, and used with pets out of the room until surfaces are dry. Good everyday options include steam cleaning, diluted castile soap, enzymatic pet accident cleaners, and EPA Safer Choice-certified cleaners.",
+        "Pet-friendly is a marketing description, not a safety guarantee. Compatible mild cleaners and labeled enzymatic pet-mess products can be practical options when used as directed. Read the complete label and keep pets away during use.",
     },
     {
       question: "What cleaners should cat owners avoid?",
       answer:
-        "Cat owners should be especially cautious with phenol-based cleaners, essential-oil cleaners, ammonia, bleach-heavy sprays, quaternary ammonium disinfectants, and strong fragrance. Cats groom residue from their paws, so a floor cleaner can become an ingestion exposure.",
+        "Avoid phenol-containing disinfectants in cat homes and be cautious with concentrated essential oils, ammonia, peroxide, and quaternary ammonium compounds. Prevent contact with wet products and follow the exact formula's use and rinsing directions.",
     },
     {
       question: "Are disinfectants safe for cats?",
       answer:
-        "Some disinfectants can be used around cats if the cat is kept away during cleaning, the room is ventilated, and the surface fully dries before access. For routine cleaning, use the mildest effective product and avoid leaving wet residue near litter boxes, food bowls, bedding, and floors.",
+        "Some can be used in cat homes under their exact label conditions, but none is universally safe. Check the target germ and surface, keep cats away, complete wet contact time and required rinsing, ventilate, and meet all pet-access directions before cats return.",
     },
     {
       question: "Are natural cleaners automatically safe for pets?",
       answer:
-        "No. Natural cleaners can still be risky. Essential oils, citrus oils, pine oils, and strong fragrances can irritate pets or be toxic to cats, especially when used in concentrated sprays, diffusers, or freshly cleaned floor areas.",
+        "No. Natural ingredients can still irritate or poison pets. Essential oils and vinegar are not interchangeable with labeled cleaners or disinfectants; concentration, surface, exposure, and directions matter.",
     },
     {
       question: "What is the best pet-safe cleaner for urine?",
       answer:
-        "Use an enzymatic pet accident cleaner made for urine. Blot up liquid first, follow the label's contact time, and keep pets away until the area is fully dry. Avoid ammonia because its smell can resemble urine and may encourage repeat marking.",
+        "Consider an enzymatic pet-mess cleaner labeled for urine and the affected material. Blot first, follow application and pet-access instructions, and complete required rinsing and drying. An odor-removing claim does not establish disinfection.",
     },
     {
       question: "Can puppies and kittens be around cleaning products?",
       answer:
-        "Puppies and kittens should be kept out of the room during cleaning and drying because they lick floors, chew toys, and have smaller bodies. Return them only after surfaces are dry, bowls and toys are rinsed when needed, and strong odors are gone.",
+        "Keep puppies and kittens away during cleaning and drying. Return them only after all label-directed rinsing, ventilation, and pet-access conditions are met, surfaces are dry, and any steam-treated area has cooled.",
     },
     {
       question: "What cleaner is safe for pet toys and bowls?",
       answer:
-        "Hot water and mild unscented dish soap are usually the best first choice for bowls and many washable toys. Rinse thoroughly and dry completely. If a label calls for disinfecting, follow the dilution, contact time, rinse, and drying instructions before pets use the item again.",
+        "Start with soap or detergent and water, scrub and rinse thoroughly, and follow the item's care instructions. For disinfection, use a suitable product or dishwasher cycle and complete every required contact-time, rinsing, and drying step.",
     },
     {
       question: "What is the safest pet-friendly cleaner for a multi-pet home?",
       answer:
-        "For a home with both dogs and cats, choose the cat-safe option first because cats groom residue from paws and fur. Steam, diluted mild soap, enzymatic pet accident cleaners, and fragrance-free low-residue products are better defaults than essential-oil, phenol, ammonia, or heavily scented cleaners.",
+        "Choose a product compatible with the surface and with the needs of every species in the home. Do not use phenol-containing disinfectants in cat areas. Keep all animals away during use and meet every label-directed condition before access.",
     },
     {
       question: "Is a product labeled pet-friendly always safe?",
       answer:
-        "No. A pet-friendly label is a shopping clue, not a safety guarantee. Check the ingredient type, surface directions, dilution, ventilation, rinse instructions, and whether pets can reach the area before it is dry.",
+        "No. Check the exact formula, approved surface, dilution, contact time, rinsing, ventilation, and pet-access instructions. No ingredient lookup, dry surface, or marketing claim replaces those conditions.",
     },
   ],
   "puppy-vaccination-schedule": [

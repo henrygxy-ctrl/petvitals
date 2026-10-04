@@ -24,12 +24,12 @@ const faq = [
   {
     question: "What is the safest cleaner to use around pets?",
     answer:
-      "For routine cleaning, start with low-residue options such as steam on compatible surfaces, diluted mild soap, enzymatic pet accident cleaners, and fragrance-free products used exactly as directed. Keep pets out until surfaces are fully dry.",
+      "No cleaner is universally safe. Match a labeled cleaner to the job and surface, check the complete formula, and keep pets away until all required rinsing, ventilation, drying, and pet-access conditions are met. Steam must also cool before access.",
   },
   {
     question: "Are pet-safe cleaners safe as soon as I mop?",
     answer:
-      "No. Even milder cleaners can irritate paws, skin, or mouths while wet. Let floors and pet-contact surfaces dry completely before dogs or cats walk, lick, sleep, or eat there.",
+      "No. Keep pets away while cleaning and complete every label-directed contact-time, rinsing, ventilation, and pet-access step. Surfaces must be dry, and steam-treated floors must be cool. Drying alone cannot correct a wrong product or dilution.",
   },
   {
     question: "What cleaning ingredients should cat owners avoid?",
@@ -39,7 +39,7 @@ const faq = [
   {
     question: "When is a cleaning-product exposure an emergency?",
     answer:
-      "Call a veterinarian or poison hotline if a pet licked a concentrated product, walked through wet chemicals and is licking paws, has trouble breathing, vomits, drools, trembles, seems weak, or has burns on skin, eyes, or mouth.",
+      "Contact your veterinarian or animal poison control promptly after suspected ingestion or contact with a corrosive or unknown cleaner, even before symptoms. Breathing difficulty, collapse, eye exposure, or chemical burns need urgent veterinary attention. Keep the product container and do not induce vomiting.",
   },
   {
     question: "Are pet-friendly cleaning products the same as pet-safe cleaning products?",
@@ -49,7 +49,7 @@ const faq = [
   {
     question: "What should I do if my pet licked floor cleaner?",
     answer:
-      "Move your pet away, prevent more licking, save the product label, and call your veterinarian or a pet poison hotline if the cleaner was concentrated, the amount is unknown, or symptoms such as drooling, vomiting, coughing, tremors, weakness, or mouth irritation appear.",
+      "Move your pet away, prevent further licking, save the product label, and contact your veterinarian or animal poison control promptly. Do not wait for symptoms after suspected ingestion or corrosive or unknown product exposure, and do not induce vomiting or give peroxide.",
   },
 ];
 
@@ -59,11 +59,11 @@ export default function PetSafeCleaningHubPage() {
       label="Pet-Safe Cleaning Hub"
       canonicalPath="/pet-safe-cleaning"
       title="Pet-Safe and Pet-Friendly Cleaning Products for Dogs and Cats"
-      intro="A central guide for cleaning homes with dogs and cats. Start with pet-safe cleaner choices, compare floor and cat-safe disinfectant guidance, then check poisoning symptoms and cleaner toxicity records if exposure happens."
+      intro="Choose a cleaner for the job, build a cat-home routine, or check disinfection and floor re-entry directions. If exposure has already happened, contact your veterinarian or animal poison control promptly; do not wait for symptoms."
       primaryCta={{ title: "Compare pet-safe cleaners", href: "/blog/best-pet-safe-cleaning-products", description: "Check bleach, vinegar, essential oils, phenols, and safer alternatives." }}
       secondaryCta={{ title: "Search cleaner toxicity", href: "/toxicity/category/household", description: "Search household toxicity records." }}
       highlights={[
-        { value: "Dry", label: "Core rule", note: "Pets should stay away until surfaces are fully dry." },
+        { value: "Label", label: "Access rule", note: "Complete required contact time, rinsing, ventilation, and drying before pets return." },
         { value: "Cats", label: "Extra caution", note: "Cats groom residue from paws and fur." },
         { value: "Low residue", label: "Best default", note: "Use mild, unscented cleaners, ventilation, and label directions." },
       ]}
@@ -71,10 +71,10 @@ export default function PetSafeCleaningHubPage() {
       sections={[
         {
           title: "Start With These Guides",
-          description: "Highest-value cleaning pages for search and retention.",
+          description: "Choose the guide for the job you need to finish.",
           links: [
-            { title: "Pet-Safe Cleaners", href: "/blog/best-pet-safe-cleaning-products", description: "Main guide with ingredient checker and safer alternatives.", label: "Tool" },
-            { title: "Cat-Safe Cleaning Products", href: "/blog/cat-friendly-cleaning-products", description: "Cleaner choices and disinfectant cautions for cat homes." },
+            { title: "Compare Cleaning Products", href: "/blog/best-pet-safe-cleaning-products", description: "Categories, label checks, and two real manufacturer-direction examples." },
+            { title: "Cat-Friendly Cleaning Routine", href: "/blog/cat-friendly-cleaning-products", description: "Daily care for bowls, bedding, litter areas, and surfaces cats groom after touching." },
             { title: "Pet-Safe Floor Cleaners", href: "/blog/pet-safe-floor-cleaners-dogs-cats", description: "Floor cleaner options for pets that walk, lick, and groom." },
             { title: "Can Cats Walk After Mopping?", href: "/blog/can-cats-walk-on-floors-after-mopping", description: "Drying time, paw residue, wet floor exposure, and safer mopping routines." },
             { title: "Disinfectants Safe for Cats", href: "/blog/disinfectants-safe-for-cats", description: "Contact time, rinsing, ventilation, and disinfectant ingredients to treat carefully." },
@@ -82,10 +82,10 @@ export default function PetSafeCleaningHubPage() {
           ],
         },
         {
-          title: "Search Answers by Cleaning Need",
-          description: "Direct paths for the cleaning searches already getting impressions.",
+          title: "Specific Cleaning Questions",
+          description: "Ingredient cautions and next steps for individual cleaning problems.",
           links: [
-            { title: "Pet-Friendly Cleaning Products", href: "/blog/best-pet-safe-cleaning-products", description: "Understand what pet-friendly really means and when residue still matters.", label: "Search answer" },
+            { title: "What Does Pet-Friendly Mean?", href: "/blog/pet-friendly-cleaning-products", description: "Check marketing claims against the exact product directions." },
             { title: "Disinfectants Safe for Cats", href: "/blog/disinfectants-safe-for-cats", description: "Cat-specific disinfectant rules for floors, bowls, litter boxes, and counters." },
             { title: "Pet-Safe Floor Cleaner", href: "/blog/pet-safe-floor-cleaners-dogs-cats", description: "Compare steam, diluted soap, vinegar, enzymatic cleaners, and disinfectant residue." },
             { title: "Vinegar Floor Cleaner and Pets", href: "/blog/is-vinegar-floor-cleaner-safe-for-pets", description: "When diluted vinegar is reasonable, when to avoid it, and better urine cleaner choices." },
@@ -108,7 +108,7 @@ export default function PetSafeCleaningHubPage() {
       ]}
       resource={<DownloadResourceCard variant="cleaning" />}
       faq={faq}
-      footerNote="Clean when pets are out of the room, ventilate, follow product labels, and let surfaces dry before pets return."
+      footerNote="Keep pets away during cleaning. Complete label-directed contact time, rinsing, ventilation, drying, and pet-access conditions; steam-treated surfaces must cool too."
     />
   );
 }

@@ -31,8 +31,8 @@ const typeLabels: Record<BlogSource["type"], string> = {
 
 export function SourceCitation({ sources }: { sources: BlogSource[] }) {
   return (
-    <section className="mt-12 pt-8 border-t">
-      <h2 className="text-lg font-semibold mb-4">Clinical References</h2>
+    <section id="article-sources" className="mt-12 pt-8 border-t scroll-mt-24">
+      <h2 className="text-lg font-semibold mb-4">Sources and References</h2>
       <p className="text-sm text-muted-foreground mb-4">
         This article is based on the following publicly available sources. Content
         is written in our own words - we do not copy or translate original text.

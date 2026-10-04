@@ -48,7 +48,7 @@ const RESOURCES = {
   cleaning: {
     title: "Pet-Safe Cleaning Checklist",
     description:
-      "A printable dry-before-return checklist for floors, litter boxes, bowls, disinfectants, and exposure notes.",
+      "A printable checklist for product directions, pet access, floors, litter boxes, bowls, and exposure notes.",
     href: "/downloads/pet-safe-cleaning-checklist.pdf",
     followupHref: "/pet-safe-cleaning",
     followupLabel: "Open cleaning hub",

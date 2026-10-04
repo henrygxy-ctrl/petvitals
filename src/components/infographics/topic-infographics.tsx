@@ -34,8 +34,8 @@ export function CleaningSafetyInfographic() {
   const rows = [
     { label: "Keep pets out", detail: "Close the room while cleaning", icon: ShieldCheck },
     { label: "Ventilate", detail: "Open windows or run exhaust fans", icon: Droplets },
-    { label: "Let it dry", detail: "Residue on paws becomes ingestion", icon: CalendarDays },
-    { label: "Avoid high-risk ingredients", detail: "Phenols, essential oils, ammonia, heavy fragrance", icon: AlertTriangle },
+    { label: "Follow the label", detail: "Complete contact time and required rinsing", icon: CalendarDays },
+    { label: "Check before return", detail: "Meet pet-access directions; surfaces must be dry and cool", icon: AlertTriangle },
   ];
 
   return (

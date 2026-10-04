@@ -7,6 +7,7 @@ import { slugify } from "@/lib/utils";
 import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
 import { SourceCitation } from "@/components/blog/source-citation";
 import { TableOfContents } from "@/components/blog/table-of-contents";
+import { ArticleLinkTracking } from "@/components/blog/article-link-tracking";
 import { NewsletterSignup } from "@/components/newsletter/newsletter-signup";
 import { ReadNext } from "@/components/blog/read-next";
 import { RelatedArticles } from "@/components/blog/related-articles";
@@ -25,7 +26,7 @@ import {
 import { CleaningIngredientChecker } from "@/components/tools/cleaning-ingredient-checker";
 import { PuppyVaccinationPlanner } from "@/components/tools/puppy-vaccination-planner";
 import { VetBillEstimator } from "@/components/tools/vet-bill-estimator";
-import { Calendar, Clock, ShieldCheck, Tag, User } from "lucide-react";
+import { Calendar, Clock, Tag, User } from "lucide-react";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -86,7 +87,7 @@ export default async function BlogArticlePage({ params }: Props) {
   const showCleaningChecker = CLEANING_TOOL_SLUGS.has(post.slug);
   const showPuppyPlanner = post.slug === "puppy-vaccination-schedule";
   const editorialDate = post.updated || post.date;
-  const editorialDateLabel = post.updated ? "updated" : "published";
+  const editorialDateLabel = post.updated ? "Updated" : "Published";
   const contextualHubLinks = getContextualHubLinks(post.slug, post.tags);
 
   let Content: React.ComponentType;
@@ -179,28 +180,15 @@ export default async function BlogArticlePage({ params }: Props) {
               </div>
             </div>
 
-            <section className="mb-8 rounded-xl border bg-card p-5">
-              <div className="flex items-start gap-3">
-                <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" />
-                <div>
-                  <h2 className="text-sm font-semibold text-foreground">Editorial Standards</h2>
-                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                    Written by the PetVitals Editorial Team and {editorialDateLabel} on{" "}
-                    {new Date(editorialDate).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                    . We use public veterinary, government, and industry sources where available and keep advice educational, not a substitute for your veterinarian.
-                  </p>
-                  {post.sources.length > 0 && (
-                    <p className="mt-2 text-xs text-muted-foreground">
-                      Sources are listed below so readers can check the original guidance.
-                    </p>
-                  )}
-                </div>
-              </div>
-            </section>
+            <p className="mb-6 text-xs leading-relaxed text-muted-foreground">
+              Educational guidance, not a substitute for veterinary care. {editorialDateLabel}{" "}
+              {new Date(editorialDate).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}.
+              {post.sources.length > 0 && <> <a href="#article-sources" className="underline">Sources and references</a>.</>}
+            </p>
 
             <TableOfContents />
 
@@ -211,6 +199,7 @@ export default async function BlogArticlePage({ params }: Props) {
             {toolMode && <VetBillEstimator mode={toolMode} />}
 
             <div className="prose-custom">
+              <ArticleLinkTracking />
               <Content />
             </div>
 
