@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Shield } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronDown, Shield } from "lucide-react";
 import { AdUnit } from "@/components/ads/AdUnit";
 import { InsuranceComparison } from "@/components/affiliate/insurance-comparison";
 import { DownloadResourceCard } from "@/components/downloads/resource-card";
@@ -143,20 +143,6 @@ export function CommercialInsurancePage({
                 {heroNote}
               </p>
             )}
-            <div className="mt-5 grid gap-3 sm:grid-cols-3">
-              <div className="rounded-lg border bg-card p-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Step 1</p>
-                <p className="mt-1 text-sm font-medium">Estimate the monthly cost</p>
-              </div>
-              <div className="rounded-lg border bg-card p-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Step 2</p>
-                <p className="mt-1 text-sm font-medium">Compare the same coverage settings</p>
-              </div>
-              <div className="rounded-lg border bg-card p-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Step 3</p>
-                <p className="mt-1 text-sm font-medium">Check exclusions before price</p>
-              </div>
-            </div>
           </section>
 
           <section className="grid sm:grid-cols-3 gap-4 mb-10">
@@ -168,33 +154,6 @@ export function CommercialInsurancePage({
               </div>
             ))}
           </section>
-
-          <ContextualHubLinks
-            title="Related Cost Planning Hubs"
-            description="Use these planning hubs before choosing a deductible, annual limit, or emergency budget."
-            links={planningHubLinks}
-            className="mb-10"
-          />
-
-          <section className="mb-10 rounded-xl border bg-primary/5 p-5">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <h2 className="text-base font-semibold">Compare quotes with the same settings</h2>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Use one deductible, reimbursement rate, annual limit, and pet profile across providers so the lowest price is not just weaker coverage.
-                </p>
-              </div>
-              <a
-                href="#providers"
-                className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
-              >
-                Compare providers
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </div>
-          </section>
-
-          <DownloadResourceCard variant={downloadVariant} />
 
           <div className="prose prose-sm max-w-none space-y-8 text-foreground/80">
             {sections.map((section) => (
@@ -208,6 +167,32 @@ export function CommercialInsurancePage({
           <section id="providers" className="mt-10 scroll-mt-20">
             <InsuranceComparison partners={INSURANCE_PARTNERS} />
           </section>
+
+          <section className="mt-10" aria-labelledby="insurance-faq-heading">
+            <h2 id="insurance-faq-heading" className="text-xl font-semibold mb-4">{label} FAQ</h2>
+            <div className="border-t">
+              {faq.map(({ question, answer }) => (
+                <details key={question} className="group border-b py-4">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary [&::-webkit-details-marker]:hidden">
+                    <span className="min-w-0">{question}</span>
+                    <ChevronDown aria-hidden="true" className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" />
+                  </summary>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+
+          <div className="mt-10">
+            <DownloadResourceCard variant={downloadVariant} />
+          </div>
+
+          <ContextualHubLinks
+            title="Related Cost Planning Hubs"
+            description="Use these planning hubs before choosing a deductible, annual limit, or emergency budget."
+            links={planningHubLinks}
+            className="mt-10"
+          />
 
           <section className="mt-10">
             <div className="flex items-center gap-2 mb-4">

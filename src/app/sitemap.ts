@@ -39,7 +39,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "best-pet-insurance-for-dogs",
   ].map((slug) => ({
     url: `${SITE_BASE_URL}/insurance/${slug}`,
-    lastModified: INSURANCE_LAST_MODIFIED,
+    lastModified: ["pet-insurance-cost", "cat-insurance-cost", "dog-insurance-cost", "emergency-vet-cost", "best-pet-insurance-for-dogs"].includes(slug)
+      ? new Date("2026-10-04")
+      : INSURANCE_LAST_MODIFIED,
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));

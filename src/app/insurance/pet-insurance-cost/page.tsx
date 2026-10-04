@@ -7,14 +7,14 @@ import { SITE_BASE_URL, SITE_NAME } from "@/lib/constants";
 const slug = "pet-insurance-cost";
 
 export const metadata: Metadata = {
-  title: `Pet Insurance Cost Per Month: Dog & Cat Prices | ${SITE_NAME}`,
+  title: `Pet Insurance Cost: Monthly & Annual Prices (2026) | ${SITE_NAME}`,
   description:
-    "How much is pet insurance per month? Compare 2026 average dog and cat prices, accident-only costs, deductibles, reimbursement, and quote settings.",
+    "Pet insurance averages about $70/month for dogs and $36 for cats. Compare monthly and annual costs, accident-only prices, deductibles, and a sample claim.",
   alternates: { canonical: `${SITE_BASE_URL}/insurance/${slug}` },
   openGraph: {
-    title: "Pet Insurance Cost Per Month: Dog and Cat Prices",
+    title: "Pet Insurance Cost: Monthly & Annual Prices (2026)",
     description:
-      "Compare average pet insurance cost per month for dogs, cats, accident-only plans, deductibles, reimbursement, and quote settings.",
+      "Compare U.S. monthly and annual dog and cat insurance averages, coverage types, and the out-of-pocket cost of a sample claim.",
     url: `${SITE_BASE_URL}/insurance/${slug}`,
     siteName: SITE_NAME,
     type: "website",
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pet Insurance Cost Per Month: Dog and Cat Prices",
+    title: "Pet Insurance Cost: Monthly & Annual Prices (2026)",
     description:
-      "Compare average pet insurance cost per month for dogs, cats, accident-only plans, deductibles, reimbursement, and quote settings.",
+      "Compare U.S. monthly and annual dog and cat insurance averages, coverage types, and the out-of-pocket cost of a sample claim.",
     images: [`${SITE_BASE_URL}/og-image.png`],
   },
 };
@@ -39,6 +39,16 @@ const faq = [
     question: "What is the average cost of pet insurance?",
     answer:
       "A useful average cost estimate is about $70 per month for dogs and $36 per month for cats for accident and illness coverage. Accident-only plans average less, around $16 per month for dogs and $9 per month for cats, while lower deductibles, higher reimbursement rates, and higher annual limits usually raise the monthly price.",
+  },
+  {
+    question: "How much does pet insurance cost per year?",
+    answer:
+      "NAPHIA's 2025 U.S. averages, reproduced by NerdWallet, are about $836 a year for dogs and $435 for cats with accident and illness coverage. Accident-only averages are about $190 for dogs and $112 for cats. Monthly figures are rounded, and your provider quote can differ.",
+  },
+  {
+    question: "Is the deductible included in the monthly premium?",
+    answer:
+      "No. The premium keeps the policy active; the deductible is your share of eligible treatment costs before the policy pays under its terms. You may also owe coinsurance, excluded charges, and costs above the remaining payout limit.",
   },
   {
     question: "How can I estimate my pet insurance cost?",
@@ -82,54 +92,54 @@ export default function PetInsuranceCostPage() {
     <CommercialInsurancePage
       slug={slug}
       label="Pet Insurance Cost"
-      title="Pet Insurance Cost Per Month: Average Dog and Cat Prices"
-      intro="Quick answer: pet insurance often costs about $70 per month for dogs and $36 per month for cats for accident and illness coverage. Use the 2026 cost table and calculator below to answer how much pet insurance is per month and which quote settings change the price."
+      title="How Much Does Pet Insurance Cost? Monthly and Annual Prices"
+      intro="U.S. accident and illness coverage averages about $70 per month for dogs and $36 for cats. Accident-only averages are about $16 and $9. These are 2025 industry benchmarks published in 2026; compare the yearly costs and what you would pay toward a claim below."
       primaryCtaLabel="Compare monthly quotes"
-      secondaryCtaLabel="See cheaper accident-only plans"
-      secondaryCtaHref="/insurance/accident-only"
-      heroNote="For the cleanest comparison, request quotes with the same deductible, reimbursement rate, and annual limit across providers."
+      secondaryCtaLabel="See monthly and yearly costs"
+      secondaryCtaHref="#cost-table"
+      heroNote="Reviewed October 4, 2026. Compare the same deductible, reimbursement rate, annual limit, and pet profile. A national average is not a personal quote."
       stats={[
-        { label: "Dog insurance price", value: "$70/mo", note: "Average accident and illness premium from NAPHIA 2026 highlights." },
-        { label: "Cat insurance cost", value: "$36/mo", note: "Average accident and illness premium from NAPHIA 2026 highlights." },
-        { label: "Accident-only cost", value: "$16 / $9", note: "Average dog and cat monthly premiums before wellness add-ons." },
+        { label: "Dog insurance price", value: "$70/mo", note: "Rounded 2025 U.S. accident and illness average." },
+        { label: "Cat insurance cost", value: "$36/mo", note: "Rounded 2025 U.S. accident and illness average." },
+        { label: "Accident-only cost", value: "$16 / $9", note: "Dog / cat monthly averages; illness coverage excluded." },
       ]}
       sections={[
         {
-          title: "Pet Insurance Cost Per Month: Quick Answer",
+          title: "Average Pet Insurance Cost Per Month and Year",
           content: (
             <>
               <p>
-                If you are comparing the cost of pet insurance, start with species and plan type. Dog insurance cost is usually higher than cat insurance cost, and accident-only coverage usually costs less than accident and illness coverage. These monthly averages are planning benchmarks, not guaranteed quotes.
+                These 2025 U.S. averages come from NAPHIA&apos;s 2026 industry report, as reproduced in <a href="https://www.nerdwallet.com/insurance/pet/learn/cost-of-pet-insurance" className="underline underline-offset-2" target="_blank" rel="noopener noreferrer">NerdWallet&apos;s cost guide</a>. Amounts are in U.S. dollars. Monthly prices are rounded, so multiplying them by 12 may differ slightly from the annual figures.
               </p>
-              <div className="not-prose overflow-x-auto rounded-xl border my-4">
+              <div id="cost-table" className="not-prose overflow-x-auto rounded-lg border my-4 scroll-mt-20">
                 <table className="w-full text-sm">
                   <thead className="bg-muted/60">
                     <tr>
-                      <th className="px-4 py-3 text-left font-semibold">Quote type</th>
-                      <th className="px-4 py-3 text-left font-semibold">Typical use case</th>
-                      <th className="px-4 py-3 text-left font-semibold">Average cost signal</th>
+                      <th scope="col" className="px-4 py-3 text-left font-semibold">Coverage</th>
+                      <th scope="col" className="px-4 py-3 text-left font-semibold">Monthly average</th>
+                      <th scope="col" className="px-4 py-3 text-left font-semibold">Annual average</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-t">
                       <td className="px-4 py-3">Dog accident and illness</td>
-                      <td className="px-4 py-3">Broad coverage for injuries, illness, diagnostics, and emergencies</td>
-                      <td className="px-4 py-3">About $70 per month</td>
+                      <td className="px-4 py-3">About $70</td>
+                      <td className="px-4 py-3">About $836</td>
                     </tr>
                     <tr className="border-t">
                       <td className="px-4 py-3">Cat accident and illness</td>
-                      <td className="px-4 py-3">Broad coverage for injuries, illness, urinary issues, diagnostics, and emergencies</td>
-                      <td className="px-4 py-3">About $36 per month</td>
+                      <td className="px-4 py-3">About $36</td>
+                      <td className="px-4 py-3">About $435</td>
                     </tr>
                     <tr className="border-t">
                       <td className="px-4 py-3">Dog accident-only</td>
-                      <td className="px-4 py-3">Poisoning, broken bones, wounds, swallowed objects</td>
-                      <td className="px-4 py-3">About $16 per month</td>
+                      <td className="px-4 py-3">About $16</td>
+                      <td className="px-4 py-3">About $190</td>
                     </tr>
                     <tr className="border-t">
                       <td className="px-4 py-3">Cat accident-only</td>
-                      <td className="px-4 py-3">Falls, bite wounds, toxin ingestion, swallowed objects</td>
-                      <td className="px-4 py-3">About $9 per month</td>
+                      <td className="px-4 py-3">About $9</td>
+                      <td className="px-4 py-3">About $112</td>
                     </tr>
                   </tbody>
                 </table>
@@ -143,6 +153,24 @@ export default function PetInsuranceCostPage() {
         {
           title: "Pet Insurance Cost Calculator",
           content: <InsuranceCostEstimator title="Pet Insurance Cost Calculator" />,
+        },
+        {
+          title: "Premium vs. Deductible: A $3,000 Claim Example",
+          content: (
+            <>
+              <p>
+                Paying a premium does not remove your share of a vet bill. Suppose a policy subtracts an unused $500 annual deductible before applying 80% reimbursement to a $3,000 eligible bill, with at least $2,000 of payout limit remaining:
+              </p>
+              <ul className="space-y-2">
+                <li><strong>After deductible:</strong> $3,000 - $500 = $2,500.</li>
+                <li><strong>Insurer payment:</strong> $2,500 x 80% = $2,000.</li>
+                <li><strong>Your treatment share:</strong> $1,000, plus excluded charges and the premiums you paid.</li>
+              </ul>
+              <p>
+                This is illustrative; policies can use a different calculation order or deductible type. You may need to pay the clinic first and wait for reimbursement. Compare that cash requirement with <Link href="/insurance/emergency-vet-cost" className="underline underline-offset-2">emergency vet costs</Link>, and read the <Link href="/blog/pet-insurance-waiting-period-explained" className="underline underline-offset-2">waiting period guide</Link> before relying on a new policy.
+              </p>
+            </>
+          ),
         },
         {
           title: "Use These Settings Like a Pet Insurance Cost Calculator",
@@ -239,6 +267,7 @@ export default function PetInsuranceCostPage() {
       ]}
       sources={[
         { label: "NAPHIA Pet Insurance Industry Data", href: "https://naphia.org/industry-data/" },
+        { label: "NerdWallet - 2025 NAPHIA Monthly and Annual Premiums", href: "https://www.nerdwallet.com/insurance/pet/learn/cost-of-pet-insurance" },
         { label: "NAIC Pet Insurance Consumer Information", href: "https://content.naic.org/insurance-topics/pet-insurance" },
       ]}
     />

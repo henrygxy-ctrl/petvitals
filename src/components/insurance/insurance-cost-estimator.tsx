@@ -272,7 +272,7 @@ export function InsuranceCostEstimator({
             </div>
             <h3 className="mt-2 text-xl font-bold text-foreground">{title}</h3>
             <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
-              Estimate a monthly range before requesting quotes. Actual premiums depend on provider rules, zip code, underwriting, exclusions, and discounts.
+              Illustrative budget range based on rounded U.S. industry averages. Age, risk, location, and coverage adjustments are planning assumptions, not provider pricing data. Confirm the premium with an insurer.
             </p>
           </div>
           <a
