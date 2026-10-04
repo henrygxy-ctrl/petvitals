@@ -206,19 +206,16 @@ export default async function BlogArticlePage({ params }: Props) {
 
             {showPuppyPlanner && <PuppyTimelineInfographic />}
             {toolMode && <VetCostInfographic />}
-            {showCleaningChecker && <CleaningSafetyInfographic />}
 
             {showPuppyPlanner && <PuppyVaccinationPlanner />}
             {toolMode && <VetBillEstimator mode={toolMode} />}
-            {showCleaningChecker && <CleaningIngredientChecker />}
-
-            {productRecs.length > 0 && (
-              <ProductRecommendationCard products={productRecs} />
-            )}
 
             <div className="prose-custom">
               <Content />
             </div>
+
+            {showCleaningChecker && <CleaningSafetyInfographic />}
+            {showCleaningChecker && <CleaningIngredientChecker />}
 
                         <InArticleAd />
 

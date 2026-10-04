@@ -168,44 +168,64 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
     {
       question: "What disinfectant is safe for cats?",
       answer:
-        "No disinfectant is automatically safe in every cat home. Use the mildest product that fits the actual risk, keep cats away during contact time, ventilate, rinse pet-contact surfaces when the label requires it, and wait until everything is fully dry.",
+        "No disinfectant is safe for every cat, surface, and exposure. For a job that needs disinfection, choose a product labeled for the surface and target germ, avoid phenol-containing products in cat homes, and complete the label's contact time, rinse, ventilation, and pet-return requirements.",
     },
     {
       question: "Can I use disinfectant wipes around cats?",
       answer:
-        "Use caution. Disinfectant wipes can leave residue on paws, counters, carriers, and litter areas. Keep cats away until the surface is dry, and avoid using wipes on areas cats lick, sleep on, or eat from unless the label supports that use.",
+        "Only use them on surfaces allowed by the label, with cats kept away during use and until all return conditions are met. Complete the contact time and any required rinse. Never use surface disinfectant wipes on a cat's paws or fur, and keep used wipes out of reach.",
     },
     {
       question: "Is bleach safe around cats?",
       answer:
-        "Bleach should not be a routine cat cleaner, but it may be used for specific disinfecting needs when diluted exactly as directed. Never mix it with ammonia, vinegar, or other cleaners, and keep cats away until the surface is rinsed if required and fully dry.",
+        "Properly diluted bleach can be used for suitable disinfecting jobs with cats kept away. Follow the specific bottle's directions, rinse pet items thoroughly, ventilate, and let surfaces dry before reuse. Never mix bleach with ammonia, vinegar, or other cleaners.",
     },
     {
       question: "How long should cats stay away after disinfecting?",
       answer:
-        "Cats should stay away through the product's contact time, ventilation period, any required rinse, and complete drying. If odor remains strong or the surface feels tacky, keep cats away longer.",
+        "There is no universal number of minutes. Complete the product's contact time, any required rinse, drying, ventilation, and pet-access instructions. A surface being dry or having no smell does not override the product label.",
+    },
+    {
+      question: "Is vinegar a cat-safe disinfectant?",
+      answer:
+        "Do not rely on vinegar to disinfect cat supplies or control a diagnosed infection. CDC recommends soap or detergent for cleaning and suitable disinfectants for killing germs. Vinegar does not reliably kill all germs and must never be mixed with bleach.",
+    },
+    {
+      question: "Does an EPA Safer Choice label mean a disinfectant is safe for cats?",
+      answer:
+        "No. Safer Choice identifies cleaning products with safer ingredients; EPA's DfE label applies to qualifying disinfectants and sanitizers. Neither permits cats to lick a product or bypass its dilution, contact time, rinse, or pet-access directions.",
     },
   ],
   "can-cats-walk-on-floors-after-mopping": [
     {
       question: "Can cats walk on floors after mopping?",
       answer:
-        "Cats should wait until mopped floors are fully dry and any label-required rinsing is complete. Wet cleaner can stick to paws and fur, then be swallowed during grooming.",
+        "Yes, after the floor is completely dry and the cleaner's dilution, rinse, ventilation, and pet-access instructions are met. Keep cats away from wet cleaner because it can transfer to paws and be swallowed during grooming.",
     },
     {
       question: "How long after mopping can cats go back in the room?",
       answer:
-        "There is no single time because dry time depends on floor type, humidity, airflow, and product amount. Use the surface test: if socks feel damp, sticky, or scented, it is too soon for cats.",
+        "There is no universal waiting time. Drying varies with the floor, airflow, humidity, and amount of liquid. With disinfectants, complete the contact time and any required rinse before drying and return; the product label controls the process.",
+    },
+    {
+      question: "Is a floor safe for cats as soon as it is dry?",
+      answer:
+        "Not automatically. Drying does not correct an unsuitable product, wrong dilution, or skipped rinse. Follow the cleaner's surface and pet-access instructions, and keep cats away while you resolve unknown ingredients or remaining residue.",
+    },
+    {
+      question: "Can cats walk on floors cleaned with bleach?",
+      answer:
+        "Only after a bleach product suitable for that floor has been used as directed, with cats kept away during treatment. Complete the contact time, required rinsing, drying, and ventilation. Never mix bleach with ammonia, vinegar, or other cleaners.",
     },
     {
       question: "What should I do if my cat walked on a wet floor?",
       answer:
-        "Move the cat to a clean dry room and gently wipe paws with a damp cloth if exposure was mild. Call a veterinarian or poison hotline if the product contained disinfectants, essential oils, bleach, ammonia, phenols, or if your cat licked residue or shows symptoms.",
+        "Move the cat away and prevent grooming of contaminated paws. Gently rinse cleaner from paws with clean water if tolerated, and get prompt veterinary or poison-control advice for disinfectants, unknown products, licking, or symptoms. Do not induce vomiting or give peroxide.",
     },
     {
       question: "Are steam-mopped floors safe for cats?",
       answer:
-        "Steam can be a low-residue option on compatible sealed floors, but cats should still stay away until the floor is dry and cool.",
+        "Steam without added chemicals can be a low-residue option if the mop and flooring manufacturers allow it. Keep cats away until the floor is dry and cool; do not assume one quick pass provides disinfection for a specific infection.",
     },
   ],
   "is-vinegar-floor-cleaner-safe-for-pets": [
