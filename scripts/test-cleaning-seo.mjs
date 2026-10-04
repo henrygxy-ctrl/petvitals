@@ -131,10 +131,17 @@ assert.equal(removed, true);
 console.log("PASS: article click tracking excludes same-page anchors, non-web links and query parameters");
 
 const faqs = loadComponent("src/lib/blog-faq.ts").exports.BLOG_FAQS;
-for (const [slug, expected] of [["best-pet-safe-cleaning-products", 11], ["cat-friendly-cleaning-products", 8]]) {
+for (const [slug, expected] of [
+  ["best-pet-safe-cleaning-products", 11],
+  ["cat-friendly-cleaning-products", 8],
+  ["can-cats-eat-cantaloupe", 9],
+  ["can-cats-walk-on-floors-after-mopping", 6],
+  ["disinfectants-safe-for-cats", 6],
+]) {
   const { data, content } = matter(fs.readFileSync(path.join(root, "src/content/blog", `${slug}.mdx`), "utf8"));
   const normalized = content.replace(/\r\n/g, "\n");
-  const faqBody = normalized.slice(normalized.indexOf(slug.startsWith("best") ? "## Pet-Safe Cleaning Products FAQ" : "## Cat-Friendly Cleaning Products FAQ"));
+  const faqBody = normalized.match(/^## [^\n]*FAQ\n([\s\S]*)/m)?.[1].split("\n## ")[0];
+  assert.ok(faqBody, `${slug}: visible FAQ section`);
   const visible = [...faqBody.matchAll(/^### (.+)\n\n([\s\S]*?)(?=\n### |$)/gm)]
     .map((match) => ({ question: match[1], answer: match[2].trim() }));
   assert.equal(visible.length, expected);
@@ -145,6 +152,18 @@ for (const [slug, expected] of [["best-pet-safe-cleaning-products", 11], ["cat-f
   for (const next of data.readNext) assert.ok(fs.existsSync(path.join(root, "src/content/blog", `${next}.mdx`)));
   const compiled = String(await compile(content, { rehypePlugins: [rehypeSlug] }));
   if (slug.startsWith("best")) assert.match(compiled, /two-real-product-examples-the-same-brand-does-not-mean-the-same-job/);
+  if (slug === "can-cats-eat-cantaloupe") {
+    assert.equal(data.seo.title, "Can Cats Eat Cantaloupe? Safe Amounts, Rind & Seeds");
+    assert.match(data.seo.description, /rockmelon/);
+    assert.match(compiled, /can-cats-eat-rockmelon/);
+    assert.ok(data.sources.some((source) => source.url === "https://www.apvma.gov.au/crop-groups/fruiting-vegetables-cucurbits"));
+  }
+  if (slug === "can-cats-walk-on-floors-after-mopping") {
+    assert.equal(data.seo.title, "Can Cats Walk on Floors After Mopping? When to Let Them In");
+  }
+  if (slug === "disinfectants-safe-for-cats") {
+    assert.equal(data.seo.title, "Disinfectants Safe for Cats: Bleach, Wipes & Safe Use");
+  }
   assert.doesNotMatch(content, /15\+ seconds|1:1 with water|Allow to sit for 10 minutes|Phenols \(Pine-Sol/);
   console.log(`PASS: ${slug}: MDX compilation, ${expected} exact FAQ matches, metadata and related links`);
 }

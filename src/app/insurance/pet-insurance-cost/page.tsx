@@ -51,6 +51,11 @@ const faq = [
       "No. The premium keeps the policy active; the deductible is your share of eligible treatment costs before the policy pays under its terms. You may also owe coinsurance, excluded charges, and costs above the remaining payout limit.",
   },
   {
+    question: "Is a cheaper monthly premium always the lowest yearly cost?",
+    answer:
+      "No. Compare 12 months of premiums plus your share of an eligible claim. A lower premium with a higher deductible or lower reimbursement can cost less in a no-claim year but more in a year with treatment. Exclusions, payout limits, and the timing of reimbursement also matter.",
+  },
+  {
     question: "How can I estimate my pet insurance cost?",
     answer:
       "Start with your pet's species and plan type, then compare quotes using the same deductible, reimbursement rate, annual limit, age, breed or health risk, and location. A calculator can show a useful range, but only provider quotes can confirm your actual premium.",
@@ -173,19 +178,46 @@ export default function PetInsuranceCostPage() {
           ),
         },
         {
-          title: "Use These Settings Like a Pet Insurance Cost Calculator",
+          title: "Compare Your Yearly Budget, Not Just the Monthly Premium",
           content: (
-            <>
+            <div id="annual-budget" className="scroll-mt-20">
               <p>
-                The fastest way to estimate pet insurance price is to hold the quote settings steady. Compare the same pet, zip code, deductible, reimbursement rate, annual limit, and plan type across providers. Otherwise, a cheaper quote may simply be buying less protection.
+                <strong>Illustrative comparison, not provider quotes:</strong> these two hypothetical plans show why the cheapest monthly price is not always the lowest total cost. Both cover the same $3,000 eligible bill, subtract an unused annual deductible before reimbursement, and have enough payout limit remaining. Assume no excluded charges or other claims.
               </p>
-              <ul className="space-y-2">
-                <li><strong>Deductible:</strong> Higher deductibles usually lower the monthly price but raise your first out-of-pocket cost.</li>
-                <li><strong>Reimbursement:</strong> 70% costs less than 90%, but you pay more of every covered bill.</li>
-                <li><strong>Annual limit:</strong> Lower limits reduce premiums but can run out during surgery, hospitalization, or cancer care.</li>
-                <li><strong>Plan type:</strong> Accident-only is cheaper, while accident and illness is broader.</li>
-              </ul>
-            </>
+              <div className="not-prose my-4 overflow-x-auto rounded-lg border">
+                <table className="w-full min-w-[600px] text-sm">
+                  <caption className="px-4 py-3 text-left font-semibold">Hypothetical annual premiums and treatment share</caption>
+                  <thead className="bg-muted/60">
+                    <tr>
+                      <th scope="col" className="px-4 py-3 text-left">Example settings</th>
+                      <th scope="col" className="px-4 py-3 text-left">Premiums for 12 months</th>
+                      <th scope="col" className="px-4 py-3 text-left">Your share of $3,000 bill</th>
+                      <th scope="col" className="px-4 py-3 text-left">Premiums + treatment share</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-t">
+                      <th scope="row" className="px-4 py-3 text-left font-medium">A: $30/month, $1,000 deductible, 70% reimbursement</th>
+                      <td className="px-4 py-3">$360</td>
+                      <td className="px-4 py-3">$1,600</td>
+                      <td className="px-4 py-3">$1,960</td>
+                    </tr>
+                    <tr className="border-t">
+                      <th scope="row" className="px-4 py-3 text-left font-medium">B: $50/month, $250 deductible, 80% reimbursement</th>
+                      <td className="px-4 py-3">$600</td>
+                      <td className="px-4 py-3">$800</td>
+                      <td className="px-4 py-3">$1,400</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                For A, reimbursement is ($3,000 - $1,000) x 70% = $1,400. For B, it is ($3,000 - $250) x 80% = $2,200. Subtract those payouts from the bill, then add the annual premiums. In a year with no claims, A costs $360 and B $600 in premiums; routine or excluded care remains extra in either case.
+              </p>
+              <p>
+                This example does not predict claims or identify the best policy. Use your real quotes, policy calculation order, covered charges, and limits. If the insurer reimburses later, you may need the full clinic payment available before receiving any payout.
+              </p>
+            </div>
           ),
         },
         {

@@ -41,6 +41,11 @@ const faq = [
       "NAPHIA's 2025 U.S. averages, reproduced by NerdWallet, are about $435 per year for cat accident and illness coverage and $112 for accident-only coverage. These are industry averages, not a quote for an individual cat; wellness add-ons and excluded charges can cost extra.",
   },
   {
+    question: "Does the monthly cat insurance premium include the deductible?",
+    answer:
+      "No. The premium keeps your policy active. A deductible and coinsurance apply to eligible treatment under the policy's terms, while routine or excluded care may be entirely your responsibility. Budget for premiums and possible treatment costs separately, including any clinic payment needed before reimbursement.",
+  },
+  {
     question: "Is cat insurance cheaper than dog insurance?",
     answer:
       "Yes, cat insurance is often cheaper than dog insurance because average claim costs and breed-related risk differences are usually lower. Indoor cats can still face expensive emergencies such as urinary blockage, toxin exposure, falls, and foreign object ingestion.",
@@ -110,21 +115,21 @@ export default function CatInsuranceCostPage() {
                 <table className="w-full text-sm">
                   <thead className="bg-muted/60">
                     <tr>
-                      <th className="px-4 py-3 text-left font-semibold">Cat insurance quote</th>
-                      <th className="px-4 py-3 text-left font-semibold">Best fit</th>
-                      <th className="px-4 py-3 text-left font-semibold">Cost signal</th>
+                      <th scope="col" className="px-4 py-3 text-left font-semibold">Cat insurance quote</th>
+                      <th scope="col" className="px-4 py-3 text-left font-semibold">Coverage focus</th>
+                      <th scope="col" className="px-4 py-3 text-left font-semibold">Monthly / annual average</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-t">
                       <td className="px-4 py-3">Accident and illness</td>
                       <td className="px-4 py-3">Broad coverage for injuries, illness, diagnostics, urinary issues, and emergencies</td>
-                      <td className="px-4 py-3">About $36 per month on average</td>
+                      <td className="px-4 py-3">About $36 / $435</td>
                     </tr>
                     <tr className="border-t">
                       <td className="px-4 py-3">Accident-only</td>
                       <td className="px-4 py-3">Lower-cost backup for falls, toxin ingestion, bite wounds, and swallowed objects</td>
-                      <td className="px-4 py-3">About $9 per month on average</td>
+                      <td className="px-4 py-3">About $9 / $112</td>
                     </tr>
                     <tr className="border-t">
                       <td className="px-4 py-3">Wellness add-on</td>
@@ -134,6 +139,9 @@ export default function CatInsuranceCostPage() {
                   </tbody>
                 </table>
               </div>
+              <p>
+                These premiums do not include your deductible, coinsurance, routine care, or excluded charges. For an indoor cat, a cheap accident-only premium also leaves illness-related treatment outside that coverage. Use the <Link href="/insurance/pet-insurance-cost#annual-budget" className="underline underline-offset-2">annual budget and sample-claim comparison</Link> to separate the policy price from the money you may need at the clinic.
+              </p>
               <p>
                 For a dog-versus-cat comparison, start with the full <Link href="/insurance/pet-insurance-cost" className="underline underline-offset-2">pet insurance cost per month guide</Link>. If you only want accident backup, compare <Link href="/insurance/accident-only" className="underline underline-offset-2">accident-only coverage</Link>.
               </p>

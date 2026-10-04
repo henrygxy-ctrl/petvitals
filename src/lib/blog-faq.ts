@@ -352,6 +352,11 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
         "Yes, most healthy adult cats can have a little plain, ripe cantaloupe flesh occasionally. Remove rind and seeds and cut it into very small pieces. It is a treat, not a replacement for complete cat food.",
     },
     {
+      question: "Can cats eat rockmelon?",
+      answer:
+        "Rockmelon is another name for cantaloupe. For a healthy adult cat, the same occasional plain-flesh precautions apply: remove rind and seeds, cut a tiny piece, and skip fruit when your veterinarian advises against it.",
+    },
+    {
       question: "How much cantaloupe can a cat eat?",
       answer:
         "There is no universal amount based only on weight. A single pea-sized piece is a cautious first-taste example for a healthy adult cat, not a medically established dose. Keep all treats combined within 10% of daily calories and follow your veterinarian's advice.",

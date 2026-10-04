@@ -9,7 +9,7 @@ const slug = "dog-insurance-cost";
 export const metadata: Metadata = {
   title: `Dog Insurance Cost Per Month: 2026 Price Guide | ${SITE_NAME}`,
   description:
-    "How much is dog insurance per month? Estimate dog insurance cost and price by age, breed risk, deductible, reimbursement, annual limit, and plan type.",
+    "Dog accident and illness insurance averages about $70/month or $836/year. Compare accident-only costs, breed and age factors, deductibles, and quote settings.",
   alternates: { canonical: `${SITE_BASE_URL}/insurance/${slug}` },
   openGraph: {
     title: "Dog Insurance Cost Per Month: 2026 Price Guide",
@@ -33,7 +33,12 @@ const faq = [
   {
     question: "How much does dog insurance cost per month?",
     answer:
-      "A useful planning number is about $70 per month for dog accident and illness coverage, based on NAPHIA-reported average premiums. Your quote can be higher or lower based on age, breed, location, deductible, reimbursement rate, annual limit, and plan type.",
+      "NAPHIA's 2025 U.S. averages, reproduced by NerdWallet, are about $70 per month for dog accident and illness coverage and $16 for accident-only coverage. Your quote can differ with age, breed, location, deductible, reimbursement rate, annual limit, and plan type.",
+  },
+  {
+    question: "How much does dog insurance cost per year?",
+    answer:
+      "NAPHIA's 2025 U.S. averages, reproduced by NerdWallet, are about $836 per year for dog accident and illness coverage and $190 for accident-only coverage. Monthly averages are rounded. Deductibles, coinsurance, wellness add-ons, and excluded care are additional costs, not part of those premiums.",
   },
   {
     question: "Why is dog insurance more expensive than cat insurance?",
@@ -83,61 +88,63 @@ export default function DogInsuranceCostPage() {
       slug={slug}
       label="Dog Insurance Cost"
       title="Dog Insurance Cost Per Month: 2026 Price Guide"
-      intro="Quick answer: dog insurance often costs about $70 per month for accident and illness coverage. Use the calculator below to estimate dog insurance price by breed risk, age, zip code cost level, deductible, reimbursement rate, annual limit, and whether you choose accident-only or broader illness coverage."
+      intro="U.S. dog accident and illness insurance averages about $70 per month or $836 per year. Accident-only averages are about $16 per month or $190 per year. These are 2025 industry benchmarks published in 2026, not a personal quote; breed, age, location, and coverage settings change your price."
       primaryCtaLabel="Compare dog insurance quotes"
-      secondaryCtaLabel="See all pet insurance costs"
-      secondaryCtaHref="/insurance/pet-insurance-cost"
-      heroNote="For a clean comparison, request every dog insurance quote with the same deductible, reimbursement rate, and annual limit."
+      secondaryCtaLabel="See monthly and yearly dog costs"
+      secondaryCtaHref="#dog-cost-table"
+      heroNote="Reviewed October 4, 2026. Compare quotes with the same deductible, reimbursement rate, and annual limit. Calculator adjustments are illustrative, not insurer rates."
       stats={[
-        { label: "Dog average", value: "$70/mo", note: "Average accident and illness premium reported by NAPHIA." },
+        { label: "Dog average", value: "$70/mo", note: "Rounded 2025 U.S. accident and illness average." },
         { label: "Cheaper option", value: "Accident-only", note: "Lower monthly price, but no illness coverage." },
         { label: "Big drivers", value: "Breed + age", note: "Large breeds and older dogs usually quote higher." },
       ]}
       sections={[
         {
-          title: "Dog Insurance Cost Calculator",
-          content: <InsuranceCostEstimator defaultSpecies="dog" lockSpecies title="Dog Insurance Cost Calculator" />,
-        },
-        {
-          title: "Average Dog Insurance Cost",
+          title: "How Much Is Dog Insurance Per Month and Year?",
           content: (
             <>
               <p>
-                The easiest starting point is the average dog insurance cost for accident and illness coverage: about $70 per month. Use that as a benchmark, then adjust expectations based on your dog's age, breed, and quote settings.
+                These 2025 U.S. averages are reported by NAPHIA and reproduced in <a href="https://www.nerdwallet.com/insurance/pet/learn/cost-of-pet-insurance" className="underline underline-offset-2" target="_blank" rel="noopener noreferrer">NerdWallet&apos;s cost guide</a>. Amounts are in U.S. dollars. Rounded monthly figures multiplied by 12 may differ slightly from the annual averages.
               </p>
-              <div className="not-prose overflow-x-auto rounded-xl border my-4">
+              <div id="dog-cost-table" className="not-prose overflow-x-auto rounded-lg border my-4 scroll-mt-20">
                 <table className="w-full text-sm">
                   <thead className="bg-muted/60">
                     <tr>
-                      <th className="px-4 py-3 text-left font-semibold">Dog insurance quote</th>
-                      <th className="px-4 py-3 text-left font-semibold">Best fit</th>
-                      <th className="px-4 py-3 text-left font-semibold">Cost signal</th>
+                      <th scope="col" className="px-4 py-3 text-left font-semibold">Dog coverage</th>
+                      <th scope="col" className="px-4 py-3 text-left font-semibold">Monthly average</th>
+                      <th scope="col" className="px-4 py-3 text-left font-semibold">Annual average</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr className="border-t">
                       <td className="px-4 py-3">Accident and illness</td>
-                      <td className="px-4 py-3">Broad protection for injuries, illness, diagnostics, and emergencies</td>
-                      <td className="px-4 py-3">About $70 per month on average</td>
+                      <td className="px-4 py-3">About $70</td>
+                      <td className="px-4 py-3">About $836</td>
                     </tr>
                     <tr className="border-t">
                       <td className="px-4 py-3">Accident-only</td>
-                      <td className="px-4 py-3">Lower-cost backup for trauma, poisoning, swallowed objects, and broken bones</td>
-                      <td className="px-4 py-3">About $16 per month on average</td>
+                      <td className="px-4 py-3">About $16</td>
+                      <td className="px-4 py-3">About $190</td>
                     </tr>
                     <tr className="border-t">
                       <td className="px-4 py-3">Wellness add-on</td>
-                      <td className="px-4 py-3">Routine exams, vaccines, parasite prevention, and dental cleaning budgets</td>
-                      <td className="px-4 py-3">Adds to the monthly premium</td>
+                      <td colSpan={2} className="px-4 py-3">Optional additional premium; benefits vary by plan</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <p>
+                Accident-only can cover eligible injuries but excludes illnesses; neither core plan automatically pays for routine vaccines or checkups. A premium is not your total veterinary budget. Compare <Link href="/insurance/pet-insurance-cost#annual-budget" className="underline underline-offset-2">annual premiums plus a sample claim&apos;s out-of-pocket cost</Link> before choosing only by the monthly price.
+              </p>
+              <p>
                 If you are comparing more than dogs, use the broader <Link href="/insurance/pet-insurance-cost" className="underline underline-offset-2">pet insurance cost per month guide</Link> for the average cost of pet insurance across dogs, cats, and plan types. If you only need injury protection, compare <Link href="/insurance/accident-only" className="underline underline-offset-2">accident-only pet insurance</Link>.
               </p>
             </>
           ),
+        },
+        {
+          title: "Dog Insurance Cost Calculator",
+          content: <InsuranceCostEstimator defaultSpecies="dog" lockSpecies title="Dog Insurance Cost Calculator" />,
         },
         {
           title: "Why Breed Changes Dog Insurance Cost",
@@ -198,6 +205,7 @@ export default function DogInsuranceCostPage() {
       ]}
       sources={[
         { label: "NAPHIA Pet Insurance Industry Data", href: "https://naphia.org/industry-data/" },
+        { label: "NerdWallet - 2025 NAPHIA Monthly and Annual Premiums", href: "https://www.nerdwallet.com/insurance/pet/learn/cost-of-pet-insurance" },
         { label: "NAIC Pet Insurance Consumer Information", href: "https://content.naic.org/insurance-topics/pet-insurance" },
       ]}
     />
