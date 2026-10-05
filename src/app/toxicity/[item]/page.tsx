@@ -77,6 +77,18 @@ const featuredSafetyLinks: Record<string, { id: string; reason: string }[]> = {
 };
 
 const targetedToxicityMeta: Record<string, { title: string; description: string }> = {
+  "nail-polish-remover": {
+    title: "Nail Polish Remover & Pets: Spills, Licks and What to Do",
+    description: "Pet licked nail polish remover or acetone? Call a vet with the label. Learn first steps for spills and fumes, warning signs, and what not to do.",
+  },
+  incense: {
+    title: "Is Incense Safe for Cats and Dogs? Smoke & Ingestion",
+    description: "Avoid incense smoke around cats and dogs, especially pets with asthma. Learn warning signs, what to do after exposure, and smoke-free alternatives.",
+  },
+  "ranch-dressing": {
+    title: "Can Dogs Eat Ranch Dressing? Risks for Dogs & Cats",
+    description: "Ranch often contains onion or garlic. Check what your dog or cat ate, learn when to call a vet, and why a lick is not the same as a large ingestion.",
+  },
   wisteria: {
     title: "Is Wisteria Poisonous to Dogs or Cats?",
     description:
@@ -98,6 +110,51 @@ const targetedSearchAnswers: Record<
     links: { href: string; title: string }[];
   }
 > = {
+  "nail-polish-remover": {
+    title: "Remover Exposure: First Questions to Answer",
+    intro: "Swallowed liquid, fumes, and a spill on fur are different exposures. Save the container or a clear ingredient-label photo for your veterinarian.",
+    answers: [
+      { question: "What if my dog or cat licked nail polish remover?", answer: "Stop access and call your veterinarian or pet poison control with the product, estimated amount, time, and pet weight. Do not induce vomiting or give a home antidote." },
+      { question: "Is acetone-free nail polish remover safe for pets?", answer: "Do not treat acetone-free as a pet-safety claim. It identifies one excluded ingredient, not the whole formula. Have the exact label assessed after exposure." },
+      { question: "What if nail polish remover spilled on my pet's fur?", answer: "Prevent grooming and contact your veterinarian for product-specific washing instructions. Do not apply more remover to clean the coat. ASPCA recommends prompt, appropriate decontamination after chemical contact." },
+      { question: "What should I do about nail polish remover fumes?", answer: "Move the pet away from the source and ventilate safely. Breathing difficulty, collapse, or marked behavior changes need urgent veterinary care. A room smell alone cannot tell you the absorbed dose." },
+    ],
+    links: [
+      { href: "/toxicity/nail-polish", title: "Nail polish is a different product" },
+      { href: "/blog/common-household-poisons-pets", title: "Prevent household exposures" },
+      { href: "/toxicity/symptoms", title: "Poisoning warning signs" },
+    ],
+  },
+  incense: {
+    title: "Incense Smoke, Smudging and Swallowed Sticks",
+    intro: "Smoke exposure is not the same as swallowing incense. Ventilation does not establish a safe burning time for a pet, particularly one with respiratory disease.",
+    answers: [
+      { question: "Is incense bad for cats with asthma?", answer: "Avoid it. VCA identifies incense among irritants to avoid around cats with asthma, and Cornell lists household smoke and vapors as suspected asthma triggers. Follow your cat's veterinary treatment plan." },
+      { question: "Can I burn incense or sage around my dog?", answer: "Choose a smoke-free environment instead. Keep pets away from smoke, hot burners, ash, and stored sticks. Natural or herbal wording does not establish a safe exposure." },
+      { question: "What if my pet swallowed an incense stick?", answer: "Save the package and call your veterinarian with the amount and time. Ingredients and swallowed material both matter; do not assume an unlit stick is harmless or induce vomiting yourself." },
+      { question: "What can I use instead of incense in a pet home?", answer: "Address the odor source with appropriate cleaning and safe ventilation rather than adding smoke. Essential-oil diffusers are a different exposure, not an automatically safe replacement." },
+    ],
+    links: [
+      { href: "/toxicity/essential-oils", title: "Essential oils are a separate risk" },
+      { href: "/blog/cat-friendly-cleaning-products", title: "Clean odor sources in cat homes" },
+      { href: "/toxicity/symptoms", title: "When symptoms need urgent care" },
+    ],
+  },
+  "ranch-dressing": {
+    title: "Ranch Dressing: Ingredients and Amount Matter",
+    intro: "Check the exact recipe or bottle for onion, garlic, and chives. Their powdered forms still matter; an ingredient-free recipe cannot be assumed from the name ranch.",
+    answers: [
+      { question: "Can ranch dressing kill a dog?", answer: "A sufficiently serious onion or garlic exposure can cause life-threatening anemia, but ranch ingestion is not automatically fatal. Risk depends on the recipe, quantity and dog. Call your veterinarian for an exposure assessment." },
+      { question: "Is ranch poisonous to cats?", answer: "Ranch containing onion, garlic, or chives is unsafe for cats. Cats are particularly susceptible to Allium-related red-blood-cell damage. Do not feed it or use it to encourage eating." },
+      { question: "What if my dog only licked a little ranch?", answer: "A small lick is a different exposure from eating a bowl, but there is no universal safe serving. Save the ingredients, estimate the amount, and ask your vet. Anemia signs can be delayed; looking normal now does not rule out harm." },
+      { question: "Are dogs allergic to ranch dressing?", answer: "Do not assume an allergy explains symptoms after ranch ingestion. Onion or garlic toxicity and other ingredient-related problems need assessment. Facial swelling, collapse, or breathing difficulty require urgent care." },
+    ],
+    links: [
+      { href: "/toxicity/onions", title: "Onion and onion-powder risk" },
+      { href: "/toxicity/garlic", title: "Garlic toxicity" },
+      { href: "/blog/can-dogs-eat-onions", title: "Dog onion exposure guide" },
+    ],
+  },
   wisteria: {
     title: "Wisteria Poisoning Search Answers",
     intro:
@@ -749,7 +806,7 @@ export default async function ToxicityItemPage({
         name={pageTitle}
         url={`${SITE_BASE_URL}/toxicity/${item.id}`}
         description={pageDescription}
-        dateModified={TOXICITY_PAGE_LAST_MODIFIED}
+        dateModified={item.updated || TOXICITY_PAGE_LAST_MODIFIED}
         keywords={Array.from(new Set([...item.tags, ...item.aliases])).slice(0, 18)}
         about={{
           name: item.name,
@@ -799,7 +856,7 @@ export default async function ToxicityItemPage({
                   </p>
 
                   {/* Pet safety badges */}
-                  <div className="flex gap-3 mt-3">
+                  <div className="flex flex-wrap gap-3 mt-3">
                     <div
                       className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${petSafetyBadgeClass(item, dogIsSafe)}`}
                     >
@@ -1076,10 +1133,11 @@ export default async function ToxicityItemPage({
                         href={url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-sm text-primary hover:underline"
+                        className="inline-flex max-w-full items-start gap-1 text-sm text-primary hover:underline"
+                        title={url}
                       >
-                        <ExternalLink className="h-3 w-3" />
-                        {url.length > 70 ? url.slice(0, 70) + "..." : url}
+                        <ExternalLink className="mt-1 h-3 w-3 shrink-0" />
+                        <span className="min-w-0 break-all">{sourceNameFromUrl(url)}</span>
                       </a>
                     </li>
                   ))}

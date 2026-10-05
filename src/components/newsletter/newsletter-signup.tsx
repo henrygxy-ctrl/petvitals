@@ -26,11 +26,12 @@ export function NewsletterSignup({
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+  const [consent, setConsent] = useState(false);
   const pathname = usePathname();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) return;
+    if (!email.trim() || !consent) return;
 
     setStatus("loading");
     setMessage("");
@@ -48,6 +49,7 @@ export function NewsletterSignup({
           source,
           interest,
           pagePath: pathname,
+          consent,
         }),
       });
 
@@ -55,12 +57,11 @@ export function NewsletterSignup({
 
       if (res.ok) {
         setStatus("success");
-        setMessage(data.message || "Subscribed!");
+        setMessage(data.message || "Check your inbox to confirm your subscription.");
         setEmail("");
-        trackAnalyticsEvent("newsletter_signup_success", {
+        trackAnalyticsEvent("newsletter_confirmation_sent", {
           source,
           interest,
-          already_subscribed: Boolean(data.existing),
         });
       } else {
         setStatus("error");
@@ -93,14 +94,18 @@ export function NewsletterSignup({
       </p>
 
       {status === "success" ? (
-        <div className={`flex items-center gap-2 p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400 text-sm ${compact ? "" : "justify-center"}`}>
-          <CheckCircle className="h-4 w-4" />
+        <div role="status" className={`flex items-center gap-2 p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400 text-sm ${compact ? "" : "justify-center"}`}>
+          <CheckCircle className="h-4 w-4 shrink-0" />
           {message}
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="flex gap-2">
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <div className="flex gap-2">
           <Input
             type="email"
+            aria-label="Email address"
+            autoComplete="email"
+            maxLength={254}
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
@@ -109,11 +114,11 @@ export function NewsletterSignup({
             placeholder="your@email.com"
             required
             disabled={status === "loading"}
-            className="flex-1 h-9 text-sm"
+            className="flex-1 min-w-0 h-9 text-sm"
           />
           <button
             type="submit"
-            disabled={status === "loading" || !email.trim()}
+            disabled={status === "loading" || !email.trim() || !consent}
             className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-50 shrink-0"
           >
             {status === "loading" ? (
@@ -122,11 +127,16 @@ export function NewsletterSignup({
               buttonLabel
             )}
           </button>
+          </div>
+          <label className="flex items-start gap-2 text-xs leading-relaxed text-muted-foreground">
+            <input type="checkbox" required checked={consent} onChange={(event) => setConsent(event.target.checked)} disabled={status === "loading"} className="mt-0.5 shrink-0" />
+            <span>I agree to receive PetVitals emails. Confirm by email first; unsubscribe using the link in any newsletter. <a href="/privacy" className="underline">Privacy policy</a>.</span>
+          </label>
         </form>
       )}
 
       {status === "error" && (
-        <p className="text-xs text-red-600 dark:text-red-400 mt-2 text-center">
+        <p role="alert" className="text-xs text-red-600 dark:text-red-400 mt-2 text-center">
           {message}
         </p>
       )}

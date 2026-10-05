@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, BookMarked } from "lucide-react";
+import { ChevronDown, BookMarked, Menu } from "lucide-react";
 
 const blogCategories = [
   { name: "Dog Toxicity Hub", href: "/toxicity/dogs" },
@@ -27,7 +27,24 @@ export function NavHeader() {
         <div className="flex items-center gap-2">
           <Link href="/" className="text-lg font-bold tracking-tight hover:opacity-80 transition-opacity">PetVitals</Link>
         </div>
-        <div className="flex items-center gap-1">
+        <details className="relative md:hidden">
+          <summary aria-label="Navigation menu" title="Navigation menu" className="list-none flex h-10 w-10 cursor-pointer items-center justify-center rounded-md hover:bg-muted [&::-webkit-details-marker]:hidden">
+            <Menu className="h-5 w-5" />
+          </summary>
+          <nav aria-label="Mobile navigation" className="absolute right-0 top-full mt-1 max-h-[75vh] w-64 overflow-y-auto rounded-lg border bg-card py-2 shadow-lg">
+            <Link href="/toxicity" className="block px-4 py-2 text-sm hover:bg-muted">Toxicity Checker</Link>
+            <Link href="/feeding-calculator" className="block px-4 py-2 text-sm hover:bg-muted">Feeding Calculator</Link>
+            <Link href="/weight-tracking" className="block px-4 py-2 text-sm hover:bg-muted">Weight Tracking</Link>
+            {blogCategories.map((cat) => (
+              <Link key={cat.href} href={cat.href} className="block px-4 py-2 text-sm hover:bg-muted">{cat.name}</Link>
+            ))}
+            <div className="mt-2 border-t pt-2">
+              <Link href="/sign-in" className="block px-4 py-2 text-sm hover:bg-muted">Sign In</Link>
+              <Link href="/sign-up" className="block px-4 py-2 text-sm font-medium text-primary hover:bg-muted">Get Started</Link>
+            </div>
+          </nav>
+        </details>
+        <div className="hidden md:flex items-center gap-1">
           <Link href="/toxicity" className="text-sm text-muted-foreground hover:text-foreground transition-colors px-2.5 py-1.5">Toxicity Checker</Link>
           <Link href="/feeding-calculator" className="text-sm text-muted-foreground hover:text-foreground transition-colors px-2.5 py-1.5">Feeding Calc</Link>
           <Link href="/weight-tracking" className="text-sm text-muted-foreground hover:text-foreground transition-colors px-2.5 py-1.5">Weight Tracking</Link>

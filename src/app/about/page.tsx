@@ -39,7 +39,7 @@ export default function AboutPage() {
           About PetVitals
         </h1>
         <p className="text-lg text-muted-foreground mb-12 max-w-3xl">
-          Free, science-backed pet health tools for the modern pet parent. No paywalls, no premium tiers — just reliable information when you need it.
+          Free pet safety tools and educational guides based on published sources. Not a veterinary clinic or a replacement for individual medical advice.
         </p>
 
         <div className="prose prose-sm max-w-none space-y-10 text-foreground/80">
@@ -55,8 +55,7 @@ export default function AboutPage() {
             </p>
             <p>
               We provide instant, clear, evidence-based answers about what's safe for your pet — and we do it for free. 
-              Every tool on PetVitals is built using veterinary-standard formulas and data sourced from established 
-              toxicology references, peer-reviewed research, and professional veterinary guidelines.
+              Our guides link to their references, and our calculators explain the formulas and assumptions used. Estimates and general risk categories cannot diagnose an individual pet.
             </p>
             <p>
               Our core belief: reliable pet health information should be accessible to everyone, regardless of budget. 
@@ -65,19 +64,15 @@ export default function AboutPage() {
           </section>
 
           {/* Who We Are */}
-          <section>
+          <section id="editorial-team">
             <h2 className="text-2xl font-bold text-foreground">Who We Are</h2>
             <p>
-              PetVitals is an independent project created and maintained by a small team of pet lovers, developers, 
-              and health data researchers. We're not a large corporation, a veterinary chain, or a pet food company. 
-              We don't sell pet insurance, pet food, or supplements — and we don't accept payments to feature or 
-              promote specific products or brands.
+              PetVitals is an independent website. The byline "PetVitals Editorial Team" identifies the publishing project, not a named veterinarian or a clinical qualification. Editorial questions can be sent to <a href="mailto:henrygxy@gmail.com" className="text-primary hover:underline">henrygxy@gmail.com</a>.
             </p>
             <p>
-              Our work is supported by advertising (via Google AdSense), which allows us to keep every tool free for 
-              every user. We chose this model deliberately: it means we answer to our users, not to corporate partners 
-              or investors.
+              Our work may be supported by advertising and affiliate commissions. A tracked purchase may earn a commission; an ordinary link to a provider does not necessarily do so. These relationships are not evidence of product safety or medical approval.
             </p>
+            <p>No named veterinary reviewer is currently credited on these guides. We will only display a clinical review after the reviewer has actually checked the specific page and approved attribution.</p>
           </section>
 
           {/* Our Tools */}
@@ -92,10 +87,9 @@ export default function AboutPage() {
                   <div>
                     <h3 className="font-semibold">Toxicity Checker</h3>
                     <p className="text-sm text-muted-foreground mt-1">
-                      Search over 500 foods, plants, medications, and household items to instantly check safety for 
-                      dogs and cats. Each entry includes toxicity level, symptoms, emergency steps, and clinical 
-                      source references. Data sourced from ASPCA Animal Poison Control Center, Pet Poison Helpline, 
-                      and veterinary toxicology textbooks.
+                      Search hundreds of foods, plants, medications, and household items for dog and cat safety
+                      guidance. Entries summarize risk categories, symptoms, and next steps with public references
+                      where available. General source links do not guarantee a safe exposure for an individual pet.
                     </p>
                     <Link href="/toxicity" className="inline-block mt-2 text-sm font-medium text-primary hover:underline">Try the Toxicity Checker &rarr;</Link>
                   </div>
@@ -109,10 +103,9 @@ export default function AboutPage() {
                   <div>
                     <h3 className="font-semibold">Feeding Calculator</h3>
                     <p className="text-sm text-muted-foreground mt-1">
-                      Calculate exactly how much to feed your dog or cat using AAHA and WSAVA veterinary-standard 
-                      formulas. Enter your pet's weight, age, activity level, and body condition score for a 
-                      personalized daily calorie target and portion guide. Supports multiple dog food brands with 
-                      accurate kcal/cup values.
+                      Estimate daily calorie needs using RER and MER formulas. Enter your pet's weight, age,
+                      activity level, and body condition score for a starting estimate. Check the current food
+                      package for calorie values and ask your veterinarian to adjust the plan when needed.
                     </p>
                     <Link href="/feeding-calculator" className="inline-block mt-2 text-sm font-medium text-primary hover:underline">Use the Feeding Calculator &rarr;</Link>
                   </div>
@@ -143,8 +136,9 @@ export default function AboutPage() {
                     <h3 className="font-semibold">Pet Health Blog</h3>
                     <p className="text-sm text-muted-foreground mt-1">
                       Evidence-based guides covering pet nutrition, toxicity, weight management, and wellness. 
-                      Every article cites clinical sources, veterinary guidelines, and peer-reviewed research. 
-                      We don't publish listicles, personal anecdotes without sources, or sponsored content.
+                      Guides link to public references where available. Manufacturer-label comparisons are not
+                      hands-on tests or veterinary endorsements. Commercial links and important limitations are
+                      disclosed separately from educational guidance.
                     </p>
                     <Link href="/blog" className="inline-block mt-2 text-sm font-medium text-primary hover:underline">Read the Blog &rarr;</Link>
                   </div>
@@ -161,31 +155,23 @@ export default function AboutPage() {
             </p>
             <h3 className="text-lg font-semibold text-foreground mt-4">Toxicity Database</h3>
             <p>
-              Our toxicity data is compiled from multiple authoritative sources, including the ASPCA Animal Poison 
-              Control Center database, the Pet Poison Helpline, the Merck Veterinary Manual, and published veterinary 
-              toxicology literature such as <em>Small Animal Toxicology</em> (Peterson & Talcott) and 
-              <em> Blackwell's Five-Minute Veterinary Consult Clinical Companion: Small Animal Toxicology</em>. 
-              Entries are reviewed for accuracy and include toxicity mechanisms, symptom timelines, and emergency 
-              response guidance.
+              Toxicity entries link to public poison-control and veterinary references where available. General source links do not establish a precise toxic dose or guarantee a safe exposure. Keep the exact product label and ask a veterinarian or poison-control service about an actual ingestion.
             </p>
             <h3 className="text-lg font-semibold text-foreground mt-4">Feeding Calculator Formulas</h3>
             <p>
-              Our calculator uses the Resting Energy Requirement (RER) formula — 70 — (body weight in kg)^0.75 — 
-              multiplied by life-stage and condition-specific Maintenance Energy Requirement (MER) factors. These 
-              formulas and factors are based on AAHA Nutritional Assessment Guidelines and WSAVA Global Nutrition 
-              Committee recommendations. Food brand calorie data is sourced from manufacturer-published nutritional 
-              information and cross-verified where possible.
+              Resting Energy Requirement is estimated as RER = 70 * (body weight in kg)^0.75, then multiplied
+              by life-stage and condition-specific Maintenance Energy Requirement factors. See the <a href="https://www.aaha.org/resources/2021-aaha-nutrition-and-weight-management-guidelines/feeding-plans-for-healthy-appropriate-weight-cats-and-dogs/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">AAHA feeding-plan guidelines</a>.
+              This is a starting estimate, not an exact feeding prescription. Verify food calories on the current
+              manufacturer label; your veterinarian may recommend a different target.
             </p>
             <h3 className="text-lg font-semibold text-foreground mt-4">Blog Content</h3>
             <p>
-              Every blog article cites its sources. We link directly to peer-reviewed studies, veterinary textbooks, 
-              and official guidelines from organizations such as the AVMA, AAHA, WSAVA, ASPCA, and FDA. We do not 
-              publish AI-generated content without human review and source verification.
+              Articles identify their public sources. AI tools may assist with drafting and maintenance; a source-based summary is not equivalent to a veterinary review. Product-label comparisons are desk research unless a page explicitly documents genuine hands-on testing.
             </p>
           </section>
 
           {/* Editorial Standards */}
-          <section>
+          <section id="editorial-policy">
             <h2 className="text-2xl font-bold text-foreground">Editorial Standards and Corrections</h2>
             <p>
               PetVitals separates educational guidance from advertising and affiliate links. Articles and tool pages
@@ -203,6 +189,13 @@ export default function AboutPage() {
               For urgent poison or medical situations, contact a veterinarian or pet poison hotline instead of waiting
               for an editorial response.
             </p>
+          </section>
+
+          <section id="professional-review">
+            <h2 className="text-2xl font-bold text-foreground">Veterinary Review and Resource Partnerships</h2>
+            <p>We welcome qualified veterinarians who can review a specific guide for accuracy, missing cautions, and appropriate escalation advice. Please send your public professional profile, the page URL, and any proposed corrections to our editorial email. Reviewer credit requires a completed review and permission to publish the attribution.</p>
+            <p>Shelters, rescue groups, and pet-care educators can evaluate our free <Link href="/pet-safe-cleaning" className="text-primary hover:underline">cleaning guides and checklists</Link>, <Link href="/puppy-care" className="text-primary hover:underline">puppy-care hub</Link>, and <Link href="/toxicity" className="text-primary hover:underline">toxicity checker</Link> for their resource lists. Linking to a guide does not imply clinical endorsement. We do not require paid links or reciprocal links.</p>
+            <p>For product suggestions, include the exact formula, country, manufacturer instructions, and restrictions. We distinguish public label claims from testing results and disclose any commercial relationship.</p>
           </section>
 
           {/* Important Disclaimer */}

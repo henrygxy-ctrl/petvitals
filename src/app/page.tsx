@@ -34,8 +34,8 @@ export const metadata: Metadata = {
 };
 
 const trustItems = [
-  { icon: BookOpen, title: "Science-Based", desc: "All calculations use veterinary standard formulas (RER, MER, BCS) from peer-reviewed research." },
-  { icon: ShieldCheck, title: "Vet-Reviewed Data", desc: "Our toxicity database is sourced from ASPCA, Pet Poison Helpline, and veterinary toxicology references." },
+  { icon: BookOpen, title: "Reference-Based Tools", desc: "Feeding and weight tools use RER, MER, and BCS estimates. A veterinarian can adapt these to your pet's needs." },
+  { icon: ShieldCheck, title: "Published Veterinary Sources", desc: "Our guides cite sources such as ASPCA and Pet Poison Helpline. Source citations do not mean a veterinarian has reviewed each page." },
   { icon: Mail, title: "Always Free", desc: "No premium tiers, no paywalls. Every tool and feature is available to every pet parent at no cost." },
 ];
 
@@ -126,7 +126,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <div className="w-full max-w-5xl mx-auto px-4 sm:px-6">
           <AdUnit />
         </div>
 

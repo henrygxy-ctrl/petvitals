@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 import { CookieConsent } from "@/components/ui/cookie-consent";
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { I18nProvider } from "@/i18n/context";
 import { SITE_NAME, SITE_BASE_URL, SITE_DESCRIPTION } from "@/lib/constants";
 import "./globals.css";
@@ -89,55 +90,14 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        {/* Google Analytics must stay on the main thread so GA4 receives events reliably. */}
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-        />
-        <Script
-          id="ga-init"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${GA_MEASUREMENT_ID}', {
-                page_path: window.location.pathname,
-              });
-            `,
-          }}
-        />
-        <Script
-          id="affiliate-click-tracking"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              document.addEventListener('click', function(event) {
-                var target = event.target;
-                if (!target || !target.closest) return;
-                var link = target.closest('a[rel~="sponsored"]');
-                if (!link) return;
-
-                var payload = {
-                  event_category: 'affiliate',
-                  event_label: link.href,
-                  affiliate_url: link.href,
-                  link_text: (link.textContent || '').trim().slice(0, 80),
-                  page_path: window.location.pathname
-                };
-
-                if (typeof window.gtag === 'function') {
-                  window.gtag('event', 'affiliate_click', payload);
-                } else {
-                  window.dataLayer = window.dataLayer || [];
-                  payload.event = 'affiliate_click';
-                  window.dataLayer.push(payload);
-                }
-              }, true);
-            `,
-          }}
-        />
+        <Script id="google-consent-default" strategy="beforeInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
+          window.gtag('consent', 'default', {
+            analytics_storage: 'denied', ad_storage: 'denied',
+            ad_user_data: 'denied', ad_personalization: 'denied'
+          });
+        `}</Script>
         <link rel="manifest" href="/manifest.json" />
 
         {/* Impact.com affiliate tracking */}
@@ -161,6 +121,7 @@ export default function RootLayout({
           </TooltipProvider>
         </I18nProvider>
         <CookieConsent />
+        <GoogleAnalytics measurementId={GA_MEASUREMENT_ID} />
       </body>
     </html>
   );

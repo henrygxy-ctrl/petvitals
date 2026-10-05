@@ -8,7 +8,7 @@
 - **Styling:** Tailwind CSS 4 + shadcn/ui
 - **Database:** SQLite via Prisma ORM
 - **Auth:** NextAuth v5 with credentials
-- **Analytics:** Google Analytics via Partytown worker
+- **Analytics:** Consent-gated GA4 on the main thread (localhost excluded)
 - **Monetization:** AdSense + Affiliate (Impact.com, Amazon, Chewy, insurance partners)
 - **Deployment:** Vercel (GitHub auto-deploy)
 
@@ -66,7 +66,33 @@ Copy `.env.example` to `.env` and fill in:
 - **Weight Tracking** — Log and visualize pet weight over time
 - **Pet Insurance Guide** — Compare accident-only, accident & illness, comprehensive, and lifetime plans
 - **Blog** — 25+ evidence-based pet health articles with product recommendations
-- **Newsletter** — Email subscription with Prisma backend
+- **Newsletter** — Brevo double opt-in; not active until sender, templates, list and environment variables are configured
+
+## Newsletter Activation
+
+The website no longer treats a SQLite insert as a completed email subscription. Missing provider configuration returns 503; accepted DOI requests return 202 (pending confirmation), not a confirmed subscriber count.
+
+1. Use an existing Brevo account or complete account setup with the owner. Verify the sending domain and sender. Do not commit API credentials.
+2. Create a newsletter list and three TEXT contact attributes: `SIGNUP_SOURCE`, `SIGNUP_INTEREST`, `SIGNUP_PAGE`.
+3. Create a dedicated double-opt-in template from `src/content/newsletter/confirm.html`. Retain `{{ params.DOIurl }}` as the confirmation link; do not replace it with the website confirmation page.
+4. Set server-only `BREVO_API_KEY`, `BREVO_NEWSLETTER_LIST_ID`, `BREVO_DOI_TEMPLATE_ID` in Vercel and redeploy.
+5. Create a list-entry welcome automation using `src/content/newsletter/welcome.html`. Send only after a contact joins the confirmed list. Configure the operator's real postal address as `SENDER_ADDRESS`, a verified sender, and the provider's marketing unsubscribe link. Do not activate with unresolved placeholders.
+6. Test with the owner's authorized test address: no list entry before confirmation, one welcome email after confirmation, unsubscribe blocks later marketing, and duplicate signup does not create another contact. Do not import old SQLite addresses as confirmed subscribers without evidence of consent.
+
+The `/newsletter/confirmed` page is only a return page. Visiting it is not proof of confirmation and does not emit a fake successful-subscription event. Brevo is the source of truth for confirmed contacts and unsubscribe status. The in-memory request limit is per server instance, not a persistent anti-abuse guarantee.
+
+API: https://developers.brevo.com/reference/create-doi-contact
+Unsubscribe: https://help.brevo.com/hc/en-us/articles/209553645-Insert-a-custom-unsubscribe-link-in-your-emails
+
+## Acquisition and Retention Verification
+
+- Existing events: `article_internal_link_click`, `pdf_download_click`, `download_followup_click`, `newsletter_signup_submit`, `newsletter_confirmation_sent`, `newsletter_signup_error`, `affiliate_click`.
+- `newsletter_confirmation_sent` means the provider accepted the confirmation-email request, not that the recipient confirmed or that delivery succeeded. Confirmed subscriber counts come from Brevo, not from visits to a return URL.
+- GA4 should show these in Events / Realtime after real consented interactions. Code tests alone do not prove Google received them. As of the October 5 inspection, the recent-events list contained only basic GA4 events.
+- In Explore, compare landing page + query string and event name using total users and event count. Internal navigation, PDF downloads and newsletter requests are alternative actions; do not invent a mandatory sequential funnel. For a rate, compare users taking each action with users in the same landing-page cohort and period, not raw event counts divided by sessions.
+- Check hostname and exclude preview/test traffic before interpreting Direct traffic. Current GA4 page views and GSC search clicks measure different things and are not interchangeable.
+- The saved exploration is [PetVitals Landing Pages and Retention Actions](https://analytics.google.com/analytics/web/#/analysis/a397931580p541575540/edit/Zcu5Hj3ZTneeTfEH5UQPWA). Its event filter retains `page_view` as the baseline alongside the three retention actions. On October 5, the September 7-October 4 report showed only `page_view`; this is not evidence of action-event delivery. Historical data has not been hostname-filtered.
+- Veterinary reviewer credit and external recommendations require a real completed review or permission from the organization. The public collaboration brief is `/about#professional-review`; no outreach has been sent and no review is claimed.
 
 ## Deployment
 

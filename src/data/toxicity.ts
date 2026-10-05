@@ -2,6 +2,7 @@ export type ToxicityLevel = "safe" | "caution" | "toxic" | "danger";
 
 export interface ToxicityItem {
   sources?: string[];
+  updated?: string;
   id: string;
   name: string;
   aliases: string[];
@@ -3143,19 +3144,20 @@ const toxicityDatabaseRaw: ToxicityItem[] = [
   },
   {
     id: "incense",
+    updated: "2026-10-05",
     name: "Incense & Smudge Sticks",
     aliases: ["incense", "smudge stick", "sage", "frankincense"],
     category: "household",
     safeForDog: false,
     safeForCat: false,
     riskLevel: "caution",
-    description: "Incense can cause respiratory irritation. Smoke inhalation and ingestion risks.",
+    description: "Avoid burning incense around dogs and cats. Smoke can irritate airways, especially in cats with asthma. Swallowed sticks and ash need separate assessment.",
     safeAmount: "",
     benefits: "",
-    symptoms: "Respiratory irritation, vomiting if ingested",
-    action: "Keep out of reach. Ensure good ventilation.",
+    symptoms: "Coughing, wheezing, or breathing difficulty after smoke exposure; vomiting after ingestion. These signs need veterinary assessment, not an online diagnosis.",
+    action: "Stop burning and move pets away from smoke. Breathing difficulty is an emergency. Call a vet with the label if swallowed.",
     tags: ["household", "irritant", "respiratory", "caution"],
-    sources: ["https://www.petpoisonhelpline.com/poisons/","https://www.aspca.org/pet-care/animal-poison-control"],
+    sources: ["https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-asthma-risky-business-many-cats", "https://vcahospitals.com/northwest-veterinary-specialists/-/media/vca/documents/hospitals/oregon/northwest-veterinary-specialists/nwvs-pet-emergency-care-handbook-121511.pdf?hash=39F3E8935746F9DF6A13A0D8010B3608&la=en", "https://www.petpoisonhelpline.com/"],
   },
 
 
@@ -3938,17 +3940,18 @@ const toxicityDatabaseRaw: ToxicityItem[] = [
   },
   {
     id: "ranch-dressing",
+    updated: "2026-10-05",
     name: "Ranch Dressing",
     aliases: ["ranch", "ranch dressing", "ranch dip"],
     category: "human-food",
     safeForDog: false,
     safeForCat: false,
     riskLevel: "toxic",
-    description: "Contains onion powder, garlic powder, and chives - all toxic. Also high fat.",
-    symptoms: "Vomiting, diarrhea, anemia signs (pale gums, lethargy)",
-    action: "Contact vet if significant amount. Monitor for anemia.",
+    description: "Do not feed ranch to dogs or cats. Many recipes contain onion, garlic, or chives, which can damage red blood cells. Risk depends on ingredients, amount, and pet size.",
+    symptoms: "Stomach upset may occur. Allium-related weakness, pale gums, rapid breathing, or dark urine can be delayed for several days. Seek urgent care for these signs.",
+    action: "Call a vet with the label, amount, time and pet weight. Do not induce vomiting on your own. Weakness or breathing trouble needs urgent care.",
     tags: ["human-food", "toxic"],
-    sources: ["https://www.petmd.com", "https://www.fda.gov/animal-veterinary", "https://www.aspca.org/pet-care/animal-poison-control"],
+    sources: ["https://www.merckvetmanual.com/toxicology/food-hazards/garlic-and-onion-allium-spp-toxicosis-in-animals", "https://www.petpoisonhelpline.com/uncategorized/emesis-in-dogs/"],
   },
   {
     id: "soup-canned",
@@ -4568,17 +4571,18 @@ const toxicityDatabaseRaw: ToxicityItem[] = [
   },
   {
     id: "nail-polish-remover",
+    updated: "2026-10-05",
     name: "Nail Polish Remover",
     aliases: ["acetone", "polish remover", "nail remover"],
     category: "household",
     safeForDog: false,
     safeForCat: false,
     riskLevel: "toxic",
-    description: "Acetone or ethyl acetate causes GI irritation, CNS depression, aspiration pneumonia risk.",
-    symptoms: "Vomiting, diarrhea, depression, incoordination, respiratory irritation",
-    action: "Contact vet. Do NOT induce vomiting. Monitor breathing.",
+    description: "Nail polish remover is not safe for pets to ingest or use on fur. Formulas vary; contact a veterinarian after swallowed liquid, a spill on your pet, or symptoms.",
+    symptoms: "Vomiting, unusual behavior, or breathing changes after exposure need veterinary assessment. Do not use the absence of symptoms to decide an unknown exposure is safe.",
+    action: "Call a vet after ingestion; do not induce vomiting. Prevent licking spills. Breathing trouble or collapse is an emergency.",
     tags: ["household", "toxic"],
-    sources: ["https://www.aspca.org/pet-care/animal-poison-control", "https://www.petpoisonhelpline.com", "https://www.akc.org/expert-advice/nutrition/"],
+    sources: ["https://www.petpoisonhelpline.com/", "https://www.petpoisonhelpline.com/uncategorized/emesis-in-dogs/", "https://www.aspca.org/news/pet-decontamination-home-what-do-after-exposure"],
   },
   {
     id: "oven-cleaner",

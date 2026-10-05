@@ -17,7 +17,7 @@ interface AdUnitProps {
 const PUBLISHER_ID = "ca-pub-7248211571487483";
 
 const formatStyles: Record<AdFormat, React.CSSProperties> = {
-  auto: { display: "block", minWidth: "300px", maxWidth: "100%" },
+  auto: { display: "block", width: "100%" },
   horizontal: { display: "block", width: "100%", height: "90px" },
   vertical: { display: "block", width: "300px", height: "600px" },
   rectangle: { display: "block", width: "100%", height: "250px" },
@@ -44,13 +44,13 @@ export function AdUnit({ className = "", slotId, format = "auto", showLabel = fa
   if (!slot) return null;
 
   return (
-    <div className={`flex flex-col items-center ${className}`}>
+    <div className={`flex w-full max-w-full flex-col items-center ${className}`}>
       {showLabel && (
         <span className="text-[10px] text-muted-foreground/50 uppercase tracking-wider mb-1">
           Advertisement
         </span>
       )}
-      <div ref={adRef}>
+      <div ref={adRef} className="w-full">
         <ins
           className="adsbygoogle"
           style={formatStyles[format]}

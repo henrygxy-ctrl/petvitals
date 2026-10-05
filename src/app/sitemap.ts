@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_BASE_URL}/blog`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE_BASE_URL}/insurance`, lastModified: INSURANCE_LAST_MODIFIED, changeFrequency: "monthly" as const, priority: 0.75 },
     { url: `${SITE_BASE_URL}/contact`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "monthly", priority: 0.5 },
-    { url: `${SITE_BASE_URL}/about`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "monthly" as const, priority: 0.6 },
+    { url: `${SITE_BASE_URL}/about`, lastModified: new Date("2026-10-05"), changeFrequency: "monthly" as const, priority: 0.6 },
     { url: `${SITE_BASE_URL}/pet-safe-cleaning`, lastModified: new Date("2026-10-04"), changeFrequency: "weekly" as const, priority: 0.82 },
     { url: `${SITE_BASE_URL}/puppy-care`, lastModified: HUB_LAST_MODIFIED, changeFrequency: "weekly" as const, priority: 0.82 },
     { url: `${SITE_BASE_URL}/vet-costs`, lastModified: HUB_LAST_MODIFIED, changeFrequency: "weekly" as const, priority: 0.82 },
@@ -71,7 +71,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const toxicityPages: MetadataRoute.Sitemap = toxicityDatabase.map((item) => ({
     url: `${SITE_BASE_URL}/toxicity/${item.id}`,
-    lastModified: TOXICITY_LAST_MODIFIED,
+    lastModified: item.updated ? new Date(item.updated) : TOXICITY_LAST_MODIFIED,
     changeFrequency: "monthly" as const,
     priority: 0.65,
   }));

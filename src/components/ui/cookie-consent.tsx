@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { updateAnalyticsConsent } from '@/lib/analytics';
 
 const COOKIE_CONSENT_KEY = 'petvitals-cookie-consent';
 
@@ -19,15 +20,21 @@ export function CookieConsent() {
 
   function acceptAll() {
     localStorage.setItem(COOKIE_CONSENT_KEY, 'all');
+    updateAnalyticsConsent();
     setVisible(false);
   }
 
   function acceptEssential() {
     localStorage.setItem(COOKIE_CONSENT_KEY, 'essential');
+    updateAnalyticsConsent();
     setVisible(false);
   }
 
-  if (!visible) return null;
+  if (!visible) return (
+    <div className="py-3 text-center">
+      <button onClick={() => setVisible(true)} className="text-xs text-muted-foreground underline">Cookie settings</button>
+    </div>
+  );
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 p-4 sm:p-6 pointer-events-none">

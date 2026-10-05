@@ -134,23 +134,23 @@ export default async function BlogArticlePage({ params }: Props) {
           </div>
         </header>
 
-        <main className="flex-1 py-8 sm:py-12">
+        <main className="flex-1 py-6 sm:py-12">
           <article className="max-w-3xl mx-auto px-4 sm:px-6">
-            <div className="mb-8">
+            <div className="mb-4 sm:mb-8">
               <Link
                 href={`/blog/category/${slugify(post.category)}`}
                 className="text-xs font-medium text-emerald-600 dark:text-emerald-400 uppercase tracking-wide hover:underline"
               >
                 {post.category}
               </Link>
-              <h1 className="text-2xl sm:text-3xl font-bold mt-2 mb-4">
+              <h1 className="text-2xl sm:text-3xl font-bold mt-2 mb-3 sm:mb-4">
                 {post.title}
               </h1>
-              <p className="mb-4 text-base leading-relaxed text-muted-foreground">
+              <p className="mb-3 sm:mb-4 text-base leading-relaxed text-muted-foreground">
                 {post.excerpt}
               </p>
-              <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-                <span className="flex items-center gap-1.5">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs sm:text-sm text-muted-foreground">
+                <span className="hidden sm:flex items-center gap-1.5">
                   <Calendar className="h-4 w-4" />
                   {new Date(post.date).toLocaleDateString("en-US", {
                     year: "numeric",
@@ -158,15 +158,15 @@ export default async function BlogArticlePage({ params }: Props) {
                     day: "numeric",
                   })}
                 </span>
-                <span className="flex items-center gap-1.5">
+                <Link href="/about#editorial-team" className="flex items-center gap-1.5 hover:underline">
                   <User className="h-4 w-4" />
                   {post.author || "PetVitals Editorial Team"}
-                </span>
+                </Link>
                 <span className="flex items-center gap-1.5">
                   <Clock className="h-4 w-4" />
                   {post.readingTime}
                 </span>
-                <div className="flex items-center gap-1.5 flex-wrap">
+                <div className="hidden sm:flex items-center gap-1.5 flex-wrap">
                   <Tag className="h-4 w-4" />
                   {post.tags.slice(0, 3).map((tag) => (
                     <span
@@ -180,7 +180,7 @@ export default async function BlogArticlePage({ params }: Props) {
               </div>
             </div>
 
-            <p className="mb-6 text-xs leading-relaxed text-muted-foreground">
+            <p className="mb-4 sm:mb-6 text-xs leading-relaxed text-muted-foreground">
               Educational guidance, not a substitute for veterinary care. {editorialDateLabel}{" "}
               {new Date(editorialDate).toLocaleDateString("en-US", {
                 year: "numeric",

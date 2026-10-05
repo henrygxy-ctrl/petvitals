@@ -25,8 +25,8 @@ export function ArticleJsonLd({ post }: { post: BlogPost }) {
     datePublished: post.date,
     author: {
       "@type": "Organization",
-      name: SITE_NAME,
-      url: SITE_BASE_URL,
+      name: post.author || "PetVitals Editorial Team",
+      url: `${SITE_BASE_URL}/about#editorial-team`,
     },
     publisher: {
       "@type": "Organization",
