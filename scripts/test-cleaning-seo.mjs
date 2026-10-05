@@ -103,9 +103,10 @@ console.log("PASS: body-only TOC, duplicate/empty anchors, responsive defaults a
 let listener;
 let removed = false;
 class LinkTarget {
-  constructor(href) { this.href = href; }
-  closest() { return this; }
-  getAttribute() { return this.href; }
+  constructor(href, retention = false) { this.href = href; this.retention = retention; }
+  closest(selector) { return selector === ".prose-custom" ? null : this; }
+  getAttribute(name) { return name === "href" ? this.href : null; }
+  hasAttribute(name) { return name === "data-retention-event" && this.retention; }
 }
 const tracking = loadComponent("src/components/blog/article-link-tracking.tsx", [], {
   Element: LinkTarget,
@@ -118,12 +119,13 @@ const tracking = loadComponent("src/components/blog/article-link-tracking.tsx", 
 });
 tracking.render("ArticleLinkTracking");
 const cleanupTracking = tracking.effects[0]();
-for (const href of ["#faq", "/blog/test#answer", "mailto:someone@example.com"]) listener({ target: new LinkTarget(href) });
+for (const href of ["#faq", "/blog/test#answer", "mailto:someone@example.com", "/downloads/checklist.pdf"]) listener({ target: new LinkTarget(href) });
+listener({ target: new LinkTarget("/pet-safe-cleaning", true) });
 assert.equal(tracking.events.length, 0);
 listener({ target: new LinkTarget("/blog/cat-friendly-cleaning-products?private=value") });
 listener({ target: new LinkTarget("https://www.cdc.gov/page?private=value") });
 assert.equal(JSON.stringify(tracking.events), JSON.stringify([
-  ["article_internal_link_click", { destination_path: "/blog/cat-friendly-cleaning-products" }],
+  ["article_internal_link_click", { destination_path: "/blog/cat-friendly-cleaning-products", link_context: "article_next_steps" }],
   ["article_source_click", { source_domain: "www.cdc.gov" }],
 ]));
 cleanupTracking();
@@ -137,6 +139,8 @@ for (const [slug, expected] of [
   ["can-cats-eat-cantaloupe", 9],
   ["can-cats-walk-on-floors-after-mopping", 6],
   ["disinfectants-safe-for-cats", 6],
+  ["is-vinegar-floor-cleaner-safe-for-pets", 4],
+  ["are-essential-oil-cleaners-safe-for-cats", 4],
 ]) {
   const { data, content } = matter(fs.readFileSync(path.join(root, "src/content/blog", `${slug}.mdx`), "utf8"));
   const normalized = content.replace(/\r\n/g, "\n");

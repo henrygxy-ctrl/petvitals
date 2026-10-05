@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { SITE_BASE_URL } from "@/lib/constants";
+import { getNewsletterConfig } from "@/lib/newsletter";
 
 // Simple in-memory rate limiter: max 3 requests per IP per minute
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
@@ -57,16 +58,15 @@ export async function POST(request: Request) {
     if (consent !== true) {
       return NextResponse.json({ error: "Please agree to receive the newsletter." }, { status: 400 });
     }
-    const apiKey = process.env.BREVO_API_KEY;
-    const listId = Number(process.env.BREVO_NEWSLETTER_LIST_ID);
-    const templateId = Number(process.env.BREVO_DOI_TEMPLATE_ID);
-    if (!apiKey || !Number.isSafeInteger(listId) || listId <= 0 || !Number.isSafeInteger(templateId) || templateId <= 0) {
+    const config = getNewsletterConfig();
+    if (!config) {
       return NextResponse.json(
         { error: "Email signup is temporarily unavailable. Please try again later." },
         { status: 503 }
       );
     }
 
+    const { apiKey, listId, templateId } = config;
     // Brevo stores confirmed contacts outside Vercel's ephemeral filesystem.
     const response = await fetch("https://api.brevo.com/v3/contacts/doubleOptinConfirmation", {
       method: "POST",

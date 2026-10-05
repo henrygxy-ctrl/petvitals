@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { getPostBySlug, getRelatedPosts } from "@/lib/blog";
 import { BLOG_FAQS } from "@/lib/blog-faq";
+import { getNewsletterConfig } from "@/lib/newsletter";
 import { slugify } from "@/lib/utils";
 import { SITE_NAME, SITE_BASE_URL } from "@/lib/constants";
 import { SourceCitation } from "@/components/blog/source-citation";
@@ -17,16 +18,14 @@ import { ProductRecommendationCard } from "@/components/affiliate/product-rec-ca
 import { getProductRecommendations } from "@/lib/affiliate";
 import { JsonLdBreadcrumb, JsonLdFAQ } from "@/components/seo/json-ld";
 import { DownloadResourceCard } from "@/components/downloads/resource-card";
-import { ContextualHubLinks, type ContextualHubLink } from "@/components/hubs/contextual-hub-links";
+import type { ContextualHubLink } from "@/components/hubs/contextual-hub-links";
 import {
   CleaningSafetyInfographic,
   PuppyTimelineInfographic,
   VetCostInfographic,
 } from "@/components/infographics/topic-infographics";
-import { CleaningIngredientChecker } from "@/components/tools/cleaning-ingredient-checker";
-import { PuppyVaccinationPlanner } from "@/components/tools/puppy-vaccination-planner";
-import { VetBillEstimator } from "@/components/tools/vet-bill-estimator";
-import { Calendar, Clock, Tag, User } from "lucide-react";
+import { ArticleTools } from "@/components/blog/article-tools";
+import { ArrowRight, Calendar, Clock, Tag, User } from "lucide-react";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -79,7 +78,7 @@ export default async function BlogArticlePage({ params }: Props) {
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  const related = getRelatedPosts(slug);
+  const related = getRelatedPosts(slug, 2);
   const productRecs = getProductRecommendations(post.slug);
   const faqQuestions = BLOG_FAQS[post.slug] || [];
   const toolMode = getVetBillToolMode(post.slug);
@@ -195,8 +194,8 @@ export default async function BlogArticlePage({ params }: Props) {
             {showPuppyPlanner && <PuppyTimelineInfographic />}
             {toolMode && <VetCostInfographic />}
 
-            {showPuppyPlanner && <PuppyVaccinationPlanner />}
-            {toolMode && <VetBillEstimator mode={toolMode} />}
+            {showPuppyPlanner && <ArticleTools kind="vaccines" />}
+            {toolMode && <ArticleTools kind={toolMode} />}
 
             <div className="prose-custom">
               <ArticleLinkTracking />
@@ -204,7 +203,7 @@ export default async function BlogArticlePage({ params }: Props) {
             </div>
 
             {showCleaningChecker && <CleaningSafetyInfographic />}
-            {showCleaningChecker && <CleaningIngredientChecker />}
+            {showCleaningChecker && <ArticleTools kind="cleaning" />}
 
                         <InArticleAd />
 
@@ -217,58 +216,31 @@ export default async function BlogArticlePage({ params }: Props) {
               <SourceCitation sources={post.sources} />
             )}
 
-            {downloadVariant && <DownloadResourceCard variant={downloadVariant} />}
-
-            <ContextualHubLinks
-              title="Continue With a Topic Hub"
-              description="Use the full hub pages for related tools, checklists, and next-step guides."
-              links={contextualHubLinks}
-              className="mt-8"
-            />
-
-            {post.readNext && post.readNext.length > 0 && (
-              <ReadNext slugs={post.readNext} />
-            )}
-
-            {/* Cross-promotion to tools */}
-            <div className="mt-8 grid sm:grid-cols-3 gap-4">
-              <a
-                href="/toxicity"
-                className="p-4 rounded-lg border bg-card hover:border-primary/30 transition-colors text-sm"
-              >
-                <span className="font-semibold block mb-1">Check More Foods</span>
-                <span className="text-muted-foreground text-xs">Search 500+ items in our free Toxicity Checker</span>
-              </a>
-              <a
-                href="/feeding-calculator"
-                className="p-4 rounded-lg border bg-card hover:border-primary/30 transition-colors text-sm"
-              >
-                <span className="font-semibold block mb-1">Feeding Calculator</span>
-                <span className="text-muted-foreground text-xs">Calculate daily portions based on your pet&apos;s weight</span>
-              </a>
-              <a
-                href="/insurance/pet-insurance-cost"
-                className="p-4 rounded-lg border bg-card hover:border-primary/30 transition-colors text-sm"
-              >
-                <span className="font-semibold block mb-1">Pet Insurance Cost</span>
-                <span className="text-muted-foreground text-xs">Estimate monthly premiums before an emergency bill</span>
-              </a>
-            </div>
-
-            {related.length > 0 && (
-              <RelatedArticles articles={related} />
-            )}
+            <section aria-label="Next steps" className="mt-8">
+              {downloadVariant && <DownloadResourceCard variant={downloadVariant} />}
+              {contextualHubLinks.filter((link) => !(downloadVariant === "cleaning" && link.href === "/pet-safe-cleaning")).slice(0, 1).map((link) => (
+                <Link key={link.href} href={link.href} className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-primary hover:underline">
+                  {link.title} <ArrowRight className="h-4 w-4" />
+                </Link>
+              ))}
+              {post.readNext && post.readNext.length > 0 ? (
+                <ReadNext slugs={post.readNext.slice(0, 2)} />
+              ) : related.length > 0 ? (
+                <RelatedArticles articles={related} />
+              ) : null}
+            </section>
           </article>
         </main>
 
-                <section className="py-12 border-t">
+        {!downloadVariant && getNewsletterConfig() && <section className="py-12 border-t">
           <div className="max-w-3xl mx-auto px-4">
             <NewsletterSignup
               source="blog_article_footer"
               interest={post.category}
+              fallback={false}
             />
           </div>
-        </section>
+        </section>}
 
         <footer className="border-t py-6 text-center text-xs text-muted-foreground">
           &copy; {new Date().getFullYear()} {SITE_NAME}. Always consult your veterinarian.
@@ -414,6 +386,9 @@ function getDownloadVariant(slug: string) {
   if (CLEANING_TOOL_SLUGS.has(slug)) {
     return "cleaning" as const;
   }
+
+  if (slug.includes("insurance")) return "insurance" as const;
+  if (slug === "pet-emergency-kit-checklist") return "emergency" as const;
 
   if (
     slug.includes("poison") ||

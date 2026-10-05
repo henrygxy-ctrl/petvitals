@@ -217,12 +217,12 @@ export const BLOG_FAQS: Record<string, { question: string; answer: string }[]> =
     {
       question: "Is vinegar floor cleaner safe for pets?",
       answer:
-        "Diluted vinegar may be usable on some compatible sealed floors, but it is not automatically safe for every surface or pet. Keep pets away until the floor is fully dry and avoid strong concentrations.",
+        "Diluted vinegar may be usable on a compatible floor, but it is not automatically pet safe. Follow flooring and cleaner instructions, complete required rinsing, and keep pets away until the floor is fully dry.",
     },
     {
       question: "Is vinegar safe for cats?",
       answer:
-        "Diluted vinegar residue is usually less concerning than many disinfectants or essential oils, but cats should not walk on wet vinegar-cleaned floors because they may groom residue from paws.",
+        "Vinegar is acidic and can irritate the mouth or stomach. ASPCA advises dilution, rinsing, and drying before access. Keep cats away from wet floors, buckets, and spills, and check the complete formula.",
     },
     {
       question: "Can vinegar remove pet urine smell?",

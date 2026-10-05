@@ -1,10 +1,7 @@
-"use client";
-
-import Link from "next/link";
 import { ArrowRight, Download } from "lucide-react";
-import { DownloadLink } from "@/components/downloads/download-link";
+import { DownloadFollowupLink, DownloadLink } from "@/components/downloads/download-link";
 import { NewsletterSignup } from "@/components/newsletter/newsletter-signup";
-import { trackAnalyticsEvent } from "@/lib/analytics";
+import { getNewsletterConfig } from "@/lib/newsletter";
 
 type DownloadVariant = "poison" | "puppy" | "insurance" | "emergency" | "cleaning" | "both" | "costs";
 
@@ -65,14 +62,14 @@ export function DownloadResourceCard({ variant }: DownloadResourceCardProps) {
   const interest = resources.map((resource) => resource.title).join(", ");
 
   return (
-    <section className="not-prose my-8 rounded-xl border bg-primary/5 p-5">
+    <section className="not-prose my-8 border-y py-6">
       <div className="flex items-center gap-2 text-sm font-semibold text-primary">
         <Download className="h-4 w-4" />
         <span>Free printable resource</span>
       </div>
-      <div className="mt-4 grid gap-4 sm:grid-cols-2">
+      <div className={`mt-4 grid gap-4 ${resources.length > 1 ? "sm:grid-cols-2" : ""}`}>
         {resources.map((resource) => (
-          <div key={resource.href} className="rounded-xl border bg-card p-5">
+          <div key={resource.href}>
             <h2 className="text-base font-bold text-foreground">{resource.title}</h2>
             <p className="mt-2 text-sm text-muted-foreground">{resource.description}</p>
             <div className="mt-4 flex flex-wrap gap-3">
@@ -85,26 +82,22 @@ export function DownloadResourceCard({ variant }: DownloadResourceCardProps) {
                 Download PDF
                 <Download className="h-4 w-4" />
               </DownloadLink>
-              <Link
+              <DownloadFollowupLink
                 href={resource.followupHref}
-                onClick={() =>
-                  trackAnalyticsEvent("download_followup_click", {
-                    resource_title: resource.title,
-                    followup_href: resource.followupHref,
-                    download_variant: variant,
-                  })
-                }
+                title={resource.title}
+                variant={variant}
                 className="inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-medium hover:bg-muted"
               >
                 {resource.followupLabel}
                 <ArrowRight className="h-4 w-4" />
-              </Link>
+              </DownloadFollowupLink>
             </div>
           </div>
         ))}
       </div>
-      <div className="mt-5 border-t pt-4">
+      {getNewsletterConfig() && <div className="mt-5 border-t pt-4">
         <NewsletterSignup
+          fallback={false}
           compact
           source={`download_${variant}`}
           interest={interest}
@@ -112,7 +105,7 @@ export function DownloadResourceCard({ variant }: DownloadResourceCardProps) {
           description="Receive future printable checklists and timely pet safety updates tied to this topic."
           buttonLabel="Send updates"
         />
-      </div>
+      </div>}
     </section>
   );
 }

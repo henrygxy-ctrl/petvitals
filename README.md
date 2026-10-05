@@ -8,7 +8,7 @@
 - **Styling:** Tailwind CSS 4 + shadcn/ui
 - **Database:** SQLite via Prisma ORM
 - **Auth:** NextAuth v5 with credentials
-- **Analytics:** Consent-gated GA4 on the main thread (localhost excluded)
+- **Analytics:** Consent-gated GA4 on the main thread (only the two official PetVitals domains are enabled)
 - **Monetization:** AdSense + Affiliate (Impact.com, Amazon, Chewy, insurance partners)
 - **Deployment:** Vercel (GitHub auto-deploy)
 
@@ -81,12 +81,17 @@ The website no longer treats a SQLite insert as a completed email subscription. 
 
 The `/newsletter/confirmed` page is only a return page. Visiting it is not proof of confirmation and does not emit a fake successful-subscription event. Brevo is the source of truth for confirmed contacts and unsubscribe status. The in-memory request limit is per server instance, not a persistent anti-abuse guarantee.
 
+Signup availability is evaluated on the server using the same configuration validation as the API. Missing or invalid configuration hides the email form. Home and blog-index entries offer the existing emergency PDF instead; resource sections retain their topic-specific PDF without a duplicate fallback. Static pages require rebuilding after activation. Configuration validity is not proof of sender verification or email delivery; complete the owner-approved end-to-end test before promoting signup.
+
 API: https://developers.brevo.com/reference/create-doi-contact
 Unsubscribe: https://help.brevo.com/hc/en-us/articles/209553645-Insert-a-custom-unsubscribe-link-in-your-emails
 
 ## Acquisition and Retention Verification
 
 - Existing events: `article_internal_link_click`, `pdf_download_click`, `download_followup_click`, `newsletter_signup_submit`, `newsletter_confirmation_sent`, `newsletter_signup_error`, `affiliate_click`.
+- GA initialization and custom events are restricted to `www.getpetvitals.com` and `getpetvitals.com`; localhost, Vercel aliases and arbitrary hosts are excluded. Consent is still required. This prevents new test events, not historical contamination.
+- Article internal clicks include `link_context` (`article_body` or `article_next_steps`). Dedicated PDF/follow-up and sponsored links do not also emit a duplicate internal-click event. Articles display one next-step area and at most two recommended articles, rather than both recommendation lists and generic tool promotions.
+- Article tools are dynamically split in a client boundary with SSR retained; non-tool articles do not download the cleaning/vaccine/vet-estimator bundles.
 - `newsletter_confirmation_sent` means the provider accepted the confirmation-email request, not that the recipient confirmed or that delivery succeeded. Confirmed subscriber counts come from Brevo, not from visits to a return URL.
 - GA4 should show these in Events / Realtime after real consented interactions. Code tests alone do not prove Google received them. As of the October 5 inspection, the recent-events list contained only basic GA4 events.
 - In Explore, compare landing page + query string and event name using total users and event count. Internal navigation, PDF downloads and newsletter requests are alternative actions; do not invent a mandatory sequential funnel. For a rate, compare users taking each action with users in the same landing-page cohort and period, not raw event counts divided by sessions.

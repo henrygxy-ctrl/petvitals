@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Script from "next/script";
-import { ANALYTICS_CONSENT_EVENT, googleTag, hasAnalyticsConsent, trackAnalyticsEvent } from "@/lib/analytics";
+import { ANALYTICS_CONSENT_EVENT, googleTag, hasAnalyticsConsent, isProductionAnalyticsHost, trackAnalyticsEvent } from "@/lib/analytics";
 
 export function GoogleAnalytics({ measurementId }: { measurementId: string }) {
   const [enabled, setEnabled] = useState(false);
@@ -10,9 +10,9 @@ export function GoogleAnalytics({ measurementId }: { measurementId: string }) {
 
   useEffect(() => {
     function syncConsent() {
-      const allowed = hasAnalyticsConsent();
+      const allowed = isProductionAnalyticsHost() && hasAnalyticsConsent();
       setEnabled(allowed);
-      if (!allowed || initialized.current || ["localhost", "127.0.0.1", "::1", "[::1]"].includes(window.location.hostname)) return;
+      if (!allowed || initialized.current) return;
       initialized.current = true;
       googleTag("consent", "update", {
         analytics_storage: "granted",
@@ -46,6 +46,6 @@ export function GoogleAnalytics({ measurementId }: { measurementId: string }) {
   }, [measurementId]);
 
   // Preview visits should not inflate production acquisition reports.
-  if (!enabled || ["localhost", "127.0.0.1", "::1", "[::1]"].includes(window.location.hostname)) return null;
+  if (!enabled) return null;
   return <Script id="google-analytics" strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} />;
 }

@@ -41,7 +41,7 @@ export function hasAnalyticsConsent() {
 }
 
 export function trackAnalyticsEvent(eventName: string, payload: AnalyticsEventPayload = {}) {
-  if (typeof window === "undefined" || !hasAnalyticsConsent()) return;
+  if (!isProductionAnalyticsHost() || !hasAnalyticsConsent()) return;
 
   const eventPayload = {
     page_path: window.location.pathname,
@@ -49,4 +49,9 @@ export function trackAnalyticsEvent(eventName: string, payload: AnalyticsEventPa
   };
 
   googleTag("event", eventName, eventPayload);
+}
+
+export function isProductionAnalyticsHost() {
+  return typeof window !== "undefined" &&
+    ["www.getpetvitals.com", "getpetvitals.com"].includes(window.location.hostname);
 }

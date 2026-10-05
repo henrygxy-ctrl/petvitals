@@ -57,11 +57,20 @@ for (const id of ["nail-polish-remover", "incense", "ranch-dressing"]) {
 assert.equal(new Set(data.toxicityDatabase.map((item) => item.id)).size, data.toxicityDatabase.length);
 
 let consent = "essential";
-const browser = { location: { pathname: "/blog/cat-friendly-cleaning-products" }, localStorage: { getItem: () => consent }, dispatchEvent() {} };
+const browser = { location: { hostname: "www.getpetvitals.com", pathname: "/blog/cat-friendly-cleaning-products" }, localStorage: { getItem: () => consent }, dispatchEvent() {} };
 const analytics = load("src/lib/analytics.ts", {}, { window: browser, Event });
 analytics.trackAnalyticsEvent("pdf_download_click");
 assert.equal(browser.dataLayer, undefined);
 consent = "all";
+for (const hostname of ["localhost", "127.0.0.1", "[::1]", "petvitals-preview.vercel.app", "getpetvitals.com.example.com", "other.example"]) {
+  browser.location.hostname = hostname;
+  assert.equal(analytics.isProductionAnalyticsHost(), false);
+  analytics.trackAnalyticsEvent("pdf_download_click");
+  assert.equal(browser.dataLayer, undefined);
+}
+browser.location.hostname = "getpetvitals.com";
+assert.equal(analytics.isProductionAnalyticsHost(), true);
+browser.location.hostname = "www.getpetvitals.com";
 analytics.trackAnalyticsEvent("article_internal_link_click", { destination_path: "/toxicity/incense" });
 const command = Array.from(browser.dataLayer[0]);
 assert.equal(command[0], "event");
@@ -78,10 +87,11 @@ assert.equal(browser.dataLayer.length, queued);
 console.log("PASS analytics: real gtag command queue, page attribution and denied consent");
 
 const env = {};
+const newsletterConfig = load("src/lib/newsletter.ts", { "server-only": {} }, { process: { env } });
 let providerStatus = 201;
 let failNetwork = false;
 const calls = [];
-const route = load("src/app/api/newsletter/route.ts", { "@/lib/constants": constants }, {
+const route = load("src/app/api/newsletter/route.ts", { "@/lib/constants": constants, "@/lib/newsletter": newsletterConfig }, {
   process: { env }, AbortSignal, URL,
   fetch: async (url, options) => {
     calls.push({ url, ...options, body: JSON.parse(options.body) });
@@ -99,7 +109,24 @@ assert.equal((await route.POST(request({ ...valid, consent: false }))).status, 4
 assert.equal((await route.POST(request(valid, "https://other.example"))).status, 403);
 assert.equal((await route.POST(request(valid))).status, 503);
 assert.equal(calls.length, 0);
+const signup = load("src/components/newsletter/newsletter-signup.tsx", {
+  "next/link": { default: ({ children, ...props }) => React.createElement("a", props, children) },
+  "@/lib/newsletter": newsletterConfig,
+  "@/components/newsletter/newsletter-form": { NewsletterForm: () => React.createElement("form", null, "newsletter") },
+  "@/components/downloads/download-link": { DownloadLink: ({ children, href }) => React.createElement("a", { href }, children) },
+});
+const disabledHtml = renderToStaticMarkup(signup.NewsletterSignup({}));
+assert.doesNotMatch(disabledHtml, /<form|type="email"/);
+assert.match(disabledHtml, /pet-poisoning-emergency-checklist.pdf/);
+assert.equal(signup.NewsletterSignup({ fallback: false }), null);
+for (const bad of ["0", "-1", "NaN", "1.2"]) {
+  Object.assign(env, { BREVO_API_KEY: "test-only", BREVO_NEWSLETTER_LIST_ID: bad, BREVO_DOI_TEMPLATE_ID: "456" });
+  assert.equal(newsletterConfig.getNewsletterConfig(), null);
+}
 Object.assign(env, { BREVO_API_KEY: "test-only", BREVO_NEWSLETTER_LIST_ID: "123", BREVO_DOI_TEMPLATE_ID: "456" });
+const enabledHtml = renderToStaticMarkup(signup.NewsletterSignup({}));
+assert.match(enabledHtml, /<form/);
+assert.doesNotMatch(enabledHtml, /test-only|123|456/);
 const accepted = await route.POST(request(valid));
 assert.equal(accepted.status, 202);
 assert.equal((await accepted.json()).pending, true);
@@ -118,6 +145,7 @@ const shared = new Request(`${constants.SITE_BASE_URL}/api/newsletter`, { method
 for (let count = 0; count < 3; count++) await route.POST(shared.clone());
 assert.equal((await route.POST(shared.clone())).status, 429);
 console.log("PASS newsletter: invalid input, opt-in, origin, missing config, provider failures, pending-only response and rate limit");
+console.log("PASS newsletter availability: no unconfigured email form, usable fallback, valid server-only config and no exposed credentials");
 
 assert.match(fs.readFileSync(path.join(root, "src/app/globals.css"), "utf8"), /--font-sans: var\(--font-geist-sans\)/);
 assert.match(fs.readFileSync(path.join(root, "src/content/newsletter/confirm.html"), "utf8"), /href="\{\{ params.DOIurl \}\}"/);
