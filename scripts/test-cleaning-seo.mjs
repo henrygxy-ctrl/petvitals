@@ -45,6 +45,10 @@ function loadComponent(file, states = [], context = {}) {
 }
 
 const checkerFile = "src/components/tools/cleaning-ingredient-checker.tsx";
+const checkerEvidence = loadComponent(checkerFile).render("CleaningIngredientChecker");
+assert.match(checkerEvidence, /Evidence and limits/);
+assert.match(checkerEvidence, /does not measure concentration/);
+assert.match(checkerEvidence, /https:\/\/www.cdc.gov\/healthy-pets\/about\/cleaning-and-disinfecting-pet-supplies.html/);
 for (const query of ["peroxide", "3% hydrogen peroxide", "hydrogen peroxide 3%", "HYDROGEN PEROXIDE", "H2O2"]) {
   const html = loadComponent(checkerFile, [query, "phenols", false]).render("CleaningIngredientChecker");
   assert.match(html, /<h3[^>]*>Hydrogen peroxide<\/h3>/);

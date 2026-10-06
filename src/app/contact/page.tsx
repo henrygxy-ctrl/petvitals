@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { SITE_BASE_URL, SITE_NAME } from "@/lib/constants";
 import Link from "next/link"
+import { Download, Mail } from "lucide-react";
+import { DownloadLink } from "@/components/downloads/download-link";
 
 export const metadata: Metadata = {
   title: "Contact Us — PetVitals",
@@ -69,6 +71,29 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
+        <section id="resource-feedback" className="mt-10 border-t pt-8 scroll-mt-6">
+          <h2 className="text-lg font-semibold">Resource Feedback and Professional Review</h2>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            For a correction, include the page URL, the specific claim, a primary source or current product label, and your proposed correction. Please omit personal medical records. This inbox does not provide emergency advice.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            Qualified veterinary professionals may also propose a page-specific review. Include a public professional profile and the scope you can review. We publish a reviewer credit only after the review is completed and the reviewer approves the attribution; feedback alone is not an endorsement. <Link href="/about#professional-review" className="text-primary underline">Clinical review policy</Link>.
+          </p>
+          <a href="mailto:henrygxy@gmail.com?subject=PetVitals%20resource%20feedback" className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">
+            <Mail className="h-4 w-4" />Email resource feedback
+          </a>
+        </section>
+        <section id="resource-trial" className="mt-8 border-t pt-8 scroll-mt-6">
+          <h2 className="text-lg font-semibold">Free Resources for Shelters and Pet Educators</h2>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            Try these educational checklists alongside your organization's own instructions. Tell us which audience used them, which section was unclear, and what should change. They do not replace your veterinarian's guidance. No payment, backlink, or positive recommendation is required.
+          </p>
+          <ul className="mt-4 space-y-3 text-sm">
+            <li><DownloadLink href="/downloads/pet-safe-cleaning-checklist.pdf" title="Pet-Safe Cleaning Checklist" variant="resource_trial" className="inline-flex items-center gap-2 text-primary hover:underline"><Download className="h-4 w-4" />Pet-safe cleaning checklist</DownloadLink></li>
+            <li><DownloadLink href="/downloads/pet-poisoning-emergency-checklist.pdf" title="Pet Poisoning Emergency Checklist" variant="resource_trial" className="inline-flex items-center gap-2 text-primary hover:underline"><Download className="h-4 w-4" />Poisoning emergency checklist</DownloadLink></li>
+            <li><Link href="/pet-safe-cleaning" className="text-primary underline">Cleaning resource hub</Link> and <Link href="/toxicity/category/plants" className="text-primary underline">plant safety guide</Link></li>
+          </ul>
+        </section>
       </main>
       <footer className="border-t py-6 text-center text-xs text-muted-foreground">
         <div className="max-w-3xl mx-auto px-4">&copy; 2026 PetVitals. All rights reserved.</div>

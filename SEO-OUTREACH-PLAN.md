@@ -136,3 +136,24 @@ Review monthly against GSC:
 - Higher average position
 - New referring pages
 - More clicks from long-tail queries
+
+## Professional Review and Resource Trials
+
+Start with three relevant shelters or pet educators and one qualified veterinary professional selected by the owner. Offer a free resource trial or a narrowly scoped review, not a request for guaranteed endorsements. Verify the recipient and obtain approval for the final message before sending; no outreach has been sent as part of the website changes.
+
+The public entry points are `/contact#resource-trial` and `/contact#resource-feedback`. Record the reviewed page/version, audience and use case, unclear instructions, suggested corrections, primary sources, and permission for any public credit. A downloaded checklist is not proof of adoption. A reply is not proof of veterinary review.
+
+### Resource Trial Invitation
+
+Subject: Feedback on a free pet safety checklist
+
+Hello [Name],
+
+I run PetVitals, an independent pet-safety resource website. We are inviting relevant shelters and pet educators to try a free cleaning or poisoning-preparation checklist and tell us what is unclear or missing.
+
+Resources: https://www.getpetvitals.com/contact#resource-trial
+
+These are source-based educational materials, not veterinary-reviewed instructions. There is no payment, backlink, or positive recommendation required. Would one be useful alongside your existing materials? If so, feedback on a specific section and your audience would help us improve it.
+
+Thank you,
+[Owner name]

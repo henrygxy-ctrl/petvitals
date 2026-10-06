@@ -60,7 +60,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: SITE_NAME,
       type: "article",
       publishedTime: post.date,
-      authors: [SITE_NAME],
+      modifiedTime: post.updated || post.date,
+      authors: [post.author || "PetVitals Editorial Team"],
       images: [{ url: image }],
       tags: post.tags,
     },
@@ -187,6 +188,7 @@ export default async function BlogArticlePage({ params }: Props) {
                 day: "numeric",
               })}.
               {post.sources.length > 0 && <> <a href="#article-sources" className="underline">Sources and references</a>.</>}
+              {" "}<Link href="/about#professional-review" className="underline">Clinical review status</Link>.
             </p>
 
             <TableOfContents />

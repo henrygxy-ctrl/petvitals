@@ -92,7 +92,7 @@ const targetedToxicityMeta: Record<string, { title: string; description: string 
   wisteria: {
     title: "Is Wisteria Poisonous to Dogs or Cats?",
     description:
-      "Wisteria is poisonous to dogs and cats, especially seeds and pods. Learn symptoms, what to do after exposure, and related toxic garden plants.",
+      "Wisteria is poisonous to dogs and cats. Check ASPCA-listed symptoms, plant identification, evidence limits, and what to do after suspected ingestion.",
   },
   "sago-palm": {
     title: "Is Sago Palm Toxic to Dogs or Cats?",
@@ -163,17 +163,17 @@ const targetedSearchAnswers: Record<
       {
         question: "Is wisteria poisonous to dogs?",
         answer:
-          "Yes. Wisteria should be treated as poisonous to dogs, especially if a dog chews the seeds or pods. Vomiting, diarrhea, abdominal pain, weakness, or depression should prompt veterinary guidance.",
+          "Yes. ASPCA lists wisteria as toxic to dogs. Listed signs include vomiting, sometimes with blood, diarrhea, and depression. Contact your veterinarian after suspected ingestion rather than waiting for these signs.",
       },
       {
         question: "Is wisteria toxic to cats?",
         answer:
-          "Yes. Wisteria is toxic to cats. Cats may be exposed by chewing leaves, flowers, seeds, or pods, and they can also groom plant residue from paws or fur.",
+          "Yes. ASPCA lists wisteria as toxic to cats. If your cat may have eaten it, contact your veterinarian or pet poison control with a plant photo, the part involved, and the estimated amount.",
       },
       {
         question: "What part of wisteria is most dangerous?",
         answer:
-          "Seeds and pods are the main concern because they can contain higher toxin concentrations. Flowers, leaves, and vines should still be kept away from pets.",
+          "The ASPCA reference does not rank toxin concentrations by plant part or identify a safe part to feed. Keep the whole plant and fallen material inaccessible, and tell your veterinarian exactly what was chewed or swallowed.",
       },
       {
         question: "What should I do if my pet ate wisteria?",
@@ -217,6 +217,32 @@ const targetedSearchAnswers: Record<
       { href: "/toxicity/wisteria", title: "Wisteria toxicity" },
       { href: "/toxicity/lilies", title: "Lily toxicity" },
       { href: "/blog/sago-palm-toxicity-pets", title: "Full sago palm guide" },
+    ],
+  },
+};
+
+const plantEvidence: Record<string, {
+  identity: string;
+  botanicalUrl: string;
+  identification: string;
+  facts: { claim: string; boundary: string; source: string }[];
+}> = {
+  wisteria: {
+    identity: "Wisteria spp. (Fabaceae); the botanical guide below shows Chinese wisteria, Wisteria sinensis.",
+    botanicalUrl: "https://plants.ces.ncsu.edu/plants/wisteria-sinensis/",
+    identification: "Chinese wisteria is a woody climbing vine with compound leaves, hanging flower clusters, and velvety, bean-like pods. A photo alone cannot confirm an exposure or its severity.",
+    facts: [
+      { claim: "ASPCA lists toxicity to dogs and cats, with lectin and wisterin glycoside.", boundary: "The reference does not provide a pet-specific safe dose or rank plant parts by toxin concentration.", source: "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/wisteria" },
+      { claim: "Listed signs are vomiting, sometimes bloody, diarrhea, and depression.", boundary: "Signs are not a diagnostic test. An apparently well pet still needs an exposure assessment.", source: "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/wisteria" },
+    ],
+  },
+  "sago-palm": {
+    identity: "Cycas revoluta (Cycadaceae), a cycad rather than a true palm.",
+    botanicalUrl: "https://plants.ces.ncsu.edu/plants/cycas-revoluta/",
+    identification: "Stiff, glossy fronds form a rosette around a trunk; reproductive structures are cones, not flowers. Coontie and cardboard palm are also hazardous, not safe substitutes.",
+    facts: [
+      { claim: "ASPCA identifies cycasin and lists liver damage, liver failure, and bleeding among possible outcomes.", boundary: "This is an urgent ingestion risk, not a prediction that every exposed animal will have the same outcome.", source: "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/sago-palm" },
+      { claim: "Pet Poison Helpline warns that any part can poison pets, especially seeds or nuts.", boundary: "Do not calculate a safe snack amount or wait for visible illness before seeking veterinary help.", source: "https://www.petpoisonhelpline.com/poison/sago-palm/" },
     ],
   },
 };
@@ -781,6 +807,7 @@ export default async function ToxicityItemPage({
     .filter((link): link is { item: ToxicityItem; reason: string } => Boolean(link));
   const featuredRelatedIds = new Set(featuredRelatedItems.map((link) => link.item.id));
   const targetedAnswerBlock = targetedSearchAnswers[item.id];
+  const evidence = plantEvidence[item.id];
   const articleBridgeLinks = toxicityArticleBridges[item.id] || [];
 
   const relatedItems = toxicityDatabase
@@ -1121,6 +1148,31 @@ export default async function ToxicityItemPage({
             </div>
 
             {/* Sources */}
+            {evidence && (
+              <section id="evidence-and-identification" className="mt-8 space-y-4">
+                <h2 className="text-lg font-bold">Plant Identity, Evidence and Limits</h2>
+                <p className="text-sm leading-relaxed"><strong>Plant identity:</strong> {evidence.identity}</p>
+                <p className="text-sm leading-relaxed text-muted-foreground">{evidence.identification}{" "}
+                  <a href={evidence.botanicalUrl} target="_blank" rel="noopener noreferrer" className="text-primary underline">NC State Extension botanical description and real plant photos</a>.
+                </p>
+                <div className="overflow-x-auto rounded-lg border">
+                  <table className="w-full table-fixed break-words text-sm">
+                    <caption className="px-4 py-3 text-left font-semibold">Source checks: October 6, 2026</caption>
+                    <thead className="bg-muted/60"><tr>
+                      <th scope="col" className="px-4 py-3 text-left">What the source establishes</th>
+                      <th scope="col" className="px-4 py-3 text-left">What it does not establish</th>
+                    </tr></thead>
+                    <tbody>{evidence.facts.map((fact) => (
+                      <tr key={fact.claim} className="border-t">
+                        <td className="px-4 py-3 align-top">{fact.claim}{" "}<a href={fact.source} target="_blank" rel="noopener noreferrer" className="text-primary underline">{sourceNameFromUrl(fact.source)}</a>.</td>
+                        <td className="px-4 py-3 align-top">{fact.boundary}</td>
+                      </tr>
+                    ))}</tbody>
+                  </table>
+                </div>
+                <p className="text-xs leading-relaxed text-muted-foreground">Public-source editorial checks are not a clinical review of this page. No named veterinarian has reviewed this guide. <Link href="/about#professional-review" className="underline">Review and correction policy</Link>.</p>
+              </section>
+            )}
             {item.sources && item.sources.length > 0 && (
               <div className="mt-6 p-5 rounded-xl border bg-card">
                 <h2 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground mb-3">

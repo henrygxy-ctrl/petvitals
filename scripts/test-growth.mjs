@@ -32,7 +32,10 @@ const page = load("src/app/toxicity/[item]/page.tsx", {
   "@/components/downloads/resource-card": { DownloadResourceCard: Null },
   "@/components/hubs/contextual-hub-links": { ContextualHubLinks: Null },
 });
-for (const id of ["nail-polish-remover", "incense", "ranch-dressing"]) {
+for (const id of ["nail-polish-remover", "incense", "ranch-dressing", "wisteria", "sago-palm"]) {
+  const evidencePage = ["wisteria", "sago-palm"].includes(id);
+  const updated = evidencePage ? "2026-10-06" : "2026-10-05";
+  const faqCount = id === "wisteria" ? 5 : id === "sago-palm" ? 7 : 8;
   const params = Promise.resolve({ item: id });
   const meta = await page.generateMetadata({ params });
   const html = renderToStaticMarkup(await page.default({ params }));
@@ -41,20 +44,43 @@ for (const id of ["nail-polish-remover", "incense", "ranch-dressing"]) {
   assert.equal((html.match(/<h1\b/g) || []).length, 1);
   const blocks = Array.from(html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g), (match) => JSON.parse(match[1]));
   const faq = blocks.find((block) => block["@type"] === "FAQPage").mainEntity;
-  assert.equal(faq.length, 8);
-  assert.equal(new Set(faq.map((item) => item.name.toLowerCase())).size, 8);
-  assert.equal(blocks.find((block) => block["@type"] === "WebPage").dateModified, "2026-10-05");
+  assert.equal(faq.length, faqCount);
+  assert.equal(new Set(faq.map((item) => item.name.toLowerCase())).size, faqCount);
+  assert.equal(blocks.find((block) => block["@type"] === "WebPage").dateModified, updated);
+  if (evidencePage) {
+    assert.match(html, /id="evidence-and-identification"/);
+    assert.match(html, /What it does not establish/);
+    assert.match(html, /No named veterinarian has reviewed this guide/);
+    assert.match(html, /https:\/\/plants\.ces\.ncsu\.edu\/plants\//);
+  }
   for (const entry of faq) {
     const escape = (text) => renderToStaticMarkup(React.createElement("p", null, text)).slice(3, -4);
     assert.ok(html.includes(escape(entry.name)));
     assert.ok(html.includes(escape(entry.acceptedAnswer.text)));
   }
   const item = data.getToxicityById(id);
-  assert.equal(item.updated, "2026-10-05");
+  assert.equal(item.updated, updated);
   assert.ok(item.sources.every((url) => !url.includes("akc.org") && !url.includes("petmd.com")));
-  console.log(`PASS ${id}: metadata, 8 unique FAQs, visible answers and dated sources`);
+  console.log(`PASS ${id}: metadata, ${faqCount} unique FAQs, visible answers and dated sources`);
 }
 assert.equal(new Set(data.toxicityDatabase.map((item) => item.id)).size, data.toxicityDatabase.length);
+for (const route of ["blog", "blog/[slug]", "toxicity", "toxicity/[item]", "about"]) {
+  assert.equal(fs.existsSync(path.join(root, "src/app", route, "loading.tsx")), false,
+    `${route} must not hide static content behind a script-revealed loading boundary`);
+}
+assert.doesNotMatch(data.getToxicityById("wisteria").description, /neurological/);
+
+const blog = load("src/lib/blog.ts", {
+  fs: { default: fs }, path: { default: path },
+  "gray-matter": { default: require("gray-matter") },
+  "reading-time": { default: require("reading-time") },
+  "@/lib/utils": { slugify: (text) => text.toLowerCase() },
+}, { process: { cwd: () => root } });
+for (const slug of ["best-pet-safe-cleaning-products", "cat-friendly-cleaning-products"]) {
+  assert.equal(blog.getPostBySlug(slug).author, "PetVitals Editorial Team");
+  assert.equal(blog.getPostBySlug(slug).updated, "2026-10-06");
+}
+console.log("PASS blog metadata: actual frontmatter author and updated date retained");
 
 let consent = "essential";
 const browser = { location: { hostname: "www.getpetvitals.com", pathname: "/blog/cat-friendly-cleaning-products" }, localStorage: { getItem: () => consent }, dispatchEvent() {} };

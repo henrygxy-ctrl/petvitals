@@ -225,9 +225,13 @@ export function CleaningIngredientChecker() {
           <p className="mt-3 text-sm leading-relaxed">Keep pets away from an unknown cleaner. For exposure advice, contact your veterinarian or animal poison control with the product label.</p>
         </div>}
       </div>
-      <p className="border-t px-5 py-3 text-xs text-muted-foreground">
-        Ingredient cautions: <a className="underline" href="https://www.petpoisonhelpline.com/uncategorized/cleaning-products-and-pets/">Pet Poison Helpline</a>. Product instructions take precedence over this general reference.
-      </p>
+      <details className="border-t px-5 py-3 text-xs text-muted-foreground">
+        <summary className="cursor-pointer font-medium">Evidence and limits</summary>
+        <p className="mt-2 leading-relaxed">This reference matches ingredient names to general cautions; it does not measure concentration, analyze a complete formula, or certify a product. No match is not a safety finding. Product-specific directions and veterinary exposure advice take precedence.</p>
+        <p className="mt-2 leading-relaxed">
+          Exposure cautions: <a className="underline" href="https://www.petpoisonhelpline.com/uncategorized/cleaning-products-and-pets/">Pet Poison Helpline</a>. Cat-home phenol precautions and pet-access guidance: <a className="underline" href="https://www.cdc.gov/healthy-pets/about/cleaning-and-disinfecting-pet-supplies.html">CDC</a>. These are public references, not a clinical review of this tool.
+        </p>
+      </details>
     </section>
   );
 }

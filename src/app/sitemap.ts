@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_BASE_URL}/weight-tracking`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "weekly" as const, priority: 0.8 },
     { url: `${SITE_BASE_URL}/blog`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "weekly", priority: 0.8 },
     { url: `${SITE_BASE_URL}/insurance`, lastModified: INSURANCE_LAST_MODIFIED, changeFrequency: "monthly" as const, priority: 0.75 },
-    { url: `${SITE_BASE_URL}/contact`, lastModified: CONTENT_LAST_MODIFIED, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${SITE_BASE_URL}/contact`, lastModified: new Date("2026-10-06"), changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE_BASE_URL}/about`, lastModified: new Date("2026-10-05"), changeFrequency: "monthly" as const, priority: 0.6 },
     { url: `${SITE_BASE_URL}/pet-safe-cleaning`, lastModified: new Date("2026-10-04"), changeFrequency: "weekly" as const, priority: 0.82 },
     { url: `${SITE_BASE_URL}/puppy-care`, lastModified: HUB_LAST_MODIFIED, changeFrequency: "weekly" as const, priority: 0.82 },

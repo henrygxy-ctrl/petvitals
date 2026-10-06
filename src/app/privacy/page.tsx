@@ -27,7 +27,7 @@ export default function PrivacyPolicyPage() {
       </header>
       <main className="flex-1 max-w-3xl mx-auto px-4 py-12 w-full">
         <h1 className="text-3xl font-bold mb-8">Privacy Policy</h1>
-        <p className="text-sm text-muted-foreground mb-8">Last updated: October 5, 2026</p>
+        <p className="text-sm text-muted-foreground mb-8">Last updated: October 6, 2026</p>
 
         <div className="prose prose-sm max-w-none space-y-6 text-foreground/80">
           <section>
@@ -50,6 +50,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-lg font-semibold text-foreground mb-2">4. Cookies &amp; Advertising</h2>
             <p>We use essential cookies to maintain your login session and remember your language preference. These cookies are necessary for the website to function.</p>
             <p className="mt-2">Google Analytics loads after you choose Accept All. Custom analytics events include page paths and interaction details, not newsletter email addresses. You can change your choice using Cookie settings at the bottom of the page.</p>
+            <p className="mt-2">With analytics consent, we also recognize referrals from selected AI services using the referring domain or a recognized campaign source. A short-lived browser-session record links that source and the landing page path to later downloads, tool use, and commercial clicks for up to 30 minutes. This custom record does not retain full referring URLs, page query strings, or AI prompts. Withdrawing consent clears this record and stops these custom events. Missing referral information means some AI visits cannot be identified.</p>
             <p className="mt-4">We use Google AdSense to display advertisements. Google and its third-party vendors use cookies to serve ads based on your prior visits to PetVitals and other websites. Google&apos;s use of advertising cookies enables it and its partners to serve ads based on your visit to our site and/or other sites on the Internet.</p>
             <p className="mt-2">You may opt out of personalized advertising by visiting <a href="https://adssettings.google.com" className="underline" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>. You can also opt out of third-party vendor cookies for personalized advertising by visiting <a href="https://www.aboutads.info" className="underline" target="_blank" rel="noopener noreferrer">www.aboutads.info</a>.</p>
             <p className="mt-2">For more information about how Google uses data when you use our site, please visit Google&apos;s <a href="https://policies.google.com/technologies/partner-sites" className="underline" target="_blank" rel="noopener noreferrer">Partner Sites policy</a>.</p>

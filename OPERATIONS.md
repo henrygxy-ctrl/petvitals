@@ -126,3 +126,7 @@ Old URLs (`/toxibility/chocolate`, etc.) now redirect (308 Permanent) to `/toxic
 - Google will gradually drop these URLs from its index
 - Monitor Search Console → Pages → "Page with redirect" count over the next 2-4 weeks
 - The search functionality and inline expandable cards remain identical
+
+## AI Search Measurement and Review
+
+See [AI Search Measurement and Review](AI-SEARCH-OPERATIONS.md) for current crawler checks, consented referral tracking, GA4 custom definitions, citation sampling, and resource trials. These additions do not deploy the site or configure account reports automatically.

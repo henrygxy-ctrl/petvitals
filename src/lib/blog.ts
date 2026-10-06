@@ -71,6 +71,7 @@ export function getAllPosts(): BlogPost[] {
       title: data.title,
       date: data.date,
       updated: data.updated,
+      author: data.author,
       category: data.category,
       subcategory: data.subcategory,
       tags: data.tags || [],

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Script from "next/script";
-import { ANALYTICS_CONSENT_EVENT, googleTag, hasAnalyticsConsent, isProductionAnalyticsHost, trackAnalyticsEvent } from "@/lib/analytics";
+import { ANALYTICS_CONSENT_EVENT, clearAiReferral, googleTag, hasAnalyticsConsent, isProductionAnalyticsHost, trackAiReferralVisit, trackAnalyticsEvent } from "@/lib/analytics";
 
 export function GoogleAnalytics({ measurementId }: { measurementId: string }) {
   const [enabled, setEnabled] = useState(false);
@@ -12,7 +12,14 @@ export function GoogleAnalytics({ measurementId }: { measurementId: string }) {
     function syncConsent() {
       const allowed = isProductionAnalyticsHost() && hasAnalyticsConsent();
       setEnabled(allowed);
-      if (!allowed || initialized.current) return;
+      if (!allowed) {
+        if (initialized.current) clearAiReferral();
+        return;
+      }
+      if (initialized.current) {
+        trackAiReferralVisit();
+        return;
+      }
       initialized.current = true;
       googleTag("consent", "update", {
         analytics_storage: "granted",
@@ -22,6 +29,7 @@ export function GoogleAnalytics({ measurementId }: { measurementId: string }) {
       });
       googleTag("js", new Date());
       googleTag("config", measurementId);
+      trackAiReferralVisit();
     }
 
     function onAffiliateClick(event: MouseEvent) {
