@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { DownloadLink } from "@/components/downloads/download-link";
+import { EditorialImage, type EditorialImageProps } from "@/components/blog/editorial-image";
 import { JsonLdBreadcrumb, JsonLdFAQ, JsonLdItemList } from "@/components/seo/json-ld";
 import { SITE_BASE_URL, SITE_NAME } from "@/lib/constants";
 
@@ -21,6 +22,7 @@ interface TopicHubPageProps {
   secondaryCta?: HubLink;
   highlights: { value: string; label: string; note: string }[];
   infographic?: ReactNode;
+  image?: EditorialImageProps;
   sections: { title: string; description: string; links: HubLink[] }[];
   faq?: { question: string; answer: string }[];
   resource?: ReactNode;
@@ -36,6 +38,7 @@ export function TopicHubPage({
   secondaryCta,
   highlights,
   infographic,
+  image,
   sections,
   faq,
   resource,
@@ -156,6 +159,8 @@ export function TopicHubPage({
                 </section>
               ))}
             </div>
+
+            {image && <EditorialImage {...image} />}
 
             {resource}
 

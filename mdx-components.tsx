@@ -1,8 +1,9 @@
 import type { MDXComponents } from "mdx/types";
-import Image from "next/image";
+import { EditorialImage } from "@/components/blog/editorial-image";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
+    EditorialImage,
     h1: ({ children, ...props }) => (
       <h1 className="text-3xl font-bold mt-8 mb-4" {...props}>{children}</h1>
     ),

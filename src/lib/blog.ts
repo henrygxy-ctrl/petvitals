@@ -32,6 +32,7 @@ export interface BlogPostMeta {
   subcategory?: string;
   tags: string[];
   featuredImage?: string;
+  featuredImageAlt?: string;
   excerpt: string;
   readingTime: string;
   sources: BlogSource[];
@@ -76,6 +77,7 @@ export function getAllPosts(): BlogPost[] {
       subcategory: data.subcategory,
       tags: data.tags || [],
       featuredImage: data.featuredImage,
+      featuredImageAlt: data.featuredImageAlt,
       excerpt: data.excerpt,
       readingTime: data.readingTime || readingTime(content).text,
       sources: data.sources || [],

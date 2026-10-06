@@ -47,6 +47,11 @@ export default function PuppyCareHubPage() {
   return (
     <TopicHubPage
       label="Puppy Care Hub"
+      image={{
+        src: "/images/editorial/new-puppy-home-setup.webp",
+        alt: "A puppy resting on a bed beside a water bowl and an open travel carrier",
+        caption: "Set up a calm resting area and gather everyday essentials before your puppy comes home. The pictured supplies are unbranded illustrations, not tested products.",
+      }}
       canonicalPath="/puppy-care"
       title="Puppy Care Hub: Vaccines, First Vet Visit Cost, Supplies, and Insurance"
       intro="A first-year planning hub for new puppy owners. Build a vaccine schedule, estimate vet costs, and prepare the home before common emergencies happen."

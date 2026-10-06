@@ -85,7 +85,7 @@ export function ArticleCard({ post, variant = "default" }: ArticleCardProps) {
     >
       {post.featuredImage && (
         <div className="aspect-[16/9] bg-muted overflow-hidden">
-          <Image src={post.featuredImage} alt={post.title} width={640} height={360} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          <Image src={post.featuredImage} alt={post.featuredImageAlt || post.title} width={640} height={360} sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) 50vw, 384px" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
         </div>
       )}
       <div className="p-5">

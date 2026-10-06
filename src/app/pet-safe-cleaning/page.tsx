@@ -68,6 +68,11 @@ export default function PetSafeCleaningHubPage() {
         { value: "Low residue", label: "Best default", note: "Use mild, unscented cleaners, ventilation, and label directions." },
       ]}
       infographic={<CleaningSafetyInfographic />}
+      image={{
+        src: "/images/editorial/pets-separated-during-floor-cleaning.webp",
+        alt: "A dog and cat behind a closed glass door while a person mops the adjoining room",
+        caption: "A separate room helps keep pets away from wet floors and cleaning supplies. Follow the exact product's rinsing, ventilation, drying, and pet-access directions.",
+      }}
       sections={[
         {
           title: "Start With These Guides",
