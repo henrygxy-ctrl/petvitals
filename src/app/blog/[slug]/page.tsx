@@ -26,6 +26,7 @@ import {
 } from "@/components/infographics/topic-infographics";
 import { ArticleTools } from "@/components/blog/article-tools";
 import { ArticleActionStrip } from "@/components/blog/article-action-strip";
+import { EditorialTrustPanel } from "@/components/blog/editorial-trust-panel";
 import { NavHeader } from "@/components/landing/nav-header";
 import { ArrowRight, Calendar, Clock, Tag, User } from "lucide-react";
 
@@ -183,16 +184,11 @@ export default async function BlogArticlePage({ params }: Props) {
               </div>
             </div>
 
-            <p className="mb-4 sm:mb-6 text-xs leading-relaxed text-muted-foreground">
-              Educational guidance, not a substitute for veterinary care. {editorialDateLabel}{" "}
-              {new Date(editorialDate).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}.
-              {post.sources.length > 0 && <> <a href="#article-sources" className="underline">Sources and references</a>.</>}
-              {" "}<Link href="/about#professional-review" className="underline">Clinical review status</Link>.
-            </p>
+            <EditorialTrustPanel
+              sourceCount={post.sources.length}
+              editorialDate={editorialDate}
+              dateLabel={editorialDateLabel}
+            />
 
             <TableOfContents />
 
