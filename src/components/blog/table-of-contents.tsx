@@ -52,7 +52,7 @@ export function TableOfContents() {
   if (headings.length === 0) return null;
 
   return (
-    <nav className="mb-8 p-4 rounded-lg border bg-muted/30" aria-label="Article contents">
+    <nav className="mb-8 rounded-lg border bg-muted/30 p-4 lg:sticky lg:top-20 lg:z-10 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:bg-background/95 lg:backdrop-blur-sm" aria-label="Article contents">
       <button type="button" className="flex min-h-11 w-full items-center gap-2 text-left" aria-expanded={expanded} aria-controls={listId} onClick={() => {
         setExpanded(!expanded);
         trackAnalyticsEvent("article_contents_toggle", { expanded: !expanded });

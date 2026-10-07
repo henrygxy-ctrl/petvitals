@@ -128,3 +128,13 @@
     @apply font-sans;
   }
 }
+
+@layer components {
+  .prose-custom h2[data-quick-answer="true"] {
+    @apply rounded-t-lg border-l-4 border-emerald-500 bg-emerald-50/70 px-4 pt-4 text-foreground dark:bg-emerald-950/20;
+  }
+
+  .prose-custom h2[data-quick-answer="true"] + p {
+    @apply rounded-b-lg border-l-4 border-emerald-500 bg-emerald-50/70 px-4 pb-4 dark:bg-emerald-950/20;
+  }
+}

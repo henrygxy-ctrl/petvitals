@@ -25,6 +25,8 @@ import {
   VetCostInfographic,
 } from "@/components/infographics/topic-infographics";
 import { ArticleTools } from "@/components/blog/article-tools";
+import { ArticleActionStrip } from "@/components/blog/article-action-strip";
+import { NavHeader } from "@/components/landing/nav-header";
 import { ArrowRight, Calendar, Clock, Tag, User } from "lucide-react";
 
 interface Props {
@@ -112,7 +114,8 @@ export default async function BlogArticlePage({ params }: Props) {
       {faqQuestions.length > 0 && <JsonLdFAQ questions={faqQuestions} />}
       <JsonLdBreadcrumb items={breadcrumbs} />
       <div className="min-h-screen flex flex-col">
-        <header className="border-b">
+        <NavHeader />
+        <div className="border-b bg-muted/20">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center gap-2">
             <Link
               href="/"
@@ -132,7 +135,7 @@ export default async function BlogArticlePage({ params }: Props) {
               {post.title}
             </span>
           </div>
-        </header>
+        </div>
 
         <main className="flex-1 py-6 sm:py-12">
           <article className="max-w-3xl mx-auto px-4 sm:px-6">
@@ -193,6 +196,8 @@ export default async function BlogArticlePage({ params }: Props) {
 
             <TableOfContents />
 
+            <ArticleActionStrip slug={post.slug} />
+
             {showPuppyPlanner && <PuppyTimelineInfographic />}
             {toolMode && <VetCostInfographic />}
 
@@ -218,7 +223,9 @@ export default async function BlogArticlePage({ params }: Props) {
               <SourceCitation sources={post.sources} />
             )}
 
-            <section aria-label="Next steps" className="mt-8">
+            <section aria-label="Next steps" className="mt-8 border-t pt-8">
+              <h2 className="text-lg font-semibold">Continue with PetVitals</h2>
+              <p className="mt-1 text-sm text-muted-foreground">Save a checklist, explore a related guide, or use a planning tool.</p>
               {downloadVariant && <DownloadResourceCard variant={downloadVariant} />}
               {contextualHubLinks.filter((link) => !(downloadVariant === "cleaning" && link.href === "/pet-safe-cleaning")).slice(0, 1).map((link) => (
                 <Link key={link.href} href={link.href} className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-primary hover:underline">

@@ -1,5 +1,14 @@
 import type { MDXComponents } from "mdx/types";
+import { Children, isValidElement, type ReactNode } from "react";
 import { EditorialImage } from "@/components/blog/editorial-image";
+
+function getTextContent(node: ReactNode): string {
+  return Children.toArray(node).map((child) => {
+    if (typeof child === "string" || typeof child === "number") return String(child);
+    if (isValidElement<{ children?: ReactNode }>(child)) return getTextContent(child.props.children);
+    return "";
+  }).join("");
+}
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -7,9 +16,18 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h1: ({ children, ...props }) => (
       <h1 className="text-3xl font-bold mt-8 mb-4" {...props}>{children}</h1>
     ),
-    h2: ({ children, ...props }) => (
-      <h2 className="text-2xl font-semibold mt-8 mb-3 scroll-mt-20" {...props}>{children}</h2>
-    ),
+    h2: ({ children, ...props }) => {
+      const isQuickAnswer = getTextContent(children).toLowerCase().startsWith("quick answer");
+      return (
+        <h2
+          className={`mt-8 mb-3 scroll-mt-20 text-2xl font-semibold ${isQuickAnswer ? "quick-answer-heading" : ""}`}
+          data-quick-answer={isQuickAnswer ? "true" : undefined}
+          {...props}
+        >
+          {children}
+        </h2>
+      );
+    },
     h3: ({ children, ...props }) => (
       <h3 className="text-xl font-semibold mt-6 mb-2 scroll-mt-20" {...props}>{children}</h3>
     ),

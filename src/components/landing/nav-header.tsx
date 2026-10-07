@@ -44,7 +44,7 @@ export function NavHeader() {
             </div>
           </nav>
         </details>
-        <div className="hidden md:flex items-center gap-1">
+        <nav aria-label="Main navigation" className="hidden md:flex items-center gap-1">
           <Link href="/toxicity" className="text-sm text-muted-foreground hover:text-foreground transition-colors px-2.5 py-1.5">Toxicity Checker</Link>
           <Link href="/feeding-calculator" className="text-sm text-muted-foreground hover:text-foreground transition-colors px-2.5 py-1.5">Feeding Calc</Link>
           <Link href="/weight-tracking" className="text-sm text-muted-foreground hover:text-foreground transition-colors px-2.5 py-1.5">Weight Tracking</Link>
@@ -76,7 +76,7 @@ export function NavHeader() {
 
           <Link href="/sign-in"><Button variant="ghost" size="sm">Sign In</Button></Link>
           <Link href="/sign-up"><Button size="sm" className="rounded-full">Get Started</Button></Link>
-        </div>
+        </nav>
       </div>
     </header>
   );
