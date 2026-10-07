@@ -5,6 +5,7 @@ import { JsonLdBreadcrumb, JsonLdFAQ } from "@/components/seo/json-ld";
 import { InsuranceComparison } from "@/components/affiliate/insurance-comparison";
 import { INSURANCE_PARTNERS } from "@/lib/affiliate";
 import { Car, Stethoscope, Syringe, Clock, ArrowLeft, ArrowRight } from "lucide-react";
+import { NavHeader } from "@/components/landing/nav-header";
 
 export const metadata: Metadata = {
   title: `Pet Insurance Cost & Coverage Guide | ${SITE_NAME}`,
@@ -147,7 +148,8 @@ export default function InsurancePage() {
       <JsonLdFAQ questions={faqQuestions} />
       <JsonLdBreadcrumb items={breadcrumbs} />
       <div className="min-h-screen flex flex-col">
-      <header className="border-b">
+      <NavHeader />
+      <div className="border-b bg-muted/20">
         <div className="max-w-4xl mx-auto px-4 h-14 flex items-center gap-2">
           <Link
             href="/"
@@ -158,7 +160,7 @@ export default function InsurancePage() {
           </Link>
           <span className="font-bold tracking-tight ml-2">{SITE_NAME}</span>
         </div>
-      </header>
+      </div>
 
       <main className="flex-1 max-w-4xl mx-auto px-4 py-12 w-full">
         <div className="mb-10">

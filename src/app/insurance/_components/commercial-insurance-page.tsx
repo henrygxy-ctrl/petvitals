@@ -8,6 +8,7 @@ import { ContextualHubLinks } from "@/components/hubs/contextual-hub-links";
 import { JsonLdBreadcrumb, JsonLdFAQ } from "@/components/seo/json-ld";
 import { INSURANCE_PARTNERS } from "@/lib/affiliate";
 import { SITE_BASE_URL, SITE_NAME } from "@/lib/constants";
+import { NavHeader } from "@/components/landing/nav-header";
 
 export interface CommercialStat {
   label: string;
@@ -102,7 +103,8 @@ export function CommercialInsurancePage({
       <JsonLdFAQ questions={faq} />
       <JsonLdBreadcrumb items={breadcrumbs} />
       <div className="min-h-screen flex flex-col">
-        <header className="border-b">
+        <NavHeader />
+        <div className="border-b bg-muted/20">
           <div className="max-w-4xl mx-auto px-4 h-14 flex items-center gap-2">
             <Link href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Home
@@ -114,7 +116,7 @@ export function CommercialInsurancePage({
             <span className="text-muted-foreground">/</span>
             <span className="text-sm text-foreground/70">{label}</span>
           </div>
-        </header>
+        </div>
 
         <main className="flex-1 max-w-4xl mx-auto px-4 py-12 w-full">
           <section className="mb-8">

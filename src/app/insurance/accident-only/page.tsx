@@ -7,6 +7,7 @@ import { DownloadResourceCard } from "@/components/downloads/resource-card";
 import { INSURANCE_PARTNERS } from "@/lib/affiliate";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { NavHeader } from "@/components/landing/nav-header";
 
 export const metadata: Metadata = {
   title: "Accident-Only Pet Insurance: Cost, Coverage & Emergency Limits | PetVitals",
@@ -73,15 +74,16 @@ export default function AccidentOnlyPage() {
       <JsonLdFAQ questions={faq} />
       <JsonLdBreadcrumb items={breadcrumbs} />
       <div className="min-h-screen flex flex-col">
-      <header className="border-b">
-        <div className="max-w-3xl mx-auto px-4 h-14 flex items-center gap-2">
+      <NavHeader />
+      <div className="border-b bg-muted/20">
+        <div className="max-w-4xl mx-auto px-4 h-14 flex items-center gap-2">
           <Link href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Home</Link>
           <span className="text-muted-foreground">/</span>
           <Link href="/insurance" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Insurance</Link>
           <span className="text-muted-foreground">/</span>
           <span className="text-sm text-foreground/70">Accident-Only</span>
         </div>
-      </header>
+      </div>
       <main className="flex-1 max-w-3xl mx-auto px-4 py-12 w-full">
 	        <div className="mb-6">
 	          <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Pet Insurance Guide</span>

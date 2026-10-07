@@ -19,12 +19,9 @@ export function InsuranceComparison({ partners, className = "" }: InsuranceCompa
         <Shield className="h-5 w-5 text-primary" />
         <h2 className="text-lg font-bold">Top Pet Insurance Providers</h2>
       </div>
-      {hasAffiliateLinks && (
-        <p className="text-xs text-muted-foreground mb-4">
-          We may earn a commission if you purchase through these links, at no extra cost to you.
-          These are providers we&apos;ve researched - not paid placements.
-        </p>
-      )}
+      <p className="mb-4 text-xs text-muted-foreground">
+        Provider features are summarized from public information. Some links may be tracked partner links and may earn PetVitals a commission at no extra cost to you; that does not change the comparison order.
+      </p>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {partners.map((p) => (
           <a
@@ -49,9 +46,10 @@ export function InsuranceComparison({ partners, className = "" }: InsuranceCompa
             }}
             className="p-5 rounded-xl border bg-card hover:border-primary/40 hover:shadow-sm transition-all group"
           >
-            <div className="flex items-center justify-between mb-3">
+            <div className="mb-3 flex items-center justify-between gap-2">
               <h3 className="font-semibold text-sm">{p.name}</h3>
-              <div className="flex items-center gap-0.5">
+              <div className="flex shrink-0 items-center gap-1">
+                <span className="sr-only">{p.rating} out of 5 stars</span>
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star
                     key={i}
@@ -78,10 +76,15 @@ export function InsuranceComparison({ partners, className = "" }: InsuranceCompa
             <p className="text-[10px] text-muted-foreground mb-3">
               <span className="font-medium text-foreground/60">Best for:</span> {p.bestFor}
             </p>
-            <span className="inline-flex items-center gap-1 text-xs font-medium text-primary group-hover:gap-2 transition-all">
-              Check Price
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-[10px] text-muted-foreground">
+                {p.isAffiliate ? "Tracked partner link" : "Official provider site"}
+              </span>
+              <span className="inline-flex items-center gap-1 text-xs font-medium text-primary group-hover:gap-2 transition-all">
+              {p.isAffiliate ? "Check price" : "View provider"}
               <ArrowRight className="h-3 w-3" />
-            </span>
+              </span>
+            </div>
           </a>
         ))}
       </div>
