@@ -78,7 +78,7 @@ const blog = load("src/lib/blog.ts", {
 }, { process: { cwd: () => root } });
 for (const slug of ["best-pet-safe-cleaning-products", "cat-friendly-cleaning-products"]) {
   assert.equal(blog.getPostBySlug(slug).author, "PetVitals Editorial Team");
-  assert.equal(blog.getPostBySlug(slug).updated, "2026-10-06");
+  assert.equal(blog.getPostBySlug(slug).updated, "2026-10-07");
 }
 console.log("PASS blog metadata: actual frontmatter author and updated date retained");
 
